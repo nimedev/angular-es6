@@ -214,6 +214,7 @@ function stylesTask(reload) {
  */
 function templateTask(reload) {
   let name = templateCache.file; 
+  del.sync(paths.templates.clean);
   return gulp.src(paths.templates.src)
     .pipe($.htmlmin({
       collapseWhitespace: true,

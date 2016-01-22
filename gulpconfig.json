@@ -61,7 +61,7 @@
       ]
     },
     "styles": {
-      "clean": "dist/assets/css/**",
+      "clean": "dist/assets/css/*",
       "src": "src/assets/scss/style.scss",
       "dest": "dist/assets/css",
       "watch": [
@@ -70,7 +70,9 @@
       ]
     },
     "templates": {
-      "src": "src/app/**/*.html"
+      "clean": "src/app/shared/templates/*",
+      "src": "src/app/**/*.html",
+      "dest": "src/app/shared/templates"
     }
   }
 }
