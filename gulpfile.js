@@ -55,13 +55,8 @@ gulp.task('images', () => optimizeImageTask());
 /** Runs optimizeHtmlTask without using browser-sync */
 gulp.task('html', () => optimizeHtmlTask());
 
-/** Runs scriptsTask without using browser-sync */
-gulp.task('scripts', ['lint'], () => scriptsTask());
-
-/** Runs stylesTask without using browser-sync */
-gulp.task('styles', () => stylesTask());
-
 /** Lint JavaScript */
+// implement browser reload
 gulp.task('lint', () => {
   return gulp.src(paths.lint.src)
     .pipe($.if(flags.lintJscs, $.jscs()))
@@ -70,8 +65,15 @@ gulp.task('lint', () => {
     .pipe($.if(flags.lintJshint, $.jshint.reporter('jshint-stylish')));
 });
 
+/** Runs scriptsTask without using browser-sync */
+// replace by templates
+gulp.task('scripts', ['lint'], () => scriptsTask());
+
+/** Runs stylesTask without using browser-sync */
+gulp.task('styles', () => stylesTask());
+
 /** build all front-end */
-gulp.task('build:front', ['i18n', 'images', 'html', 'scripts', 'styles']);
+gulp.task('build:front', ['i18n', 'images', 'html', 'lint', 'styles']);
 
 
 /**
@@ -181,7 +183,7 @@ gulp.task('default', (cb) => {
  * copy json files for multi-language in dist folder.
  * @param {Boolean} reload - indicate if use browser-sync
  */
-function i18nTask(reload) {
+var i18nTask = (reload) => {
   del.sync(paths.i18n.clean);
   return gulp.src(paths.i18n.src)
     .pipe(gulp.dest(paths.i18n.dest))
@@ -193,7 +195,7 @@ function i18nTask(reload) {
  * optimize images and copy in dist folder.
  * @param {Boolean} reload - indicate if use browser-sync
  */
-function optimizeImageTask(reload) {
+var optimizeImageTask = (reload) => {
   del.sync(paths.images.clean);
   return gulp.src(paths.images.src)
   // .pipe($.imagemin({
@@ -209,15 +211,13 @@ function optimizeImageTask(reload) {
  * Optimize html files and copy in dist folder.
  * @param {Boolean} reload - indicate if use browser-sync
  */
-function optimizeHtmlTask(reload) {
+var optimizeHtmlTask = (reload) => {
   del.sync(paths.html.clean);
   return gulp.src(paths.html.src)
     .pipe($.htmlReplace({
-      'js': {
-        src: '',
-        tpl: ''
-      }
+      'js': 'assets/js/main.min.js'
     }))
+    .pipe(gulp.dest('.tmp/' + paths.html.dest))
     .pipe($.htmlmin({
       collapseWhitespace: true,
       removeComments: true
@@ -230,7 +230,7 @@ function optimizeHtmlTask(reload) {
 /**
  * Prepare templates in stream. 
  */
-function prepareTemplates() {
+var prepareTemplates = () => {
   return gulp.src(paths.templates.src)
     .pipe($.htmlmin({
       collapseWhitespace: true,
@@ -245,7 +245,7 @@ function prepareTemplates() {
  * @param {Boolean} reload - indicate if use browser-sync
  * @param {Boolean} normal - indicate if no uglify the resulting file
  */
-function scriptsTask(reload, normal) {
+var scriptsTask = (reload, normal) => {
   var name = 'main.min.js';
   del.sync(paths.scripts.clean);
   return gulp.src(paths.scripts.src)
@@ -263,7 +263,7 @@ function scriptsTask(reload, normal) {
  * Make a copy in .tmp folder without minify.
  * @param {Boolean} reload - indicate if use browser-sync
  */
-function stylesTask(reload) {
+var stylesTask = (reload) => {
   var name = 'style.min.css';
   del.sync(paths.styles.clean);
   return gulp.src(paths.styles.src)
