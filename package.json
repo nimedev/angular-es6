@@ -17,7 +17,6 @@
   },
   "homepage": "https://github.com/nimedev/angular-es6#readme",
   "devDependencies": {
-    "add-stream": "^1.0.0",
     "browser-sync": "^2.10.0",
     "connect-history-api-fallback": "^1.1.0",
     "del": "^2.0.2",
