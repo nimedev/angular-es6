@@ -9,15 +9,40 @@ System.config({
     ]
   },
   paths: {
-    "github:*": "jspm_packages/github/*",
-    "npm:*": "jspm_packages/npm/*"
+    "github:*": "../jspm_packages/github/*",
+    "npm:*": "../jspm_packages/npm/*"
   },
 
   map: {
     "angular": "npm:angular@1.5.0-rc.1",
+    "angular-animate": "npm:angular-animate@1.5.0-rc.1",
+    "angular-aria": "npm:angular-aria@1.5.0-rc.1",
+    "angular-cookies": "npm:angular-cookies@1.5.0-rc.1",
+    "angular-material": "npm:angular-material@1.0.2",
+    "angular-translate": "npm:angular-translate@2.8.1",
+    "angular-translate-handler-log": "npm:angular-translate-handler-log@2.8.1",
+    "angular-translate-loader-static-files": "npm:angular-translate-loader-static-files@2.8.1",
+    "angular-translate-storage-cookie": "github:angular-translate/bower-angular-translate-storage-cookie@2.8.1",
+    "angular-translate-storage-local": "github:angular-translate/bower-angular-translate-storage-local@2.8.1",
+    "angular-ui-router": "npm:angular-ui-router@0.2.15",
     "babel": "npm:babel-core@5.8.35",
     "babel-runtime": "npm:babel-runtime@5.8.35",
     "core-js": "npm:core-js@1.2.6",
+    "github:angular-translate/bower-angular-translate-storage-cookie@2.8.1": {
+      "angular-translate": "github:angular-translate/bower-angular-translate@2.8.1"
+    },
+    "github:angular-translate/bower-angular-translate-storage-local@2.8.1": {
+      "angular-translate": "github:angular-translate/bower-angular-translate@2.8.1"
+    },
+    "github:angular-translate/bower-angular-translate@2.8.1": {
+      "angular": "github:angular/bower-angular@1.4.9"
+    },
+    "github:angular/bower-angular-animate@1.4.9": {
+      "angular": "github:angular/bower-angular@1.4.9"
+    },
+    "github:angular/bower-angular-aria@1.4.9": {
+      "angular": "github:angular/bower-angular@1.4.9"
+    },
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.3.0"
     },
@@ -29,6 +54,27 @@ System.config({
     },
     "github:jspm/nodelibs-util@0.1.0": {
       "util": "npm:util@0.10.3"
+    },
+    "npm:angular-animate@1.5.0-rc.1": {
+      "process": "github:jspm/nodelibs-process@0.1.2"
+    },
+    "npm:angular-material@1.0.2": {
+      "angular": "github:angular/bower-angular@1.4.9",
+      "angular-animate": "github:angular/bower-angular-animate@1.4.9",
+      "angular-aria": "github:angular/bower-angular-aria@1.4.9",
+      "css": "github:systemjs/plugin-css@0.1.20"
+    },
+    "npm:angular-translate-handler-log@2.8.1": {
+      "angular-translate": "npm:angular-translate@2.8.1"
+    },
+    "npm:angular-translate-loader-static-files@2.8.1": {
+      "angular-translate": "npm:angular-translate@2.8.1"
+    },
+    "npm:angular-translate@2.8.1": {
+      "process": "github:jspm/nodelibs-process@0.1.2"
+    },
+    "npm:angular-ui-router@0.2.15": {
+      "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:angular@1.5.0-rc.1": {
       "process": "github:jspm/nodelibs-process@0.1.2"

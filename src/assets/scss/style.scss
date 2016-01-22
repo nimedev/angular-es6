@@ -1,0 +1,78 @@
+/*------------------------------------*\
+    $STYLE
+\*------------------------------------*/
+/**
+ * Include here all modules (.scss files) to compile in
+ * in final css: /assets/css/style.min.css.
+ */
+
+/**
+ * Libraries
+ */
+@import "lib/material-palettes.scss";
+@import "lib/settings.scss";
+@import "lib/mixins.scss";
+@import "lib/functions.scss";
+@import "lib/flex.scss";
+@import "lib/placeholders.scss";
+
+
+/**
+ * Bases
+ */
+@import "base/content.scss";
+@import "base/reset.scss";
+@import "base/debug.scss";
+
+
+/**
+ * Element selectors: a super "normalize":
+ */
+@import "elements/figure.scss";
+@import "elements/forms.scss";
+@import "elements/images.scss";
+@import "elements/links.scss";
+@import "elements/tables.scss";
+@import "elements/typography.scss";
+
+/**
+ * Site layout
+ */
+@import "layout/site.scss";
+@import "layout/content.scss";
+
+/**
+ * Components
+ */
+@import "../../app/components/base/float-button/float-button.scss";
+@import "../../app/components/base/header/header.scss";
+@import "../../app/components/base/sidenav/sidenav.scss";
+@import "../../app/components/configuration/configuration.scss";
+@import "../../app/components/help/help.scss";
+@import "../../app/components/home/home.scss";
+ 
+/**
+ * Abstractions and objects
+ */
+@import "abstractions/buttons.scss";
+@import "abstractions/colors-palette.scss";
+@import "abstractions/divider.scss";
+@import "abstractions/menu.scss";
+@import "abstractions/whiteframes.scss";
+// @import "abstracciones/fonticon.scss";
+// @import "abstracciones/grid.scss";
+// @import "abstracciones/paginacion.scss";
+// @import "abstracciones/texturas.scss";
+// @import "abstracciones/category-colors.scss";
+// @import "abstracciones/video.scss";
+// @import "abstracciones/abstracciones.scss";
+// @import "abstracciones/like-counter.scss";
+// @import "abstracciones/share.scss";
+// @import "abstracciones/userdata.scss";
+// @import "abstracciones/comments.scss";
+// @import "abstracciones/encabezados.scss";
+// @import "abstracciones/steps.scss";
+// @import "abstracciones/cookies.scss";
+// @import "abstracciones/slides.scss";
+// @import "abstracciones/error.scss";
+// @import "abstracciones/checkbox-list.scss";

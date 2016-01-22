@@ -1,0 +1,15 @@
+{
+  "HEADER": {
+    "LANG": {
+      "en": "English",
+      "es": "Español"
+    }
+  },
+  "NAV": {
+    "HOME": "Página principal",
+    "HELP": "Ayuda",
+    "SETTINGS": "Configuración"
+  },
+  "HOME": "Bienvenido!",
+  "HELP": "Ayuda"
+}

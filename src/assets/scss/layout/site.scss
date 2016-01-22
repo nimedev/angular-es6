@@ -1,0 +1,121 @@
+/*------------------------------------*\
+    $SITE
+\*------------------------------------*/
+
+@-webkit-viewport {
+	width: device-width;
+}
+
+@-moz-viewport {
+	width: device-width;
+}
+
+@-ms-viewport {
+	width: device-width;
+}
+
+@-o-viewport {
+	width: device-width;
+}
+
+@viewport {
+	width: device-width;
+}
+
+html {
+  // Box-model
+  min-height: 100%;
+	height: 100%;
+  
+  // Typography
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+  
+  // visual
+  background: $background;
+  
+  // Misc
+	-webkit-overflow-scrolling: touch;
+	-webkit-tap-highlight-color: transparent;
+  
+  // Responsive
+	@include respond-to(small) {
+		font-size: 100%;
+	}
+}
+
+body {
+  // Box-model
+  margin: 0;
+	padding: 0;
+	width: 100%;
+	min-height: 100%;
+	height: 100%;
+  
+  // Typography
+	font-family: $basefont;
+	line-height: $baselineheight;
+	color: $textcolor;
+  
+  // visual
+	background-color: transparent;
+}
+
+body.nav-open {
+  overflow: hidden;
+  
+  @include respond-to(small) {
+    overflow: auto;
+  }
+}
+
+a:link,
+a:visited,
+a:hover,
+a:active {
+  text-decoration: none;
+}
+
+/**
+ * From here, write positioning styles and details for web site. Enjoy!
+ */
+
+/** app content */ 
+.app-body {
+  // Positioning
+  position: relative;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  
+  // Box-model
+  padding-top: $header-xs;
+  min-height: 100%;
+  
+  // Misc
+  transition: margin $close-delay;
+  
+  // Responsive
+  @include respond-to(small) {
+    // Box model
+    margin-left: $sidenavwidth-sm;
+    padding-top: $header-sm;
+    
+    // .app-body.nav-open
+    &.nav-open {
+      margin-left: $sidenavwidth-md;
+    }
+  }
+}
+
+.app-body.header__nav-open {
+  // Box-model
+  padding-top: $header-xs + $headernav-height;
+  
+  // Responsive
+  @include respond-to(small) {
+    padding-top: $header-sm + $headernav-height;
+  }
+}
