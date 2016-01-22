@@ -42,22 +42,10 @@
       "src": [
         "src/app/**/*.js",
         "src/assets/js/**/*.js"
-      ]
-    },
-    "scripts": {
-      "clean": "dist/**/*.js",
-      "src": [
-        "src/assets/i18n/default.js",
-        "src/app/**/*.module.js",
-        "src/app/**/*.js",
-        "src/assets/**/*.js"
       ],
-      "dest": "dist/assets/js",
       "watch": [
         "src/app/**/*.js",
-        "src/app/**/*.html",
-        "src/assets/i18n/**/*.js",
-        "src/assets/js/**/*.js"
+        "src/app/**/*.json"
       ]
     },
     "styles": {
@@ -72,7 +60,8 @@
     "templates": {
       "clean": "src/app/shared/templates/*",
       "src": "src/app/**/*.html",
-      "dest": "src/app/shared/templates"
+      "dest": "src/app/shared/templates",
+      "watch": "src/app/**/*.html"
     }
   }
 }

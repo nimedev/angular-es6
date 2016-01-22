@@ -66,10 +66,21 @@ gulp.task('build', ['i18n', 'images', 'html', 'lint', 'styles', 'templates']);
 /**
  * WATCH TASKS
  */
-
 /** watch scripts and styles */
-tasks = ['i18n', 'images', 'html', 'lint', 'styles'];
-gulp.task('watch', tasks, () => watchTasks(''));
+tasks = ['lint', 'styles', 'templates'];
+gulp.task('watch', tasks, () => {
+  // watch for changes in js files to apply lint
+  $.watch(paths.lint.watch,
+    $.batch((events, done) => gulp.start('lint', done)));
+
+  // watch for changes in styles files
+  $.watch(paths.styles.watch,
+    $.batch((events, done) => gulp.start('styles', done)));
+  
+  // watch for changes in script files
+  $.watch(paths.templates.watch,
+    $.batch((events, done) => gulp.start('templates', done)));
+});
 
 
 /**
@@ -214,7 +225,7 @@ function stylesTask(reload) {
  * @param {Boolean} reload - indicate if use browser-sync 
  */
 function templateTask(reload) {
-  let name = templateCache.file; 
+  let name = templateCache.file;
   del.sync(paths.templates.clean);
   return gulp.src(paths.templates.src)
     .pipe($.htmlmin({
@@ -244,11 +255,11 @@ function watchTasks(sufix) {
   $.watch(paths.html.watch,
     $.batch((events, done) => gulp.start(`html${sufix}`, done)));
 
-  // watch for changes in script files
-  $.watch(paths.scripts.watch,
-    $.batch((events, done) => gulp.start(`scripts:watch${sufix}`, done)));
-
   // watch for changes in styles files
   $.watch(paths.styles.watch,
     $.batch((events, done) => gulp.start(`styles${sufix}`, done)));
+  
+  // watch for changes in script files
+  $.watch(paths.templates.watch,
+    $.batch((events, done) => gulp.start(`templates${sufix}`, done)));
 }
