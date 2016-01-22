@@ -60,7 +60,7 @@ gulp.task('styles', () => stylesTask());
 
 gulp.task('templates', () => templateTask());
 
-gulp.task('build:front', ['i18n', 'images', 'html', 'lint', 'styles', 'templates']);
+gulp.task('build', ['i18n', 'images', 'html', 'lint', 'styles', 'templates']);
 
 
 /**
@@ -119,10 +119,11 @@ gulp.task('server', tasks, () => {
 
 /**
  * DEFAULT TASK
+ * Generate clean dist for production.
  */
 gulp.task('default', (cb) => {
-  del.sync(paths.clean);
-  runSequence(['build:front'], cb);
+  del.sync(paths.cleanAll);
+  runSequence(['build'], cb);
 });
 
 
