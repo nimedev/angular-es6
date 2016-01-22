@@ -1,0 +1,76 @@
+{
+  "flags": {
+    "autoprefixer": true,
+    "minifyCss": true,
+    "mergeMediaQueries": true
+  },
+  "server": {
+    "port": 3000,
+    "baseDir": "dist"
+  },
+  "templateCache": {
+    "file": "templates.module.js",
+    "options": {
+      "root": "app/",
+      "standalone": true
+    }
+  },
+  "paths": {
+    "cleanAll": [
+      ".tmp/*",
+      "dist/*",
+      "!dist/.git*"
+    ],
+    "i18n": {
+      "clean": "dist/assets/i18n/*",
+      "src": "src/assets/i18n/*.json",
+      "dest": "dist/assets/i18n",
+      "watch": "src/assets/i18n/*.json"
+    },
+    "images": {
+      "clean": "dist/assets/img/*",
+      "src": "src/assets/img/**/*",
+      "dest": "dist/assets/img",
+      "watch": "src/assets/img/**/*"
+    },
+    "html": {
+      "src": "src/index.html",
+      "dest": "dist/",
+      "watch": "src/index.html"
+    },
+    "lint": {
+      "src": [
+        "src/app/**/*.js",
+        "src/assets/js/**/*.js"
+      ]
+    },
+    "scripts": {
+      "clean": "dist/**/*.js",
+      "src": [
+        "src/assets/i18n/default.js",
+        "src/app/**/*.module.js",
+        "src/app/**/*.js",
+        "src/assets/**/*.js"
+      ],
+      "dest": "dist/assets/js",
+      "watch": [
+        "src/app/**/*.js",
+        "src/app/**/*.html",
+        "src/assets/i18n/**/*.js",
+        "src/assets/js/**/*.js"
+      ]
+    },
+    "styles": {
+      "clean": "dist/assets/css/**",
+      "src": "src/assets/scss/style.scss",
+      "dest": "dist/assets/css",
+      "watch": [
+        "src/app/**/*.scss",
+        "src/assets/scss/**/*"
+      ]
+    },
+    "templates": {
+      "src": "src/app/**/*.html"
+    }
+  }
+}
