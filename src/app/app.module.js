@@ -2,54 +2,65 @@
  * Main module
  * @module 'angular-seed' 
  */
-(function () {
-  'use strict';
-  
-  /** Constants object */
-  var constants = {
-    // server base url
-    REST_URL: '',
+/** Angular modules */
+import * as angular from 'angular';
+import * as angularAnimate from 'angular-animate';
+import * as angularAria from 'angular-aria';
+import * as angularCookies from 'angular-cookies';
 
-    // Debug mode
-    DEBUG: true
-  };
+/** Comunity modules */
+import * as angularUiRouter from 'angular-ui-router';
 
-  angular
-    .module('angular-seed', [
-    // Angular modules
-      'ngAnimate',
-      'ngAria',
-      'ngCookies',
-      'ngMessages',
-      'ngResource',
-      'ngSanitize',
+/** Components */
 
-    // Comunity modules
-      'ui.router',
-    
-    // Components
-      'base',
-      
-    // Views components
-      'configuration',
-      'help',
-      'home',
+/** Shared */
+import templates from 'app/shared/templates/templates.module';
 
-    // Shared components
-      'i18n',
-      'theming',
-      
-    // Template module is added with gulp task scritps
-      'templates'
-    ])
-    .config(config)
-    .constant('constants', constants);
-    
-  /** Config function */
-  config.$inject = ['$urlRouterProvider'];
+/** Variables */
+const appName = 'ng-seed';
+let config;
+let constants;
+let htmlDocument;
+let startApp;
 
-  function config($urlRouterProvider) {
-    // Redirect path to * urls
-    $urlRouterProvider.otherwise('/');
-  }
-})();
+/** Config function */
+config = ($urlRouterProvider) => {
+  // Redirect path to * urls
+  $urlRouterProvider.otherwise('/');
+};
+config.$inject = ['$urlRouterProvider'];
+
+/** Constants object */
+constants = {
+  // server base url
+  REST_URL: '',
+
+  // Debug mode
+  DEBUG: true
+};
+
+// Define angular app.
+angular
+  .module(appName, [
+  // Angular modules
+    'ngAnimate',
+    'ngAria',
+    'ngCookies',
+
+  // Comunity modules
+    'ui.router',
+
+  // Components
+
+  // Shared components
+    'templates'
+  ])
+  .config(config)
+  .constant('constants', constants);
+ 
+/** Load app */
+htmlDocument = angular.element(document);
+
+startApp = () => angular.bootstrap(htmlDocument, [appName]);
+
+htmlDocument.ready(startApp);
