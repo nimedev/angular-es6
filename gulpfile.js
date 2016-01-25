@@ -198,7 +198,7 @@ function watchTasks() {
   $.watch(paths.styles.watch,
     $.batch((events, done) => gulp.start('styles', done)));
   
-  // watch for changes in script files
+  // watch for changes in templates files
   $.watch(paths.templates.watch,
     $.batch((events, done) => gulp.start('templates', done)));
 }
