@@ -1,5 +1,7 @@
 {
   "flags": {
+    "lintJscs": true,
+    "lintJshint": true,
     "autoprefixer": true,
     "minifyCss": true,
     "mergeMediaQueries": true
@@ -42,7 +44,8 @@
     "lint": {
       "src": [
         "src/app/**/*.js",
-        "src/assets/js/**/*.js"
+        "src/assets/js/**/*.js",
+        "!src/app/shared/templates/*"
       ],
       "watch": [
         "src/app/**/*.js",
