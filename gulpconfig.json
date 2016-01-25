@@ -6,7 +6,7 @@
   },
   "server": {
     "port": 3000,
-    "baseDir": "dist"
+    "baseDir": "src"
   },
   "templateCache": {
     "file": "templates.module.js",

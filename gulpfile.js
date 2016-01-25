@@ -69,46 +69,14 @@ gulp.task('build', ['i18n', 'images', 'html', 'lint', 'styles', 'templates']);
 /** watch scripts and styles */
 tasks = ['lint', 'styles', 'templates'];
 gulp.task('watch', tasks, () => {
-  // watch for changes in js files to apply lint
-  $.watch(paths.lint.watch,
-    $.batch((events, done) => gulp.start('lint', done)));
-
-  // watch for changes in styles files
-  $.watch(paths.styles.watch,
-    $.batch((events, done) => gulp.start('styles', done)));
-  
-  // watch for changes in script files
-  $.watch(paths.templates.watch,
-    $.batch((events, done) => gulp.start('templates', done)));
+  watchTasks();
 });
 
 
 /**
  * RELOAD TASKS
  */
-/** Runs i18nTask using browser-sync */
-gulp.task('i18n:reload', () => i18nTask(true));
-
-/** Runs optimizeImageTask using browser-sync */
-gulp.task('images:reload', () => optimizeImageTask(true));
-
-/** Runs optimizeHtmlTask using browser-sync */
-gulp.task('html:reload', () => optimizeHtmlTask(true));
-
-/** Runs scriptsTask using browser-sync without uglify */
-gulp.task('scripts:reload', ['lint'], () => scriptsTask(true, true));
-
-/** Runs stylesTask using browser-sync */
-gulp.task('styles:reload', () => stylesTask(true));
-
 /** watch with browser reload */
-tasks = [
-  'i18n:reload',
-  'images:reload',
-  'html:reload',
-  'scripts:reload',
-  'styles:reload'
-];
 gulp.task('server', tasks, () => {
   // config browser-sync module
   browserSync.init({
@@ -118,13 +86,17 @@ gulp.task('server', tasks, () => {
       baseDir: config.server.baseDir,
       middleware: [historyApiFallback()],
       routes: {
-        '/bower_components': 'bower_components'
+        '/jspm_packages': 'jspm_packages',
+        '/': 'dist'
       }
     }
   });
 
-  // watch for changes and activate hot reload
-  watchTasks(':reload');
+  // Watch task
+  watchTasks();
+  
+  // Watch for changes to reload
+  
 });
 
 
@@ -139,36 +111,27 @@ gulp.task('default', (cb) => {
 
 
 /** HELPER FUNCTIONS */
-/**
- * copy json files for multi-language in dist folder.
- * @param {Boolean} reload - indicate if use browser-sync
- */
-function i18nTask(reload) {
+/** copy json files for multi-language in dist folder. */
+function i18nTask() {
   del.sync(paths.i18n.clean);
   return gulp.src(paths.i18n.src)
     .pipe(gulp.dest(paths.i18n.dest))
     .pipe($.size({ title: 'i18n' }))
-    .pipe($.if(reload, browserSync.stream()));
+    .pipe(browserSync.stream());
 }
 
-/**
- * Lint task
- * @param {Boolean} reload - indicate if use browser-sync
- */
-function lintTask(reload) {
+/** Lint task */
+function lintTask() {
   return gulp.src(paths.lint.src)
     .pipe($.if(flags.lintJscs, $.jscs()))
     .pipe($.if(flags.lintJscs, $.jscsStylish.combineWithHintResults()))
     .pipe($.if(flags.lintJshint, $.jshint()))
     .pipe($.if(flags.lintJshint, $.jshint.reporter('jshint-stylish')))
-    .pipe($.if(reload, browserSync.stream()));
+    .pipe(browserSync.stream());
 }
 
-/**
- * optimize images and copy in dist folder.
- * @param {Boolean} reload - indicate if use browser-sync
- */
-function optimizeImageTask(reload) {
+/** optimize images and copy in dist folder. */
+function optimizeImageTask() {
   del.sync(paths.images.clean);
   return gulp.src(paths.images.src)
   // .pipe($.imagemin({
@@ -177,14 +140,11 @@ function optimizeImageTask(reload) {
   // }))
     .pipe(gulp.dest(paths.images.dest))
     .pipe($.size({ title: 'images' }))
-    .pipe($.if(reload, browserSync.stream()));
+    .pipe(browserSync.stream());
 }
 
-/**
- * Optimize html files and copy in dist folder.
- * @param {Boolean} reload - indicate if use browser-sync
- */
-function optimizeHtmlTask(reload) {
+/** Optimize html files and copy in dist folder. */
+function optimizeHtmlTask() {
   del.sync(paths.html.clean);
   return gulp.src(paths.html.src)
     .pipe($.htmlReplace({
@@ -197,15 +157,14 @@ function optimizeHtmlTask(reload) {
     }))
     .pipe(gulp.dest(paths.html.dest))
     .pipe($.size({ title: 'html' }))
-    .pipe($.if(reload, browserSync.stream()));
+    .pipe(browserSync.stream());
 }
 
 /**
  * Compile sass files and copy the resulting file in dist folder.
  * Make a copy in .tmp folder without minify.
- * @param {Boolean} reload - indicate if use browser-sync
  */
-function stylesTask(reload) {
+function stylesTask() {
   let name = 'style.min.css';
   del.sync(paths.styles.clean);
   return gulp.src(paths.styles.src)
@@ -217,14 +176,11 @@ function stylesTask(reload) {
     .pipe($.if(flags.minifyCss, $.cssnano()))
     .pipe(gulp.dest(paths.styles.dest))
     .pipe($.size({ title: name }))
-    .pipe($.if(reload, browserSync.stream()));
+    .pipe(browserSync.stream());
 }
 
-/**
- * Prepare templates in stream.
- * @param {Boolean} reload - indicate if use browser-sync 
- */
-function templateTask(reload) {
+/** Prepare templates in stream. */
+function templateTask() {
   let name = templateCache.file;
   del.sync(paths.templates.clean);
   return gulp.src(paths.templates.src)
@@ -235,31 +191,20 @@ function templateTask(reload) {
     .pipe($.angularTemplatecache(name, templateCache.options))
     .pipe(gulp.dest(paths.templates.dest))
     .pipe($.size({ title: name }))
-    .pipe($.if(reload, browserSync.stream()));
+    .pipe(browserSync.stream());
 }
 
-/**
- * Wrap all watch function and change name if need hot reload
- * @param {String} sufix - sufix for tasks name.
- */
-function watchTasks(sufix) {
-  // watch for changes in i18n files
-  $.watch(paths.i18n.watch,
-    $.batch((events, done) => gulp.start(`i18n${sufix}`, done)));
-  
-  // watch for changes in images
-  $.watch(paths.images.watch,
-    $.batch((events, done) => gulp.start(`images${sufix}`, done)));
-
-  // watch for changes in html
-  $.watch(paths.html.watch,
-    $.batch((events, done) => gulp.start(`html${sufix}`, done)));
+/** Wrap all watch function */
+function watchTasks() {
+  // watch for changes in js files to apply lint
+  $.watch(paths.lint.watch,
+    $.batch((events, done) => gulp.start('lint', done)));
 
   // watch for changes in styles files
   $.watch(paths.styles.watch,
-    $.batch((events, done) => gulp.start(`styles${sufix}`, done)));
+    $.batch((events, done) => gulp.start('styles', done)));
   
   // watch for changes in script files
   $.watch(paths.templates.watch,
-    $.batch((events, done) => gulp.start(`templates${sufix}`, done)));
+    $.batch((events, done) => gulp.start('templates', done)));
 }
