@@ -14,10 +14,13 @@ import * as angularUiRouter from 'angular-ui-router';
 /** Components */
 
 /** Shared */
+import i18n from 'app/shared/i18n/i18n.module';
 import templates from 'app/shared/templates/templates.module';
 
-/** Variables */
+/** Constants */
 const appName = 'ng-seed';
+
+/** Variables */
 let config;
 let constants;
 let htmlDocument;
@@ -53,6 +56,7 @@ angular
   // Components
 
   // Shared components
+    i18n,
     'templates'
   ])
   .config(config)

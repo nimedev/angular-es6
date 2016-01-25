@@ -1,33 +1,47 @@
-/** i18n module */
-(function () {
-  'use strict';
+/** 
+ * Module for translations. 
+ * Use angular-translate. 
+ * @module i18n
+ */
+/** Angular modules */
+import * as angular from 'angular';
 
-  angular
-    .module('i18n', ['pascalprecht.translate'])
-    .config(config);
+/** Comunity modules */
+import * as translate from 'angular-translate';
+import * as handlerLog from 'angular-translate-handler-log';
+import * as loaderStaticFiles from 'angular-translate-loader-static-files';
+import * as storageCookie from 'angular-translate-storage-cookie';
+import * as storageLocal from 'angular-translate-storage-local';
 
-  config.$inject = ['$translateProvider'];
+/** Others modules */
+import defaultLanguage from 'assets/i18n/default';
 
-  /**
-   * Settings for i18n module.
-   * @name config
-   * @memberof i18n
-   * @param {Object} $translateProvider - to angular-translate settings.
-   */
-  function config($translateProvider) {
-    // angular-translate configuration
-    
-    $translateProvider.translations('en', defaultLanguage);
-    $translateProvider.useStaticFilesLoader({
-      prefix: 'assets/i18n/locale-',
-      suffix: '.json'
-    });
-    $translateProvider.preferredLanguage('en');
-    $translateProvider.fallbackLanguage('en');
-    $translateProvider.useLocalStorage();
-    $translateProvider.useSanitizeValueStrategy('escape');
-    
-    //   $translateProvider.useMissingTranslationHandlerLog();
-    // }
-  }
-})();
+/** Constants */
+const moduleName = 'i18n';
+
+/** Variables */
+let config;
+
+/** Config function */
+config = ($translateProvider) => {
+  // angular-translate configuration
+  $translateProvider.translations('en', defaultLanguage);
+  $translateProvider.useStaticFilesLoader({
+    prefix: 'assets/i18n/locale-',
+    suffix: '.json'
+  });
+  $translateProvider.preferredLanguage('en');
+  $translateProvider.fallbackLanguage('en');
+  $translateProvider.useLocalStorage();
+  $translateProvider.useSanitizeValueStrategy('escape');
+  $translateProvider.useMissingTranslationHandlerLog();
+};
+config.$inject = ['$translateProvider'];
+
+// Define i18n module.
+angular
+  .module(moduleName, ['pascalprecht.translate'])
+  .config(config);
+
+/** export */
+export default moduleName;
