@@ -38,10 +38,10 @@ config = ($translateProvider) => {
 };
 config.$inject = ['$translateProvider'];
 
-// Define i18n module.
+// Define module.
 angular
   .module(moduleName, ['pascalprecht.translate'])
   .config(config);
 
-/** export */
+/** Exports module name */
 export default moduleName;

@@ -15,6 +15,7 @@ import * as angularUiRouter from 'angular-ui-router';
 
 /** Shared */
 import i18n from 'app/shared/i18n/i18n.module';
+import theming from 'app/shared/theming/theming.module';
 import templates from 'app/shared/templates/templates.module';
 
 /** Constants */
@@ -57,6 +58,7 @@ angular
 
   // Shared components
     i18n,
+    theming,
     'templates'
   ])
   .config(config)

@@ -1,25 +1,33 @@
-/** @module theming */
-(function () {
-  'use strict';
+/** 
+ * Module for angular material. 
+ * @module theming
+ */
+/** Angular modules */
+import * as angular from 'angular';
 
-  angular
-    .module('theming', ['ngMaterial'])
-    .config(config);
+/** Comunity modules */
+import * as angularMaterial from 'angular-material';
 
-  config.$inject = ['$mdIconProvider', '$mdThemingProvider'];
+/** Constants */
+const moduleName = 'theming';
 
-  /**
-   * Settings for theming module.
-   * @name config
-   * @memberof theming
-   * @param {Object} $mdIconProvider - to load app icons.
-   * @param {Object} $mdThemingProvider - to setup angular-material themes.
-   */
-  function config($mdIconProvider, $mdThemingProvider) {
-    // angular-material Theming
-    $mdThemingProvider.theme('default')
-    /** default: 500, hue-1: 300, hue-2: 800, hue-3: A100 */
-      .primaryPalette('grey')
-      .accentPalette('deep-orange');
-  }
-})();
+/** Variables */
+let config;
+
+/** Config function */
+config = ($mdThemingProvider) => {
+  // angular-material Theming
+  $mdThemingProvider.theme('default')
+  /** default: 500, hue-1: 300, hue-2: 800, hue-3: A100 */
+    .primaryPalette('grey')
+    .accentPalette('deep-orange');
+};
+config.$inject = ['$mdThemingProvider'];
+
+// Define module
+angular
+  .module(moduleName, ['ngMaterial'])
+  .config(config);
+
+/** Exports module name */
+export default moduleName;
