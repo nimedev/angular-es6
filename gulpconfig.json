@@ -6,7 +6,11 @@
   },
   "server": {
     "port": 3000,
-    "baseDir": "src"
+    "baseDir": "src",
+    "routes": {
+      "/jspm_packages": "jspm_packages",
+      "/": "dist"
+    }
   },
   "templateCache": {
     "file": "templates.module.js",
@@ -24,19 +28,16 @@
     "i18n": {
       "clean": "dist/assets/i18n/*",
       "src": "src/assets/i18n/*.json",
-      "dest": "dist/assets/i18n",
-      "watch": "src/assets/i18n/*.json"
+      "dest": "dist/assets/i18n"
     },
     "images": {
       "clean": "dist/assets/img/*",
       "src": "src/assets/img/**/*",
-      "dest": "dist/assets/img",
-      "watch": "src/assets/img/**/*"
+      "dest": "dist/assets/img"
     },
     "html": {
       "src": "src/index.html",
-      "dest": "dist/",
-      "watch": "src/index.html"
+      "dest": "dist/"
     },
     "lint": {
       "src": [
@@ -62,6 +63,11 @@
       "src": "src/app/**/*.html",
       "dest": "src/app/shared/templates",
       "watch": "src/app/**/*.html"
-    }
+    },
+    "reload": [
+      "src/assets/i18n/*.json",
+      "src/assets/img/**/*",
+      "src/index.html"
+    ]
   }
 }

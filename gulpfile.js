@@ -85,10 +85,7 @@ gulp.task('server', tasks, () => {
     server: {
       baseDir: config.server.baseDir,
       middleware: [historyApiFallback()],
-      routes: {
-        '/jspm_packages': 'jspm_packages',
-        '/': 'dist'
-      }
+      routes: config.server.routes
     }
   });
 
@@ -96,7 +93,7 @@ gulp.task('server', tasks, () => {
   watchTasks();
   
   // Watch for changes to reload
-  
+  gulp.watch(paths.reload).on('change', browserSync.reload);
 });
 
 
@@ -116,8 +113,7 @@ function i18nTask() {
   del.sync(paths.i18n.clean);
   return gulp.src(paths.i18n.src)
     .pipe(gulp.dest(paths.i18n.dest))
-    .pipe($.size({ title: 'i18n' }))
-    .pipe(browserSync.stream());
+    .pipe($.size({ title: 'i18n' }));
 }
 
 /** Lint task */
@@ -139,8 +135,7 @@ function optimizeImageTask() {
   //   interlaced: true
   // }))
     .pipe(gulp.dest(paths.images.dest))
-    .pipe($.size({ title: 'images' }))
-    .pipe(browserSync.stream());
+    .pipe($.size({ title: 'images' }));
 }
 
 /** Optimize html files and copy in dist folder. */
@@ -156,8 +151,7 @@ function optimizeHtmlTask() {
       removeComments: true
     }))
     .pipe(gulp.dest(paths.html.dest))
-    .pipe($.size({ title: 'html' }))
-    .pipe(browserSync.stream());
+    .pipe($.size({ title: 'html' }));
 }
 
 /**
