@@ -178,6 +178,12 @@ function templateTask() {
   let name = templateCache.file;
   del.sync(paths.templates.clean);
   return gulp.src(paths.templates.src)
+    .pipe($.plumber({
+      handleError: function (err) {
+        console.log(err);
+        this.emit('end');
+      }
+    }))
     .pipe($.htmlmin({
       collapseWhitespace: true,
       removeComments: true
