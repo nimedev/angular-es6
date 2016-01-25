@@ -8,13 +8,13 @@ import * as angular from 'angular';
 /** Comunity modules */
 import * as angularMaterial from 'angular-material';
 
-/** Constants */
+// Constants
 const moduleName = 'theming';
 
-/** Variables */
+// Variables
 let config;
 
-/** Config function */
+// Config function
 config = ($mdThemingProvider) => {
   // angular-material Theming
   $mdThemingProvider.theme('default')
@@ -29,5 +29,5 @@ angular
   .module(moduleName, ['ngMaterial'])
   .config(config);
 
-/** Exports module name */
+/** @exports module name */
 export default moduleName;

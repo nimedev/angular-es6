@@ -18,23 +18,23 @@ import i18n from 'app/shared/i18n/i18n.module';
 import theming from 'app/shared/theming/theming.module';
 import templates from 'app/shared/templates/templates.module';
 
-/** Constants */
+// Constants
 const appName = 'ng-seed';
 
-/** Variables */
+// Variables
 let config;
 let constants;
 let htmlDocument;
 let startApp;
 
-/** Config function */
+// Config function
 config = ($urlRouterProvider) => {
   // Redirect path to * urls
   $urlRouterProvider.otherwise('/');
 };
 config.$inject = ['$urlRouterProvider'];
 
-/** Constants object */
+// Constants object
 constants = {
   // server base url
   REST_URL: '',
@@ -64,7 +64,7 @@ angular
   .config(config)
   .constant('constants', constants);
  
-/** Load app */
+// Load app when document is ready
 htmlDocument = angular.element(document);
 
 startApp = () => angular.bootstrap(htmlDocument, [appName]);

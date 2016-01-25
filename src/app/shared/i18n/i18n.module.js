@@ -16,13 +16,13 @@ import * as storageLocal from 'angular-translate-storage-local';
 /** Others modules */
 import defaultLanguage from 'assets/i18n/default';
 
-/** Constants */
+// Constants
 const moduleName = 'i18n';
 
-/** Variables */
+// Variables
 let config;
 
-/** Config function */
+// Config function
 config = ($translateProvider) => {
   // angular-translate configuration
   $translateProvider.translations('en', defaultLanguage);
@@ -43,5 +43,5 @@ angular
   .module(moduleName, ['pascalprecht.translate'])
   .config(config);
 
-/** Exports module name */
+/** @exports module name */
 export default moduleName;

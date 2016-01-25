@@ -1,17 +1,24 @@
 /**
- * Component for coming soon message
- * @name comingSoon
- * @memberof base
+ * Module for coming-soon component
+ * @module coming-soon
  */
-(function () {
-  'use strict';
+/** Angular modules */
+import * as angular from 'angular';
 
-  angular
-    .module('base')
-    .component('comingSoon', {
-      bindings: {
-        title: '@'
-      },
-      templateUrl: 'app/components/base/coming-soon/coming-soon.tmpl.html'
-    });
-})();
+// Constants
+const root = 'app/components/base/';
+const componentName = 'comingSoon';
+const fileName = 'coming-soon';
+
+// Define component
+angular
+  .module(componentName, [])
+  .component(componentName, {
+    bindings: {
+      title: '@'
+    },
+    templateUrl: `${root}${fileName}/${fileName}.tmpl.html`
+  });
+  
+/** @exports component name */
+export default componentName;
