@@ -1,47 +1,12 @@
-/**
- * Module for help-view component.
- * @module helpView
- */
-/** Angular modules */
-import * as angular from 'angular';
+/** help-view component. */
+// Template
+import template from './help-view.tpl.html!text';
 
-/** Components */
-
-/** Controller and Services */
-
-// Constants
-const componentName = 'helpView';
-const fileName = 'help-view';
-const root = 'app/components/';
-
-// Variables
-let config;
-
-// Config function
-config = ($stateProvider) => {
-  // Help view
-  $stateProvider
-    .state(componentName, {
-      url: '/help',
-      views: {
-        'sidenav': {
-          template: '<home-sidenav></home-sidenav>'
-        },
-        'app-content': {
-          template: '<help-view></help-view>'
-        }
-      }
-    });
+// Component object
+let component = {
+  name: 'helpView',
+  template
 };
-config.$inject = ['$stateProvider'];
 
-// Define component
-angular
-  .module(componentName, [])
-  .config(config)
-  .component(componentName, {
-    templateUrl: `${root}${fileName}/${fileName}.tmpl.html`
-  });
-
-/** @exports component name */
-export default componentName;
+/** @exports component object */
+export default component;

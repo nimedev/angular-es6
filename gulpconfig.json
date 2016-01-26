@@ -37,8 +37,7 @@
     "lint": {
       "src": [
         "src/app/**/*.js",
-        "src/assets/js/**/*.js",
-        "!src/app/shared/templates/*"
+        "src/assets/js/**/*.js"
       ]
     },
     "styles": {
