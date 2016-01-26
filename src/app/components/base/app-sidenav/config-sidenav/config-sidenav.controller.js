@@ -16,8 +16,12 @@ class confingSidenav {
   }
 
   /** Class Methods */
-  changeState() {
-    this.sideNav.changeState();
+  /**
+   * Change state
+   * @param {string} state - state to redirect
+   */
+  changeState(state) {
+    this.sideNav.changeState(state);
   }
 }
 

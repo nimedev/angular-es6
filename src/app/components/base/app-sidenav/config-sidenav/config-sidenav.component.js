@@ -13,7 +13,7 @@ import controller from './config-sidenav.controller';
 // Constants
 const componentName = 'configSidenav';
 const fileName = 'config-sidenav';
-const root = 'app/component/base/app-sidenav/';
+const root = 'app/components/base/app-sidenav/';
 
 // Define component
 angular

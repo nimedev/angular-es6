@@ -13,6 +13,8 @@ import * as angularUiRouter from 'angular-ui-router';
 
 /** Components */
 import base from 'app/components/base/base.module';
+import configView from 'app/components/config-view/config-view.component';
+import helpView from 'app/components/help-view/help-view.component';
 import homeView from 'app/components/home-view/home-view.component';
 
 /** Shared */
@@ -58,6 +60,8 @@ angular
 
   // Components
     base,
+    configView,
+    helpView,
     homeView,
 
   // Shared components
