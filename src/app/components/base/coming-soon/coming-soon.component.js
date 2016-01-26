@@ -1,24 +1,17 @@
-/**
- * Module for coming-soon component
- * @module comingSoon
- */
-/** Angular modules */
-import * as angular from 'angular';
+/** coming-soon component. */
+// Template
+import template from './coming-soon.tpl.html!text';
 
-// Constants
-const componentName = 'comingSoon';
-const fileName = 'coming-soon';
-const root = 'app/components/base/';
+// Controller
 
-// Define component
-angular
-  .module(componentName, [])
-  .component(componentName, {
-    bindings: {
-      title: '@'
-    },
-    templateUrl: `${root}${fileName}/${fileName}.tmpl.html`
-  });
-  
-/** @exports component name */
-export default componentName;
+// Component object
+let component = {
+  bindings: {
+    title: '@'
+  },
+  name: 'comingSoon',
+  template
+};
+
+/** @exports component object */
+export default component;

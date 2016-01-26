@@ -10,7 +10,7 @@ import * as angular from 'angular';
 /** Submodules */
 import appHeader from './app-header/app-header.component';
 import appSidenav from './app-sidenav/app-sidenav.component';
-import comingSoon from './coming-soon/coming-soon.component';
+import comingSoon from './coming-soon/coming-soon';
 import floatButton from './float-button/float-button';
 
 /** Component */
