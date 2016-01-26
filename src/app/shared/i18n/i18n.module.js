@@ -14,7 +14,7 @@ import * as storageCookie from 'angular-translate-storage-cookie';
 import * as storageLocal from 'angular-translate-storage-local';
 
 /** Others modules */
-import defaultLanguage from 'assets/i18n/default';
+import defaultLanguage from 'assets/i18n/locale-en.json!';
 
 // Constants
 const moduleName = 'i18n';

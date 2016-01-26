@@ -1,9 +1,4 @@
-/** 
- * Default language module
- * @module default
- */
-// Default language EN (English)
-let defaultLanguage = {
+{
   "HEADER": {
     "LANG": {
       "en": "English",
@@ -17,6 +12,4 @@ let defaultLanguage = {
   },
   "HOME": "Welcome!",
   "HELP": "Help"
-};
-
-export default defaultLanguage;
+}

@@ -28,6 +28,7 @@ System.config({
     "babel": "npm:babel-core@5.8.35",
     "babel-runtime": "npm:babel-runtime@5.8.35",
     "core-js": "npm:core-js@1.2.6",
+    "json": "github:systemjs/plugin-json@0.1.0",
     "github:angular-translate/bower-angular-translate-handler-log@2.9.0": {
       "angular-translate": "github:angular-translate/bower-angular-translate@2.9.0"
     },
@@ -39,15 +40,6 @@ System.config({
     },
     "github:angular-translate/bower-angular-translate-storage-local@2.9.0": {
       "angular-translate": "github:angular-translate/bower-angular-translate@2.9.0"
-    },
-    "github:angular-translate/bower-angular-translate@2.9.0": {
-      // "angular": "github:angular/bower-angular@1.4.9"
-    },
-    "github:angular/bower-angular-animate@1.4.9": {
-      "angular": "github:angular/bower-angular@1.4.9"
-    },
-    "github:angular/bower-angular-aria@1.4.9": {
-      "angular": "github:angular/bower-angular@1.4.9"
     },
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.3.0"
@@ -65,9 +57,6 @@ System.config({
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:angular-material@1.0.2": {
-      // "angular": "github:angular/bower-angular@1.4.9",
-      // "angular-animate": "github:angular/bower-angular-animate@1.4.9",
-      // "angular-aria": "github:angular/bower-angular-aria@1.4.9",
       "css": "github:systemjs/plugin-css@0.1.20"
     },
     "npm:angular-ui-router@0.2.16": {
