@@ -7,14 +7,20 @@ import * as angular from 'angular';
 
 /** Comunity modules */
 
-/** Components */
+/** Submodules */
 import appHeader from './app-header/app-header.component';
 import appSidenav from './app-sidenav/app-sidenav.component';
 import comingSoon from './coming-soon/coming-soon.component';
-import floatButton from './float-button/float-button.component';
+import floatButton from './float-button/float-button';
+
+/** Component */
+
+/** Services */
 
 // Constants
 const moduleName = 'base';
+
+// Variables
 
 // Define module
 angular

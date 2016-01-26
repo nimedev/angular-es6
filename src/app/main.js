@@ -12,7 +12,7 @@ import * as angularCookies from 'angular-cookies';
 import * as angularUiRouter from 'angular-ui-router';
 
 /** Components */
-import base from 'app/components/base/base.module';
+import base from 'app/components/base/base';
 import configView from 'app/components/config-view/config-view';
 import helpView from 'app/components/help-view/help-view';
 import homeView from 'app/components/home-view/home-view';
