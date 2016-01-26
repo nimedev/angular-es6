@@ -46,10 +46,6 @@
         "src/app/**/*.js",
         "src/assets/js/**/*.js",
         "!src/app/shared/templates/*"
-      ],
-      "watch": [
-        "src/app/**/*.js",
-        "src/app/**/*.json"
       ]
     },
     "styles": {
@@ -68,6 +64,7 @@
       "watch": "src/app/**/*.html"
     },
     "reload": [
+      "src/app/**/*.js",
       "src/assets/i18n/*.json",
       "src/assets/img/**/*",
       "src/index.html"

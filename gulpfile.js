@@ -66,8 +66,8 @@ gulp.task('build', ['i18n', 'images', 'html', 'lint', 'styles', 'templates']);
 /**
  * WATCH TASKS
  */
-/** watch scripts and styles */
-tasks = ['lint', 'styles', 'templates'];
+/** Watch styles and templates */
+tasks = ['styles', 'templates'];
 gulp.task('watch', tasks, () => {
   watchTasks();
 });
@@ -76,7 +76,7 @@ gulp.task('watch', tasks, () => {
 /**
  * RELOAD TASKS
  */
-/** watch with browser reload */
+/** Watch styles and templates with browser reload */
 gulp.task('server', tasks, () => {
   // config browser-sync module
   browserSync.init({
@@ -122,8 +122,7 @@ function lintTask() {
     .pipe($.if(flags.lintJscs, $.jscs()))
     .pipe($.if(flags.lintJscs, $.jscsStylish.combineWithHintResults()))
     .pipe($.if(flags.lintJshint, $.jshint()))
-    .pipe($.if(flags.lintJshint, $.jshint.reporter('jshint-stylish')))
-    .pipe(browserSync.stream());
+    .pipe($.if(flags.lintJshint, $.jshint.reporter('jshint-stylish')));
 }
 
 /** optimize images and copy in dist folder. */
@@ -196,10 +195,6 @@ function templateTask() {
 
 /** Wrap all watch function */
 function watchTasks() {
-  // watch for changes in js files to apply lint
-  $.watch(paths.lint.watch,
-    $.batch((events, done) => gulp.start('lint', done)));
-
   // watch for changes in styles files
   $.watch(paths.styles.watch,
     $.batch((events, done) => gulp.start('styles', done)));
