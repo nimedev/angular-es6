@@ -1,40 +1,27 @@
 /**
- * Component for side navigation menu
- * @name configSidenav
- * @memberof sidenav
+ * Module for config-sidenav component.
+ * @module configSidenav
  */
-(function () {
-  'use strict';
+/** Angular modules */
+import * as angular from 'angular';
 
-  angular
-    .module('sidenav')
-    .component('configSidenav', {
-      controller: Controller,
-      templateUrl: 'app/components/base/sidenav/config-sidenav/config-sidenav.tmpl.html'
-    });
+/** Components */
 
-  Controller.$inject = ['sideNav'];
+/** Controller and Services */
+import controller from './config-sidenav.controller';
 
-  /**
-   * Controller for home-sidenav component.
-   * @name Controller
-   * @memberof appSidenav
-   * @param {Object} sideNav - to control open/close of sidenav.
-   */
-  function Controller(sideNav) {
-    var vm = this;
+// Constants
+const componentName = 'configSidenav';
+const fileName = 'config-sidenav';
+const root = 'app/component/base/app-sidenav/';
 
-    /** Controller fields */
+// Define component
+angular
+  .module(componentName, [])
+  .component(componentName, {
+    controller: controller,
+    templateUrl: `${root}${fileName}/${fileName}.tmpl.html`
+  });
 
-    /** Controller methods */
-    vm.changeState = sideNav.changeState;
-
-    activate();
-
-    ////////////
-    /** Init function */
-    function activate() {
-
-    }
-  }
-})();
+/** @exports component name */
+export default componentName;

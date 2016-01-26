@@ -6,6 +6,8 @@
 import * as angular from 'angular';
 
 /** Components */
+import homeSidenav from './home-sidenav/home-sidenav.component';
+import configSidenav from './config-sidenav/config-sidenav.component';
 
 /** Controller and Services */
 import controller from './app-sidenav.controller';
@@ -18,7 +20,7 @@ const root = 'app/components/base/';
 
 // Define component
 angular
-  .module(componentName, [])
+  .module(componentName, [homeSidenav, configSidenav])
   .component(componentName, {
     controller: controller,
     templateUrl: `${root}${fileName}/${fileName}.tmpl.html`
