@@ -1,48 +1,13 @@
-/**
- * Module for config-view component.
- * @module configView
- */
-/** Angular modules */
-import * as angular from 'angular';
+/** config-view component. */
+// Template
 
-/** Components */
+// Controller
 
-/** Controller and Services */
-
-// Constants
-const componentName = 'configView';
-const fileName = 'config-view';
-const root = 'app/components/';
-
-// Variables
-let config;
-
-// Config function
-config = ($stateProvider) => {
-  // Config view
-  $stateProvider
-    .state(componentName, {
-      url: '/config',
-      views: {
-        'sidenav': {
-          template: '<config-sidenav></config-sidenav>'
-        },
-        'app-content': {
-          template: '<config-view></config-view>'
-        }
-      }
-    });
+// Component object
+let component = {
+  name: 'configView',
+  template: '<coming-soon class="config-view" title="Configuration"></coming-soon>'
 };
-config.$inject = ['$stateProvider'];
 
-// Define component
-angular
-  .module(componentName, [])
-  .config(config)
-  .component(componentName, {
-          template: '<coming-soon class="config-view" title="Configuration"></coming-soon>'
-    // templateUrl: `${root}${fileName}/${fileName}.tmpl.html`
-  });
-
-/** @exports component name */
-export default componentName;
+/** @exports component object */
+export default component; 
