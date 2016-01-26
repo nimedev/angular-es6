@@ -34,7 +34,19 @@
 </head>
 
 <body>
-  h1{Hello NG!} {{ 'HOME' | translate }}
+
+  <!-- Navigation bar -->
+  <app-sidenav class="app-sidenav"></app-sidenav>
+
+  <!-- Header -->
+  <app-header class="app-header bc-primary-h2"></app-header>
+
+  <!-- Content -->
+  <div class="app-body">
+    <main class="app-content" ui-view="app-content"></main>
+    <float-button></float-button>
+  </div>
+
 </body>
 
 </html>

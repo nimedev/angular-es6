@@ -1,14 +1,21 @@
 /**
- * Component for main float FAB button.
- * @name floatButton
- * @memberof base
+ * Module for main float FAB button.
+ * @module floatButton
  */
-(function () {
-  'use strict';
+/** Angular modules */
+import * as angular from 'angular';
 
-  angular
-    .module('base')
-    .component('floatButton', {
-      templateUrl: 'app/components/base/float-button/float-button.tmpl.html'
-    });
-})();
+// Constants
+const componentName = 'floatButton';
+const fileName = 'float-button';
+const root = 'app/components/base/';
+
+// Define component
+angular
+  .module(componentName, [])
+  .component(componentName, {
+    templateUrl: `${root}${fileName}/${fileName}.tmpl.html`
+  });
+
+/** @exports component name */
+export default componentName;
