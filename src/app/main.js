@@ -18,9 +18,9 @@ import helpView from 'app/components/help-view/help-view.component';
 import homeView from 'app/components/home-view/home-view.component';
 
 /** Shared */
-import i18n from 'app/shared/i18n/i18n.module';
-import theming from 'app/shared/theming/theming.module';
-import templates from 'app/shared/templates/templates.module';
+import i18n from 'app/shared/i18n/i18n';
+import theming from 'app/shared/theming/theming';
+import templates from 'app/shared/templates/templates';
 
 // Constants
 const appName = 'ng-seed';
