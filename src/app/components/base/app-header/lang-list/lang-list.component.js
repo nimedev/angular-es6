@@ -1,27 +1,16 @@
-/**
- * Module for lang-list component.
- * @module langList
- */
-/** Angular modules */
-import * as angular from 'angular';
+/** lang-list component. */
+// Template
+import template from './lang-list.tpl.html!text';
 
-/** Components */
-
-/** Controller and Services */
+// Controller
 import controller from './lang-list.controller';
 
-// Constants
-const componentName = 'langList';
-const fileName = 'lang-list';
-const root = 'app/components/base/app-header/';
+// Component object
+let component = {
+  controller,
+  name: 'langList',
+  template
+};
 
-// Define component
-angular
-  .module(componentName, [])
-  .component(componentName, {
-    controller: controller,
-    templateUrl: `${root}${fileName}/${fileName}.tmpl.html`
-  });
-
-/** @exports component name */
-export default componentName;
+/** @exports component object */
+export default component;

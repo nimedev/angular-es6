@@ -6,7 +6,7 @@
 import * as angular from 'angular';
 
 /** Components */
-import langList from './lang-list/lang-list.component';
+import langList from './lang-list/lang-list';
 
 /** Controller and Services */
 import controller from './app-header.controller';
