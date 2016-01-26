@@ -29,6 +29,7 @@ System.config({
     "babel-runtime": "npm:babel-runtime@5.8.35",
     "core-js": "npm:core-js@1.2.6",
     "json": "github:systemjs/plugin-json@0.1.0",
+    "text": "github:systemjs/plugin-text@0.0.4",
     "github:angular-translate/bower-angular-translate-handler-log@2.9.0": {
       "angular-translate": "github:angular-translate/bower-angular-translate@2.9.0"
     },

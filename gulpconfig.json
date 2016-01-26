@@ -15,7 +15,7 @@
     }
   },
   "templateCache": {
-    "file": "templates.module.js",
+    "file": "templates.js",
     "options": {
       "root": "app/",
       "standalone": true

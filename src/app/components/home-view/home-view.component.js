@@ -1,47 +1,12 @@
-/**
- * Module for home-view component.
- * @module homeView
- */
-/** Angular modules */
-import * as angular from 'angular';
+/** home-view component. */
+// Template
+import template from './home-view.tpl.html!text';
 
-/** Components */
-
-/** Controller and Services */
-
-// Constants
-const componentName = 'homeView';
-const fileName = 'home-view';
-const root = 'app/components/';
-
-// Variables
-let config;
-
-// Config function
-config = ($stateProvider) => {
-  // Help view
-  $stateProvider
-    .state(componentName, {
-      url: '/',
-      views: {
-        'sidenav': {
-          template: '<home-sidenav></home-sidenav>'
-        },
-        'app-content': {
-          template: '<home-view></home-view>'
-        }
-      }
-    });
+// Component object
+let component = {
+  name: 'homeView',
+  template
 };
-config.$inject = ['$stateProvider'];
 
-// Define component
-angular
-  .module(componentName, [])
-  .config(config)
-  .component(componentName, {
-    templateUrl: `${root}${fileName}/${fileName}.tmpl.html`
-  });
-
-/** @exports component name */
-export default componentName;
+/** @exports component object */
+export default component;

@@ -15,12 +15,12 @@ import * as angularUiRouter from 'angular-ui-router';
 import base from 'app/components/base/base.module';
 import configView from 'app/components/config-view/config-view.component';
 import helpView from 'app/components/help-view/help-view.component';
-import homeView from 'app/components/home-view/home-view.component';
+import homeView from 'app/components/home-view/home-view';
 
 /** Shared */
 import i18n from 'app/shared/i18n/i18n';
 import theming from 'app/shared/theming/theming';
-import templates from 'app/shared/templates/templates';
+// import templates from 'app/shared/templates/templates';
 
 // Constants
 const appName = 'ng-seed';
@@ -66,8 +66,7 @@ angular
 
   // Shared components
     i18n,
-    theming,
-    'templates'
+    theming
   ])
   .config(config)
   .constant('constants', constants);
