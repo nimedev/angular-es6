@@ -1,9 +1,9 @@
 /**
  * Controller for lang-list component.
- * @class langListCtrl
+ * @class LangListCtrl
  * @param {Object} $translate - ...
  */
-class langListCtrl {
+class LangListCtrl {
   /*@ngInject*/
   constructor($translate) {
     // Inject array for minification compatibility
@@ -24,4 +24,4 @@ class langListCtrl {
 }
 
 /** @exports controller class */
-export default langListCtrl;
+export default LangListCtrl;

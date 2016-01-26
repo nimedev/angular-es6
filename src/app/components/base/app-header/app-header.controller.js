@@ -6,12 +6,13 @@
  */
 class AppHeaderCtrl {
   /*@ngInject*/
-  constructor(appHeader) {
+  constructor(appHeader, sideNav) {
     // Inject array for minification compatibility
-    this.$inject = ['appHeader'];
+    this.$inject = ['appHeader', 'sideNav'];
 
     // Save dependencies
     this.appHeader = appHeader;
+    this.sideNav = sideNav;
 
     /** Class Fields */
 
