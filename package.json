@@ -56,11 +56,11 @@
       "angular-aria": "npm:angular-aria@1.5.0-rc.1",
       "angular-cookies": "npm:angular-cookies@1.5.0-rc.1",
       "angular-material": "npm:angular-material@^1.0.0",
-      "angular-translate": "npm:angular-translate@^2.8.0",
-      "angular-translate-handler-log": "npm:angular-translate-handler-log@^2.8.0",
-      "angular-translate-loader-static-files": "npm:angular-translate-loader-static-files@^2.8.0",
-      "angular-translate-storage-cookie": "github:angular-translate/bower-angular-translate-storage-cookie@^2.8.1",
-      "angular-translate-storage-local": "github:angular-translate/bower-angular-translate-storage-local@^2.8.1",
+      "angular-translate": "github:angular-translate/bower-angular-translate@^2.9.0",
+      "angular-translate-handler-log": "github:angular-translate/bower-angular-translate-handler-log@^2.9.0",
+      "angular-translate-loader-static-files": "github:angular-translate/bower-angular-translate-loader-static-files@^2.9.0",
+      "angular-translate-storage-cookie": "github:angular-translate/bower-angular-translate-storage-cookie@^2.9.0",
+      "angular-translate-storage-local": "github:angular-translate/bower-angular-translate-storage-local@^2.9.0",
       "angular-ui-router": "npm:angular-ui-router@^0.2.15"
     },
     "devDependencies": {

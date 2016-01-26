@@ -1,49 +1,27 @@
 /**
- * langList component
- * List of available lenguage.
- * @name langList
- * @member of header
+ * Module for lang-list component.
+ * @module langList
  */
-(function () {
-  'use strict';
+/** Angular modules */
+import * as angular from 'angular';
 
-  angular
-    .module('header')
-    .component('langList', {
-      controller: Controller,
-      templateUrl: 'app/components/base/header/lang-list/lang-list.tmpl.html'
-    });
+/** Components */
 
-  Controller.$inject = ['$translate'];
+/** Controller and Services */
+import controller from './lang-list.controller';
 
-  /**
-   * Controller for list of available languages.
-   * @name Controller
-   * @param {Object} $translate - to change language in runtime.
-   */
-  function Controller($translate) {
-    var vm = this;
+// Constants
+const componentName = 'langList';
+const fileName = 'lang-list';
+const root = 'app/components/base/app-header/';
 
-    /** Controller fields */
-    vm.languages = ['en', 'es'];
+// Define component
+angular
+  .module(componentName, [])
+  .component(componentName, {
+    controller: controller,
+    templateUrl: `${root}${fileName}/${fileName}.tmpl.html`
+  });
 
-    /** Controller methods */
-    vm.changeLanguage = changeLanguage;
-
-    activate();
-
-    ///////////
-    /** Init function. */
-    function activate() {
-
-    }
-
-    /**
-     * Change language in runtime.
-     * @memberof LangCtrl
-     */
-    function changeLanguage(langKey) {
-      $translate.use(langKey);
-    }
-  }
-})();
+/** @exports component name */
+export default componentName;

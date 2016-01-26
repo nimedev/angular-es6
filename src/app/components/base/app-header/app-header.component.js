@@ -6,6 +6,9 @@
 import * as angular from 'angular';
 
 /** Components */
+import langList from './lang-list/lang-list.component';
+
+/** Controller and Services */
 import controller from './app-header.controller';
 import {serviceName, appHeader} from './app-header.service';
 
@@ -16,7 +19,7 @@ const root = 'app/components/base/';
 
 // Define component
 angular
-  .module(componentName, [])
+  .module(componentName, [langList])
   .component(componentName, {
     controller: controller,
     templateUrl: `${root}${fileName}/${fileName}.tmpl.html`
