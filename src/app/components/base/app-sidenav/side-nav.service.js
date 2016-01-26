@@ -1,14 +1,10 @@
 /**
- * Service to control app-sidenav component.
+ * Service to control app-sidenav visibility.
  * @class sideNav
  * @param {Object} $state - to change ui-router state.
  * @param {Object} $window - to get initial size.
  */
-/** @exports service name */
-export const serviceName = 'sideNav';
-
-/** @exports service class */
-export class sideNav {
+class sideNav {
   /*@ngInject*/
   constructor($state, $window) {
     // Inject array for minification compatibility
@@ -18,12 +14,14 @@ export class sideNav {
     this.$state = $state;
     this.$window = $window;
 
+    // Service name
+    this.name = 'sideNav';
+
     /** Class Fields */
     this.cssName = 'nav-open';
     this.cssClass = '';
     this.smBreak = 600;
     this.mdBreak = 960;
-
   }
 
   /** Class Methods */
@@ -77,3 +75,6 @@ export class sideNav {
     }
   }
 }
+
+/** @exports service class */
+export default sideNav;

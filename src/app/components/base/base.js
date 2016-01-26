@@ -9,7 +9,7 @@ import * as angular from 'angular';
 
 /** Submodules */
 import appHeader from './app-header/app-header';
-import appSidenav from './app-sidenav/app-sidenav.component';
+import appSidenav from './app-sidenav/app-sidenav';
 import comingSoon from './coming-soon/coming-soon';
 import floatButton from './float-button/float-button';
 

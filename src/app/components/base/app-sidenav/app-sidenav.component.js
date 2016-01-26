@@ -1,31 +1,16 @@
-/**
- * Module for app-sidenav component.
- * @module appSidenav
- */
-/** Angular modules */
-import * as angular from 'angular';
+/** app-sidenav component. */
+// Template
+import template from './app-sidenav.tpl.html!text';
 
-/** Components */
-import homeSidenav from './home-sidenav/home-sidenav.component';
-import configSidenav from './config-sidenav/config-sidenav.component';
-
-/** Controller and Services */
+// Controller
 import controller from './app-sidenav.controller';
-import {serviceName, sideNav} from './app-sidenav.service';
 
-// Constants
-const componentName = 'appSidenav';
-const fileName = 'app-sidenav';
-const root = 'app/components/base/';
+// Component object
+let component = {
+  controller,
+  name: 'appSidenav',
+  template
+};
 
-// Define component
-angular
-  .module(componentName, [homeSidenav, configSidenav])
-  .component(componentName, {
-    controller: controller,
-    templateUrl: `${root}${fileName}/${fileName}.tmpl.html`
-  })
-  .service(serviceName, sideNav);
-
-/** @exports component name */
-export default componentName;
+/** @exports component object */
+export default component;
