@@ -21,7 +21,6 @@ var config = require('./gulpconfig');
 // variables
 var flags = config.flags;
 var paths = config.paths;
-var templateCache = config.templateCache;
 var tasks;
 
 /** Config de autoprefixer. CSS compatibility */
@@ -58,16 +57,14 @@ gulp.task('lint', () => lintTask());
 
 gulp.task('styles', () => stylesTask());
 
-gulp.task('templates', () => templateTask());
-
-gulp.task('build', ['i18n', 'images', 'html', 'lint', 'styles', 'templates']);
+gulp.task('build', ['i18n', 'images', 'html', 'lint', 'styles']);
 
 
 /**
  * WATCH TASKS
  */
 /** Watch styles and templates */
-tasks = ['styles', 'templates'];
+tasks = ['styles'];
 gulp.task('watch', tasks, () => {
   watchTasks();
 });
@@ -172,34 +169,9 @@ function stylesTask() {
     .pipe(browserSync.stream());
 }
 
-/** Prepare templates in stream. */
-function templateTask() {
-  let name = templateCache.file;
-  del.sync(paths.templates.clean);
-  return gulp.src(paths.templates.src)
-    .pipe($.plumber({
-      handleError: function (err) {
-        console.log(err);
-        this.emit('end');
-      }
-    }))
-    .pipe($.htmlmin({
-      collapseWhitespace: true,
-      removeComments: true
-    }))
-    .pipe($.angularTemplatecache(name, templateCache.options))
-    .pipe(gulp.dest(paths.templates.dest))
-    .pipe($.size({ title: name }))
-    .pipe(browserSync.stream());
-}
-
 /** Wrap all watch function */
 function watchTasks() {
   // watch for changes in styles files
   $.watch(paths.styles.watch,
     $.batch((events, done) => gulp.start('styles', done)));
-  
-  // watch for changes in templates files
-  $.watch(paths.templates.watch,
-    $.batch((events, done) => gulp.start('templates', done)));
 }

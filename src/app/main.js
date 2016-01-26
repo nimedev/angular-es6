@@ -20,7 +20,6 @@ import homeView from 'app/components/home-view/home-view';
 /** Shared */
 import i18n from 'app/shared/i18n/i18n';
 import theming from 'app/shared/theming/theming';
-// import templates from 'app/shared/templates/templates';
 
 // Constants
 const appName = 'ng-seed';
