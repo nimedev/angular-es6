@@ -1,18 +1,17 @@
 /**
- * Service to control app-header visibility.
- * @class appHeader
+ * Service to control header visibility.
+ * @class headerNav
  */
-/** @exports service name */
-export const serviceName = 'appHeader';
-
-/** @exports service class */
-export class appHeader {
+class headerNav {
   /*@ngInject*/
   constructor() {
     // Inject array for minification compatibility
     this.$inject = [];
 
     // Save dependencies
+
+    // Service name
+    this.name = 'headerNav';
 
     /** Class Fields */
     this.cssName = 'header__nav-open';
@@ -57,3 +56,6 @@ export class appHeader {
     }
   }
 }
+
+/** @exports service class */
+export default headerNav;

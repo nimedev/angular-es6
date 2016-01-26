@@ -1,30 +1,16 @@
-/**
- * Module for header component.
- * @module appHeader
- */
-/** Angular modules */
-import * as angular from 'angular';
+/** app-header component. */
+// Template
+import template from './app-header.tpl.html!text';
 
-/** Components */
-import langList from './lang-list/lang-list';
-
-/** Controller and Services */
+// Controller
 import controller from './app-header.controller';
-import {serviceName, appHeader} from './app-header.service';
 
-// Constants
-const componentName = 'appHeader';
-const fileName = 'app-header';
-const root = 'app/components/base/';
+// Component object
+let component = {
+  controller,
+  name: 'appHeader',
+  template
+};
 
-// Define component
-angular
-  .module(componentName, [langList])
-  .component(componentName, {
-    controller: controller,
-    templateUrl: `${root}${fileName}/${fileName}.tmpl.html`
-  })
-  .service(serviceName, appHeader);
-
-/** @exports component name */
-export default componentName;
+/** @exports component object */
+export default component;
