@@ -36,7 +36,7 @@ export class sideNav {
       
     // check if close sidenav (mobile)
     if (this.$window.innerWidth < this.smBreak) {
-      close();
+      this.close();
     }
   }
     

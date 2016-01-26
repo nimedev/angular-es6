@@ -40,13 +40,17 @@
       // Box-model
       margin-left: $headermargin-xs;
       padding: $logopadding;
-      line-height: $header-xs;
       
       // Typography
+      line-height: $header-xs;
       color: $white;
-      font-size: fs(big);
+      font-size: fs(medium);
       
       // Responsive
+      @include respond-to(xsmall) {
+        font-size: fs(big);
+      }
+      
       @include respond-to(small) {
         margin-left: $headermargin-sm;
         line-height: $header-sm;
