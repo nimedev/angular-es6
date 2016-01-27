@@ -8,8 +8,8 @@ import * as angular from 'angular';
 /** Comunity modules */
 
 /** Submodules */
+import configSidenav from './config-sidenav/config-sidenav';
 import homeSidenav from './home-sidenav/home-sidenav.component';
-import configSidenav from './config-sidenav/config-sidenav.component';
 
 /** Component */
 import component from './app-sidenav.component';
