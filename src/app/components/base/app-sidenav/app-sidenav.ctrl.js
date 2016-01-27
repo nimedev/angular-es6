@@ -5,12 +5,10 @@
  * @param {Object} $window - to get initial size.
  * @param {Object} sideNav - to control open/close of sidenav.
  */
+// Controller class
 class AppSideNavCtrl {
   /*@ngInject*/
   constructor($state, $window, sideNav) {
-    // Inject array for minification compatibility
-    this.$inject = ['$state', '$window', 'sideNav'];
-
     // Save dependencies
     this.$state = $state;
     this.$window = $window;
@@ -45,5 +43,8 @@ class AppSideNavCtrl {
   }
 }
 
-/** @exports controller class */
-export default AppSideNavCtrl;
+// Injection array for minification compatibility
+let inject = ['$state', '$window', 'sideNav', AppSideNavCtrl];
+
+/** @exports injection array with controller class */
+export default inject;

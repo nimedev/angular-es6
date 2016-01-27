@@ -26,7 +26,7 @@ const moduleName = 'appSidenav';
 angular
   .module(moduleName, [homeSidenav, configSidenav])
   .component(component.name, component)
-  .service(sideNav.name, sideNav);
+  .service(sideNav.name, sideNav.service);
 
 /** @exports module name */
 export default moduleName;

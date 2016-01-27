@@ -3,12 +3,10 @@
  * @class confingSidenav
  * @param {Object} sideNav - ...
  */
-class confingSidenav {
+// Controller class
+class ConfingSidenavCtlr {
   /*@ngInject*/
   constructor(sideNav) {
-    // Inject array for minification compatibility
-    this.$inject = ['sideNav'];
-
     // Save dependencies
     this.sideNav = sideNav;
 
@@ -25,5 +23,8 @@ class confingSidenav {
   }
 }
 
-/** @exports controller class */
-export default confingSidenav;
+// Injection array for minification compatibility
+let inject = ['sideNav', ConfingSidenavCtlr];
+
+/** @exports injection array with controller class */
+export default inject;

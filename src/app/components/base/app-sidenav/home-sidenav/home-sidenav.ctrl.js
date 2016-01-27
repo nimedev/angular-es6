@@ -3,12 +3,10 @@
  * @class HomeSidenavCtrl
  * @param {Object} sideNav - to change ui-router states.
  */
+// Controller class
 class HomeSidenavCtrl {
   /*@ngInject*/
   constructor(sideNav) {
-    // Inject array for minification compatibility
-    this.$inject = ['sideNav'];
-
     // Save dependencies
     this.sideNav = sideNav;
 
@@ -25,5 +23,8 @@ class HomeSidenavCtrl {
   }
 }
 
-/** @exports controller class */
-export default HomeSidenavCtrl;
+// Injection array for minification compatibility
+let inject = ['sideNav', HomeSidenavCtrl];
+
+/** @exports injection array with controller class */
+export default inject;

@@ -3,12 +3,10 @@
  * @class LangListCtrl
  * @param {Object} $translate - ...
  */
+// Controller class
 class LangListCtrl {
   /*@ngInject*/
   constructor($translate) {
-    // Inject array for minification compatibility
-    this.$inject = ['$translate'];
-
     // Save dependencies
     this.$translate = $translate;
 
@@ -23,5 +21,8 @@ class LangListCtrl {
   }
 }
 
-/** @exports controller class */
-export default LangListCtrl;
+// Injection array for minification compatibility
+let inject = ['$translate', LangListCtrl];
+
+/** @exports injection array with controller class */
+export default inject;
