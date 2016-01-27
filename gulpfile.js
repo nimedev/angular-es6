@@ -6,6 +6,7 @@
 'use strict';
 
 /** core modules */
+var path = require('path');
 
 /** npm modules */
 var $ = require('gulp-load-plugins')();
@@ -64,7 +65,8 @@ gulp.task('build', ['i18n', 'images', 'html', 'lint', 'styles']);
  * WATCH TASKS
  */
 /** Watch styles and templates */
-tasks = ['styles'];
+gulp.task('styles:watch', () => stylesTask(paths.styles.dest.dev));
+tasks = ['styles:watch'];
 gulp.task('watch', tasks, () => {
   watchTasks();
 });
@@ -138,14 +140,14 @@ function optimizeImageTask() {
 function optimizeHtmlTask() {
   del.sync(paths.html.clean);
   return gulp.src(paths.html.src)
-    .pipe($.htmlReplace({
-      'js': 'assets/js/main.min.js'
-    }))
-    .pipe(gulp.dest('.tmp/' + paths.html.dest))
-    .pipe($.htmlmin({
-      collapseWhitespace: true,
-      removeComments: true
-    }))
+  // .pipe($.htmlReplace({
+  //   'js': 'assets/js/main.min.js'
+  // }))
+  // .pipe(gulp.dest('.tmp/' + paths.html.dest))
+  // .pipe($.htmlmin({
+  //   collapseWhitespace: true,
+  //   removeComments: true
+  // }))
     .pipe(gulp.dest(paths.html.dest))
     .pipe($.size({ title: 'html' }));
 }
@@ -153,19 +155,21 @@ function optimizeHtmlTask() {
 /**
  * Compile sass files and copy the resulting file in dist folder.
  * Make a copy in .tmp folder without minify.
+ * @param {String} dest - Destination path.
  */
-function stylesTask() {
+function stylesTask(dest) {
   let name = 'style.min.css';
+  let destPath = dest || paths.styles.dest.dist;
   del.sync(paths.styles.clean);
   return gulp.src(paths.styles.src)
     .pipe($.sass().on('error', $.sass.logError))
     .pipe($.rename(name))
     .pipe($.if(flags.autoprefixer, $.autoprefixer({ browsers: AUTOPREFIXER_BROWSERS })))
     .pipe($.if(flags.mergeMediaQueries, $.mergeMediaQueries()))
-    .pipe(gulp.dest('.tmp/' + paths.styles.dest))
+    .pipe(gulp.dest('.tmp/'))
     .pipe($.if(flags.minifyCss, $.cssnano()))
-    .pipe(gulp.dest(paths.styles.dest))
-    .pipe($.size({ title: name }))
+    .pipe(gulp.dest(destPath))
+    .pipe($.size({ title: path.join(destPath, name) }))
     .pipe(browserSync.stream());
 }
 
@@ -173,5 +177,5 @@ function stylesTask() {
 function watchTasks() {
   // watch for changes in styles files
   $.watch(paths.styles.watch,
-    $.batch((events, done) => gulp.start('styles', done)));
+    $.batch((events, done) => gulp.start('styles:watch', done)));
 }

@@ -9,10 +9,7 @@
   "server": {
     "port": 3000,
     "baseDir": "src",
-    "routes": {
-      "/jspm_packages": "jspm_packages",
-      "/": "dist"
-    }
+    "routes": {}
   },
   "paths": {
     "cleanAll": [
@@ -41,9 +38,15 @@
       ]
     },
     "styles": {
-      "clean": "dist/assets/css/*",
+      "clean": [
+        "src/assets/css/*",
+        "dist/assets/css/*"
+      ],
       "src": "src/assets/scss/style.scss",
-      "dest": "dist/assets/css",
+      "dest": {
+        "dev": "src/assets/css",
+        "dist": "dist/assets/css"
+      },
       "watch": [
         "src/app/**/*.scss",
         "src/assets/scss/**/*"
