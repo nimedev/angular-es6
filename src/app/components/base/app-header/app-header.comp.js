@@ -1,14 +1,14 @@
-/** lang-list component. */
+/** app-header component. */
 // Template
-import template from './lang-list.tpl.html!text';
+import template from './app-header.tpl.html!text';
 
 // Controller
-import controller from './lang-list.controller';
+import controller from './app-header.ctrl';
 
 // Component object
 let component = {
   controller,
-  name: 'langList',
+  name: 'appHeader',
   template
 };
 

@@ -1,14 +1,14 @@
-/** app-header component. */
+/** app-sidenav component. */
 // Template
-import template from './app-header.tpl.html!text';
+import template from './app-sidenav.tpl.html!text';
 
 // Controller
-import controller from './app-header.controller';
+import controller from './app-sidenav.ctrl';
 
 // Component object
 let component = {
   controller,
-  name: 'appHeader',
+  name: 'appSidenav',
   template
 };
 

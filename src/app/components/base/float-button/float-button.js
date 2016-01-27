@@ -10,7 +10,7 @@ import * as angular from 'angular';
 /** Submodules */
 
 /** Component */
-import component from './float-button.component';
+import component from './float-button.comp';
 
 /** Services */
 

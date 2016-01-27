@@ -11,10 +11,10 @@ import * as angular from 'angular';
 import langList from './lang-list/lang-list';
 
 /** Component */
-import component from './app-header.component';
+import component from './app-header.comp';
 
 /** Services */
-import headerNav from './header-nav.service';
+import headerNav from './header-nav.serv';
 
 // Constants
 const moduleName = 'header';

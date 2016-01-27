@@ -12,10 +12,10 @@ import configSidenav from './config-sidenav/config-sidenav';
 import homeSidenav from './home-sidenav/home-sidenav';
 
 /** Component */
-import component from './app-sidenav.component';
+import component from './app-sidenav.comp';
 
 /** Services */
-import sideNav from './side-nav.service';
+import sideNav from './side-nav.serv';
 
 // Constants
 const moduleName = 'appSidenav';
