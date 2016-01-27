@@ -25,7 +25,7 @@ const moduleName = 'header';
 angular
   .module(moduleName, [langList])
   .component(component.name, component)
-  .service(headerNav.name, headerNav);
+  .service(headerNav.name, headerNav.service);
 
 /** @exports module name */
 export default moduleName;

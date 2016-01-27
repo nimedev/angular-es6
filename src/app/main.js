@@ -25,17 +25,9 @@ import theming from 'app/shared/theming/theming';
 const appName = 'ng-seed';
 
 // Variables
-let config;
 let constants;
 let htmlDocument;
 let startApp;
-
-// Config function
-config = ($urlRouterProvider) => {
-  // Redirect path to * urls
-  $urlRouterProvider.otherwise('/');
-};
-config.$inject = ['$urlRouterProvider'];
 
 // Constants object
 constants = {
@@ -67,7 +59,10 @@ angular
     i18n,
     theming
   ])
-  .config(config)
+  .config(['$urlRouterProvider', ($urlRouterProvider) => {
+    // Redirect path to * urls
+    $urlRouterProvider.otherwise('/');
+  }])
   .constant('constants', constants);
  
 // Load app when document is ready

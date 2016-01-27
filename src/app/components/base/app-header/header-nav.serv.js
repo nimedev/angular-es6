@@ -2,16 +2,14 @@
  * Service to control header visibility.
  * @class headerNav
  */
+// Service name
+let serviceName = 'headerNav'; 
+
+// Service class
 class headerNav {
   /*@ngInject*/
   constructor() {
-    // Inject array for minification compatibility
-    this.$inject = [];
-
     // Save dependencies
-
-    // Service name
-    this.name = 'headerNav';
 
     /** Class Fields */
     this.cssName = 'header__nav-open';
@@ -57,5 +55,11 @@ class headerNav {
   }
 }
 
-/** @exports service class */
-export default headerNav;
+// Injection array for minification compatibility
+let inject = [headerNav];
+
+/** @exports injection array with service class */
+export default {
+  name: serviceName,
+  service: inject
+};

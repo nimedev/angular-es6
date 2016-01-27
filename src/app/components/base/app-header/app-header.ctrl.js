@@ -4,12 +4,10 @@
  * @param {Object} headerNav - to toggle navigation header visibility.
  * @param {Object} sideNav - to toggle sidenav visibility.
  */
+// Controller class
 class AppHeaderCtrl {
   /*@ngInject*/
   constructor(headerNav, sideNav) {
-    // Inject array for minification compatibility
-    this.$inject = ['headerNav', 'sideNav'];
-
     // Save dependencies
     this.headerNav = headerNav;
     this.sideNav = sideNav;
@@ -30,5 +28,8 @@ class AppHeaderCtrl {
   }
 }
 
-/** @exports controller class */
-export default AppHeaderCtrl;
+// Injection array for minification compatibility
+let inject = ['headerNav', 'sideNav', AppHeaderCtrl];
+
+/** @exports injection array with controller class */
+export default inject;

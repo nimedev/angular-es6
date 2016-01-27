@@ -19,29 +19,22 @@ import defaultLanguage from 'assets/i18n/locale-en.json!';
 // Constants
 const moduleName = 'i18n';
 
-// Variables
-let config;
-
-// Config function
-config = ($translateProvider) => {
-  // angular-translate configuration
-  $translateProvider.translations('en', defaultLanguage);
-  $translateProvider.useStaticFilesLoader({
-    prefix: 'assets/i18n/locale-',
-    suffix: '.json'
-  });
-  $translateProvider.preferredLanguage('en');
-  $translateProvider.fallbackLanguage('en');
-  $translateProvider.useLocalStorage();
-  $translateProvider.useSanitizeValueStrategy('escape');
-  $translateProvider.useMissingTranslationHandlerLog();
-};
-config.$inject = ['$translateProvider'];
-
 // Define module.
 angular
   .module(moduleName, ['pascalprecht.translate'])
-  .config(config);
+  .config(['$translateProvider', ($translateProvider) => {
+    // angular-translate configuration
+    $translateProvider.translations('en', defaultLanguage);
+    $translateProvider.useStaticFilesLoader({
+      prefix: 'assets/i18n/locale-',
+      suffix: '.json'
+    });
+    $translateProvider.preferredLanguage('en');
+    $translateProvider.fallbackLanguage('en');
+    $translateProvider.useLocalStorage();
+    $translateProvider.useSanitizeValueStrategy('escape');
+    $translateProvider.useMissingTranslationHandlerLog();
+  }]);
 
 /** @exports module name */
 export default moduleName;
