@@ -7,7 +7,6 @@ import controller from './config-sidenav.ctrl';
 
 // Component object
 let component = {
-  bindings: {},
   controller,
   name: 'configSidenav',
   template
