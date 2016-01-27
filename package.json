@@ -44,10 +44,7 @@
     "run-sequence": "^1.1.4"
   },
   "jspm": {
-    "directories": {
-      "baseURL": "src",
-      "packages": "jspm_packages"
-    },
+    "configFile": "src/config.js",
     "dependencies": {
       "angular": "npm:angular@1.5.0-rc.1",
       "angular-animate": "npm:angular-animate@1.5.0-rc.1",
