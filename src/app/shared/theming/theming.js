@@ -6,7 +6,8 @@
 import * as angular from 'angular';
 
 /** Comunity modules */
-import * as angularMaterial from 'angular-material';
+import ngMaterial from 'angular-material';
+import 'jspm_packages/npm/angular-material@1.0.2/angular-material.min.css!';
 
 // Constants
 const moduleName = 'theming';
@@ -26,7 +27,7 @@ config.$inject = ['$mdThemingProvider'];
 
 // Define module
 angular
-  .module(moduleName, ['ngMaterial'])
+  .module(moduleName, [ngMaterial])
   .config(config);
 
 /** @exports module name */

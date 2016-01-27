@@ -39,12 +39,14 @@
     "gulp-size": "^2.0.0",
     "gulp-uglify": "^1.2.1",
     "gulp-watch": "^4.3.5",
-    "jshint": "^2.9.1-rc3",
+    "jshint": "^2.9.1",
     "jshint-stylish": "^2.1.0",
     "run-sequence": "^1.1.4"
   },
   "jspm": {
-    "configFile": "src/config.js",
+    "directories": {
+      "baseURL": "src"
+    },
     "dependencies": {
       "angular": "npm:angular@1.5.0-rc.1",
       "angular-animate": "npm:angular-animate@1.5.0-rc.1",
@@ -56,14 +58,16 @@
       "angular-translate-loader-static-files": "github:angular-translate/bower-angular-translate-loader-static-files@^2.9.0",
       "angular-translate-storage-cookie": "github:angular-translate/bower-angular-translate-storage-cookie@^2.9.0",
       "angular-translate-storage-local": "github:angular-translate/bower-angular-translate-storage-local@^2.9.0",
-      "angular-ui-router": "npm:angular-ui-router@^0.2.15",
-      "json": "github:systemjs/plugin-json@^0.1.0",
-      "text": "github:systemjs/plugin-text@^0.0.4"
+      "angular-ui-router": "npm:angular-ui-router@^0.2.15"
     },
     "devDependencies": {
       "babel": "npm:babel-core@^5.8.24",
       "babel-runtime": "npm:babel-runtime@^5.8.24",
-      "core-js": "npm:core-js@^1.1.4"
+      "clean-css": "npm:clean-css@^3.4.9",
+      "core-js": "npm:core-js@^1.1.4",
+      "css": "github:systemjs/plugin-css@^0.1.20",
+      "json": "github:systemjs/plugin-json@^0.1.0",
+      "text": "github:systemjs/plugin-text@^0.0.4"
     }
   }
 }
