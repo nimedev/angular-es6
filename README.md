@@ -55,3 +55,7 @@ tsd install
 ```
 
 This create a typings folder with a tsd.d.ts file which you can reference in your JavaScript files to get intellisense.
+
+### Development workflow
+
+> Coming soon ...
