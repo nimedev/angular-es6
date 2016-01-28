@@ -63,7 +63,7 @@ gulp.task('images', () => optimizeImageTask());
 
 gulp.task('lint', () => lintTask());
 
-gulp.task('styles', () => stylesTask());
+gulp.task('style', () => styleTask());
 
 
 /**
@@ -87,15 +87,15 @@ gulp.task('bundle', (cb) => {
 });
 
 // Group build task in one
-gulp.task('build', ['bundle', 'html', 'i18n', 'images', 'lint', 'styles']);
+gulp.task('build', ['bundle', 'html', 'i18n', 'images', 'lint', 'style']);
 
 
 /**
  * WATCH TASKS
  */
 /** Watch styles and templates */
-gulp.task('styles:watch', () => stylesTask(paths.styles.dest.dev));
-tasks = ['styles:watch'];
+gulp.task('style:watch', () => styleTask(paths.style.dest.dev));
+tasks = ['style:watch'];
 gulp.task('watch', tasks, () => {
   watchTasks();
 });
@@ -241,11 +241,11 @@ function shellBundle(options) {
  * Make a copy in .tmp folder without minify.
  * @param {String} dest - Destination path.
  */
-function stylesTask(dest) {
-  let name = filesName.styles;
-  let destPath = dest || paths.styles.dest.dist;
+function styleTask(dest) {
+  let name = filesName.styleOut;
+  let destPath = dest || paths.style.dest.dist;
   del.sync(path.join(destPath, '*'));
-  return gulp.src(paths.styles.src)
+  return gulp.src(paths.style.src)
     .pipe($.sass().on('error', $.sass.logError))
     .pipe($.rename(name))
     .pipe($.if(flags.autoprefixer, $.autoprefixer({ browsers: AUTOPREFIXER_BROWSERS })))
@@ -260,6 +260,6 @@ function stylesTask(dest) {
 /** Wrap all watch function */
 function watchTasks() {
   // watch for changes in styles files
-  $.watch(paths.styles.watch,
-    $.batch((events, done) => gulp.start('styles:watch', done)));
+  $.watch(paths.style.watch,
+    $.batch((events, done) => gulp.start('style:watch', done)));
 }

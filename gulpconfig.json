@@ -12,7 +12,7 @@
     "routes": {}
   },
   "filesName": {
-    "styles": "style.min.css"
+    "styleOut": "style.css"
   },
   "bundle": {
     "app": {
@@ -72,15 +72,15 @@
         "src/assets/js/**/*.js"
       ]
     },
-    "styles": {
-      "src": "src/assets/scss/style.scss",
+    "style": {
+      "src": "src/scss/style.scss",
       "dest": {
         "dev": "src/assets/css",
         "dist": "dist/assets/css"
       },
       "watch": [
         "src/app/**/*.scss",
-        "src/assets/scss/**/*"
+        "src/scss/**/*"
       ]
     },
     "reload": [

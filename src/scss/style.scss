@@ -44,12 +44,12 @@
 /**
  * Components
  */
-@import "../../app/components/base/app-header/app-header.scss";
-@import "../../app/components/base/app-sidenav/app-sidenav.scss";
-@import "../../app/components/base/float-button/float-button.scss";
-@import "../../app/components/config-view/config-view.scss";
-@import "../../app/components/help-view/help-view.scss";
-@import "../../app/components/home-view/home-view.scss";
+@import "../app/components/base/app-header/app-header.scss";
+@import "../app/components/base/app-sidenav/app-sidenav.scss";
+@import "../app/components/base/float-button/float-button.scss";
+@import "../app/components/config-view/config-view.scss";
+@import "../app/components/help-view/help-view.scss";
+@import "../app/components/home-view/home-view.scss";
  
 /**
  * Abstractions and objects
