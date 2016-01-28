@@ -18,7 +18,7 @@
     "app": {
       "name": "app.js"
     },
-    "dep":{
+    "dep": {
       "name": "dep.js"
     },
     "ng": {
@@ -35,17 +35,15 @@
     }
   },
   "htmlReplace": [
-    "assets/js/system.js",
     "assets/js/app.js",
     "assets/js/dep.js"
   ],
   "paths": {
     "bundle": {
-      "config": "src/config.js",
       "main": "src/app/main.js",
       "src": [
         "src/jspm_packages/system.js",
-        "src/jspm_packages/system.js.map"
+        "src/config.js"
       ],
       "dest": "dist/assets/js"
     },

@@ -137,7 +137,7 @@ gulp.task('default', (cb) => {
 
 /** HELPER FUNCTIONS */
 /** 
- * Create bundle for app scripts
+ * Create bundle app file for app scripts
  * @return {Object} bundle stream 
  */
 function bundleApp() {
@@ -154,23 +154,16 @@ function bundleApp() {
 }
 
 /** 
- * Concat app bundle with config.js file and minify
- * @return {Object} bundle stream 
+ * Concat system.js and config.js files with app bundle file
+ * and copy to dist folder 
  */
-function minAppBundle() {
-  let name = config.bundle.app.name;
-  return gulp.src(paths.bundle.config)
-    .pipe(addStream.obj(bundleApp()))
-    .pipe($.concat(name))
-    .pipe($.uglify());
-}
-
-/** Copy SystemJs files app bundle file to dis folder */
 function bundleAppTask() {
   let destPath = paths.bundle.dest;
   let name = config.bundle.app.name;
   return gulp.src(paths.bundle.src)
-    .pipe(addStream.obj(minAppBundle()))
+    .pipe(addStream.obj(bundleApp()))
+    .pipe($.concat(name))
+    .pipe($.uglify())
     .pipe(gulp.dest(destPath))
     .pipe($.size({ title: path.join(destPath, name) }));
 }
