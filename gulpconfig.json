@@ -12,11 +12,33 @@
     "routes": {}
   },
   "filesName": {
-    "styles": "style.min.css",
-    "bundle": {
-      "app": "app.js"
+    "styles": "style.min.css"
+  },
+  "bundle": {
+    "app": {
+      "name": "app.js"
+    },
+    "dep":{
+      "name": "dep.js"
+    },
+    "ng": {
+      "name": "ng.js",
+      "arithmetic": "angular + angular-animate + angular-aria + angular-cookies"
+    },
+    "ngMaterial": {
+      "name": "ng-material.js",
+      "arithmetic": "angular-material - angular - angular-animate - angular-aria"
+    },
+    "vendors": {
+      "name": "vendors.js",
+      "arithmetic": "angular-translate + angular-translate-handler-log + angular-translate-loader-static-files + angular-translate-storage-cookie + angular-translate-storage-local + angular-ui-router - angular"
     }
   },
+  "htmlReplace": [
+    "assets/js/system.js",
+    "assets/js/app.js",
+    "assets/js/dep.js"
+  ],
   "paths": {
     "bundle": {
       "config": "src/config.js",

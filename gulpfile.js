@@ -19,12 +19,17 @@ var runSequence = require('run-sequence');
 
 /** others modules. */
 var config = require('./gulpconfig');
+var jspmConfig = require('./package').jspm;
 
 // variables
 var flags = config.flags;
 var paths = config.paths;
 var filesName = config.filesName;
 var tasks;
+var vendors;
+
+// Get a array with a list of jspm vendors (dependencies)
+vendors = Object.keys(jspmConfig.dependencies);
 
 /** Config de autoprefixer. CSS compatibility */
 var AUTOPREFIXER_BROWSERS = [
@@ -50,10 +55,6 @@ gulp.task('clean', () => del.sync(paths.cleanAll));
  * FRONT-END TASKS
  * Runs task without using browser-sync.
  */
-gulp.task('bundle:app', () => bundleAppTask());
-
-gulp.task('bundle', ['bundle:app']);
-
 gulp.task('html', () => optimizeHtmlTask());
 
 gulp.task('i18n', () => i18nTask());
@@ -64,6 +65,28 @@ gulp.task('lint', () => lintTask());
 
 gulp.task('styles', () => stylesTask());
 
+
+/**
+ * BUNDLE TASKS
+ */
+gulp.task('bundle:app', () => bundleAppTask());
+
+gulp.task('bundle:dep', $.shell.task(shellBundle(config.bundle.dep)));
+
+gulp.task('bundle:ng', $.shell.task(shellBundle(config.bundle.ng)));
+
+gulp.task('bundle:ng-material', $.shell.task(shellBundle(config.bundle.ngMaterial)));
+
+gulp.task('bundle:vendors', $.shell.task(shellBundle(config.bundle.vendors)));
+
+// Group bundle tasks
+// Separate bundles in app.js and dep.js files.
+gulp.task('bundle', (cb) => {
+  del.sync(path.join(paths.bundle.dest, '*'));
+  runSequence(['bundle:app', 'bundle:dep'], cb);
+});
+
+// Group build task in one
 gulp.task('build', ['bundle', 'html', 'i18n', 'images', 'lint', 'styles']);
 
 
@@ -82,7 +105,7 @@ gulp.task('watch', tasks, () => {
  * RELOAD TASKS
  */
 /** Watch styles and templates with browser reload */
-gulp.task('server', tasks, () => {
+gulp.task('hot-reload', tasks, () => {
   // config browser-sync module
   browserSync.init({
     open: false,
@@ -118,8 +141,16 @@ gulp.task('default', (cb) => {
  * @return {Object} bundle stream 
  */
 function bundleApp() {
+  let arithmetic = '';
+  
+  // Make string to ignore vendors in bundle app.
+  for (let vendor of vendors) {
+    arithmetic += ` - ${vendor}`;
+  }
+  console.log(arithmetic);
+
   return gulp.src(paths.bundle.main)
-    .pipe($.jspm());
+    .pipe($.jspm({ arithmetic: arithmetic }));
 }
 
 /** 
@@ -127,20 +158,17 @@ function bundleApp() {
  * @return {Object} bundle stream 
  */
 function minAppBundle() {
-  let name = filesName.bundle.app;
+  let name = config.bundle.app.name;
   return gulp.src(paths.bundle.config)
     .pipe(addStream.obj(bundleApp()))
     .pipe($.concat(name))
     .pipe($.uglify());
 }
 
-/** 
- * Combine app bundle stream with SystemJS files
- */
+/** Copy SystemJs files app bundle file to dis folder */
 function bundleAppTask() {
   let destPath = paths.bundle.dest;
-  let name = filesName.bundle.app;
-  del.sync(path.join(destPath, '*'));
+  let name = config.bundle.app.name;
   return gulp.src(paths.bundle.src)
     .pipe(addStream.obj(minAppBundle()))
     .pipe(gulp.dest(destPath))
@@ -169,7 +197,7 @@ function optimizeHtmlTask() {
   del.sync(paths.html.clean);
   return gulp.src(paths.html.src)
     .pipe($.htmlReplace({
-      'js': ['assets/js/system.js', 'assets/js/app.js']
+      'js': config.htmlReplace
     }))
     .pipe(gulp.dest('.tmp/'))
     .pipe($.htmlmin({
@@ -190,6 +218,29 @@ function optimizeImageTask() {
   // }))
     .pipe(gulp.dest(paths.images.dest))
     .pipe($.size({ title: 'images' }));
+}
+
+/**
+ * Prepare shell comand for jspm bundle
+ * @param {Object} options - Object with arithmetic and name of bundle comand
+ */
+function shellBundle(options) {
+  let arithmetic = '';
+  
+  // Make string to ignore vendors in bundle app.
+  if (options.arithmetic) {
+    arithmetic = options.arithmetic;
+  } else {
+    arithmetic += vendors[0];
+    for (let vendor of vendors) {
+      arithmetic += ` + ${vendor}`;
+    }
+    console.log(arithmetic);
+  }
+
+  return [
+    `jspm bundle ${arithmetic} ${paths.bundle.dest}/${options.name} --minify --skip-source-maps`
+  ];
 }
 
 /**
