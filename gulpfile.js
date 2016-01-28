@@ -10,6 +10,7 @@ var path = require('path');
 
 /** npm modules */
 var $ = require('gulp-load-plugins')();
+var addStream = require('add-stream');
 var browserSync = require('browser-sync').create();
 var del = require('del');
 var gulp = require('gulp');
@@ -22,6 +23,7 @@ var config = require('./gulpconfig');
 // variables
 var flags = config.flags;
 var paths = config.paths;
+var filesName = config.filesName;
 var tasks;
 
 /** Config de autoprefixer. CSS compatibility */
@@ -48,17 +50,21 @@ gulp.task('clean', () => del.sync(paths.cleanAll));
  * FRONT-END TASKS
  * Runs task without using browser-sync.
  */
+gulp.task('bundle:app', () => bundleAppTask());
+
+gulp.task('bundle', ['bundle:app']);
+
+gulp.task('html', () => optimizeHtmlTask());
+
 gulp.task('i18n', () => i18nTask());
 
 gulp.task('images', () => optimizeImageTask());
-
-gulp.task('html', () => optimizeHtmlTask());
 
 gulp.task('lint', () => lintTask());
 
 gulp.task('styles', () => stylesTask());
 
-gulp.task('build', ['i18n', 'images', 'html', 'lint', 'styles']);
+gulp.task('build', ['bundle', 'html', 'i18n', 'images', 'lint', 'styles']);
 
 
 /**
@@ -107,7 +113,41 @@ gulp.task('default', (cb) => {
 
 
 /** HELPER FUNCTIONS */
-/** copy json files for multi-language in dist folder. */
+/** 
+ * Create bundle for app scripts
+ * @return {Object} bundle stream 
+ */
+function bundleApp() {
+  return gulp.src(paths.bundle.main)
+    .pipe($.jspm());
+}
+
+/** 
+ * Concat app bundle with config.js file and minify
+ * @return {Object} bundle stream 
+ */
+function minAppBundle() {
+  let name = filesName.bundle.app;
+  return gulp.src(paths.bundle.config)
+    .pipe(addStream.obj(bundleApp()))
+    .pipe($.concat(name))
+    .pipe($.uglify());
+}
+
+/** 
+ * Combine app bundle stream with SystemJS files
+ */
+function bundleAppTask() {
+  let destPath = paths.bundle.dest;
+  let name = filesName.bundle.app;
+  del.sync(path.join(destPath, '*'));
+  return gulp.src(paths.bundle.src)
+    .pipe(addStream.obj(minAppBundle()))
+    .pipe(gulp.dest(destPath))
+    .pipe($.size({ title: path.join(destPath, name) }));
+}
+
+/** Copy json files for multi-language in dist folder. */
 function i18nTask() {
   del.sync(paths.i18n.clean);
   return gulp.src(paths.i18n.src)
@@ -124,7 +164,23 @@ function lintTask() {
     .pipe($.if(flags.lintJshint, $.jshint.reporter('jshint-stylish')));
 }
 
-/** optimize images and copy in dist folder. */
+/** Optimize html files and copy in dist folder. */
+function optimizeHtmlTask() {
+  del.sync(paths.html.clean);
+  return gulp.src(paths.html.src)
+    .pipe($.htmlReplace({
+      'js': ['assets/js/system.js', 'assets/js/app.js']
+    }))
+    .pipe(gulp.dest('.tmp/'))
+    .pipe($.htmlmin({
+      collapseWhitespace: true,
+      removeComments: true
+    }))
+    .pipe(gulp.dest(paths.html.dest))
+    .pipe($.size({ title: 'html' }));
+}
+
+/** Optimize images and copy in dist folder. */
 function optimizeImageTask() {
   del.sync(paths.images.clean);
   return gulp.src(paths.images.src)
@@ -136,31 +192,15 @@ function optimizeImageTask() {
     .pipe($.size({ title: 'images' }));
 }
 
-/** Optimize html files and copy in dist folder. */
-function optimizeHtmlTask() {
-  del.sync(paths.html.clean);
-  return gulp.src(paths.html.src)
-  // .pipe($.htmlReplace({
-  //   'js': 'assets/js/main.min.js'
-  // }))
-  // .pipe(gulp.dest('.tmp/' + paths.html.dest))
-  // .pipe($.htmlmin({
-  //   collapseWhitespace: true,
-  //   removeComments: true
-  // }))
-    .pipe(gulp.dest(paths.html.dest))
-    .pipe($.size({ title: 'html' }));
-}
-
 /**
  * Compile sass files and copy the resulting file in dist folder.
  * Make a copy in .tmp folder without minify.
  * @param {String} dest - Destination path.
  */
 function stylesTask(dest) {
-  let name = 'style.min.css';
+  let name = filesName.styles;
   let destPath = dest || paths.styles.dest.dist;
-  del.sync(paths.styles.clean);
+  del.sync(path.join(destPath, '*'));
   return gulp.src(paths.styles.src)
     .pipe($.sass().on('error', $.sass.logError))
     .pipe($.rename(name))

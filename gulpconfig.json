@@ -11,12 +11,31 @@
     "baseDir": "src",
     "routes": {}
   },
+  "filesName": {
+    "styles": "style.min.css",
+    "bundle": {
+      "app": "app.js"
+    }
+  },
   "paths": {
+    "bundle": {
+      "config": "src/config.js",
+      "main": "src/app/main.js",
+      "src": [
+        "src/jspm_packages/system.js",
+        "src/jspm_packages/system.js.map"
+      ],
+      "dest": "dist/assets/js"
+    },
     "cleanAll": [
       ".tmp/*",
       "dist/*",
       "!dist/.git*"
     ],
+    "html": {
+      "src": "src/index.html",
+      "dest": "dist/"
+    },
     "i18n": {
       "clean": "dist/assets/i18n/*",
       "src": "src/assets/i18n/*.json",
@@ -27,10 +46,6 @@
       "src": "src/assets/img/**/*",
       "dest": "dist/assets/img"
     },
-    "html": {
-      "src": "src/index.html",
-      "dest": "dist/"
-    },
     "lint": {
       "src": [
         "src/app/**/*.js",
@@ -38,10 +53,6 @@
       ]
     },
     "styles": {
-      "clean": [
-        "src/assets/css/*",
-        "dist/assets/css/*"
-      ],
       "src": "src/assets/scss/style.scss",
       "dest": {
         "dev": "src/assets/css",
