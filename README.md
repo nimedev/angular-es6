@@ -1,6 +1,6 @@
 ## Angular ES6
 
-> A starting point for building web applications with angular 1.5 using JSPM and ES6
+> A starting point for building web applications with `AngularJS 1.5` using JSPM and ES6
 
 ### Install dependencies
 
