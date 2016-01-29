@@ -5,6 +5,7 @@
  */
 'use strict';
 
+require('time-require');
 /** core modules */
 var path = require('path');
 
