@@ -5,7 +5,9 @@
  */
 'use strict';
 
+// Use this module to inspect execution times
 require('time-require');
+
 /** core modules */
 var path = require('path');
 
