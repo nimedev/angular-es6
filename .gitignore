@@ -8,4 +8,4 @@ node_modules
 typings
 
 src/config.js
-style.min.css
+style.css
