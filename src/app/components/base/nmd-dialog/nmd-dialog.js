@@ -11,8 +11,10 @@ import * as angular from 'angular';
 
 /** Component or Directive */
 import component from './nmd-dialog.comp';
+import directive from './dialog-watcher.dire';
 
 /** Services */
+import service from './nmd-dialog.serv';
 
 // Constants
 const moduleName = 'nmdDialog';
@@ -22,7 +24,9 @@ const moduleName = 'nmdDialog';
 // Define module
 angular
   .module(moduleName, [])
-  .component(component.name, component);
+  .component(component.name, component)
+  .service(service.name, service.service)
+  .directive(directive.name, directive.directive);
 
 /** @exports module name */
 export default moduleName;

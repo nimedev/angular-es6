@@ -16,6 +16,7 @@ import base from 'app/components/base/base';
 import configView from 'app/components/config-view/config-view';
 import helpView from 'app/components/help-view/help-view';
 import homeView from 'app/components/home-view/home-view';
+import message from 'app/components/message/message';
 
 /** Shared */
 import directives from 'app/shared/directives/directives';
@@ -54,6 +55,7 @@ angular
     configView,
     helpView,
     homeView,
+    message,
 
   // Shared components
     directives,

@@ -13,14 +13,14 @@
     z-index: z(goku);
     
     // Box-model
-    height: 100%;
+    height: 120%;
     
     // Visual
     background-color: $backdrop;
   }
   
   // Dialog content
-  &__wrap {
+  &__content {
     // Positioning
     position: fixed;
     top: 0;
