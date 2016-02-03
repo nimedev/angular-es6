@@ -6,13 +6,13 @@
   // Positioning
   position: fixed;
   top: 0;
-  bottom: 0;
   left: 0;
   z-index: z(shoryuken) + 2;
   
   // Box-model
   display: flex;
   padding-top: 0;
+  height: 100%;
   
   // Responsive
   @include respond-to(small) {
@@ -20,7 +20,6 @@
     z-index: z(shoryuken);
     
     // Box-model
-    height: 100%;
     padding-top: $header-sm;
     
     // Style when header navigation is open
@@ -39,12 +38,12 @@
       // Positioning
       position: absolute;
       top: 0;
-      bottom: 0;
       left: 0;
       
       // Box-model
       display: block;
       width: 100vw;
+      height: 120%;
       
       // Visual
       background-color: $backdrop;
