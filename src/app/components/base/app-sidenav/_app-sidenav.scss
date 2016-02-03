@@ -2,7 +2,7 @@
     $SIDENAV
 \*------------------------------------*/
 
-.app-sidenav {
+.sidenav {
   // Positioning
   position: fixed;
   top: 0;
@@ -25,63 +25,65 @@
     // Box-model
     height: 100%;
     padding-top: $header-sm;
+    
+    // Style when header navigation is open
+    &.header__nav-open {
+      padding-top: $header-sm + $headernav-height;
+    }
   }
-}
-
-@include respond-to(small) {
-  .app-sidenav.header__nav-open {
-    padding-top: $header-sm + $headernav-height;
-  }
-}
-
-.sidenav-backdrop {
-  // Box-model
-  display: none;
-}
-
-.sidenav-backdrop.nav-open {
-  // Positioning
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
   
-  // Box-model
-  display: block;
-  width: 100vw;
-  
-  // Visual
-  background-color: $backdrop;
-  
-  // Responsive
-  @include respond-to(small) {
+  // Sidenav backdrop
+  &__back {
     // Box-model
     display: none;
+    
+    // Style when sidenav is open
+    &.nav-open {
+      // Positioning
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      
+      // Box-model
+      display: block;
+      width: 100vw;
+      
+      // Visual
+      background-color: $backdrop;
+      
+      // Responsive
+      @include respond-to(small) {
+        // Box-model
+        display: none;
+      }
+    }
   }
-}
-
-.sidenav-content {
-  // Positioning
-  z-index: 2;
   
-  // Box-model
-  overflow-y: auto;
-  overflow-x: hidden;
-  width: 0;
-  
-  // Visual
-  background-color: $white;
-  
-  // Misc
-  transition: width $close-delay;
-  
-  // Responsive
-  @include respond-to(small) {
-    width: $sidenavwidth-sm;
+  // sidenav conten
+  &__content {
+    // Positioning
+    z-index: 2;
+    
+    // Box-model
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: 0;
+    
+    // Visual
+    background-color: $white;
+    
+    // Misc
+    transition: width $close-delay;
+    
+    // Responsive
+    @include respond-to(small) {
+      width: $sidenavwidth-sm;
+    }
+    
+    // Style when sidenav is open
+    &.nav-open {
+      width: $sidenavwidth-md;
+    }
   }
-}
-
-.sidenav-content.nav-open {
-  // Box-model
-  width: $sidenavwidth-md;
 }

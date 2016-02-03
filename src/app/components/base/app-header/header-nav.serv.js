@@ -43,7 +43,7 @@ class HeaderNav {
   /** toggle class in .app-body and .app-sidenav elements */
   toggleElements() {
     let body = angular.element(document.querySelector('.app-body'));
-    let sidenav = angular.element(document.querySelector('.app-sidenav'));
+    let sidenav = angular.element(document.querySelector('.sidenav'));
       
     // header-nav is closed?
     if (this.cssClass === '') {
