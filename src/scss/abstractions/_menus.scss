@@ -58,7 +58,6 @@
   
   // Box-model
   display: inline-block;
-  padding: 0 .5rem;
   
   /* Hide the checkbox itself.
   Checking and unchecking it we will be done via the label element. */
@@ -75,6 +74,10 @@
     display: inline-block;
     margin: 0;
     vertical-align: middle;
+    width: 3rem;
+    
+    // Tipography
+    text-align: center;
     
     // Visual
     cursor: pointer;
