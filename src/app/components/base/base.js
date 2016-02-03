@@ -12,6 +12,7 @@ import appHeader from './app-header/app-header';
 import appSidenav from './app-sidenav/app-sidenav';
 import comingSoon from './coming-soon/coming-soon';
 import floatButton from './float-button/float-button';
+import nmdDialog from './nmd-dialog/nmd-dialog';
 
 /** Component */
 
@@ -28,7 +29,8 @@ angular
     appHeader,
     appSidenav,
     comingSoon,
-    floatButton
+    floatButton,
+    nmdDialog
   ]);
 
 /** @exports module name */
