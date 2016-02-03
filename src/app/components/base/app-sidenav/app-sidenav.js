@@ -8,13 +8,13 @@ import * as angular from 'angular';
 /** Comunity modules */
 
 /** Submodules */
-import closeSidenav from './close-sidenav/close-sidenav';
 import configSidenav from './config-sidenav/config-sidenav';
 import homeSidenav from './home-sidenav/home-sidenav';
 import menuItem from './menu-item/menu-item';
 
-/** Component */
+/** Component & Directives */
 import component from './app-sidenav.comp';
+import directive from './close-sidenav.dire';
 
 /** Services */
 import sideNav from './side-nav.serv';
@@ -27,13 +27,13 @@ const moduleName = 'appSidenav';
 // Define module
 angular
   .module(moduleName, [
-    closeSidenav,
     homeSidenav,
     configSidenav,
     menuItem
   ])
   .component(component.name, component)
-  .service(sideNav.name, sideNav.service);
+  .service(sideNav.name, sideNav.service)
+  .directive(directive.name, directive.directive);
 
 /** @exports module name */
 export default moduleName;
