@@ -24,19 +24,6 @@ class SideNav {
   }
 
   /** Class Methods */
-  /**
-   * Change ui-router state
-   * @param {string} state - state to redirect 
-   */
-  changeState(state) {
-    this.$state.go(state);
-      
-    // check if close sidenav (mobile)
-    if (this.$window.innerWidth < this.smBreak) {
-      this.close();
-    }
-  }
-    
   /** Close sidenav */
   close() {
     this.cssClass = '';
@@ -47,6 +34,13 @@ class SideNav {
   open() {
     this.cssClass = this.cssName;
     this.toggleElements();
+  }
+  
+  /** Close sidenav only in mobile */
+  safeClose() {
+    if (this.$window.innerWidth < this.smBreak) {
+      this.close();
+    }
   }
     
   /** Change sidenav visibility */

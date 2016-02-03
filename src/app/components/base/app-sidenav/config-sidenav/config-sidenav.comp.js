@@ -3,11 +3,9 @@
 import template from './config-sidenav.tpl.html!text';
 
 // Controller
-import controller from './config-sidenav.ctrl';
 
 // Component object
 let component = {
-  controller,
   name: 'configSidenav',
   template
 };

@@ -1,16 +1,14 @@
 /**
  * Controller for app-sidenav component.
  * @class AppSideNavCtrl
- * @param {Object} $state - to change ui-router state.
  * @param {Object} $window - to get initial size.
  * @param {Object} sideNav - to control open/close of sidenav.
  */
 // Controller class
 class AppSideNavCtrl {
   /*@ngInject*/
-  constructor($state, $window, sideNav) {
+  constructor($window, sideNav) {
     // Save dependencies
-    this.$state = $state;
     this.$window = $window;
     this.sideNav = sideNav;
 
@@ -24,27 +22,18 @@ class AppSideNavCtrl {
   }
 
   /** Class Methods */
+  
   /**
-   * Change ui-router state
-   * @param {string} state - state to redirect 
+   * Call close sidenav service.
+   * Use when can't use close-sidenav directive.
    */
-  changeState(state) {
-    this.$state.go(state);
-      
-    // check if close sidenav (mobile)
-    if (this.$window.innerWidth < this.sideNav.smBreak) {
-      this.sideNav.close();
-    }
-  }
-    
-  /** Toggle sidenav */
-  toggle() {
-    this.sideNav.toggle();
+  close() {
+    this.sideNav.close();
   }
 }
 
 // Injection array for minification compatibility
-let inject = ['$state', '$window', 'sideNav', AppSideNavCtrl];
+let inject = ['$window', 'sideNav', AppSideNavCtrl];
 
 /** @exports injection array with controller class */
 export default inject;
