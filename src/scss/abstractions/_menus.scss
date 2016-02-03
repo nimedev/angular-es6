@@ -131,6 +131,11 @@
     }
   
   // show dropdown list and backdrop
+  
+  input[type=checkbox]:checked ~ .dropdown__label {
+    color: cp($accent, h1);
+  }
+  
   input[type=checkbox]:checked ~ .dropdown__list {
     display: block;
   }
