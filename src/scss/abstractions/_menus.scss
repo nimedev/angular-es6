@@ -4,16 +4,17 @@
 \*------------------------------------*/
 
 // Sidenav menu
-.menu-content {
-  // Box-model
-  margin: $gutterwidth 0 0;
-  padding: 0;
+.menu {
+  &__list {
+    // Box-model
+    margin: $gutterwidth 0 0;
+    padding: 0;
+    
+    // Visual
+    list-style: none;
+  }
   
-  // Visual
-  list-style: none;
-  
-  // Menu item
-  .menu-item {
+  &__item {
     // Box-model
     display: flex;
     justify-content: flex-start;
@@ -21,25 +22,29 @@
     margin: 0;
     padding-left: ($sidenavwidth-sm - 1.5rem) / 2;
     width: 100%;
-    min-height: 48px;
-    height: 48px;
+    min-height: $menu-height;
+    height: $menu-height;
     
-    // Typography
+    // Tipography
+    line-height: $menu-height;
     text-align: left;
     text-transform: none;
     
     // Visual
     cursor: pointer;
     
-    // Menu icon
-    .menu-icon {
+    .material-icons {
       // Box-model
       flex: 0 0 auto;
       margin-right: ($sidenavwidth-sm - 1.5rem) / 2;
+      
+      // Tipography
+      line-height: $menu-height;
+      color: $darkgrey;
     }
     
     // Menu text
-    .menu-text {
+    span {
       flex: 1 1 auto;
     }
   }

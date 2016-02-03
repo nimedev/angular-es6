@@ -1,21 +1,15 @@
-<ul class="menu-content">
-  <li>
-    <md-button class="menu-item" ng-click="$ctrl.changeState('homeView')">
-      <md-icon class="menu-icon">home</md-icon>
-      <span class="menu-text" translate="NAV.HOME"></span>
-    </md-button>
+<ul class="menu__list">
+  <li class="menu__item" ng-click="$ctrl.changeState('homeView')">
+    <div class="material-icons">home</div>
+    <span translate="NAV.HOME"></span>
   </li>
-  <li>
-    <md-button class="menu-item" ng-click="$ctrl.changeState('helpView')">
-      <md-icon class="menu-icon">help</md-icon>
-      <span class="menu-text" translate="NAV.HELP"></span>
-    </md-button>
+  <li class="menu__item" ng-click="$ctrl.changeState('helpView')">
+    <div class="material-icons">help</div>
+    <span translate="NAV.HELP"></span>
   </li>
   <div class="divider"></div>
-  <li>
-    <md-button class="menu-item" ng-click="$ctrl.changeState('configView')">
-      <md-icon class="menu-icon">settings</md-icon>
-      <span class="menu-text" translate="NAV.SETTINGS"></span>
-    </md-button>
+  <li class="menu__item" ng-click="$ctrl.changeState('configView')">
+    <div class="material-icons">settings</div>
+    <span translate="NAV.SETTINGS"></span>
   </li>
 </ul>
