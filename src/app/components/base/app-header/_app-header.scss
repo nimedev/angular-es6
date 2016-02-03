@@ -25,50 +25,49 @@
     }
   }
   
-  // Brand
-  &__logo {
-    // Box-model
-    margin-left: $headermargin-xs;
-    padding: $logopadding;
-    
-    // Typography
-    line-height: $header-xs;
-    color: $white;
-    font-size: fs(medium);
-    
-    // Responsive
-    @include respond-to(xsmall) {
-      font-size: fs(big);
-    }
-    
-    @include respond-to(small) {
-      margin-left: $headermargin-sm;
-      line-height: $header-sm;
-    }
-  }
-  
-  &__item,
-  &__item.btn--icon {
-    // Tipography
-    line-height: $header-xs;
-    
-    // Visual
-    color: $white;
-    
-    @include respond-to(small) {
-      line-height: $header-sm;
-    }
-    
-    .material-icons {
+    &__logo {
+      // Box-model
+      margin-left: $headermargin-xs;
+      padding: $logopadding;
+      
+      // Typography
+      line-height: $header-xs;
       color: $white;
+      font-size: fs(medium);
+      
+      // Responsive
+      @include respond-to(xsmall) {
+        font-size: fs(big);
+      }
+      
+      @include respond-to(small) {
+        margin-left: $headermargin-sm;
+        line-height: $header-sm;
+      }
     }
-  }
-  
-  
-  // Add space between elements
-  &__space {
-    flex: 1;
-  }
+    
+    &__item,
+    &__item.btn--icon {
+      // Tipography
+      line-height: $header-xs;
+      
+      // Visual
+      color: $white;
+      
+      @include respond-to(small) {
+        line-height: $header-sm;
+      }
+      
+      .material-icons {
+        color: $white;
+      }
+    }
+    
+    
+    // Add space between elements
+    &__space {
+      flex: 1;
+    }
   
   // Navigation for header
   &__nav {
