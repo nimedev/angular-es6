@@ -92,14 +92,14 @@ a:active {
       margin-left: $sidenavwidth-md;
     }
   }
-}
-
-.app-body.header__nav-open {
-  // Box-model
-  padding-top: $header-xs + $headernav-height;
   
-  // Responsive
-  @include respond-to(small) {
-    padding-top: $header-sm + $headernav-height;
+  &.header__nav-open {
+    // Box-model
+    padding-top: $header-xs + $headernav-height;
+    
+    // Responsive
+    @include respond-to(small) {
+      padding-top: $header-sm + $headernav-height;
+    }
   }
 }
