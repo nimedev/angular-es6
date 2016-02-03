@@ -8,9 +8,9 @@ import * as angular from 'angular';
 /** Comunity modules */
 
 /** Submodules */
-import closeDd from './close-dd/close-dd';
 
-/** Component */
+/** Component & Directives */
+import directive from './close-dd.dire';
 
 /** Services */
 
@@ -21,7 +21,8 @@ const moduleName = 'directives';
 
 // Define module
 angular
-  .module(moduleName, [closeDd]);
+  .module(moduleName, [])
+  .directive(directive.name, directive.directive);
 
 /** @exports module name */
 export default moduleName;
