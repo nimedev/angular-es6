@@ -10,6 +10,7 @@ import * as angular from 'angular';
 /** Submodules */
 import configSidenav from './config-sidenav/config-sidenav';
 import homeSidenav from './home-sidenav/home-sidenav';
+import menuItem from './menu-item/menu-item';
 
 /** Component */
 import component from './app-sidenav.comp';
@@ -24,7 +25,7 @@ const moduleName = 'appSidenav';
 
 // Define module
 angular
-  .module(moduleName, [homeSidenav, configSidenav])
+  .module(moduleName, [homeSidenav, configSidenav, menuItem])
   .component(component.name, component)
   .service(sideNav.name, sideNav.service);
 

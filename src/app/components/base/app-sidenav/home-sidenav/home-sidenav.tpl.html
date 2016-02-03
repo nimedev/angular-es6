@@ -1,15 +1,6 @@
 <ul class="menu__list">
-  <li class="menu__item" ng-click="$ctrl.changeState('homeView')">
-    <div class="material-icons">home</div>
-    <span translate="NAV.HOME"></span>
-  </li>
-  <li class="menu__item" ng-click="$ctrl.changeState('helpView')">
-    <div class="material-icons">help</div>
-    <span translate="NAV.HELP"></span>
-  </li>
+  <menu-item mi-icon="home" mi-state="homeView" mi-text="NAV.HOME"></menu-item>
+  <menu-item mi-icon="help" mi-state="helpView" mi-text="NAV.HELP"></menu-item>
   <div class="divider"></div>
-  <li class="menu__item" ng-click="$ctrl.changeState('configView')">
-    <div class="material-icons">settings</div>
-    <span translate="NAV.SETTINGS"></span>
-  </li>
+  <menu-item mi-icon="settings" mi-state="configView" mi-text="NAV.SETTINGS"></menu-item>
 </ul>
