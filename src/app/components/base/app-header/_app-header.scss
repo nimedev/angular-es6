@@ -11,7 +11,7 @@
   z-index: 2;
   
   // Visual
-  background-color: cp($primary, df);
+  background-color: $header-color;
   
   &__wrapper {
     // Box-model

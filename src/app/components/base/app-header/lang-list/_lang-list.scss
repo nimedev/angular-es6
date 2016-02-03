@@ -11,7 +11,7 @@ lang-list {
       top: calc(100% + .75rem);
       
       // Visual
-      background: cp($primary, h2);
+      background: $header-color;
       
       // Add nice pointer :D
       &::before {
@@ -27,7 +27,7 @@ lang-list {
         width: 1rem;
           
         // Visual
-        border-color: transparent transparent cp($primary, df) transparent;
+        border-color: transparent transparent $header-color-hue transparent;
         border-style: solid;
         border-width: 0 .75rem .75rem .75rem;
       }

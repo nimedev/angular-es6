@@ -278,6 +278,10 @@ $primary: $gray-primary;
 $accent: $deep-orange-accent;
 $warn: $red-warn;
 
+// Header
+$header-color:     map-get($primary, h2);
+$header-color-hue: map-get($primary, df);
+
 /**
  * Links 
  */
