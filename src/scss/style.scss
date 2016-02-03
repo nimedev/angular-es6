@@ -45,6 +45,7 @@
  * Components
  */
 @import "../app/components/base/app-header/app-header.scss";
+@import "../app/components/base/app-header/lang-list/lang-list.scss";
 @import "../app/components/base/app-sidenav/app-sidenav.scss";
 @import "../app/components/base/float-button/float-button.scss";
 @import "../app/components/config-view/config-view.scss";
@@ -57,7 +58,7 @@
 @import "abstractions/buttons.scss";
 @import "abstractions/colors-palette.scss";
 @import "abstractions/divider.scss";
-@import "abstractions/menu.scss";
+@import "abstractions/menus.scss";
 @import "abstractions/whiteframes.scss";
 // @import "abstracciones/fonticon.scss";
 // @import "abstracciones/grid.scss";

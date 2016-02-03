@@ -1,12 +1,10 @@
-<md-menu md-position-mode="target-right target">
-  <md-button aria-label="Open language menu" class="md-icon-button" ng-click="$mdOpenMenu($event)">
-    <md-icon md-menu-origin>language</md-icon>
-  </md-button>
-  <md-menu-content width="4">
-    <md-menu-item ng-repeat="lang in $ctrl.languages">
-      <md-button ng-click="$ctrl.changeLanguage(lang)">
-        {{'HEADER.LANG.' + lang | translate}}
-      </md-button>
-    </md-menu-item>
-  </md-menu-content>
-</md-menu>
+<input type="checkbox" id="lang-list__toggle">
+<div class="dropdown__back" close-dd></div>
+<label class="dropdown__label material-icons" for="lang-list__toggle">language</label>
+<ul class="dropdown__list" close-dd>
+  <li class="dropdown__item" ng-repeat="lang in $ctrl.languages">
+    <div ng-click="$ctrl.changeLanguage(lang)">
+      {{'HEADER.LANG.' + lang | translate}}
+    </div>
+  </li>
+</ul>

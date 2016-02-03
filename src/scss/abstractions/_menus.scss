@@ -1,0 +1,144 @@
+@if $include-menus == true {
+/*------------------------------------*\
+    $MENU
+\*------------------------------------*/
+
+// Sidenav menu
+.menu-content {
+  // Box-model
+  margin: $gutterwidth 0 0;
+  padding: 0;
+  
+  // Visual
+  list-style: none;
+  
+  // Menu item
+  .menu-item {
+    // Box-model
+    display: flex;
+    justify-content: flex-start;
+    align-content: center;
+    margin: 0;
+    padding-left: ($sidenavwidth-sm - 1.5rem) / 2;
+    width: 100%;
+    min-height: 48px;
+    height: 48px;
+    
+    // Typography
+    text-align: left;
+    text-transform: none;
+    
+    // Visual
+    cursor: pointer;
+    
+    // Menu icon
+    .menu-icon {
+      // Box-model
+      flex: 0 0 auto;
+      margin-right: ($sidenavwidth-sm - 1.5rem) / 2;
+    }
+    
+    // Menu text
+    .menu-text {
+      flex: 1 1 auto;
+    }
+  }
+}
+
+// Dropdown menu
+.dropdown {
+  // Positioning
+  position: relative;
+  z-index: z(shoryuken);
+  
+  // Box-model
+  display: inline-block;
+  padding: 0 .5rem;
+  
+  /* Hide the checkbox itself.
+  Checking and unchecking it we will be done via the label element. */
+  input[type=checkbox]{
+    display: none;
+  }
+  
+  // Click to expand button
+  &__label {
+    // Positioning
+    position: relative;
+    
+    // Box-model
+    display: inline-block;
+    margin: 0;
+    vertical-align: middle;
+    
+    // Visual
+    cursor: pointer;
+    
+    // Misc
+    user-select: none; 
+  }
+  
+  // Backdrop for menu
+  &__back {
+    // Positioning
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    
+    // Box-model
+    display: none;
+    
+    // Visual
+    background-color: $backdrop-light;
+  }
+  
+  // Dropdown menu start hidden
+  &__list {
+    // Positioning
+    position: absolute;
+    
+    // Box-model
+    display: none;
+    margin: 0;
+    padding: 0;
+    min-width: 8rem;
+    
+    // Tipography
+    text-align: left;
+    
+    // Visual
+    list-style: none;
+    background-color: white;
+    @extend .whiteframe-2;
+  }
+ 
+    &__item {
+      // Box-model
+      padding: .5rem 1rem;
+      
+      // Tipography
+      color: $black;
+      font-size: fs(normal);
+      
+      // Visual
+      cursor: pointer;
+    }
+    
+    &__item:hover {
+      background-color: cp($primary, h1);
+    }
+  
+  // show dropdown list and backdrop
+  input[type=checkbox]:checked ~ .dropdown__list {
+    display: block;
+  }
+  
+  input[type=checkbox]:checked ~ .dropdown__back {
+    // Box-model
+    display: block;
+  }
+}
+
+} // endif

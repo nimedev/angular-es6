@@ -50,7 +50,6 @@ textarea {
 	font-size: fs(normal);
 	border-radius: $radius;
 	vertical-align: baseline;
-	margin-bottom: $gutterwidth / 2;
 }
 
 input,
@@ -58,7 +57,7 @@ button,
 select,
 textarea {
 	font-family: $basefont;
-	@include box-sizing(border-box);
+	box-sizing: border-box;
 }
 
 label, .label {
@@ -195,7 +194,7 @@ textarea[disabled],
 input[readonly],
 select[readonly],
 textarea[readonly] {
-	@include opacity(.5);
+	opacity: .5;
 	cursor: not-allowed;
 }
 
@@ -288,10 +287,19 @@ input[type="radio"] {
  * http://coolvillage.es/ayuda-al-usuario-a-rellenar-formularios-con-css/
  */
 input:required:focus:invalid {
-  background-color: lighten($color-alert, 5%);
-  border: 1px solid $color-alert;
+  background-color: lighten(map-get($warn, $key: df), 40%);
+  border: 1px solid map-get($warn, $key: df);
 }
 input:required:focus:valid {
-  background-color: lighten($color-success, 40%);
-  border: 1px solid $color-success;
+  background-color: lighten(map-get($primary, $key: df), 50%);
+  border: 1px solid map-get($primary, $key: df);
+}
+
+.error-message {
+  font-size: fs(x-small);
+  color: map-get($warn, $key: df);
+}
+
+.form-group {
+  margin-bottom: $gutterwidth / 2;
 }

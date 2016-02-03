@@ -1,14 +1,10 @@
 <header class="header__wrapper">
-  <md-button class="menu-btn md-icon-button" ng-click="$ctrl.toggleSidenav()" aria-label="Menu">
-    <md-icon>menu</md-icon>
-  </md-button>
+  <div class="btn--icon header__item material-icons" ng-click="$ctrl.toggleSidenav()">menu</div>
   <a href="/" title="Angular Seed">
     <span class="header__logo">Angular Seed</span>
   </a>
-  <span class="space"></span>
-  <md-button class="menu-btn md-icon-button" ng-click="$ctrl.toggleHeaderNav()" aria-label="Notifications">
-    <md-icon>notifications</md-icon>
-  </md-button>
-  <lang-list></lang-list>
+  <span class="header__space"></span>
+  <div class="btn--icon header__item material-icons" ng-click="$ctrl.toggleHeaderNav()">notifications</div>
+  <lang-list class="header__item dropdown"></lang-list>
 </header>
 <nav class="header__nav" ng-class="$ctrl.headerNav.cssClass"></nav>

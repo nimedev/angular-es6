@@ -18,8 +18,8 @@ import helpView from 'app/components/help-view/help-view';
 import homeView from 'app/components/home-view/home-view';
 
 /** Shared */
+import directives from 'app/shared/directives/directives';
 import i18n from 'app/shared/i18n/i18n';
-import theming from 'app/shared/theming/theming';
 
 // Constants
 const appName = 'ng-seed';
@@ -56,8 +56,8 @@ angular
     homeView,
 
   // Shared components
-    i18n,
-    theming
+    directives,
+    i18n
   ])
   .config(['$urlRouterProvider', ($urlRouterProvider) => {
     // Redirect path to * urls

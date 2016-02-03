@@ -1,0 +1,40 @@
+/*------------------------------------*\
+    $LANG-LIST
+\*------------------------------------*/
+
+lang-list {
+  .dropdown {
+    
+    &__list {
+      // Positioning
+      right: .5rem;
+      top: calc(100% + .75rem);
+      
+      // Visual
+      background: cp($primary, h2);
+      
+      // Add nice pointer :D
+      &::before {
+        // Positioning
+        position: absolute;
+        top: -.75rem;
+        right: 0;
+        
+        // Box-model
+        content: '';
+        display: block;
+        height: 0;
+        width: 1rem;
+          
+        // Visual
+        border-color: transparent transparent cp($primary, df) transparent;
+        border-style: solid;
+        border-width: 0 .75rem .75rem .75rem;
+      }
+    }
+    
+    &__item {
+      color: $white;
+    }
+  }
+}

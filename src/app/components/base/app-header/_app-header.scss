@@ -2,7 +2,7 @@
     $HEADER
 \*------------------------------------*/
 
-.app-header {
+.header {
   // Positioning
   position: fixed;
   top: 0;
@@ -12,9 +12,8 @@
   
   // Visual
   background-color: cp($primary, df);
-}
-
-  .header__wrapper {
+  
+  &__wrapper {
     // Box-model
     display: flex;
     align-items: center;
@@ -24,52 +23,62 @@
     @include respond-to(small) {
       height: $header-sm;
     }
+  }
+  
+  // Brand
+  &__logo {
+    // Box-model
+    margin-left: $headermargin-xs;
+    padding: $logopadding;
     
-    // menu button
-    .menu-btn md-icon {
-      color: white;
+    // Typography
+    line-height: $header-xs;
+    color: $white;
+    font-size: fs(medium);
+    
+    // Responsive
+    @include respond-to(xsmall) {
+      font-size: fs(big);
     }
     
-    // space
-    .space {
-      flex: 1;
-    }
-    
-    // Brand
-    .header__logo {
-      // Box-model
-      margin-left: $headermargin-xs;
-      padding: $logopadding;
-      
-      // Typography
-      line-height: $header-xs;
-      color: $white;
-      font-size: fs(medium);
-      
-      // Responsive
-      @include respond-to(xsmall) {
-        font-size: fs(big);
-      }
-      
-      @include respond-to(small) {
-        margin-left: $headermargin-sm;
-        line-height: $header-sm;
-      }
-    }
-    
-    // Language list
-    lang-list md-icon {
-      color: white;
+    @include respond-to(small) {
+      margin-left: $headermargin-sm;
+      line-height: $header-sm;
     }
   }
   
-  .header__nav {
+  &__item,
+  &__item.btn--icon {
+    // Tipography
+    line-height: $header-xs;
+    
+    // Visual
+    color: $white;
+    
+    @include respond-to(small) {
+      line-height: $header-sm;
+    }
+    
+    .material-icons {
+      color: $white;
+    }
+  }
+  
+  
+  // Add space between elements
+  &__space {
+    flex: 1;
+  }
+  
+  // Navigation for header
+  &__nav {
     // Box-model
     min-width: 100%;
     height: 0;
   }
   
-  .header__nav.header__nav-open {
+  &__nav.header__nav-open {
     height: $headernav-height;
   }
+}
   

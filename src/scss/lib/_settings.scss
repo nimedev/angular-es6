@@ -17,7 +17,7 @@ $include-buttons:     true!default;
 $include-debug:       false!default;
 $include-divider:     true!default;
 $include-imgclass:    false!default;
-$include-menu:        true!default;
+$include-menus:        true!default;
 $include-tables:      false!default;
 $include-whiteframes: true!default;
 // $incluir-grid:          false!default;
@@ -270,6 +270,7 @@ $background:       $lightergrey;
 $textcolor:        $darkergrey;
 $textcolor-strong: $black;
 $backdrop:         rgba(33,33,33,0.48);
+$backdrop-light:   rgba(33,33,33,0.24);
 
 // Material themming
 $primary: $gray-primary;

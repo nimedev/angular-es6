@@ -24,7 +24,7 @@
 	border-radius: 0;
   text-transform: uppercase;
   text-decoration: none;
-  @include transition(all .5s ease);
+  transition: all .5s ease;
 
 	&:hover {
 		text-decoration : none;
@@ -97,8 +97,11 @@
 /**
  * disabled button
  */
-.btn--disabled {
-  @include opacity(.5);
+.btn--disabled,
+.btn:disabled {
+  opacity: .5;
+  background-color: $lightgrey;
+  color: $black;
 	cursor: default;
 }
 
@@ -222,8 +225,12 @@
  * Icon button
  */
 .btn--icon {
+  // Box-model
   padding: 0;
-  width: 2.25em;
+  width: 3rem;
+  
+  // Tipography
+  text-align: center;
 }
 
 /**
@@ -241,7 +248,7 @@
     position: absolute;
     top: 50%;
     left: 5px;
-    @include translate(0, -50%);
+    transform: translate(0, -50%);
   }
   
   &:hover {
@@ -283,7 +290,7 @@
     position: absolute;
     left: 0;
     top: 50%;
-    @include translate(0, -50%);
+    transform: translate(0, -50%);
   }
   
   &:hover {
@@ -331,7 +338,7 @@
 .btn--inactive:hover,
 .btn--inactive:active,
 .btn--inactive:focus{
-	@include opacity(.5);
+	opacity: .5;
 	cursor: default;
 }
 
