@@ -13,6 +13,7 @@ import * as angular from 'angular';
 import component from './nmd-toast.component';
 
 /** Services */
+import service from './nmd-toast.service';
 
 // Constants
 const moduleName = 'nmdToast';
@@ -22,7 +23,8 @@ const moduleName = 'nmdToast';
 // Define module
 angular
   .module(moduleName, [])
-  .component(component.name, component);
+  .component(component.name, component)
+  .service(service.name, service.service);
 
 /** @exports module name */
 export default moduleName;

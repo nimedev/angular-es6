@@ -2,22 +2,27 @@
  * Controller for nmd-toast component.
  * @class NmdToastCtrl
  * @param {Object} $timeout - to create toast delay.
+ * @param {Object} nmdToast - to get toast services.
  */
 // Controller class
 class NmdToastCtrl {
   /*@ngInject*/
-  constructor($timeout) {
+  constructor($timeout, nmdToast) {
     // Save dependencies
     this.$timeout = $timeout;
+    this.nmdToast = nmdToast;
 
     /** Class Fields */
   }
 
   /** Class Methods */
+  close() {
+    this.nmdToast.close();
+  }
 }
 
 // Injection array for minification compatibility
-let inject = ['$timeout', NmdToastCtrl];
+let inject = ['$timeout', 'nmdToast', NmdToastCtrl];
 
 /** @exports injection array with controller class */
 export default inject;

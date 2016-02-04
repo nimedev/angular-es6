@@ -21,6 +21,37 @@ class NmdToast {
   }
 
   /** Class Methods */
+  /** Remove toast from DOM. */
+  close() {
+    let toast = angular.element(document).find('nmd-toast');
+    
+    // remove component from scope
+    toast.scope().$destroy();
+    
+    // remove component from DOM
+    toast.remove();
+  }
+  
+  /** 
+   * Append a toast at end of body.
+   * @param {String} msg - Text message of toast
+   * @param {String} action - Text for button of toast
+   */
+  open(msg, action) {
+    let newToast = `<nmd-toast></nmd-toast>`; 
+    let node = angular.element(document).find('body');
+    let oldToast = angular.element(document).find('nmd-toast');
+    let scope;
+    
+    // Create new toast if is no there other toast
+    if (oldToast.length === 0) {
+      // Create new isolate scope
+      scope = this.$rootScope.$new(true);
+    
+      // Compile dialog template and add to body
+      node.append(this.$compile(newToast)(scope));
+    }
+  }
 }
 
 // Injection array for minification compatibility
