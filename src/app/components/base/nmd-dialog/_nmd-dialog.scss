@@ -93,13 +93,16 @@ nmd-dialog {
       // Styles for component footer
       &--footer {
         // Box-model
-        padding-right: .5rem;
-        padding-left: .5rem;
         height: $dialog-footer;
         
         // Tipography
         line-height: $dialog-footer;
         text-align: right;
+        
+        .btn {
+          margin-left: .5rem;
+          min-width: 6.25rem;
+        }
       }
     }
   }
