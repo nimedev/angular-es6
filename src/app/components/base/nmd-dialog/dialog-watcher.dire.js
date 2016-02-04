@@ -22,13 +22,12 @@ class DialogWatcher {
     /** link function */
     this.link = (scope, el, attr, ctrl) => {
       let backdrop = el[0].querySelector('.dialog__back');
-      let content = el[0].querySelector('.dialog__content');
       let component = attr.ndComponent;
       
       // Insert component to dialog content
       if (component) {
-        let newElement = `<${component}></${component}>`;
-        angular.element(content).append(this.$compile(newElement)(scope));
+        let newElement = `<${component} class="dialog__component whiteframe-5"></${component}>`;
+        el.append(this.$compile(newElement)(scope));
       }
 
       // Add click event to backdrop element to close dialog

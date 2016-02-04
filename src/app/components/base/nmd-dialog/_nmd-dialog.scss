@@ -2,52 +2,95 @@
     $DIALOG
 \*------------------------------------*/
 
-.dialog {
-  // Dialog backdrop
-  &__back {
-    // Positioning
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    z-index: z(goku);
-    
-    // Box-model
-    height: 120%;
-    
-    // Visual
-    background-color: $backdrop;
-  }
+nmd-dialog {
+  // Positioning
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: z(goku);
   
-  // Dialog content
-  &__content {
-    // Positioning
-    position: fixed;
-    top: 0;
-    right: 0;
-    // bottom: 0;
-    left: 0;
-    z-index: z(goku);
+  // Box-model
+  height: 100%;
+  
+  .dialog {
     
-    // Box-model
-    overflow: hidden;
-    margin-top: 4rem;
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 85%;
-    max-height: 80%;
+    // Dialog backdrop
+    &__back {
+      // Positioning
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      z-index: z(goku);
+      
+      // Box-model
+      height: 120%;
+      
+      // Visual
+      background-color: $backdrop;
+    }
     
-    // Visual
-    background-color: white;
-    border-radius: .25rem;
-    
-    // Responsive
-    @include respond-to(small) {
-      width: 30rem;
-    } 
-    
-    @include respond-to(medium) {
-      width: 40rem;
-    } 
+    // Style for compenent inserted in dialog
+    &__component {
+      // Positioning
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      z-index: z(goku);
+      
+      // Box-model
+      overflow: hidden;
+      margin-top: 4rem;
+      margin-left: auto;
+      margin-right: auto;
+      padding: .5rem 1rem;
+      max-width: 85%;
+      max-height: 80%;
+      
+      // Visual
+      background-color: white;
+      border-radius: .25rem;
+      
+      // Responsive
+      @include respond-to(small) {
+        margin-top: 6rem;
+        width: 30rem;
+      } 
+      
+      @include respond-to(medium) {
+        width: 40rem;
+      }
+      
+      // Styles for component header
+      &--header {
+        // Box-model
+        height: 3rem;
+        
+        // Tipography
+        line-height: 3rem;
+      }
+      
+      // Styles for component body
+      &--body {
+        // Box-model
+        overflow: auto;
+        max-height: 200px;
+        max-height: 17rem;
+      }
+      
+      // Styles for component footer
+      &--footer {
+        // Box-model
+        padding-right: .5rem;
+        padding-left: .5rem;
+        height: 3rem;
+        
+        // Tipography
+        line-height: 3rem;
+        text-align: right;
+      }
+    }
   }
 }
