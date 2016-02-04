@@ -17,7 +17,7 @@ class Dialog {
     this.$rootScope = $rootScope;
 
     /** Class Fields */
-
+    this.cssName = 'dialog--open';
   }
 
   /** Class Methods */
@@ -33,6 +33,8 @@ class Dialog {
     
     // remove component from DOM
     dialog.remove();
+
+    this.toggleElements();
   }
   
   /** 
@@ -53,6 +55,26 @@ class Dialog {
     
       // Compile dialog template and add to body
       node.append(this.$compile(newDialog)(scope));
+
+      this.toggleElements(true);
+    }
+  }
+  
+  /** HELPER FUNCTION */
+  /** 
+   * Toggle class that indicate open dialog in body element
+   * @param {Boolean} open - Indicate if open o close dialog. 
+   */
+  toggleElements(open) {
+    let body = angular.element(document).find('body');
+    let oldDialog = angular.element(document).find('nmd-dialog');
+    
+    // open dialog?
+    if (open) {
+      body.addClass(this.cssName);
+    } else if (oldDialog.length < 1) {
+      // remove class if is only 1 open dialogs?
+      body.removeClass(this.cssName);
     }
   }
 }

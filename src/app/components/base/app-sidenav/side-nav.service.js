@@ -60,11 +60,15 @@ class SideNav {
       
     // sidenav is closed?
     if (this.cssClass === '') {
-      body.removeClass(this.cssName);
       element.removeClass(this.cssName);
+      body.removeClass(this.cssName);
     } else {
-      body.addClass(this.cssName);
       element.addClass(this.cssName);
+      
+      // only add class if is in mobile
+      if (this.$window.innerWidth < this.smBreak) {
+        body.addClass(this.cssName);
+      }
     }
   }
 }
