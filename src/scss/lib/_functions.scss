@@ -31,3 +31,13 @@
 @function cp($palette, $color) {
   @return map-get($palette, $color);
 }
+
+
+/**
+ * Get breakpoint from map.
+   bp(small)
+ * The variables are in settings.scss
+ */
+@function bp($breakpoint) {
+  @return map-get($breakpoints, $breakpoint);
+}
