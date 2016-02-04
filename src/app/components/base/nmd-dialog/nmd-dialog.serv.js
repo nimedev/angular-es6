@@ -42,13 +42,18 @@ class Dialog {
    */
   open(component) {
     let node = angular.element(document).find('body');
-    let dialog = `<nmd-dialog nd-component="${component}" dialog-watcher></nmd-dialog>`;
+    let newDialog = `<nmd-dialog nd-component="${component}" dialog-watcher></nmd-dialog>`;
+    let oldDialog = document.querySelector(`nmd-dialog[nd-component=${component}]`);
+    let scope;
     
-    // Create new isolate scope
-    let scope = this.$rootScope.$new(true);
+    // Create new dialog if is no there a dialog with de same nd-component attribute
+    if (!oldDialog) {
+      // Create new isolate scope
+      scope = this.$rootScope.$new(true);
     
-    // Compile dialog template and add to body
-    node.append(this.$compile(dialog)(scope));
+      // Compile dialog template and add to body
+      node.append(this.$compile(newDialog)(scope));
+    }
   }
 }
 
