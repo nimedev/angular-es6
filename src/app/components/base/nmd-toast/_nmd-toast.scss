@@ -1,0 +1,63 @@
+/*------------------------------------*\
+    $TOAST COMPONENT
+\*------------------------------------*/
+
+// Wrap all component style
+nmd-toast {
+  // Positioning
+  position: fixed;
+  right: 0; 
+  bottom: 0;
+  left: 0;
+  z-index: z(goku);
+  
+  // Tipography
+  text-align: center;
+  
+  // Component classes
+  .toast {
+    &__content {
+      // Box-model
+      display: inline-flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: .875rem 1.5rem;
+      width: 100%;
+      min-height: 3rem;
+      
+      // Visual
+      background-color: #323232;
+      
+      // Responsive
+      @include respond-to(small) {
+        // Box-model
+        min-width: 18rem;
+        max-width: 35.5rem;
+        width: auto;
+      }
+    }
+    
+    &__text {
+      // Box-model
+      display: inline-block;
+      
+      // Tipography
+      font-size: fs(small);
+      line-height: 1.45;
+      color: white;
+    }
+    
+    &__btn {
+      // Box-model
+      margin-left: 1.5rem;
+      
+      // Tipography
+      font-size: fs(small);
+      line-height: 1.45;
+      color: cp($accent, df);
+      
+      // Visual
+      background-color: transparent;
+    }
+  }
+}

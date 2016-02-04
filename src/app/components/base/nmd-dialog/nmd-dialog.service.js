@@ -3,7 +3,7 @@
  * @name nmdDialog
  * @class Dialog
  * @param {Object} $compile - to compile new dialog directive.
- * @param {Object} $rootScope - to compile new dialog directive.
+ * @param {Object} $rootScope - to create new scope for compiled component.
  */
 // Service name
 let serviceName = 'nmdDialog';
