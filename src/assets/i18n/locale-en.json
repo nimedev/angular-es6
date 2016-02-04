@@ -11,5 +11,9 @@
     "SETTINGS": "Settings"
   },
   "HOME": "Welcome!",
-  "HELP": "Help"
+  "HELP": "Help",
+  "MESSAGE": {
+    "TITLE": "Hello!!",
+    "CLOSE": "Close"
+  }
 }

@@ -11,5 +11,9 @@
     "SETTINGS": "Configuración"
   },
   "HOME": "Bienvenido!",
-  "HELP": "Ayuda"
+  "HELP": "Ayuda",
+  "MESSAGE": {
+    "TITLE": "Hola!!",
+    "CLOSE": "Cerrar"
+  }
 }
