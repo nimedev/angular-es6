@@ -63,6 +63,11 @@ nmd-dialog {
         width: 40rem;
       }
       
+      // For form inside dialog
+      form {
+        margin: 0;
+      }
+      
       // Styles for component header
       &--header {
         // Box-model
