@@ -13,13 +13,14 @@
  * true: use, false: don't use.
  */
 
-$include-buttons:     true!default;
-$include-debug:       false!default;
-$include-divider:     true!default;
-$include-imgclass:    false!default;
-$include-menus:        true!default;
-$include-tables:      false!default;
-$include-whiteframes: true!default;
+$include-buttons:        true!default;
+$include-colors:         true!default;
+$include-debug:          false!default;
+$include-divider:        true!default;
+$include-imgclass:       false!default;
+$include-menus:          true!default;
+$include-tables:         false!default;
+$include-whiteframes:    true!default;
 // $incluir-grid:          false!default;
 // $incluir-navegacion:    true!default;
 // $incluir-paginacion:    false!default;
@@ -141,8 +142,8 @@ $font-dir: "/Content/fonts";
  */
 $baselineheight:  1.5em;
 $baseline:        $baselineheight;
-$gutterwidth:     22px;
-$pagemaxwidth:    960px;
+$gutterwidth:     1.375rem;
+$pagemaxwidth:    60rem;
 $radius:          0;
 $hovertransition: .3s;
 $animationtime:   .8s;
@@ -167,9 +168,10 @@ $footerheight-sm: 144px;
 $footerheight-md: 72px;
 
 // dialog
-$dialog-header: 4rem;
-$dialog-footer: $dialog-header;
-
+$dialog-header-xs: 3.25rem;
+$dialog-header-sm: 4rem;
+$dialog-footer-xs: $dialog-header-xs;
+$dialog-footer-sm: $dialog-header-sm;
 
 
 
@@ -278,7 +280,7 @@ $backdrop:         rgba(33,33,33,0.48);
 $backdrop-light:   rgba(33,33,33,0.24);
 
 // Material themming
-$primary: $gray-primary;
+$primary: $indigo-primary;
 $accent: $deep-orange-accent;
 $warn: $red-warn;
 
