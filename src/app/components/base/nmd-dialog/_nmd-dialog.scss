@@ -45,7 +45,6 @@ nmd-dialog {
       margin-top: 4rem;
       margin-left: auto;
       margin-right: auto;
-      padding: 0 1rem;
       max-width: 85%;
       max-height: 80%;
       
@@ -71,10 +70,8 @@ nmd-dialog {
       // Styles for component header
       &--header {
         // Box-model
-        height: $dialog-header-xs;
-        
-        // Tipography
-        line-height: $dialog-header-xs;
+        margin: 0 0 1.25rem;
+        padding: 1.5rem 1.5rem 0;
         
         h1,
         h2,
@@ -86,46 +83,26 @@ nmd-dialog {
           display: inline-block;
           margin: 0;
         }
-        
-        // Responsive
-        @include respond-to(small) {
-          // Box-model
-          height: $dialog-header-sm;
-          
-          // Tipography
-          line-height: $dialog-header-sm;
-        }
       }
       
       // Styles for component body
       &--body {
         // Box-model
         overflow: auto;
-        max-height: 24rem - $dialog-header-xs - $dialog-footer-xs;
-        
-        // Responsive
-        @include respond-to(small) {
-          max-height: 24rem - $dialog-header-sm - $dialog-footer-sm;
-        }
+        margin: 0 0 1.5rem;
+        padding: 0 1.5rem 0;
+        max-height: 24rem;
       }
       
       // Styles for component footer
       &--footer {
         // Box-model
-        height: $dialog-footer-xs;
+        padding: .5rem .5rem .5rem 1.5rem;
+        max-height: 3.25rem;
+        height: 3.25rem;
         
         // Tipography
-        line-height: $dialog-footer-xs;
         text-align: right;
-        
-        // Responsive
-        @include respond-to(small) {
-          // Box-model
-          height: $dialog-footer-sm;
-          
-          // Tipography
-          line-height: $dialog-footer-sm;
-        }
         
         .btn {
           margin-left: .5rem;
