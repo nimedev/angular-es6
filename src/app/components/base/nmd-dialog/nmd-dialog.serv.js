@@ -22,6 +22,20 @@ class Dialog {
 
   /** Class Methods */
   /** 
+   * Remove a dialog component acording to nd-component attribute.
+   * @param {String} component - Used to select the dialog to remove.
+   */
+  close(component) {
+    let dialog = angular.element(document.querySelector(`nmd-dialog[nd-component=${component}]`));
+    
+    // remove component from scope
+    dialog.scope().$destroy();
+    
+    // remove component from DOM
+    dialog.remove();
+  }
+  
+  /** 
    * Append a dialog at end of body and insert a component inside it.
    * @param {String} component - Name of component to insert in HTML format
    *                             (component-name) 
@@ -29,7 +43,9 @@ class Dialog {
   open(component) {
     let node = angular.element(document).find('body');
     let dialog = `<nmd-dialog nd-component="${component}" dialog-watcher></nmd-dialog>`;
-    let scope = this.$rootScope.$new();
+    
+    // Create new isolate scope
+    let scope = this.$rootScope.$new(true);
     
     // Compile dialog template and add to body
     node.append(this.$compile(dialog)(scope));
