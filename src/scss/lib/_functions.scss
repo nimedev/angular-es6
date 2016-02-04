@@ -41,3 +41,13 @@
 @function bp($breakpoint) {
   @return map-get($breakpoints, $breakpoint);
 }
+
+
+/**
+ * Get breakpoint from map for max-width functions.
+   bp(small)
+ * The variables are in settings.scss
+ */
+@function bp-max($breakpoint) {
+  @return map-get($breakpoints, $breakpoint) - 0.0625;
+}
