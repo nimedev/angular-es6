@@ -2,6 +2,7 @@
     $DIALOG
 \*------------------------------------*/
 
+// Style for component
 nmd-dialog {
   // Positioning
   position: fixed;
@@ -12,7 +13,6 @@ nmd-dialog {
   
   // Box-model
   height: 100%;
-  
   .dialog {
     
     // Dialog backdrop
@@ -66,49 +66,10 @@ nmd-dialog {
       form {
         margin: 0;
       }
-      
-      // Styles for component header
-      &--header {
-        // Box-model
-        margin: 0 0 1.25rem;
-        padding: 1.5rem 1.5rem 0;
-        
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6,
-        dialog__title {
-          display: inline-block;
-          margin: 0;
-        }
-      }
-      
-      // Styles for component body
-      &--body {
-        // Box-model
-        overflow: auto;
-        margin: 0 0 1.5rem;
-        padding: 0 1.5rem 0;
-        max-height: 24rem;
-      }
-      
-      // Styles for component footer
-      &--footer {
-        // Box-model
-        padding: .5rem .5rem .5rem 1.5rem;
-        max-height: 3.25rem;
-        height: 3.25rem;
-        
-        // Tipography
-        text-align: right;
-        
-        .btn {
-          margin-left: .5rem;
-          min-width: 6.25rem;
-        }   
-      }
+    }
+    
+    &__body {
+      max-height: 14.125rem;
     }
   }
 }

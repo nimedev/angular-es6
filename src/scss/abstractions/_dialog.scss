@@ -1,0 +1,51 @@
+@if $include-dialog == true {
+/*------------------------------------*\
+    $DIALOG
+\*------------------------------------*/
+/* Styles for dialog contents use in forms */
+
+.dialog {
+  
+  // Styles for component header
+  &__header {
+    // Box-model
+    margin: 0 0 1.25rem;
+    padding: 1.5rem 1.5rem 0;
+    
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    dialog__title {
+      display: inline-block;
+      margin: 0;
+    }
+  }
+  
+  // Styles for component body
+  &__body {
+    // Box-model
+    overflow: auto;
+    margin: 0 0 1.5rem;
+    padding: 0 1.5rem 0;
+  }
+  
+  // Styles for component footer
+  &__footer {
+    // Box-model
+    padding: .5rem .5rem .5rem 1.5rem;
+    max-height: 3.25rem;
+    height: 3.25rem;
+    
+    // Tipography
+    text-align: right;
+    
+    .btn {
+      margin-left: .5rem;
+      min-width: 6.25rem;
+    }   
+  }
+}
+} // endif
