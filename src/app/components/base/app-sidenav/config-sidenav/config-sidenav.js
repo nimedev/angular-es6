@@ -10,7 +10,7 @@ import * as angular from 'angular';
 /** Submodules */
 
 /** Component */
-import component from './config-sidenav.comp';
+import component from './config-sidenav.component';
 
 /** Services */
 

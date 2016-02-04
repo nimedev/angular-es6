@@ -10,7 +10,7 @@ import * as angular from 'angular';
 /** Submodules */
 
 /** Component */
-import component from './config-view.comp';
+import component from './config-view.component';
 
 /** Services */
 

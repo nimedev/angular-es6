@@ -10,7 +10,7 @@ import * as angular from 'angular';
 /** Submodules */
 
 /** Component & Directives */
-import directive from './close-dd.dire';
+import directive from './close-dd.directive';
 
 /** Services */
 

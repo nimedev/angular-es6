@@ -1,14 +1,14 @@
-/** app-header component. */
+/** message component. */
 // Template
-import template from './app-header.tpl.html!text';
+import template from './message.html!text';
 
 // Controller
-import controller from './app-header.ctrl';
+import controller from './message.controller';
 
 // Component object
 let component = {
   controller,
-  name: 'appHeader',
+  name: 'message',
   template
 };
 

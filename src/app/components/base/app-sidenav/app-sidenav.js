@@ -13,11 +13,11 @@ import homeSidenav from './home-sidenav/home-sidenav';
 import menuItem from './menu-item/menu-item';
 
 /** Component & Directives */
-import component from './app-sidenav.comp';
-import directive from './close-sidenav.dire';
+import component from './app-sidenav.component';
+import directive from './close-sidenav.directive';
 
 /** Services */
-import sideNav from './side-nav.serv';
+import sideNav from './side-nav.service';
 
 // Constants
 const moduleName = 'appSidenav';

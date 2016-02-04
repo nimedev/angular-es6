@@ -1,14 +1,14 @@
-/** app-sidenav component. */
+/** lang-list component. */
 // Template
-import template from './app-sidenav.tpl.html!text';
+import template from './lang-list.html!text';
 
 // Controller
-import controller from './app-sidenav.ctrl';
+import controller from './lang-list.controller';
 
 // Component object
 let component = {
   controller,
-  name: 'appSidenav',
+  name: 'langList',
   template
 };
 

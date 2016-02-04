@@ -1,9 +1,9 @@
 /** float-button component. */
 // Template
-import template from './float-button.tpl.html!text';
+import template from './float-button.html!text';
 
 // Controller
-import controller from './float-button.ctrl.js'; 
+import controller from './float-button.controller.js'; 
 
 // Component object
 let component = {

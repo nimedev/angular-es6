@@ -8,7 +8,7 @@ import * as angular from 'angular';
 /** Comunity modules */
 
 /** Components */
-import component from './home-view.comp';
+import component from './home-view.component';
 
 /** Services */
 

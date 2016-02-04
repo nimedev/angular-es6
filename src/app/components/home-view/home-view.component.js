@@ -1,10 +1,10 @@
-/** help-view component. */
+/** home-view component. */
 // Template
-import template from './help-view.tpl.html!text';
+import template from './home-view.html!text';
 
 // Component object
 let component = {
-  name: 'helpView',
+  name: 'homeView',
   template
 };
 

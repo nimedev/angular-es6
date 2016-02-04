@@ -1,15 +1,12 @@
-/** coming-soon component. */
+/** nmd-dialog component. */
 // Template
-import template from './coming-soon.tpl.html!text';
+import template from './nmd-dialog.html!text';
 
 // Controller
 
 // Component object
 let component = {
-  bindings: {
-    title: '@'
-  },
-  name: 'comingSoon',
+  name: 'nmdDialog',
   template
 };
 

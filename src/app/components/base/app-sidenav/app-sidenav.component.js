@@ -1,14 +1,14 @@
-/** message component. */
+/** app-sidenav component. */
 // Template
-import template from './message.tpl.html!text';
+import template from './app-sidenav.html!text';
 
 // Controller
-import controller from './message.ctrl.js';
+import controller from './app-sidenav.controller';
 
 // Component object
 let component = {
   controller,
-  name: 'message',
+  name: 'appSidenav',
   template
 };
 

@@ -1,12 +1,15 @@
-/** config-sidenav component. */
+/** coming-soon component. */
 // Template
-import template from './config-sidenav.tpl.html!text';
+import template from './coming-soon.html!text';
 
 // Controller
 
 // Component object
 let component = {
-  name: 'configSidenav',
+  bindings: {
+    title: '@'
+  },
+  name: 'comingSoon',
   template
 };
 

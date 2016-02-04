@@ -1,10 +1,12 @@
-/** home-view component. */
+/** config-sidenav component. */
 // Template
-import template from './home-view.tpl.html!text';
+import template from './config-sidenav.html!text';
+
+// Controller
 
 // Component object
 let component = {
-  name: 'homeView',
+  name: 'configSidenav',
   template
 };
 

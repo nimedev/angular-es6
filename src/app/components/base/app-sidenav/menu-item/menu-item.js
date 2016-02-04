@@ -10,7 +10,7 @@ import * as angular from 'angular';
 /** Submodules */
 
 /** Component or Directive */
-import component from './menu-item.comp';
+import component from './menu-item.component';
 
 /** Services */
 

@@ -10,7 +10,7 @@ import * as angular from 'angular';
 /** Submodules */
 
 /** Component */
-import component from './coming-soon.comp';
+import component from './coming-soon.component';
 
 /** Services */
 

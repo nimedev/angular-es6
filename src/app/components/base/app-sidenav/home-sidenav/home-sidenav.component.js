@@ -1,12 +1,12 @@
-/** nmd-dialog component. */
+/** home-sidenav component. */
 // Template
-import template from './nmd-dialog.tpl.html!text';
+import template from './home-sidenav.html!text';
 
 // Controller
 
 // Component object
 let component = {
-  name: 'nmdDialog',
+  name: 'homeSidenav',
   template
 };
 

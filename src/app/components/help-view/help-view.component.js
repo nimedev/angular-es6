@@ -1,12 +1,10 @@
-/** home-sidenav component. */
+/** help-view component. */
 // Template
-import template from './home-sidenav.tpl.html!text';
-
-// Controller
+import template from './help-view.html!text';
 
 // Component object
 let component = {
-  name: 'homeSidenav',
+  name: 'helpView',
   template
 };
 

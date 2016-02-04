@@ -1,6 +1,6 @@
 /** menu-item component. */
 // Template
-import template from './menu-item.tpl.html!text';
+import template from './menu-item.html!text';
 
 // Controller
 

@@ -10,7 +10,7 @@ import * as angular from 'angular';
 /** Submodules */
 
 /** Component or Directive */
-import component from './message.comp';
+import component from './message.component';
 
 /** Services */
 

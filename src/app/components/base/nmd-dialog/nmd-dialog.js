@@ -10,11 +10,11 @@ import * as angular from 'angular';
 /** Submodules */
 
 /** Component or Directive */
-import component from './nmd-dialog.comp';
-import directive from './dialog-watcher.dire';
+import component from './nmd-dialog.component';
+import directive from './dialog-watcher.directive';
 
 /** Services */
-import service from './nmd-dialog.serv';
+import service from './nmd-dialog.service';
 
 // Constants
 const moduleName = 'nmdDialog';
