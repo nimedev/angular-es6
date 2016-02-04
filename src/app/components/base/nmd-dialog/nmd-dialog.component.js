@@ -1,13 +1,12 @@
 /** nmd-dialog component. */
 // Template
-import template from './nmd-dialog.html!text';
 
 // Controller
 
 // Component object
 let component = {
   name: 'nmdDialog',
-  template
+  template: '<div class="dialog__back"></div>'
 };
 
 /** @exports component object */
