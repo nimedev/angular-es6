@@ -45,7 +45,7 @@ nmd-dialog {
       margin-top: 4rem;
       margin-left: auto;
       margin-right: auto;
-      padding: .5rem 1rem;
+      padding: 0 1rem;
       max-width: 85%;
       max-height: 80%;
       
@@ -66,18 +66,28 @@ nmd-dialog {
       // Styles for component header
       &--header {
         // Box-model
-        height: 3rem;
+        height: $dialog-header;
         
         // Tipography
-        line-height: 3rem;
+        line-height: $dialog-header;
+        
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        dialog__title {
+          display: inline-block;
+          margin: 0;
+        }
       }
       
       // Styles for component body
       &--body {
         // Box-model
         overflow: auto;
-        max-height: 200px;
-        max-height: 17rem;
+        max-height: 24rem - $dialog-header - $dialog-footer;
       }
       
       // Styles for component footer
@@ -85,10 +95,10 @@ nmd-dialog {
         // Box-model
         padding-right: .5rem;
         padding-left: .5rem;
-        height: 3rem;
+        height: $dialog-footer;
         
         // Tipography
-        line-height: 3rem;
+        line-height: $dialog-footer;
         text-align: right;
       }
     }
