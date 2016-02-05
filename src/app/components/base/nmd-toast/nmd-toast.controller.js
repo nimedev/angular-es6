@@ -13,6 +13,12 @@ class NmdToastCtrl {
     this.nmdToast = nmdToast;
 
     /** Class Fields */
+    this.message = nmdToast.message;
+    
+    // Start $timeout to close modal
+    if (nmdToast.duration) {
+      $timeout(nmdToast.close, nmdToast.duration);
+    }
   }
 
   /** Class Methods */

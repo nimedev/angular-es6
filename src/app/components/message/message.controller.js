@@ -18,8 +18,11 @@ class Message {
   /** Class Methods */
   /** Call close service to close 'message' component */
   close() {
+    let toastOptions = {
+      duration: 1500
+    };
     this.nmdDialog.close('message');
-    this.nmdToast.open();
+    this.nmdToast.open('Message closed!', toastOptions);
   }
 }
 

@@ -17,7 +17,9 @@ class NmdToast {
     this.$rootScope = $rootScope;
 
     /** Class Fields */
-
+    // Default options for the toast
+    this.message = '';
+    this.duration = 4000;
   }
 
   /** Class Methods */
@@ -35,13 +37,29 @@ class NmdToast {
   /** 
    * Append a toast at end of body.
    * @param {String} msg - Text message of toast
-   * @param {String} action - Text for button of toast
+   * @param {Object} options - options object:
+   * {
+   *   duration: 4000 // Display time (0 to show permanently)
+   * }
    */
-  open(msg, action) {
-    let newToast = `<nmd-toast></nmd-toast>`; 
+  open(msg, options) {
+    let newToast = '<nmd-toast></nmd-toast>';
     let node = angular.element(document).find('body');
     let oldToast = angular.element(document).find('nmd-toast');
     let scope;
+    
+    // Verify custom message
+    if (msg) {
+      this.message = msg;
+    }
+    
+    // Verify options
+    if (options) {
+      // Add duration
+      if (options.duration) {
+        this.duration = options.duration;
+      }
+    }
     
     // Create new toast if is no there other toast
     if (oldToast.length === 0) {
