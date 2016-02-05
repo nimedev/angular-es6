@@ -32,7 +32,7 @@ class ToastWatcher {
         this.$timeout.cancel(scope.$ctrl.timmer);
       
         // remove component from DOM.
-        // Insert a delay to elminate for CSS animation porpouses.
+        // Insert a delay to eliminate for CSS animation porpouses.
         component.addClass('toast--close');
         this.$timeout(() => component.remove(), 1000);
       });

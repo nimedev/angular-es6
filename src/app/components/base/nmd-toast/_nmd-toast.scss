@@ -11,16 +11,20 @@ nmd-toast {
   left: 0;
   z-index: z(goku);
   
+  // Box-model
+  max-height: 100%;
+  
   // Tipography
   text-align: center;
   
   // Misc
-  transition: bottom $toast-duration;
-  animation: openToast $toast-duration;
+  transition: max-height $toast-duration ease-in;
+  animation: openToast $toast-duration ease-out;
   
   // Animation when close toast
   &.toast--close {
-    bottom: $toast-bottom;
+    // bottom: $toast-bottom;
+    max-height: 0;
   }
   
   // Component classes
@@ -56,7 +60,7 @@ nmd-toast {
       color: white;
       
       // Misc
-      animation: showToastContent $toast-duration + .1s;
+      animation: showToastContent $toast-duration;
     }
     
     &__btn {
@@ -74,7 +78,7 @@ nmd-toast {
       background-color: transparent;
       
       // Misc
-      animation: showToastContent $toast-duration + .1s;
+      animation: showToastContent $toast-duration;
     }
   }
 }
@@ -82,18 +86,17 @@ nmd-toast {
 // Toast Animations
 @keyframes openToast {
   from {
-    bottom: $toast-bottom;
+    // bottom: $toast-bottom;
+    max-height: 0;
   }
   to {
-    bottom: 0;
+    // bottom: 0;
+    max-height: 100%;
   }
 }
 
 @keyframes showToastContent {
   0% {
-    opacity: 0;
-  }
-  50% {
     opacity: .3;
   }
   100% {
