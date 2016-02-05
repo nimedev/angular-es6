@@ -20,6 +20,7 @@ class NmdToast {
     // Default options for the toast
     this.message = '';
     this.duration = 4000;
+    this.button = {};
   }
 
   /** Class Methods */
@@ -39,7 +40,11 @@ class NmdToast {
    * @param {String} msg - Text message of toast
    * @param {Object} options - options object:
    * {
-   *   duration: 4000 // Display time (0 to show permanently)
+   *   duration: 4000,      // Display time in milliseconds (0 to show permanently)
+   *   button: {            // Action button (Don't show button if no provide it)
+   *     text: 'DISMISS'    // Button text
+   *     action: () => {}   // Callback function. If no action then close toast.
+   *   }
    * }
    */
   open(msg, options) {
@@ -58,6 +63,11 @@ class NmdToast {
       // Add duration
       if (options.duration) {
         this.duration = options.duration;
+      }
+      
+      // Add button settings
+      if (options.button) {
+        this.button = options.button;
       }
     }
     

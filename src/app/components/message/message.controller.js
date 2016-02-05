@@ -13,13 +13,18 @@ class Message {
     this.nmdToast = nmdToast;
 
     /** Class Fields */
+    this.msg = 'Show message!';
   }
 
   /** Class Methods */
   /** Call close service to close 'message' component */
   close() {
     let toastOptions = {
-      duration: 1500
+      duration: 3000,
+      button: {
+        text: 'DISMISS',
+        action: () => console.log(this.msg)
+      }
     };
     this.nmdDialog.close('message');
     this.nmdToast.open('Message closed!', toastOptions);

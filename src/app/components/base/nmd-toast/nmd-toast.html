@@ -1,4 +1,4 @@
 <div class="toast__content">
   <span class="toast__text">{{ $ctrl.message }}</span>
-  <button class="toast__btn btn" ng-click="$ctrl.close()">Go it</button>
+  <button class="toast__btn btn" ng-click="$ctrl.btnAction()" ng-if="$ctrl.btnText">{{ $ctrl.btnText }}</button>
 </div>

@@ -8,12 +8,25 @@
 class NmdToastCtrl {
   /*@ngInject*/
   constructor($timeout, nmdToast) {
+    let button = nmdToast.button;
+    
     // Save dependencies
     this.$timeout = $timeout;
     this.nmdToast = nmdToast;
 
     /** Class Fields */
+    this.btnAction = nmdToast.close;
+    this.btnText = '';
     this.message = nmdToast.message;
+    
+    // Prepare action button
+    if (button.text) {
+      this.btnText = button.text;
+    }
+    
+    if (button.action) {
+      this.btnAction = button.action;
+    }
     
     // Start $timeout to close modal
     if (nmdToast.duration) {
