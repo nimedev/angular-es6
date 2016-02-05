@@ -22,15 +22,19 @@ class NmdToast {
   }
 
   /** Class Methods */
-  /** Remove toast from DOM. */
+  /** 
+   * Remove toast scope.
+   * $destroy() generate a $destroy event that is handle by
+   * toast-watcher directive to remove element from the DOM. 
+   */
   close() {
     let toast = angular.element(document).find('nmd-toast');
-    
-    // remove component from scope
-    toast.scope().$destroy();
-    
-    // remove component from DOM
-    toast.remove();
+
+    // Remove object if find toast component
+    if (toast.length > 0) {
+      // remove component from scope
+      toast.scope().$destroy();
+    }
   }
   
   /** 
@@ -48,8 +52,10 @@ class NmdToast {
   show(msg, options) {
     let newToast = '<nmd-toast></nmd-toast>';
     let node = angular.element(document).find('body');
-    let oldToast = angular.element(document).find('nmd-toast');
     let scope;
+    
+    // Remove old toast
+    this.close();
     
     // Set default values
     this.setDefault();
@@ -72,14 +78,11 @@ class NmdToast {
       }
     }
     
-    // Create new toast if is no there other toast
-    if (oldToast.length === 0) {
-      // Create new isolate scope
-      scope = this.$rootScope.$new(true);
+    // Create new isolate scope
+    scope = this.$rootScope.$new(true);
     
-      // Compile dialog template and add to body
-      node.append(this.$compile(newToast)(scope));
-    }
+    // Compile dialog template and add to body
+    node.append(this.$compile(newToast)(scope));
   }
   
   /** HELPER FUNCTIONS */

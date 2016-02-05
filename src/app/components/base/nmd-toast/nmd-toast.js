@@ -11,6 +11,7 @@ import * as angular from 'angular';
 
 /** Component or Directive */
 import component from './nmd-toast.component';
+import toastWatcher from './toast-watcher.directive';
 
 /** Services */
 import service from './nmd-toast.service';
@@ -24,7 +25,8 @@ const moduleName = 'nmdToast';
 angular
   .module(moduleName, [])
   .component(component.name, component)
-  .service(service.name, service.service);
+  .service(service.name, service.service)
+  .directive(toastWatcher.name, toastWatcher.directive);
 
 /** @exports module name */
 export default moduleName;
