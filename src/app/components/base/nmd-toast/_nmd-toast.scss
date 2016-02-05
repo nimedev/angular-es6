@@ -15,7 +15,13 @@ nmd-toast {
   text-align: center;
   
   // Misc
+  transition: bottom $toast-duration;
   animation: openToast $toast-duration;
+  
+  // Animation when close toast
+  &.toast--close {
+    bottom: $toast-bottom;
+  }
   
   // Component classes
   .toast {

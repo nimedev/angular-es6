@@ -21,6 +21,9 @@ class ToastWatcher {
 
     // link function
     this.link = (scope, el, attr, ctrl) => {
+      // The directive is inserted in component child to get access
+      // of controller scope.
+      let component = el.parent();
     
       // Wait for the scope destruction 
       scope.$on('$destroy', () => {
@@ -28,9 +31,10 @@ class ToastWatcher {
         this.$timeout.cancel(scope.$ctrl.timmer);
       
         // remove component from DOM.
-        // The directive is inserted in component child to get access
-        // of controller scope
-        el.parent().remove();
+        
+        // Insert a delay to elminate for CSS animation porpouses.
+        component.addClass('toast--close');
+        this.$timeout(() => component.remove(), 1000);
       });
     };
   }

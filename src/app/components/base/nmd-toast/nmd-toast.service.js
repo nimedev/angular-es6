@@ -28,12 +28,13 @@ class NmdToast {
    * toast-watcher directive to remove element from the DOM. 
    */
   close() {
-    let toast = angular.element(document).find('nmd-toast');
+    // last toast inserted
+    let openToast = angular.element(document.querySelector('nmd-toast:not(.toast--close'));
 
     // Remove object if find toast component
-    if (toast.length > 0) {
+    if (openToast.length > 0) {
       // remove component from scope
-      toast.scope().$destroy();
+      openToast.scope().$destroy();
     }
   }
   
