@@ -18,9 +18,7 @@ class NmdToast {
 
     /** Class Fields */
     // Default options for the toast
-    this.message = '';
-    this.duration = 4000;
-    this.button = {};
+    this.setDefault();
   }
 
   /** Class Methods */
@@ -47,11 +45,14 @@ class NmdToast {
    *   }
    * }
    */
-  open(msg, options) {
+  show(msg, options) {
     let newToast = '<nmd-toast></nmd-toast>';
     let node = angular.element(document).find('body');
     let oldToast = angular.element(document).find('nmd-toast');
     let scope;
+    
+    // Set default values
+    this.setDefault();
     
     // Verify custom message
     if (msg) {
@@ -79,6 +80,14 @@ class NmdToast {
       // Compile dialog template and add to body
       node.append(this.$compile(newToast)(scope));
     }
+  }
+  
+  /** HELPER FUNCTIONS */
+  /** Set default values for toast */
+  setDefault() {
+    this.message = '';
+    this.duration = 4000;
+    this.button = {};
   }
 }
 

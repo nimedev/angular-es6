@@ -27,7 +27,7 @@ class Message {
       }
     };
     this.nmdDialog.close('message');
-    this.nmdToast.open('Message closed!', toastOptions);
+    this.nmdToast.show('Message closed!', toastOptions);
   }
 }
 
