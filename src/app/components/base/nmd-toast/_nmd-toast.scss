@@ -12,14 +12,37 @@ nmd-toast {
   z-index: z(goku);
   
   // Box-model
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: .875rem 1.5rem;
+  width: 100%;
+  min-height: 3rem;
   max-height: 100%;
   
   // Tipography
   text-align: center;
   
+  // Visual
+  background-color: #323232;
+      
   // Misc
   transition: max-height $toast-duration ease-in;
   animation: openToast $toast-duration ease-out;
+      
+  // Responsive
+  @include respond-to(small) {
+    // Positioning
+    left: 50%;
+    
+    // Box-model
+    min-width: 18rem;
+    max-width: 35.5rem;
+    width: auto;
+    
+    // Misc
+    transform: translateX(-50%);
+  }
   
   // Animation when close toast
   &.toast--close {
@@ -28,27 +51,6 @@ nmd-toast {
   
   // Component classes
   .toast {
-    &__content {
-      // Box-model
-      display: inline-flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: .875rem 1.5rem;
-      width: 100%;
-      min-height: 3rem;
-      
-      // Visual
-      background-color: #323232;
-      
-      // Responsive
-      @include respond-to(small) {
-        // Box-model
-        min-width: 18rem;
-        max-width: 35.5rem;
-        width: auto;
-      }
-    }
-    
     &__text {
       // Box-model
       display: inline-block;
