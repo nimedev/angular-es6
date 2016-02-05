@@ -90,7 +90,9 @@ gulp.task('bundle', (cb) => {
 });
 
 // Group build task in one
-gulp.task('build', ['bundle', 'html', 'i18n', 'images', 'lint', 'style']);
+gulp.task('build', ['lint'], (cb) => {
+  runSequence(['bundle', 'html', 'i18n', 'images', 'style'], cb);
+});
 
 
 /**
