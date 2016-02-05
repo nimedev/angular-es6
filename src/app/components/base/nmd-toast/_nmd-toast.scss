@@ -23,7 +23,6 @@ nmd-toast {
   
   // Animation when close toast
   &.toast--close {
-    // bottom: $toast-bottom;
     max-height: 0;
   }
   
@@ -86,11 +85,9 @@ nmd-toast {
 // Toast Animations
 @keyframes openToast {
   from {
-    // bottom: $toast-bottom;
     max-height: 0;
   }
   to {
-    // bottom: 0;
     max-height: 100%;
   }
 }
