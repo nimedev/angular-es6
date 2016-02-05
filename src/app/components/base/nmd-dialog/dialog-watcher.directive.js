@@ -54,7 +54,9 @@ class DialogWatcher {
 }
 
 // Injection array for minification compatibility
-let inject = ['$compile', '$timeout', 'nmdDialog', ($compile, $timeout, nmdDialog) => new DialogWatcher($compile, $timeout, nmdDialog)];
+let inject = ['$compile', '$timeout', 'nmdDialog', ($compile, $timeout, nmdDialog) => {
+  return new DialogWatcher($compile, $timeout, nmdDialog);
+}];
 
 /** @exports injection array with directive class */
 export default {

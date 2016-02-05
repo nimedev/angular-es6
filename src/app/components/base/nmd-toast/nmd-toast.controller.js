@@ -18,7 +18,7 @@ class NmdToastCtrl {
     this.btnAction = nmdToast.close;
     this.btnText = '';
     this.message = nmdToast.message;
-    this.timmer;
+    this.timmer = $timeout(nmdToast.close, nmdToast.duration);
     
     // Prepare action button
     if (button.text) {
@@ -28,9 +28,6 @@ class NmdToastCtrl {
     if (button.action) {
       this.btnAction = button.action;
     }
-    
-    // Start $timeout to close modal
-    this.timmer = $timeout(nmdToast.close, nmdToast.duration);
   }
 
   /** Class Methods */
