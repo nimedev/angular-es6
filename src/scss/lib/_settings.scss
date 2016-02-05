@@ -13,6 +13,7 @@
  * true: use, false: don't use.
  */
 
+$include-animations:     true!default;
 $include-buttons:        true!default;
 $include-colors:         true!default;
 $include-debug:          false!default;
@@ -169,7 +170,12 @@ $footerheight-sm: 144px;
 $footerheight-md: 72px;
 
 
-
+/*------------------------------------*\
+    $COMPONENTS
+\*------------------------------------*/
+// nmd-toast
+$toast-bottom: -9rem;
+$toast-duration: .4s;
 
 
 /*------------------------------------*\

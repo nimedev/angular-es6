@@ -20,9 +20,9 @@ class Message {
   /** Call close service to close 'message' component */
   close() {
     let toastOptions = {
-      duration: 3000,
+      duration: 10000,
       button: {
-        text: 'DISMISS',
+        text: 'LOG',
         action: () => console.log(this.msg)
       }
     };

@@ -14,6 +14,9 @@ nmd-toast {
   // Tipography
   text-align: center;
   
+  // Misc
+  animation: openToast $toast-duration;
+  
   // Component classes
   .toast {
     &__content {
@@ -45,11 +48,16 @@ nmd-toast {
       font-size: fs(small);
       line-height: 1.45;
       color: white;
+      
+      // Misc
+      animation: opacityShow50 $toast-duration + .1s;
     }
     
     &__btn {
       // Box-model
       margin-left: 1.5rem;
+      padding-right: 0;
+      padding-left: 0;
       
       // Tipography
       font-size: fs(small);
@@ -58,6 +66,19 @@ nmd-toast {
       
       // Visual
       background-color: transparent;
+      
+      // Misc
+      animation: opacityShow50 $toast-duration + .1s;
     }
+  }
+}
+
+// Toast Animations
+@keyframes openToast {
+  from {
+    bottom: $toast-bottom;
+  }
+  to {
+    bottom: 0;
   }
 }
