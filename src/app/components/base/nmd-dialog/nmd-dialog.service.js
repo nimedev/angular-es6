@@ -30,11 +30,6 @@ class Dialog {
     
     // remove component from scope
     dialog.scope().$destroy();
-    
-    // remove component from DOM
-    dialog.remove();
-
-    this.toggleElements();
   }
   
   /** 

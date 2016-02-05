@@ -2,7 +2,8 @@
  * Directive. to check component estatus.
  * @name toastWatcher
  * @class ToastWatcher
- * @param {Object} $timeout - to cancel toast timmer when force desctruction.
+ * @param {Object} $timeout - to cancel toast timmer when force and generate 
+ *                            delay for destroy element from DOM desctruction.
  */
 // Directive name
 let directiveName = 'toastWatcher';
@@ -31,7 +32,6 @@ class ToastWatcher {
         this.$timeout.cancel(scope.$ctrl.timmer);
       
         // remove component from DOM.
-        
         // Insert a delay to elminate for CSS animation porpouses.
         component.addClass('toast--close');
         this.$timeout(() => component.remove(), 1000);

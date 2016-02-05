@@ -13,6 +13,17 @@ nmd-dialog {
   
   // Box-model
   height: 100%;
+  
+  // Misc
+  animation: opacityShow $dialog-duration ease-in;
+  transition: opacity $dialog-duration ease-out;
+  
+  // Animation when close element
+  &.dialog--close {
+    opacity: 0;
+  }
+  
+  // dialog content
   .dialog {
     
     // Dialog backdrop

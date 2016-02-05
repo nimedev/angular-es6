@@ -3,6 +3,7 @@
  * @name dialogWatcher
  * @class DialogWatcher
  * @param {Object} $compile - to compile dialog content component.
+ * @param {Object} $timeout - to generate delay for destroy element from DOM
  * @param {Object} nmdDialog - get close service.
  */
 // Directive name
@@ -11,10 +12,11 @@ let directiveName = 'dialogWatcher';
 // Directive class
 class DialogWatcher {
   /*@ngInject*/
-  constructor($compile, nmdDialog) {
+  constructor($compile, $timeout, nmdDialog) {
     // Save dependencies
     this.$compile = $compile;
     this.nmdDialog = nmdDialog;
+    this.$timeout = $timeout;
 
     /** Class Fields */
     this.restrict = 'A';
@@ -34,6 +36,17 @@ class DialogWatcher {
       backdrop.addEventListener('click', () => {
         this.nmdDialog.close(component);
       });
+      
+      // Wait for the scope destruction 
+      scope.$on('$destroy', () => {
+        // remove component from DOM.
+        // Insert a delay to elminate for CSS animation porpouses.
+        el.addClass('dialog--close');
+        this.$timeout(() => {
+          el.remove();
+          this.nmdDialog.toggleElements();
+        }, 400);
+      });
     };
   }
 
@@ -41,7 +54,7 @@ class DialogWatcher {
 }
 
 // Injection array for minification compatibility
-let inject = ['$compile', 'nmdDialog', ($compile, nmdDialog) => new DialogWatcher($compile, nmdDialog)];
+let inject = ['$compile', '$timeout', 'nmdDialog', ($compile, $timeout, nmdDialog) => new DialogWatcher($compile, $timeout, nmdDialog)];
 
 /** @exports injection array with directive class */
 export default {
