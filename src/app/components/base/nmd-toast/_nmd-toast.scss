@@ -50,7 +50,7 @@ nmd-toast {
       color: white;
       
       // Misc
-      animation: opacityShow50 $toast-duration + .1s;
+      animation: showToastContent $toast-duration + .1s;
     }
     
     &__btn {
@@ -68,7 +68,7 @@ nmd-toast {
       background-color: transparent;
       
       // Misc
-      animation: opacityShow50 $toast-duration + .1s;
+      animation: showToastContent $toast-duration + .1s;
     }
   }
 }
@@ -80,5 +80,17 @@ nmd-toast {
   }
   to {
     bottom: 0;
+  }
+}
+
+@keyframes showToastContent {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: .3;
+  }
+  100% {
+    opacity: 1;
   }
 }
