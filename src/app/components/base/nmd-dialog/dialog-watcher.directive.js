@@ -45,7 +45,7 @@ class DialogWatcher {
         this.$timeout(() => {
           el.remove();
           this.nmdDialog.toggleElements();
-        }, 400);
+        }, 250);
       });
     };
   }
