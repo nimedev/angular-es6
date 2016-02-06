@@ -1,8 +1,22 @@
-### Fix angular ^1.5.0-rc.2 bundle and bundle-sfx problem
+## Fix angular ^1.5.0-rc.2 bundle and bundle-sfx problem
 
-> Copy content of npm folder in jspm_packages folder.
+### The problem
 
-## Solution
+The browser console print:
+```js
+Uncaught (in promise) Error: t.module is not a function(…)
+```
+or
+```js
+Uncaught (in promise) Error: angular.module is not a function(…)
+```
+When use jspm bundle ... or jspm bundle-sfx command.
+ 
+### Short way
+
+Copy content of npm folder in jspm_packages folder.
+
+### Manual way
 
 1) Comment line 2 "format global" in jspm_packages/npm/angular@1.5.0/index.js file.
 
