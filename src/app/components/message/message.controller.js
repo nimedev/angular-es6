@@ -1,11 +1,11 @@
 /**
  * Controller for message component.
- * @class Message
+ * @class MessageCtrl
  * @param {Object} nmdDialog - to get close service for dialog
- * @param {Object} nmdToast - to get open service for toast 
+ * @param {Object} nmdToast - to get open service for toast
  */
-// Controller class
-class Message {
+/** @exports Controller class */
+export default class MessageCtrl {
   /*@ngInject*/
   constructor(nmdDialog, nmdToast) {
     // Save dependencies
@@ -32,7 +32,4 @@ class Message {
 }
 
 // Injection array for minification compatibility
-let inject = ['nmdDialog', 'nmdToast', Message];
-
-/** @exports injection array with controller class */
-export default inject;
+MessageCtrl.$inject = ['nmdDialog', 'nmdToast'];

@@ -1,10 +1,10 @@
 /**
- * Service to control header visibility.
+ * Service to control header navigation visibility.
  * @name headerNav
  * @class HeaderNav
  */
 // Service name
-let serviceName = 'headerNav'; 
+let serviceName = 'headerNav';
 
 // Service class
 class HeaderNav {
@@ -57,10 +57,10 @@ class HeaderNav {
 }
 
 // Injection array for minification compatibility
-let inject = [HeaderNav];
+HeaderNav.$inject = [];
 
-/** @exports injection array with service class */
+/** @exports service name and class */
 export default {
   name: serviceName,
-  service: inject
+  service: HeaderNav
 };
