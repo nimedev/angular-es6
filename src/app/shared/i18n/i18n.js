@@ -7,11 +7,11 @@
 import * as angular from 'angular';
 
 /** Comunity modules */
-import * as translate from 'angular-translate';
-import * as handlerLog from 'angular-translate-handler-log';
-import * as loaderStaticFiles from 'angular-translate-loader-static-files';
-import * as storageCookie from 'angular-translate-storage-cookie';
-import * as storageLocal from 'angular-translate-storage-local';
+import translate from 'angular-translate';
+import handlerLog from 'angular-translate-handler-log';
+import loaderStaticFiles from 'angular-translate-loader-static-files';
+import storageCookie from 'angular-translate-storage-cookie';
+import storageLocal from 'angular-translate-storage-local';
 
 /** Others modules */
 import defaultLanguage from 'assets/i18n/locale-en.json!';
