@@ -19,7 +19,8 @@
       "name": "app.js"
     },
     "dep": {
-      "name": "dep.js"
+      "name": "dep.js",
+      "arithmetic": "app/main.js - [app/**/*]"
     },
     "ng": {
       "name": "ng.js",

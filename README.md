@@ -6,7 +6,7 @@
 
 #### For experienced users
 ```sh
-  npm install -g jspm gulp && jspm install && npm install
+  npm install jspm gulp -g && jspm install && npm install
 ```
 
 #### Prerequisites
