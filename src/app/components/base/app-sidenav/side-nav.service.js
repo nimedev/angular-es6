@@ -6,7 +6,7 @@
  * @param {Object} $window - to get initial size.
  */
 // Service name
-let serviceName = 'sideNav'; 
+let serviceName = 'sideNav';
 
 // Service class
 class SideNav {
@@ -74,10 +74,10 @@ class SideNav {
 }
 
 // Injection array for minification compatibility
-let inject = ['$state', '$window', SideNav];
+SideNav.$inject = ['$state', '$window'];
 
-/** @exports injection array with service class */
+/** @exports service name and class */
 export default {
   name: serviceName,
-  service: inject
+  service: SideNav
 };

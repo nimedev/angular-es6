@@ -1,11 +1,11 @@
 /**
  * Controller for app-sidenav component.
- * @class AppSideNavCtrl
+ * @class AppSidenavCtrl
  * @param {Object} $window - to get initial size.
  * @param {Object} sideNav - to control open/close of sidenav.
  */
-// Controller class
-class AppSideNavCtrl {
+/** @exports Controller class */
+export default class AppSidenavCtrl {
   /*@ngInject*/
   constructor($window, sideNav) {
     // Save dependencies
@@ -22,7 +22,6 @@ class AppSideNavCtrl {
   }
 
   /** Class Methods */
-  
   /**
    * Call close sidenav service.
    * Use when can't use close-sidenav directive.
@@ -33,7 +32,4 @@ class AppSideNavCtrl {
 }
 
 // Injection array for minification compatibility
-let inject = ['$window', 'sideNav', AppSideNavCtrl];
-
-/** @exports injection array with controller class */
-export default inject;
+AppSidenavCtrl.$inject = ['$window', 'sideNav'];

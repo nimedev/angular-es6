@@ -18,7 +18,7 @@ class CloseSidenav {
     this.restrict = 'A';
     this.scope = {};
     
-    /** link function */
+    /** Link function */
     this.link = (scope, el, attr, ctrl) => {
       el.on('click', () => {
         this.sideNav.safeClose();
@@ -28,20 +28,18 @@ class CloseSidenav {
 
   /** Class Methods */
 
-  /*link(scope, el, attr, ctrl) {
-    console.log(this)
-
-    el.on('click', () => {
-      scope.sideNav.changeState();
-    });
-  }*/
+  /** Directive factory */
+  static factory(sideNav) {
+    CloseSidenav.instance = new CloseSidenav(sideNav);
+    return CloseSidenav.instance;
+  }
 }
 
 // Injection array for minification compatibility
-let inject = ['sideNav', (sideNav) => new CloseSidenav(sideNav)];
+CloseSidenav.$inject = ['sideNav'];
 
-/** @exports injection array with directive class */
+/** @exports directive name and class */
 export default {
   name: directiveName,
-  directive: inject
+  directive: CloseSidenav.factory
 };
