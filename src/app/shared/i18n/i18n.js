@@ -4,7 +4,7 @@
  * @module i18n
  */
 /** Angular modules */
-import * as angular from 'angular';
+import angular from 'angular';
 
 /** Comunity modules */
 import translate from 'angular-translate';

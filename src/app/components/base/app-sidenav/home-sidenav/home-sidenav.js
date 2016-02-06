@@ -3,7 +3,7 @@
  * @module homeSidenav
  */
 /** Angular modules */
-import * as angular from 'angular';
+import angular from 'angular';
 
 /** Comunity modules */
 
