@@ -1,15 +1,14 @@
 /**
- * Service used to add a dialog component in html body.
+ * Service used to add nmd-dialog component in document body.
  * @name nmdDialog
- * @class Dialog
- * @param {Object} $compile - to compile new dialog directive.
- * @param {Object} $rootScope - to create new scope for compiled component.
+ * @class NmdDialog
+ * @param {Object} $compile, $rootScope - ...
  */
 // Service name
 let serviceName = 'nmdDialog';
 
 // Service class
-class Dialog {
+class NmdDialog {
   /*@ngInject*/
   constructor($compile, $rootScope) {
     // Save dependencies
@@ -75,10 +74,10 @@ class Dialog {
 }
 
 // Injection array for minification compatibility
-let inject = ['$compile', '$rootScope', Dialog];
+NmdDialog.$inject = ['$compile', '$rootScope'];
 
-/** @exports injection array with service class */
+/** @exports service name and class */
 export default {
   name: serviceName,
-  service: inject
+  service: NmdDialog
 };

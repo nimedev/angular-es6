@@ -1,5 +1,5 @@
 /**
- * Directive to add function to nmd-dialog component.
+ * Directive to add functions to nmd-dialog component.
  * @name dialogWatcher
  * @class DialogWatcher
  * @param {Object} $compile - to compile dialog content component.
@@ -21,7 +21,7 @@ class DialogWatcher {
     /** Class Fields */
     this.restrict = 'A';
 
-    /** link function */
+    /** Link function */
     this.link = (scope, el, attr, ctrl) => {
       let backdrop = el[0].querySelector('.dialog__back');
       let component = attr.ndComponent;
@@ -51,15 +51,19 @@ class DialogWatcher {
   }
 
   /** Class Methods */
+
+  /** Directive factory */
+  static factory($compile, $timeout, nmdDialog) {
+    DialogWatcher.instance = new DialogWatcher($compile, $timeout, nmdDialog);
+    return DialogWatcher.instance;
+  }
 }
 
 // Injection array for minification compatibility
-let inject = ['$compile', '$timeout', 'nmdDialog', ($compile, $timeout, nmdDialog) => {
-  return new DialogWatcher($compile, $timeout, nmdDialog);
-}];
+DialogWatcher.$inject = ['$compile', '$timeout', 'nmdDialog'];
 
-/** @exports injection array with directive class */
+/** @exports directive name and class */
 export default {
   name: directiveName,
-  directive: inject
+  directive: DialogWatcher.factory
 };
