@@ -15,5 +15,8 @@
   "MESSAGE": {
     "TITLE": "Hola!!",
     "CLOSE": "Cerrar"
+  },
+  "NOTIFICATIONS": {
+    "LANGUAGE": "El idioma ha cambiado!!!"
   }
 }

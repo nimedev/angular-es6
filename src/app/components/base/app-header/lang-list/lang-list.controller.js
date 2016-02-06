@@ -2,14 +2,16 @@
  * Controller for lang-list component.
  * @class LangListCtrl
  * @param {Object} $translate - to change language.
+ * @param {Object} i18n - to get notifications texts.
  * @param {Object} nmdToast - to show toast when change language.
  */
-// Controller class
-class LangListCtrl {
+/** @exports Controller class */
+export default class LangListCtrl {
   /*@ngInject*/
-  constructor($translate, nmdToast) {
+  constructor($translate, i18n, nmdToast) {
     // Save dependencies
     this.$translate = $translate;
+    this.i18n = i18n;
     this.nmdToast = nmdToast;
 
     /** Class Fields */
@@ -19,13 +21,11 @@ class LangListCtrl {
   /** Class Methods */
   /** Change language in runtime. */
   changeLanguage(langKey) {
+    let notiText = this.i18n.notifications['NOTIFICATIONS.LANGUAGE'];
     this.$translate.use(langKey);
-    this.nmdToast.show('Language changed');
+    this.nmdToast.show(notiText);
   }
 }
 
 // Injection array for minification compatibility
-let inject = ['$translate', 'nmdToast', LangListCtrl];
-
-/** @exports injection array with controller class */
-export default inject;
+LangListCtrl.inject = ['$translate', 'i18n', 'nmdToast'];

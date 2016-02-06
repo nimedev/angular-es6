@@ -16,6 +16,13 @@ import storageLocal from 'angular-translate-storage-local';
 /** Others modules */
 import defaultLanguage from 'assets/i18n/locale-en.json!';
 
+/** Component */
+
+/** Services */
+import i18n from './i18n.service';
+
+// Variables
+
 // Constants
 const moduleName = 'i18n';
 
@@ -34,7 +41,12 @@ angular
     $translateProvider.useLocalStorage();
     $translateProvider.useSanitizeValueStrategy('escape');
     $translateProvider.useMissingTranslationHandlerLog();
-  }]);
+  }])
+  .run(['$rootScope', 'i18n', ($rootScope, i18n) => {
+    i18n.init();
+    $rootScope.$on('$translateChangeSuccess', () => i18n.init());
+  }])
+  .service(i18n.name, i18n.service);
 
 /** @exports module name */
 export default moduleName;
