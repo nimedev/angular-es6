@@ -9,8 +9,9 @@ import angular from 'angular';
 
 /** Submodules */
 
-/** Component */
+/** Component & Directives */
 import component from './float-button.component';
+import fabWatcher from './fab-watcher.directive';
 
 /** Services */
 
@@ -22,7 +23,8 @@ const moduleName = 'floatButton';
 // Define module
 angular
   .module(moduleName, [])
-  .component(component.name, component);
+  .component(component.name, component)
+  .directive(fabWatcher.name, fabWatcher.directive);
 
 /** @exports module name */
 export default moduleName;

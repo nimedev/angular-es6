@@ -14,9 +14,6 @@ class DialogWatcher {
   /*@ngInject*/
   constructor($compile, $timeout, nmdDialog) {
     // Save dependencies
-    this.$compile = $compile;
-    this.nmdDialog = nmdDialog;
-    this.$timeout = $timeout;
 
     /** Class Fields */
     this.restrict = 'A';
@@ -29,12 +26,12 @@ class DialogWatcher {
       // Insert component to dialog content
       if (component) {
         let newElement = `<${component} class="dialog__component whiteframe-5"></${component}>`;
-        el.append(this.$compile(newElement)(scope));
+        el.append($compile(newElement)(scope));
       }
 
       // Add click event to backdrop element to close dialog
       backdrop.addEventListener('click', () => {
-        this.nmdDialog.close(component);
+        nmdDialog.close(component);
       });
       
       // Wait for the scope destruction 
@@ -42,9 +39,9 @@ class DialogWatcher {
         // remove component from DOM.
         // Insert a delay to elminate for CSS animation porpouses.
         el.addClass('dialog--close');
-        this.$timeout(() => {
+        $timeout(() => {
           el.remove();
-          this.nmdDialog.toggleElements();
+          nmdDialog.toggleElements();
         }, 250);
       });
     };

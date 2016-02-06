@@ -9,7 +9,7 @@ import angular from 'angular';
 
 /** Submodules */
 
-/** Component or Directive */
+/** Component & Directives */
 import component from './nmd-dialog.component';
 import directive from './dialog-watcher.directive';
 

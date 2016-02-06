@@ -9,7 +9,7 @@ import angular from 'angular';
 
 /** Submodules */
 
-/** Component or Directive */
+/** Component & Directives */
 import component from './nmd-toast.component';
 import toastWatcher from './toast-watcher.directive';
 
