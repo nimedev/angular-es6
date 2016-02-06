@@ -1,5 +1,5 @@
 /**
- * Directive. to check component estatus.
+ * Directive to check component status.
  * @name toastWatcher
  * @class ToastWatcher
  * @param {Object} $timeout - to cancel toast timmer when force and generate 
@@ -20,7 +20,7 @@ class ToastWatcher {
 
     /** Class Methods */
 
-    // link function
+    // Link function
     this.link = (scope, el, attr, ctrl) => {
       // The directive is inserted in component child to get access
       // of controller scope.
@@ -40,13 +40,19 @@ class ToastWatcher {
   }
 
   /** Class Methods */
+
+  /** Directive factory */
+  static factory($timeout) {
+    ToastWatcher.instance = new ToastWatcher($timeout);
+    return ToastWatcher.instance;
+  }
 }
 
 // Injection array for minification compatibility
-let inject = ['$timeout', ($timeout) => new ToastWatcher($timeout)];
+ToastWatcher.factory.$inject = ['$timeout'];
 
-/** @exports injection array with directive class */
+/** @exports directive name and class */
 export default {
   name: directiveName,
-  directive: inject
+  directive: ToastWatcher.factory
 };

@@ -4,8 +4,8 @@
  * @param {Object} $timeout - to create toast delay.
  * @param {Object} nmdToast - to get toast services.
  */
-// Controller class
-class NmdToastCtrl {
+/** @exports Controller class */
+export default class NmdToastCtrl {
   /*@ngInject*/
   constructor($timeout, nmdToast) {
     let button = nmdToast.button;
@@ -31,13 +31,11 @@ class NmdToastCtrl {
   }
 
   /** Class Methods */
+  /** Call close toast service */
   close() {
     this.nmdToast.close();
   }
 }
 
 // Injection array for minification compatibility
-let inject = ['$timeout', 'nmdToast', NmdToastCtrl];
-
-/** @exports injection array with controller class */
-export default inject;
+NmdToastCtrl.$inject = ['$timeout', 'nmdToast'];

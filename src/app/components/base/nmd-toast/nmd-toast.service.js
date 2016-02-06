@@ -96,10 +96,10 @@ class NmdToast {
 }
 
 // Injection array for minification compatibility
-let inject = ['$compile', '$rootScope', NmdToast];
+NmdToast.$inject = ['$compile', '$rootScope'];
 
-/** @exports injection array with service class */
+/** @exports service name and class */
 export default {
   name: serviceName,
-  service: inject
+  service: NmdToast
 };
