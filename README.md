@@ -28,10 +28,10 @@ The version should be at or above 0.12.x.
 
 2) If you don't have Node.js intalled.
 
-3) Install `JSPM` and `gulp`.
+3) Install `JSPM` and `gulp` globally.
 
 ```sh
-npm install -g jspm gulp
+npm install jspm gulp -g
 ```
 
 This lets you run `jspm` and `gulp` from the command line.
