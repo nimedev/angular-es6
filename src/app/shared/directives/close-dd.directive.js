@@ -14,25 +14,32 @@ class CloseDd {
 
     /** Class Fields */
     this.restrict = 'A';
+    
+    /** Link function */
+    this.link = (scope, el, attr, ctrl) => {
+      let toggleButton = el.parent().find('input');
+      
+      // Change checked property to checkbox when click in element
+      el.on('click', () => {
+        toggleButton[0].checked = false;
+      });
+    };
   }
 
   /** Class Methods */
-
-  link(scope, el, attr, ctrl) {
-    let toggleButton = el.parent().find('input');
-    
-    // Change checked property to checkbox when click in element
-    el.on('click', () => {
-      toggleButton[0].checked = false;
-    });
+  
+  /** Directive factory */
+  static factory() {
+    CloseDd.instance = new CloseDd();
+    return CloseDd.instance;
   }
 }
 
 // Injection array for minification compatibility
-let inject = [() => new CloseDd()];
+CloseDd.factory.$inject = [];
 
-/** @exports injection array with directive class */
+/** @exports directive name and class */
 export default {
   name: directiveName,
-  directive: inject
+  directive: CloseDd.factory
 };

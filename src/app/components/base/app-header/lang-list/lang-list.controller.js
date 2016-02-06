@@ -28,4 +28,4 @@ export default class LangListCtrl {
 }
 
 // Injection array for minification compatibility
-LangListCtrl.inject = ['$translate', 'i18n', 'nmdToast'];
+LangListCtrl.$inject = ['$translate', 'i18n', 'nmdToast'];

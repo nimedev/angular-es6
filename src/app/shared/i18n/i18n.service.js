@@ -10,9 +10,9 @@ let serviceName = 'i18n';
 // Service class
 class I18n {
   /*@ngInject*/
-  constructor($t) {
+  constructor($translate) {
     // Save dependencies
-    this.$t = $t;
+    this.$translate = $translate;
 
     /** Class Fields */
     this.notifications = [];
@@ -26,7 +26,7 @@ class I18n {
   /** HELPER FUNCTIONS */
   /** Get notifications text usign translate service */
   getNotifications() {
-    return this.$t([
+    return this.$translate([
       'NOTIFICATIONS.LANGUAGE'
     ]).then((translations) => {
       angular.copy(translations, this.notifications);
