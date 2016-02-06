@@ -36,7 +36,7 @@ class CloseSidenav {
 }
 
 // Injection array for minification compatibility
-CloseSidenav.$inject = ['sideNav'];
+CloseSidenav.factory.$inject = ['sideNav'];
 
 /** @exports directive name and class */
 export default {

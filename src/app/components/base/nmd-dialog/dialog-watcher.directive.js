@@ -60,7 +60,7 @@ class DialogWatcher {
 }
 
 // Injection array for minification compatibility
-DialogWatcher.$inject = ['$compile', '$timeout', 'nmdDialog'];
+DialogWatcher.factory.$inject = ['$compile', '$timeout', 'nmdDialog'];
 
 /** @exports directive name and class */
 export default {
