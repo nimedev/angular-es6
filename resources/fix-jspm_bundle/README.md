@@ -1,4 +1,4 @@
-## Fix angular ^1.5.0-rc.2 bundle and bundle-sfx problem
+## Fix angular ^1.5.0-rc.2 JSPM bundle and bundle-sfx problem
 
 ### The problem
 
