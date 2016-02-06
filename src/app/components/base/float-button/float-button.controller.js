@@ -1,10 +1,10 @@
 /**
  * Controller for float-button component.
- * @class FloatButton
+ * @class FloatButtonCtrl
  * @param {Object} nmdDialog - to open a dialog box.
  */
-// Controller class
-class FloatButton {
+/** @exports Controller class */
+export default class FloatButtonCtrl {
   /*@ngInject*/
   constructor(nmdDialog) {
     // Save dependencies
@@ -21,7 +21,4 @@ class FloatButton {
 }
 
 // Injection array for minification compatibility
-let inject = ['nmdDialog', FloatButton];
-
-/** @exports injection array with controller class */
-export default inject;
+FloatButtonCtrl.$inject = ['nmdDialog'];
