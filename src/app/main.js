@@ -1,6 +1,6 @@
 /**
  * Main module
- * @module 'angular-seed' 
+ * @module 'angular-es6' 
  */
 /** Angular modules */
 import angular from 'angular';
@@ -22,9 +22,10 @@ import nmdComponents from 'app/components/nmd-components/nmd-components';
 /** Shared */
 import directives from 'app/shared/directives/directives';
 import i18n from 'app/shared/i18n/i18n';
+import services from 'app/shared/services/services';
 
 // Constants
-const appName = 'ng-seed';
+const appName = 'ng-es6';
 
 // Variables
 let constants;
@@ -61,7 +62,8 @@ angular
 
   // Shared components
     directives,
-    i18n
+    i18n,
+    services
   ])
   .config(['$urlRouterProvider', ($urlRouterProvider) => {
     // Redirect path to * urls

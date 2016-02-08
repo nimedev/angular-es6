@@ -3,6 +3,7 @@
  * @name fabWatcher
  * @class FabWatcher
  * @param {Object} $rootScope - to catch toast events.
+ * @param {Object} styles - to get CSS properties.
  */
 // Directive name
 let directiveName = 'fabWatcher';
@@ -10,7 +11,7 @@ let directiveName = 'fabWatcher';
 // Directive class
 class FabWatcher {
   /*@ngInject*/
-  constructor($rootScope) {
+  constructor($rootScope, styles) {
     // Save dependencies
 
     /** Class Fields */
@@ -22,11 +23,8 @@ class FabWatcher {
       
       // Action when toast is shown
       $rootScope.$on('toastShown', ($event, element) => {
-        let html = angular.element(document).find('html')[0];
-        let style = window.getComputedStyle(html, null).getPropertyValue('font-size'); 
-        let fontSize = Number.parseInt(style);
-        
         // Move Element from bottom.
+        let fontSize = styles.getRootFontSize();
         let toast = element[0];
         let bottom = toast.clientHeight / fontSize + 1;
         component.style.bottom = bottom + 'rem';
@@ -42,14 +40,14 @@ class FabWatcher {
   /** Class Methods */
 
   /** Directive factory */
-  static factory($rootScope) {
-    FabWatcher.instance = new FabWatcher($rootScope);
+  static factory($rootScope, styles) {
+    FabWatcher.instance = new FabWatcher($rootScope, styles);
     return FabWatcher.instance;
   }
 }
 
 // Injection array for minification compatibility
-FabWatcher.factory.$inject = ['$rootScope'];
+FabWatcher.factory.$inject = ['$rootScope', 'styles'];
 
 /** @exports directive name and class */
 export default {
