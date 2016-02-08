@@ -2,7 +2,7 @@
 
 ### The problem
 
-The browser console print:
+When use jspm bundle ... or jspm bundle-sfx ... command and try load the app the browser console print:
 ```js
 Uncaught (in promise) Error: t.module is not a function(…)
 ```
@@ -10,7 +10,6 @@ or
 ```js
 Uncaught (in promise) Error: angular.module is not a function(…)
 ```
-When use jspm bundle ... or jspm bundle-sfx command.
  
 ### Short way
 

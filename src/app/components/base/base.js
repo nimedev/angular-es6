@@ -8,12 +8,10 @@ import angular from 'angular';
 /** Comunity modules */
 
 /** Submodules */
+import appFab from './app-fab/app-fab';
 import appHeader from './app-header/app-header';
 import appSidenav from './app-sidenav/app-sidenav';
 import comingSoon from './coming-soon/coming-soon';
-import floatButton from './float-button/float-button';
-import nmdDialog from './nmd-dialog/nmd-dialog';
-import nmdToast from './nmd-toast/nmd-toast';
 
 /** Component */
 
@@ -27,12 +25,10 @@ const moduleName = 'base';
 // Define module
 angular
   .module(moduleName, [
+    appFab,
     appHeader,
     appSidenav,
-    comingSoon,
-    floatButton,
-    nmdDialog,
-    nmdToast
+    comingSoon
   ]);
 
 /** @exports module name */

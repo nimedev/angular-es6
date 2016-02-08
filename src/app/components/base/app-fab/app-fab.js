@@ -1,6 +1,6 @@
 /**
- * Module for float-button component.
- * @module floatButton
+ * Module for app-fab component.
+ * @module appFab
  */
 /** Angular modules */
 import angular from 'angular';
@@ -10,13 +10,13 @@ import angular from 'angular';
 /** Submodules */
 
 /** Component & Directives */
-import component from './float-button.component';
+import component from './app-fab.component';
 import fabWatcher from './fab-watcher.directive';
 
 /** Services */
 
 // Constants
-const moduleName = 'floatButton';
+const moduleName = 'appFab';
 
 // Variables
 

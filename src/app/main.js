@@ -17,6 +17,7 @@ import configView from 'app/components/config-view/config-view';
 import helpView from 'app/components/help-view/help-view';
 import homeView from 'app/components/home-view/home-view';
 import message from 'app/components/message/message';
+import nmdComponents from 'app/components/nmd-components/nmd-components';
 
 /** Shared */
 import directives from 'app/shared/directives/directives';
@@ -56,6 +57,7 @@ angular
     helpView,
     homeView,
     message,
+    nmdComponents,
 
   // Shared components
     directives,
