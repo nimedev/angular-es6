@@ -16,7 +16,6 @@ nmd-toast {
   justify-content: space-between;
   align-items: center;
   padding: .875rem 1.5rem;
-  width: 100%;
   min-height: 3rem;
   
   // Tipography
@@ -32,12 +31,12 @@ nmd-toast {
   // Responsive
   @include respond-to(small) {
     // Positioning
+    right: auto;
     left: 50%;
     
     // Box-model
     min-width: 18rem;
     max-width: 35.5rem;
-    width: auto;
     
     // Misc
     transform: translateX(-50%);
