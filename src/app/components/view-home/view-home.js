@@ -1,21 +1,19 @@
 /**
- * Module for config-view component.
- * @module configView
+ * Module for view-home component.
+ * @module viewHome
  */
 /** Angular modules */
 import angular from 'angular';
 
 /** Comunity modules */
 
-/** Submodules */
-
-/** Component */
-import component from './config-view.component';
+/** Components */
+import component from './view-home.component';
 
 /** Services */
 
 // Constants
-const moduleName = 'configView';
+const moduleName = 'viewHome';
 
 // Variables
 
@@ -23,16 +21,16 @@ const moduleName = 'configView';
 angular
   .module(moduleName, [])
   .config(['$stateProvider', ($stateProvider) => {
-    // Config view
+    // Home view
     $stateProvider
       .state(moduleName, {
-        url: '/config',
+        url: '/',
         views: {
           'sidenav': {
-            template: '<config-sidenav></config-sidenav>'
+            template: '<home-sidenav></home-sidenav>'
           },
           'app-content': {
-            template: '<config-view></config-view>'
+            template: '<view-home></view-home>'
           }
         }
       });

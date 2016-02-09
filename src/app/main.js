@@ -13,11 +13,11 @@ import uiRouter from 'angular-ui-router';
 
 /** Components */
 import base from 'app/components/base/base';
-import configView from 'app/components/config-view/config-view';
-import helpView from 'app/components/help-view/help-view';
-import homeView from 'app/components/home-view/home-view';
 import message from 'app/components/message/message';
 import nmdComponents from 'app/components/nmd-components/nmd-components';
+import viewConfig from 'app/components/view-config/view-config';
+import viewHelp from 'app/components/view-help/view-help';
+import viewHome from 'app/components/view-home/view-home';
 
 /** Shared */
 import directives from 'app/shared/directives/directives';
@@ -54,11 +54,11 @@ angular
 
   // Components
     base,
-    configView,
-    helpView,
-    homeView,
     message,
     nmdComponents,
+    viewConfig,
+    viewHelp,
+    viewHome,
 
   // Shared components
     directives,

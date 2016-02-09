@@ -1,13 +1,12 @@
 /*------------------------------------*\
-    $CONFIGURAION VIEW
+    $HOME VIEW
 \*------------------------------------*/
 
-.config-view {
+.view-home {
   // extend styles
   @extend .content-wrapper;
   @extend .whiteframe-1;
   
   // Box-model
-  display: block;
   padding: 1em;
 }

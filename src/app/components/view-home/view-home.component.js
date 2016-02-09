@@ -1,10 +1,10 @@
-/** home-view component. */
+/** view-home component. */
 // Template
-import template from './home-view.html!text';
+import template from './view-home.html!text';
 
 // Component object
 let component = {
-  name: 'homeView',
+  name: 'viewHome',
   template
 };
 

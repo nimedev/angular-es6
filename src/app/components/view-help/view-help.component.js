@@ -1,10 +1,10 @@
-/** help-view component. */
+/** view-help component. */
 // Template
-import template from './help-view.html!text';
+import template from './view-help.html!text';
 
 // Component object
 let component = {
-  name: 'helpView',
+  name: 'viewHelp',
   template
 };
 

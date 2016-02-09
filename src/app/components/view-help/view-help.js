@@ -1,19 +1,21 @@
 /**
- * Module for home-view component.
- * @module homeView
+ * Module for view-help component.
+ * @module viewHelp
  */
 /** Angular modules */
 import angular from 'angular';
 
 /** Comunity modules */
 
-/** Components */
-import component from './home-view.component';
+/** Sub modules */
+
+/** Component */
+import component from './view-help.component';
 
 /** Services */
 
 // Constants
-const moduleName = 'homeView';
+const moduleName = 'viewHelp';
 
 // Variables
 
@@ -21,16 +23,16 @@ const moduleName = 'homeView';
 angular
   .module(moduleName, [])
   .config(['$stateProvider', ($stateProvider) => {
-    // Home view
+    // Help view
     $stateProvider
       .state(moduleName, {
-        url: '/',
+        url: '/help',
         views: {
           'sidenav': {
             template: '<home-sidenav></home-sidenav>'
           },
           'app-content': {
-            template: '<home-view></home-view>'
+            template: '<view-help></view-help>'
           }
         }
       });
