@@ -27,7 +27,7 @@ angular
         url: '/',
         views: {
           'sidenav': {
-            template: '<home-sidenav></home-sidenav>'
+            template: '<sidenav-home></sidenav-home>'
           },
           'app-content': {
             template: '<view-home></view-home>'

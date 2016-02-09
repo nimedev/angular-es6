@@ -1,12 +1,12 @@
-/** config-sidenav component. */
+/** sidenav-config component. */
 // Template
-import template from './config-sidenav.html!text';
+import template from './sidenav-config.html!text';
 
 // Controller
 
 // Component object
 let component = {
-  name: 'configSidenav',
+  name: 'sidenavConfig',
   template
 };
 

@@ -1,6 +1,6 @@
 /**
- * Module for home-sidenav component.
- * @module homeSidenav
+ * Module for sidenav-config component.
+ * @module sidenavConfig
  */
 /** Angular modules */
 import angular from 'angular';
@@ -10,12 +10,12 @@ import angular from 'angular';
 /** Submodules */
 
 /** Component */
-import component from './home-sidenav.component';
+import component from './sidenav-config.component';
 
 /** Services */
 
 // Constants
-const moduleName = 'homeSidenav';
+const moduleName = 'sidenavConfig';
 
 // Variables
 

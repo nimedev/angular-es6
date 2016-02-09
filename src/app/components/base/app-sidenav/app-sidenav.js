@@ -8,9 +8,9 @@ import angular from 'angular';
 /** Comunity modules */
 
 /** Submodules */
-import configSidenav from './config-sidenav/config-sidenav';
-import homeSidenav from './home-sidenav/home-sidenav';
 import menuItem from './menu-item/menu-item';
+import sidenavConfig from './sidenav-config/sidenav-config';
+import sidenavHome from './sidenav-home/sidenav-home';
 
 /** Component & Directives */
 import component from './app-sidenav.component';
@@ -27,9 +27,9 @@ const moduleName = 'appSidenav';
 // Define module
 angular
   .module(moduleName, [
-    homeSidenav,
-    configSidenav,
-    menuItem
+    menuItem,
+    sidenavHome,
+    sidenavConfig
   ])
   .component(component.name, component)
   .service(sideNav.name, sideNav.service)

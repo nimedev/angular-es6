@@ -29,7 +29,7 @@ angular
         url: '/help',
         views: {
           'sidenav': {
-            template: '<home-sidenav></home-sidenav>'
+            template: '<sidenav-home></sidenav-home>'
           },
           'app-content': {
             template: '<view-help></view-help>'

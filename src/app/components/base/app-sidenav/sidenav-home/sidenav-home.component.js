@@ -1,12 +1,12 @@
-/** home-sidenav component. */
+/** sidenav-home component. */
 // Template
-import template from './home-sidenav.html!text';
+import template from './sidenav-home.html!text';
 
 // Controller
 
 // Component object
 let component = {
-  name: 'homeSidenav',
+  name: 'sidenavHome',
   template
 };
 
