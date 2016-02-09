@@ -43,8 +43,8 @@ angular
     $translateProvider.useMissingTranslationHandlerLog();
   }])
   .run(['$rootScope', 'i18n', ($rootScope, i18n) => {
-    i18n.init();
-    $rootScope.$on('$translateChangeSuccess', () => i18n.init());
+    i18n.load();
+    $rootScope.$on('$translateChangeSuccess', () => i18n.loadAndNotify());
   }])
   .service(i18n.name, i18n.service);
 
