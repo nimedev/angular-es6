@@ -1,5 +1,5 @@
 /**
- * gulp tasks
+ * Gulp tasks
  * Build sass and js files in real time.
  * Prepare app for distribution int dist folder.
  */
@@ -73,16 +73,22 @@ gulp.task('style', () => styleTask());
  * BUNDLE TASKS
  */
 // Bundle application files in dist folder
-gulp.task('bundle:app', () => bundleAppTask());
+gulp.task('bundle:app', $.shell.task(shellBundle(config.bundle.app)));
 
 // Bundle application files in src folder for development
-gulp.task('bundle:app-dev', () => bundleAppTask(paths.bundle.dest.dev));
+gulp.task('bundle:app-dev', () => {
+  return gulp.src(paths.bundle.main)
+    .pipe($.shell(shellBundle(config.bundle.app, paths.bundle.dest.dev)))
+    .pipe(browserSync.stream());
+});
 
 // Bundle dependencies in dist folder.
-gulp.task('bundle:dep', $.shell.task(shellBundle(config.bundle.dep)));
+// gulp.task('bundle:dep', $.shell.task(shellBundle(config.bundle.dep)));
+gulp.task('bundle:dep', () => bundleDepTask());
 
 // Bundle dependencies in src folder for development.
-gulp.task('bundle:dep-dev', $.shell.task(shellBundle(config.bundle.dep, paths.bundle.dest.dev)));
+// gulp.task('bundle:dep-dev', $.shell.task(shellBundle(config.bundle.dep, paths.bundle.dest.dev)));
+gulp.task('bundle:dep-dev', () => bundleDepTask(paths.bundle.dest.dev));
 
 gulp.task('bundle:ng', $.shell.task(shellBundle(config.bundle.ng)));
 
@@ -150,37 +156,31 @@ gulp.task('default', (cb) => {
 
 /** HELPER FUNCTIONS */
 /** 
- * Create bundle app file for app scripts
+ * Create bundle dep file for jspm dependencies
  * @return {Object} bundle stream 
  */
-function bundleApp() {
-  let arithmetic = '';
-  
-  // Make string to ignore vendors in bundle app.
-  for (let vendor of vendors) {
-    arithmetic += ` - ${vendor}`;
-  }
-  console.log(arithmetic);
-
+function bundleDep() {
+  let arithmetic = '- [app/**/*]';
   return gulp.src(paths.bundle.main)
-    .pipe($.jspm({ arithmetic: arithmetic }));
+    .pipe($.jspm({
+      arithmetic: arithmetic
+    }));
 }
 
 /** 
- * Concat system.js and config.js files with app bundle file
- * and copy to dist folder 
+ * Concat system.js and config.js files with dependencie bundle file
+ * and copy to dest folder 
  * @param {string} dest - Destination path (use production path by default).
  */
-function bundleAppTask(dest) {
+function bundleDepTask(dest) {
   let destPath = dest || paths.bundle.dest.prod;
-  let name = config.bundle.app.name;
+  let name = config.bundle.dep.name;
   return gulp.src(paths.bundle.src)
-    .pipe(addStream.obj(bundleApp()))
+    .pipe(addStream.obj(bundleDep()))
+    // .pipe($.uglify())
     .pipe($.concat(name))
-    .pipe($.if(!dest, $.uglify()))
     .pipe(gulp.dest(destPath))
-    .pipe($.size({ title: path.join(destPath, name) }))
-    .pipe(browserSync.stream());
+    .pipe($.size({ title: path.join(destPath, name) }));
 }
 
 /** Copy json files for multi-language in dist folder. */
@@ -236,20 +236,24 @@ function optimizeImageTask() {
 function shellBundle(options, dest) {
   let arithmetic = '';
   let destPath = dest || paths.bundle.dest.prod;
+  let opt = '--minify --skip-source-maps';
+  
+  // if is in dev mode (dest != undefined) remove extra options
+  if (dest) {
+    opt = '';
+  }
   
   // Make string to ignore vendors in bundle app.
   if (options.arithmetic) {
     arithmetic = options.arithmetic;
   } else {
-    arithmetic += vendors[0];
     for (let vendor of vendors) {
-      arithmetic += ` + ${vendor}`;
+      arithmetic += ` - ${vendor}`;
     }
-    console.log(arithmetic);
   }
 
   return [
-    `jspm bundle ${arithmetic} ${destPath}/${options.name} --minify --skip-source-maps`
+    `jspm bundle ${options.src} ${arithmetic} ${destPath}/${options.name} ${opt}`
   ];
 }
 
