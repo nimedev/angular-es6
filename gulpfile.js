@@ -346,6 +346,7 @@ function shellBundle(options, dest) {
   let arithmetic = options.arithmetic || '';
   let destPath = dest || paths.bundle.dest.prod;
   let opt = '--minify --skip-source-maps';
+  let source = options.src;
   
   // if is in dev mode (dest != undefined) remove extra options
   if (dest) {
@@ -354,15 +355,35 @@ function shellBundle(options, dest) {
   
   // Make string to ignore vendors in bundle app.
   if (options.ignoreVendors) {
-    for (let vendor of vendors) {
-      arithmetic += ` - ${vendor}`;
-    }
+    arithmetic = vendorsList(true);
+  }
+
+  // Make string to include only vendors in bundle dep.
+  if (options.onlyVendors) {
+    source = vendors[0];
+    arithmetic = vendorsList(false);
   }
 
   // Return shell command to bundle
   return [
-    `jspm bundle ${options.src} ${arithmetic} ${destPath}/${options.name} ${opt}`
+    `jspm bundle ${source} ${arithmetic} ${destPath}/${options.name} ${opt}`
   ];
+}
+
+/**
+ * Make a string with dependencie vendors.
+ * ignore = true user '-' sign otherwise use '+'.
+ * @param {boolean} ignore - Indicate what sign use in vendor list.
+ */
+function vendorsList(ignore) {
+  let vendorsList = '';
+  let sign = (ignore) ? '-' : '+';
+
+  for (let vendor of vendors) {
+    vendorsList += ` ${sign} ${vendor}`;
+  }
+
+  return vendorsList;
 }
 
 /**

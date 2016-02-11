@@ -27,8 +27,7 @@
     },
     "dep": {
       "name": "dep.js",
-      "src": "app/main.js",
-      "arithmetic": "- [app/**/*]"
+      "onlyVendors": true
     },
     "ng": {
       "name": "ng.js",
