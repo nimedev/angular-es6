@@ -83,12 +83,12 @@ gulp.task('bundle:app-dev', () => {
 });
 
 // Bundle dependencies in dist folder.
-// gulp.task('bundle:dep', $.shell.task(shellBundle(config.bundle.dep)));
-gulp.task('bundle:dep', () => bundleDepTask());
+gulp.task('bundle:dep', $.shell.task(shellBundle(config.bundle.dep)));
+// gulp.task('bundle:dep', () => bundleDepTask());
 
 // Bundle dependencies in src folder for development.
-// gulp.task('bundle:dep-dev', $.shell.task(shellBundle(config.bundle.dep, paths.bundle.dest.dev)));
-gulp.task('bundle:dep-dev', () => bundleDepTask(paths.bundle.dest.dev));
+gulp.task('bundle:dep-dev', $.shell.task(shellBundle(config.bundle.dep, paths.bundle.dest.dev)));
+// gulp.task('bundle:dep-dev', () => bundleDepTask(paths.bundle.dest.dev));
 
 gulp.task('bundle:ng', $.shell.task(shellBundle(config.bundle.ng)));
 
@@ -101,6 +101,12 @@ gulp.task('bundle:vendors', $.shell.task(shellBundle(config.bundle.vendors)));
 gulp.task('bundle', (cb) => {
   del.sync(path.join(paths.bundle.dest.prod, '*'));
   runSequence(['bundle:app', 'bundle:dep'], cb);
+});
+
+// Separate bundles in app.js and dep.js files for development.
+gulp.task('bundle:dev', (cb) => {
+  del.sync(path.join(paths.bundle.dest.dev, '*'));
+  runSequence(['bundle:app-dev', 'bundle:dep-dev'], cb);
 });
 
 // Group build task in one
@@ -177,7 +183,7 @@ function bundleDepTask(dest) {
   let name = config.bundle.dep.name;
   return gulp.src(paths.bundle.src)
     .pipe(addStream.obj(bundleDep()))
-    // .pipe($.uglify())
+    .pipe($.uglify())
     .pipe($.concat(name))
     .pipe(gulp.dest(destPath))
     .pipe($.size({ title: path.join(destPath, name) }));
@@ -240,13 +246,11 @@ function shellBundle(options, dest) {
   
   // if is in dev mode (dest != undefined) remove extra options
   if (dest) {
-    opt = '';
+    opt = '--minify';
   }
   
   // Make string to ignore vendors in bundle app.
-  if (options.arithmetic) {
-    arithmetic = options.arithmetic;
-  } else {
+  if (options.ingnoreVendors)  {
     for (let vendor of vendors) {
       arithmetic += ` - ${vendor}`;
     }

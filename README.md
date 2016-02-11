@@ -43,7 +43,7 @@ This lets you run `jspm` and `gulp` from the command line.
 jspm install && npm install
 ```
 
-This installs the angular, angular-material, ui-router and dependencies required for gulp tasks.
+This installs the angular, ui-router and dependencies required for gulp tasks.
 
 5) (Optional) Install DefinitelyTyped `tsd`.
 

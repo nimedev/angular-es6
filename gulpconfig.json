@@ -8,7 +8,10 @@
   },
   "server": {
     "port": 3000,
-    "baseDir": "src",
+    "baseDir": {
+      "dev": "src",
+      "prod": "dist"
+    },
     "routes": {}
   },
   "filesName": {
@@ -17,7 +20,8 @@
   "bundle": {
     "app": {
       "name": "app.js",
-      "src": "app/main.js"
+      "src": "app/main.js",
+      "ignoreVendors": true
     },
     "dep": {
       "name": "dep.js",
