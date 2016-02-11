@@ -43,19 +43,19 @@ This lets you run `jspm` and `gulp` from the command line.
 jspm install && npm install
 ```
 
-This installs the angular, ui-router and dependencies required for gulp tasks.
+This installs angular, ui-router and dependencies required for gulp tasks.
 
-5) (Optional) Install DefinitelyTyped `tsd`.
+5) (Optional) Install a manager for TypeScript definitions `typings`.
 
-You can use `tsd` for intellisense (I use this in VScode).
+You can use `typings` for intellisense (I use this in VScode).
 
 ```sh
-npm install tsd -g
+npm install typings -g
 # cd to your project folder
-tsd install
+typings install
 ```
 
-This create a typings folder with a tsd.d.ts file which you can reference in your JavaScript files to get intellisense.
+This create a typings folder which you can reference in your JavaScript files to get intellisense.
 
 ### Development workflow
 

@@ -70,7 +70,7 @@ angular
     $urlRouterProvider.otherwise('/');
   }])
   .constant('constants', constants);
- 
+
 // Load app when document is ready
 htmlDocument = angular.element(document);
 
