@@ -6,9 +6,3 @@ dist
 jspm_packages
 node_modules
 typings
-
-style.css
-src/config.js
-src/assets/js/app.js
-src/assets/js/dep.js
-src/assets/js/*.map
