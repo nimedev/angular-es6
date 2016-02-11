@@ -24,7 +24,7 @@
 node --version
 ```
 
-The version should be at or above 0.12.x.
+The version should be at or above 4.x.
 
 2) If you don't have Node.js intalled.
 
