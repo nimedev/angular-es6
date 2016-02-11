@@ -92,42 +92,58 @@ gulp.task('style:dev', () => styleTask(paths.style.dest.dev));
 /**
  * BUNDLE TASKS
  */
-// Bundle application files in dist folder
+// Bundle application files in dist folder.
 gulp.task('bundle:app', $.shell.task(shellBundle(config.bundle.app)));
 
-// Bundle application files in src folder for development
+// Bundle application files in dev folder.
 gulp.task('bundle:app-dev', () => {
   return gulp.src(paths.bundle.main)
     .pipe($.shell(shellBundle(config.bundle.app, paths.bundle.dest.dev)))
     .pipe(browserSync.stream());
 });
 
+
 // Bundle dependencies in dist folder.
-gulp.task('bundle:dep', $.shell.task(shellBundle(config.bundle.dep)));
-// gulp.task('bundle:dep', () => bundleDepTask());
+// First bundle in tmp folder and then concat and copy in dist folder.
+gulp.task('bundle:dep', (cb) => {
+  runSequence('bundle:tmp', 'dep:concat', cb);
+});
 
-// Bundle dependencies in src folder for development.
-gulp.task('bundle:dep-dev', $.shell.task(shellBundle(config.bundle.dep, paths.bundle.dest.dev)));
-// gulp.task('bundle:dep-dev', () => bundleDepTask(paths.bundle.dest.dev));
+// Concat bundle dependecies in dist folder.
+gulp.task('dep:concat', () => bundleDepTask());
 
+// Bundle dependencies in dev folder.
+// First bundle in tmp folder and then concat and copy in dev folder.
+gulp.task('bundle:dep-dev', (cb) => {
+  runSequence('bundle:tmp', 'dep-dev:concat', cb);
+});
+
+// Concat bundle dependecies in dev folder.
+gulp.task('dep-dev:concat', () => bundleDepTask(paths.bundle.dest.dev));
+
+// Bundle dependencies in .tmp folder.
+gulp.task('bundle:tmp', $.shell.task(shellBundle(config.bundle.dep, '.tmp')));
+
+
+// Others bundles posibles bundles
 gulp.task('bundle:ng', $.shell.task(shellBundle(config.bundle.ng)));
 
 gulp.task('bundle:ng-material', $.shell.task(shellBundle(config.bundle.ngMaterial)));
 
 gulp.task('bundle:vendors', $.shell.task(shellBundle(config.bundle.vendors)));
 
+
 // Group bundle tasks
 // Separate bundles in app.js and dep.js files.
 gulp.task('bundle', (cb) => {
-  del.sync(path.join(paths.bundle.dest.prod, '*'));
   runSequence(['bundle:app', 'bundle:dep'], cb);
 });
 
 // Separate bundles in app.js and dep.js files for development.
 gulp.task('bundle:dev', (cb) => {
-  del.sync(path.join(paths.bundle.dest.dev, '*'));
   runSequence(['bundle:app-dev', 'bundle:dep-dev'], cb);
 });
+
 
 // Group build task in one
 gulp.task('build', ['lint'], (cb) => {
@@ -170,7 +186,7 @@ gulp.task('hot-reload:src', tasks, () => {
 });
 
 /** Serve files from dev folder watching all front-end tasks */
-tasks = ['html:dev', 'i18n:dev', 'images:dev', 'style:dev'];
+tasks = ['bundle:dev', 'html:dev', 'i18n:dev', 'images:dev', 'style:dev'];
 gulp.task('hot-reload:dev', tasks, () => {
   // config browser-sync module
   browserSync.init({
@@ -212,19 +228,42 @@ function bundleDep() {
 
 /** 
  * Concat system.js and config.js files with dependencie bundle file
- * and copy to dest folder 
+ * that is in .tmp folder and copy to dest folder 
  * @param {string} dest - Destination path (use production path by default).
  */
 function bundleDepTask(dest) {
   let destPath = dest || paths.bundle.dest.prod;
   let name = config.bundle.dep.name;
-  return gulp.src(paths.bundle.src)
-    .pipe(addStream.obj(bundleDep()))
+  let srcPath = paths.bundle.src; 
+  
+  // Add bundle dep file that is in temporal directory to source path. 
+  srcPath.push(path.join('.tmp', name)); 
+  
+  // Do task
+  return gulp.src(srcPath)
     .pipe($.uglify())
     .pipe($.concat(name))
     .pipe(gulp.dest(destPath))
-    .pipe($.size({ title: path.join(destPath, name) }));
+    .pipe($.size({ title: path.join(destPath, name) }))
+    .pipe(browserSync.stream());
+  
+  // return gulp.src(paths.bundle.src)
+  //   .pipe(addStream.obj(bundleDep()))
+  //   .pipe($.uglify())
+  //   .pipe($.concat(name))
+  //   .pipe(gulp.dest(destPath))
+  //   .pipe($.size({ title: path.join(destPath, name) }));
 }
+// function bundleDepTask(dest) {
+//   let destPath = dest || paths.bundle.dest.prod;
+//   let name = config.bundle.dep.name;
+//   return gulp.src(paths.bundle.src)
+//     .pipe(addStream.obj(bundleDep()))
+//     .pipe($.uglify())
+//     .pipe($.concat(name))
+//     .pipe(gulp.dest(destPath))
+//     .pipe($.size({ title: path.join(destPath, name) }));
+// }
 
 /** 
  * Copy i18n files in a new folder.
@@ -310,16 +349,17 @@ function shellBundle(options, dest) {
   
   // if is in dev mode (dest != undefined) remove extra options
   if (dest) {
-    opt = '--minify';
+    opt = (dest !== '.tmp') ? '--minify' : '';
   }
   
   // Make string to ignore vendors in bundle app.
-  if (options.ingnoreVendors) {
+  if (options.ignoreVendors) {
     for (let vendor of vendors) {
       arithmetic += ` - ${vendor}`;
     }
   }
 
+  // Return shell command to bundle
   return [
     `jspm bundle ${options.src} ${arithmetic} ${destPath}/${options.name} ${opt}`
   ];
@@ -356,6 +396,10 @@ function styleTask(dest) {
  */
 function watchTasks(runAll) {
   if (runAll) {
+    // watch for changes in js or html files in app folder
+    $.watch(paths.bundle.watch,
+      $.batch((events, done) => gulp.start('bundle:app-dev', done)));
+      
     // Watch for changes in html files
     $.watch(paths.html.watch,
       $.batch((events, done) => gulp.start('html:dev', done)));
@@ -367,10 +411,6 @@ function watchTasks(runAll) {
     // Watch for changes in html files
     $.watch(paths.images.watch,
       $.batch((events, done) => gulp.start('images:dev', done)));
-    
-    // watch for changes in js or html files in app folder
-    // $.watch(paths.bundle.watch,
-    //   $.batch((events, done) => gulp.start('bundle:app-dev', done)));
   }
   
   // Watch for changes in styles files
