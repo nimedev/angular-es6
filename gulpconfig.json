@@ -46,7 +46,14 @@
         "src/jspm_packages/system.js",
         "src/config.js"
       ],
-      "dest": "dist/assets/js"
+      "dest": {
+        "dev": "src/assets/js",
+        "prod": "dist/assets/js"
+      },
+      "watch": [
+        "src/app/**/*.js",
+        "src/app/**/*.html"
+      ]
     },
     "cleanAll": [
       ".tmp/*",
@@ -85,10 +92,9 @@
       ]
     },
     "reload": [
-      "src/app/**/*.js",
+      "src/*.html",
       "src/assets/i18n/*.json",
-      "src/assets/img/**/*",
-      "src/**/*.html"
+      "src/assets/img/**/*"
     ]
   }
 }

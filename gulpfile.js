@@ -72,9 +72,17 @@ gulp.task('style', () => styleTask());
 /**
  * BUNDLE TASKS
  */
+// Bundle application files in dist folder
 gulp.task('bundle:app', () => bundleAppTask());
 
+// Bundle application files in src folder for development
+gulp.task('bundle:app-dev', () => bundleAppTask(paths.bundle.dest.dev));
+
+// Bundle dependencies in dist folder.
 gulp.task('bundle:dep', $.shell.task(shellBundle(config.bundle.dep)));
+
+// Bundle dependencies in src folder for development.
+gulp.task('bundle:dep-dev', $.shell.task(shellBundle(config.bundle.dep, paths.bundle.dest.dev)));
 
 gulp.task('bundle:ng', $.shell.task(shellBundle(config.bundle.ng)));
 
@@ -85,7 +93,7 @@ gulp.task('bundle:vendors', $.shell.task(shellBundle(config.bundle.vendors)));
 // Group bundle tasks
 // Separate bundles in app.js and dep.js files.
 gulp.task('bundle', (cb) => {
-  del.sync(path.join(paths.bundle.dest, '*'));
+  del.sync(path.join(paths.bundle.dest.prod, '*'));
   runSequence(['bundle:app', 'bundle:dep'], cb);
 });
 
@@ -100,7 +108,7 @@ gulp.task('build', ['lint'], (cb) => {
  */
 /** Watch styles and templates */
 gulp.task('style:watch', () => styleTask(paths.style.dest.dev));
-tasks = ['style:watch'];
+tasks = ['style:watch', 'bundle:app-dev', 'bundle:dep-dev'];
 gulp.task('watch', tasks, () => {
   watchTasks();
 });
@@ -161,16 +169,18 @@ function bundleApp() {
 /** 
  * Concat system.js and config.js files with app bundle file
  * and copy to dist folder 
+ * @param {string} dest - Destination path (use production path by default).
  */
-function bundleAppTask() {
-  let destPath = paths.bundle.dest;
+function bundleAppTask(dest) {
+  let destPath = dest || paths.bundle.dest.prod;
   let name = config.bundle.app.name;
   return gulp.src(paths.bundle.src)
     .pipe(addStream.obj(bundleApp()))
     .pipe($.concat(name))
-    .pipe($.uglify())
+    .pipe($.if(!dest, $.uglify()))
     .pipe(gulp.dest(destPath))
-    .pipe($.size({ title: path.join(destPath, name) }));
+    .pipe($.size({ title: path.join(destPath, name) }))
+    .pipe(browserSync.stream());
 }
 
 /** Copy json files for multi-language in dist folder. */
@@ -221,9 +231,11 @@ function optimizeImageTask() {
 /**
  * Prepare shell comand for jspm bundle
  * @param {Object} options - Object with arithmetic and name of bundle comand
+ * @param {string} dest - Destination path (use production path by default).
  */
-function shellBundle(options) {
+function shellBundle(options, dest) {
   let arithmetic = '';
+  let destPath = dest || paths.bundle.dest.prod;
   
   // Make string to ignore vendors in bundle app.
   if (options.arithmetic) {
@@ -237,14 +249,14 @@ function shellBundle(options) {
   }
 
   return [
-    `jspm bundle ${arithmetic} ${paths.bundle.dest}/${options.name} --minify --skip-source-maps`
+    `jspm bundle ${arithmetic} ${destPath}/${options.name} --minify --skip-source-maps`
   ];
 }
 
 /**
  * Compile sass files and copy the resulting file in dist folder.
  * Make a copy in .tmp folder without minify.
- * @param {String} dest - Destination path.
+ * @param {string} dest - Destination path.
  */
 function styleTask(dest) {
   let name = filesName.styleOut;
@@ -267,4 +279,8 @@ function watchTasks() {
   // watch for changes in styles files
   $.watch(paths.style.watch,
     $.batch((events, done) => gulp.start('style:watch', done)));
+  
+  // watch for changes in js or html files in app folder
+  $.watch(paths.bundle.watch,
+    $.batch((events, done) => gulp.start('bundle:app-dev', done)));
 }
