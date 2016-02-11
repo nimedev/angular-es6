@@ -9,10 +9,12 @@
   "server": {
     "port": 3000,
     "baseDir": {
-      "dev": "src",
-      "prod": "dist"
+      "src": "source",
+      "dev": "dev"
     },
-    "routes": {}
+    "routes": {
+      "/": "dev"
+    }
   },
   "filesName": {
     "styleOut": "style.css"
@@ -50,18 +52,18 @@
   ],
   "paths": {
     "bundle": {
-      "main": "src/app/main.js",
+      "main": "source/app/main.js",
       "src": [
-        "src/jspm_packages/system.js",
-        "src/config.js"
+        "source/jspm_packages/system.js",
+        "source/config.js"
       ],
       "dest": {
-        "dev": "src/assets/js",
+        "dev": "dev/assets/js",
         "prod": "dist/assets/js"
       },
       "watch": [
-        "src/app/**/*.js",
-        "src/app/**/*.html"
+        "source/app/**/*.js",
+        "source/app/**/*.html"
       ]
     },
     "cleanAll": [
@@ -70,42 +72,53 @@
       "!dist/.git*"
     ],
     "html": {
-      "src": "src/index.html",
-      "dest": "dist/"
+      "src": "source/*.html",
+      "dest": {
+        "dev": "dev",
+        "prod": "dist"
+      },
+      "watch": "source/*html"
     },
     "i18n": {
-      "clean": "dist/assets/i18n/*",
-      "src": "src/assets/i18n/*.json",
-      "dest": "dist/assets/i18n"
+      "src": "source/assets/i18n/*.json",
+      "dest": {
+        "dev": "dev/assets/i18n",
+        "prod": "dist/assets/i18n"
+      },
+      "watch": "source/assets/i18n/*.json"
     },
     "images": {
-      "clean": "dist/assets/img/*",
-      "src": "src/assets/img/**/*",
-      "dest": "dist/assets/img"
+      "src": "source/assets/img/**/*",
+      "dest": {
+        "dev": "dev/assets/img",
+        "prod": "dist/assets/img"
+      },
+      "watch": "source/assets/img/**/*"
     },
     "lint": {
       "src": [
-        "src/app/**/*.js",
-        "src/assets/js/**/*.js",
-        "!src/assets/js/app.js",
-        "!src/assets/js/dep.js"
+        "source/app/**/*.js",
+        "source/assets/js/**/*.js",
+        "!source/assets/js/app.js",
+        "!source/assets/js/dep.js"
       ]
     },
     "style": {
-      "src": "src/scss/style.scss",
+      "src": "source/scss/style.scss",
       "dest": {
-        "dev": "src/assets/css",
-        "dist": "dist/assets/css"
+        "dev": "dev/assets/css",
+        "prod": "dist/assets/css"
       },
       "watch": [
-        "src/app/**/*.scss",
-        "src/scss/**/*"
+        "source/app/**/*.scss",
+        "source/scss/**/*"
       ]
     },
     "reload": [
-      "src/*.html",
-      "src/assets/i18n/*.json",
-      "src/assets/img/**/*"
+      "source/**/*.html",
+      "source/app/**/*.js",
+      "source/assets/i18n/*.json",
+      "source/assets/img/**/*"
     ]
   }
 }

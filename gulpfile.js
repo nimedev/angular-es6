@@ -56,17 +56,37 @@ gulp.task('clean', () => del.sync(paths.cleanAll));
 
 /**
  * FRONT-END TASKS
- * Runs task without using browser-sync.
  */
+// Save index.html file in dist folder
 gulp.task('html', () => optimizeHtmlTask());
 
+// Save index.html file in dev folder
+gulp.task('html:dev', () => optimizeHtmlTask(paths.html.dest.dev));
+
+
+// Save i18n files in dist folder
 gulp.task('i18n', () => i18nTask());
 
+// Save i18n files in dev folder
+gulp.task('i18n:dev', () => i18nTask(paths.i18n.dest.dev));
+
+
+// Save images files in dist folder
 gulp.task('images', () => optimizeImageTask());
 
+// Save images files in dev folder
+gulp.task('images:dev', () => optimizeImageTask(paths.images.dest.dev));
+
+
+// Lint task
 gulp.task('lint', () => lintTask());
 
+
+// Save style file in dist folder
 gulp.task('style', () => styleTask());
+
+// Save style file in dev folder
+gulp.task('style:dev', () => styleTask(paths.style.dest.dev));
 
 
 /**
@@ -119,8 +139,7 @@ gulp.task('build', ['lint'], (cb) => {
  * WATCH TASKS
  */
 /** Watch styles and templates */
-gulp.task('style:watch', () => styleTask(paths.style.dest.dev));
-tasks = ['style:watch', 'bundle:app-dev', 'bundle:dep-dev'];
+tasks = ['style:dev'];
 gulp.task('watch', tasks, () => {
   watchTasks();
 });
@@ -129,24 +148,42 @@ gulp.task('watch', tasks, () => {
 /**
  * RELOAD TASKS
  */
-/** Watch styles and templates with browser reload */
-gulp.task('hot-reload', tasks, () => {
+/** Serve files from source folder watching styles with browser reload */
+tasks = ['style:dev'];
+gulp.task('hot-reload:src', tasks, () => {
   // config browser-sync module
   browserSync.init({
     open: false,
     port: config.server.port,
     server: {
-      baseDir: config.server.baseDir,
+      baseDir: config.server.baseDir.src,
       middleware: [historyApiFallback()],
       routes: config.server.routes
     }
   });
 
-  // Watch task
+  // Watch only style:dev task
   watchTasks();
   
   // Watch for changes to reload
   gulp.watch(paths.reload).on('change', browserSync.reload);
+});
+
+/** Serve files from dev folder watching all front-end tasks */
+tasks = ['html:dev', 'i18n:dev', 'images:dev', 'style:dev'];
+gulp.task('hot-reload:dev', tasks, () => {
+  // config browser-sync module
+  browserSync.init({
+    open: false,
+    port: config.server.port,
+    server: {
+      baseDir: config.server.baseDir.dev,
+      middleware: [historyApiFallback()]
+    }
+  });
+
+  // Watch all tasks
+  watchTasks(true);
 });
 
 
@@ -189,12 +226,20 @@ function bundleDepTask(dest) {
     .pipe($.size({ title: path.join(destPath, name) }));
 }
 
-/** Copy json files for multi-language in dist folder. */
-function i18nTask() {
-  del.sync(paths.i18n.clean);
+/** 
+ * Copy i18n files in a new folder.
+ * @param {string} dest - Destination path (use production path by default). 
+ */
+function i18nTask(dest) {
+  let destPath = dest || paths.i18n.dest.prod;
+  
+  // Delete all files in dest folder
+  del.sync(path.join(destPath, '*'));
+  
+  // Optimize i18n files
   return gulp.src(paths.i18n.src)
-    .pipe(gulp.dest(paths.i18n.dest))
-    .pipe($.size({ title: 'i18n' }));
+    .pipe(gulp.dest(destPath))
+    .pipe($.size({ title: `i18n: ${destPath}` }));
 }
 
 /** Lint task */
@@ -206,32 +251,51 @@ function lintTask() {
     .pipe($.if(flags.lintJshint, $.jshint.reporter('jshint-stylish')));
 }
 
-/** Optimize html files and copy in dist folder. */
-function optimizeHtmlTask() {
-  del.sync(paths.html.clean);
+/** 
+ * Optimize html files and copy in in a new folder.
+ * Make a copy in .tmp folder without minify.
+ * @param {string} dest - Destination path (use production path by default). 
+ */
+function optimizeHtmlTask(dest) {
+  let destPath = dest || paths.html.dest.prod;
+  
+  // Delete all html files in dest folder
+  del.sync(path.join(destPath, '*.html'));
+  
+  // Optimize html files
   return gulp.src(paths.html.src)
     .pipe($.htmlReplace({
       'js': config.htmlReplace
     }))
-    .pipe(gulp.dest('.tmp/'))
+    .pipe(gulp.dest('.tmp'))
     .pipe($.htmlmin({
       collapseWhitespace: true,
       removeComments: true
     }))
-    .pipe(gulp.dest(paths.html.dest))
-    .pipe($.size({ title: 'html' }));
+    .pipe(gulp.dest(destPath))
+    .pipe($.size({ title: `html: ${destPath}` }))
+    .pipe(browserSync.stream());
 }
 
-/** Optimize images and copy in dist folder. */
-function optimizeImageTask() {
-  del.sync(paths.images.clean);
+/** 
+ * Optimize images files and copy in in a new folder.
+ * @param {string} dest - Destination path (use production path by default). 
+ */
+function optimizeImageTask(dest) {
+  let destPath = dest || paths.images.dest.prod;
+  
+  // Delete all files in dest folder
+  del.sync(path.join(destPath, '*'));
+  
+  // Optimize images files
   return gulp.src(paths.images.src)
   // .pipe($.imagemin({
   //   progressive: true,
   //   interlaced: true
   // }))
-    .pipe(gulp.dest(paths.images.dest))
-    .pipe($.size({ title: 'images' }));
+    .pipe(gulp.dest(destPath))
+    .pipe($.size({ title: `images: ${destPath}` }))
+    .pipe(browserSync.stream());
 }
 
 /**
@@ -250,7 +314,7 @@ function shellBundle(options, dest) {
   }
   
   // Make string to ignore vendors in bundle app.
-  if (options.ingnoreVendors)  {
+  if (options.ingnoreVendors) {
     for (let vendor of vendors) {
       arithmetic += ` - ${vendor}`;
     }
@@ -262,33 +326,54 @@ function shellBundle(options, dest) {
 }
 
 /**
- * Compile sass files and copy the resulting file in dist folder.
+ * Compile sass files and copy the resulting file in a new folder.
  * Make a copy in .tmp folder without minify.
- * @param {string} dest - Destination path.
+ * @param {string} dest - Destination path (use production path by default).
  */
 function styleTask(dest) {
   let name = filesName.styleOut;
-  let destPath = dest || paths.style.dest.dist;
+  let destPath = dest || paths.style.dest.prod;
+  
+  // Delete all files in css folder
   del.sync(path.join(destPath, '*'));
+  
+  // Do style task
   return gulp.src(paths.style.src)
     .pipe($.sass().on('error', $.sass.logError))
     .pipe($.rename(name))
     .pipe($.if(flags.autoprefixer, $.autoprefixer({ browsers: AUTOPREFIXER_BROWSERS })))
     .pipe($.if(flags.mergeMediaQueries, $.mergeMediaQueries()))
-    .pipe(gulp.dest('.tmp/'))
+    .pipe(gulp.dest('.tmp'))
     .pipe($.if(flags.minifyCss, $.cssnano()))
     .pipe(gulp.dest(destPath))
     .pipe($.size({ title: path.join(destPath, name) }))
     .pipe(browserSync.stream());
 }
 
-/** Wrap all watch function */
-function watchTasks() {
-  // watch for changes in styles files
-  $.watch(paths.style.watch,
-    $.batch((events, done) => gulp.start('style:watch', done)));
+/** 
+ * Wrap all watch function
+ * @param {boolean} runAll - indicate if run all tasks or only style task 
+ */
+function watchTasks(runAll) {
+  if (runAll) {
+    // Watch for changes in html files
+    $.watch(paths.html.watch,
+      $.batch((events, done) => gulp.start('html:dev', done)));
+    
+    // Watch for changes in html files
+    $.watch(paths.i18n.watch,
+      $.batch((events, done) => gulp.start('i18n:dev', done)));
+    
+    // Watch for changes in html files
+    $.watch(paths.images.watch,
+      $.batch((events, done) => gulp.start('images:dev', done)));
+    
+    // watch for changes in js or html files in app folder
+    // $.watch(paths.bundle.watch,
+    //   $.batch((events, done) => gulp.start('bundle:app-dev', done)));
+  }
   
-  // watch for changes in js or html files in app folder
-  $.watch(paths.bundle.watch,
-    $.batch((events, done) => gulp.start('bundle:app-dev', done)));
+  // Watch for changes in styles files
+  $.watch(paths.style.watch,
+    $.batch((events, done) => gulp.start('style:dev', done)));
 }
