@@ -343,7 +343,7 @@ function optimizeImageTask(dest) {
  * @param {string} dest - Destination path (use production path by default).
  */
 function shellBundle(options, dest) {
-  let arithmetic = '';
+  let arithmetic = options.arithmetic || '';
   let destPath = dest || paths.bundle.dest.prod;
   let opt = '--minify --skip-source-maps';
   
