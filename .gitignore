@@ -7,3 +7,5 @@ dist
 jspm_packages
 node_modules
 typings
+
+source/config.js
