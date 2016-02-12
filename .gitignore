@@ -1,11 +1,10 @@
 logs
 *.log
 
+.sass-cache
 .tmp
 dev
 dist
 jspm_packages
 node_modules
 typings
-
-source/config.js

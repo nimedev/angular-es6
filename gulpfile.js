@@ -394,18 +394,20 @@ function vendorsList(ignore) {
 function styleTask(dest) {
   let name = filesName.styleOut;
   let destPath = dest || paths.style.dest.prod;
+  let sourcemap = (dest !== undefined);
   
   // Delete all files in css folder
   del.sync(path.join(destPath, '*'));
   
   // Do style task
-  return gulp.src(paths.style.src)
-    .pipe($.sass().on('error', $.sass.logError))
-    .pipe($.rename(name))
+  // Only apply mergeMediaQueries in production because don't have
+  // compatibility with sourcemap puglin.
+  return $.rubySass(paths.style.src, { sourcemap: sourcemap })
     .pipe($.if(flags.autoprefixer, $.autoprefixer({ browsers: AUTOPREFIXER_BROWSERS })))
-    .pipe($.if(flags.mergeMediaQueries, $.mergeMediaQueries()))
+    .pipe($.if(flags.mergeMediaQueries && !sourcemap, $.mergeMediaQueries()))
     .pipe(gulp.dest('.tmp'))
     .pipe($.if(flags.minifyCss, $.cssnano()))
+    .pipe($.if(sourcemap, $.sourcemaps.write('.')))
     .pipe(gulp.dest(destPath))
     .pipe($.size({ title: path.join(destPath, name) }))
     .pipe(browserSync.stream());

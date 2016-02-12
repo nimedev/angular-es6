@@ -12,10 +12,11 @@
 
 #### Prerequisites
 
-- Node.js, used to run jspm and gulp tools from command line.
-- npm, installed with Node.js. Used to install development dependencies (Gulp).
-- gulp, a build tool.
-- jspm, a package manager for SystemJS.
+- [Node.js](https://nodejs.org/en/download/), used to run jspm and gulp tools from command line.
+- [npm](https://www.npmjs.com/), installed with Node.js. Used to install development dependencies (Gulp).
+- [gulp](http://gulpjs.com/), a build tool.
+- [jspm](http://jspm.io/), a package manager for SystemJS.
+- [sass](http://sass-lang.com/install), a CSS preprocessor used for styling.
 
 **To install dependencies:**
 
@@ -27,7 +28,7 @@ node --version
 
 The version should be at or above 4.x.
 
-2) If you don't have Node.js intalled.
+2) If you don't have Node.js intalled go to [nodejs](https://nodejs.org/en/download/) and install the appropiate version.
 
 3) Install `JSPM` and `gulp` globally.
 
@@ -37,7 +38,11 @@ npm install jspm gulp -g
 
 This lets you run `jspm` and `gulp` from the command line.
 
-4)  Install the local `jspm` and `npm` dependencies.
+6) Install `Sass`
+
+Go to [Sass] and choose you preferred method of installation.   
+
+5)  Install the local `jspm` and `npm` dependencies.
 
 ```sh
 # cd to your project folder (default: angular-es6)
@@ -46,7 +51,7 @@ jspm install && npm install
 
 This installs angular, ui-router and dependencies required for gulp tasks.
 
-5) (Optional) Install a manager for TypeScript definitions `typings`.
+6) (Optional) Install a manager for TypeScript definitions `typings`.
 
 You can use `typings` for intellisense (I use this in VScode).
 
@@ -108,6 +113,10 @@ Before run `hot-reload:dev` or `default` tasks be sure you fix this *[issue](htt
 This repository include a fork of **[Wakkos-CSS-Framework](https://github.com/Wakkos/Wakkos-CSS-Framework)**.
 
 I recommend this framework for those who like to create their own styles.
+
+:warning: **Important**
+
+Be sure you have installed *[Sass](http://sass-lang.com/install)* in your development machine.
 
 
 ### VSCode snippets
