@@ -100,7 +100,7 @@ Put all in dist folder ready for production.
 
 :warning: **Important**
 
->Before run `hot-reload:dev` or `default` tasks be sure you fix this *[issue](https://github.com/nimedev/angular-es6/tree/master/resources/fix-jspm_bundle)*
+Before run `hot-reload:dev` or `default` tasks be sure you fix this *[issue](https://github.com/nimedev/angular-es6/tree/master/resources/fix-jspm_bundle)*
 
 
 ### Styling
