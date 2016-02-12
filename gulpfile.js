@@ -402,8 +402,10 @@ function styleTask(dest) {
   // Do style task
   // Only apply mergeMediaQueries in production because don't have
   // compatibility with sourcemap puglin.
-  return $.rubySass(paths.style.src, { sourcemap: sourcemap })
-    .on('error', $.rubySass.logError)
+  return gulp.src(paths.style.src)
+    .pipe($.if(sourcemap, $.sourcemaps.init()))
+    .pipe($.sass().on('error', $.sass.logError))
+    .pipe($.rename(name))
     .pipe($.if(flags.autoprefixer, $.autoprefixer({ browsers: AUTOPREFIXER_BROWSERS })))
     .pipe($.if(flags.mergeMediaQueries && !sourcemap, $.mergeMediaQueries()))
     .pipe(gulp.dest('.tmp'))
@@ -413,6 +415,34 @@ function styleTask(dest) {
     .pipe($.size({ title: path.join(destPath, name) }))
     .pipe(browserSync.stream());
 }
+
+/**
+ * Compile sass files and copy the resulting file in a new folder.
+ * Make a copy in .tmp folder without minify.
+ * @param {string} dest - Destination path (use production path by default).
+ */
+// function styleTask(dest) {
+//   let name = filesName.styleOut;
+//   let destPath = dest || paths.style.dest.prod;
+//   let sourcemap = (dest !== undefined);
+  
+//   // Delete all files in css folder
+//   del.sync(path.join(destPath, '*'));
+  
+//   // Do style task
+//   // Only apply mergeMediaQueries in production because don't have
+//   // compatibility with sourcemap puglin.
+//   return $.rubySass(paths.style.src, { sourcemap: sourcemap })
+//     .on('error', $.rubySass.logError)
+//     .pipe($.if(flags.autoprefixer, $.autoprefixer({ browsers: AUTOPREFIXER_BROWSERS })))
+//     .pipe($.if(flags.mergeMediaQueries && !sourcemap, $.mergeMediaQueries()))
+//     .pipe(gulp.dest('.tmp'))
+//     .pipe($.if(flags.minifyCss, $.cssnano()))
+//     .pipe($.if(sourcemap, $.sourcemaps.write('.')))
+//     .pipe(gulp.dest(destPath))
+//     .pipe($.size({ title: path.join(destPath, name) }))
+//     .pipe(browserSync.stream());
+// }
 
 /** 
  * Wrap all watch function

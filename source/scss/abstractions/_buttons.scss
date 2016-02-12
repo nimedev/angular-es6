@@ -420,8 +420,8 @@
   }
   
   > span {
-    // @extend .alert;
-    // @extend .alert--warning;
+    @extend .alert;
+    @extend .alert--warning;
     display: table-caption!important;
     line-height: 1.5!important;
     font-size: fs(small)!important;
