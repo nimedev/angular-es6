@@ -61,7 +61,7 @@ This create a typings folder which you can reference in your JavaScript files to
 
 ### Development workflow
 
-#### Live reload from source folder
+**Live reload from source folder**
 
 ```sh
 #cd to your project folder
@@ -74,7 +74,7 @@ All files are served from source folder except style.css file. This file is serv
 
 The browser reloads when any file change according to their respective task.
 
-#### Live reload from dev folder
+**Live reload from dev folder**
 
 ```sh
 #cd to your project folder
@@ -89,7 +89,7 @@ It is the same as production files but use sourcemaps in style.css and app.js fi
 
 > Believe it or not this workflow is faster than `hot-reload:src` when you try test in browsers that are not the local machine.
 
-#### Production
+**Production**
 
 ```sh
 #cd to your project folder
