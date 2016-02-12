@@ -96,12 +96,16 @@ It is the same as production files but use sourcemaps in style.css and app.js fi
 gulp
 ```
 
-You put all in dist folder ready for production.
+Put all in dist folder ready for production.
+
+:warning: **Important**
+
+>Before run `hot-reload:dev` or `default` tasks be sure you fix this *[issue](https://github.com/nimedev/angular-es6/tree/master/resources/fix-jspm_bundle)*
 
 
 ### Styling
 
-This repository include a fork of *[Wakkos-CSS-Framework](https://github.com/Wakkos/Wakkos-CSS-Framework)*.
+This repository include a fork of **[Wakkos-CSS-Framework](https://github.com/Wakkos/Wakkos-CSS-Framework)**.
 
 I recommend this framework for those who like to create their own styles.
 
