@@ -350,7 +350,7 @@ function shellBundle(options, dest) {
   
   // if is in dev mode (dest != undefined) remove extra options
   if (dest) {
-    opt = (dest !== '.tmp') ? '--minify' : '';
+    opt = '';
   }
   
   // Make string to ignore vendors in bundle app.

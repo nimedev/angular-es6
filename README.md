@@ -85,7 +85,7 @@ This create a server using [browser-sync](https://www.npmjs.com/package/browser-
 
 This compile and move all files in dev folder and the browser reloads when any file change according to their respective task.
 
-It is the same as production files but use sourcemaps in style.css and app.js files.
+It is almost the same as production files but use sourcemaps in style.css and app.js is not minified.
 
 > Believe it or not this workflow is faster than `hot-reload:src` when you try test in browsers that are not the local machine.
 
