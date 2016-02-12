@@ -38,7 +38,7 @@ npm install jspm gulp -g
 
 This lets you run `jspm` and `gulp` from the command line.
 
-6) Install `Sass`
+4) Install `Sass`
 
 Go to [Sass] and choose you preferred method of installation.   
 
