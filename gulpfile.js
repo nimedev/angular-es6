@@ -6,7 +6,7 @@
 'use strict';
 
 // Use this module to inspect execution times
-require('time-require');
+// require('time-require');
 
 /** core modules */
 var path = require('path');
@@ -403,6 +403,7 @@ function styleTask(dest) {
   // Only apply mergeMediaQueries in production because don't have
   // compatibility with sourcemap puglin.
   return $.rubySass(paths.style.src, { sourcemap: sourcemap })
+    .on('error', $.rubySass.logError)
     .pipe($.if(flags.autoprefixer, $.autoprefixer({ browsers: AUTOPREFIXER_BROWSERS })))
     .pipe($.if(flags.mergeMediaQueries && !sourcemap, $.mergeMediaQueries()))
     .pipe(gulp.dest('.tmp'))
