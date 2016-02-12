@@ -2,6 +2,7 @@
 
 > A starting point for building web applications with `AngularJS 1.5` using JSPM and ES6
 
+
 ### Install dependencies
 
 #### For experienced users
@@ -57,6 +58,7 @@ typings install
 
 This create a typings folder which you can reference in your JavaScript files to get intellisense.
 
+
 ### Development workflow
 
 #### Live reload from source folder
@@ -67,7 +69,9 @@ gulp hot-reload:src
 ```
 
 This create a server using [browser-sync](https://www.npmjs.com/package/browser-sync) and serves source and dev folder.
+
 All files are served from source folder except style.css file. This file is served from dev folder after being compiled from SASS framework.
+
 The browser reloads when any file change according to their respective task.
 
 #### Live reload from dev folder
@@ -78,7 +82,9 @@ gulp hot-reload:dev
 ```
 
 This create a server using [browser-sync](https://www.npmjs.com/package/browser-sync) and serves dev folder.
+
 This compile and move all files in dev folder and the browser reloads when any file change according to their respective task.
+
 It is the same as production files but use sourcemaps in style.css and app.js files.
 
 > Believe it or not this workflow is faster than `hot-reload:src` when you try test in browsers that are not the local machine.
@@ -92,9 +98,13 @@ gulp
 
 You put all in dist folder ready for production.
 
+
 ### Styling
 
-> wakkos framework
+This repository include a fork of *[Wakkos-CSS-Framework](https://github.com/Wakkos/Wakkos-CSS-Framework)*.
+
+I recommend this framework for those who like to create their own styles.
+
 
 ### VSCode snippets
 
