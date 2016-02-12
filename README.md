@@ -100,7 +100,7 @@ Put all in dist folder ready for production.
 
 :warning: **Important**
 
-Before run `hot-reload:dev` or `default` tasks be sure you fix this *[issue](https://github.com/nimedev/angular-es6/tree/master/resources/fix-jspm_bundle)*
+Before run `hot-reload:dev` or `default` tasks be sure you fix this *[issue](https://github.com/nimedev/angular-es6/tree/master/resources/fix-jspm_bundle)*.
 
 
 ### Styling
@@ -114,6 +114,7 @@ I recommend this framework for those who like to create their own styles.
 
 Put this snippets in javascript file:
 
+*Module:*
 ```js
   "ng-es6 module": {
     "prefix": "ngmod-es6",
@@ -151,7 +152,11 @@ Put this snippets in javascript file:
       "export default moduleName;"
     ],
     "description": "Angular ES6 module"
-  },
+  }
+```
+
+*Component:*
+```js
   "ng-es6 component": {
     "prefix": "ngcomp-es6",
     "body": [
@@ -174,7 +179,11 @@ Put this snippets in javascript file:
       "export default component;"
     ],
     "description": "Angular ES6 component"
-  },
+  }
+```
+
+*Controller:*
+```js
   "ng-es6 Controller": {
     "prefix": "ngctrl-es6",
     "body": [
@@ -200,7 +209,11 @@ Put this snippets in javascript file:
       "${2:ClassName}.$inject = ['${3:paramName}'];"
     ],
     "description": "Angular NS6 controller"
-  },
+  }
+```
+
+*Service:*
+```js
   "ng-es6 Service": {
     "prefix": "ngserv-es6",
     "body": [
@@ -237,7 +250,11 @@ Put this snippets in javascript file:
       "};"
     ],
     "description": "Angular NS6 service"
-  },
+  }
+```
+
+*Directive:*
+```js
   "ng-es6 Directive": {
     "prefix": "ngdire-es6",
     "body": [
