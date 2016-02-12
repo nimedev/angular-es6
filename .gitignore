@@ -1,7 +1,6 @@
 logs
 *.log
 
-.sass-cache
 .tmp
 dev
 dist
