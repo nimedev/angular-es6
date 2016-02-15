@@ -246,24 +246,7 @@ function bundleDepTask(dest) {
     .pipe(gulp.dest(destPath))
     .pipe($.size({ title: path.join(destPath, name) }))
     .pipe(browserSync.stream());
-  
-  // return gulp.src(paths.bundle.src)
-  //   .pipe(addStream.obj(bundleDep()))
-  //   .pipe($.uglify())
-  //   .pipe($.concat(name))
-  //   .pipe(gulp.dest(destPath))
-  //   .pipe($.size({ title: path.join(destPath, name) }));
 }
-// function bundleDepTask(dest) {
-//   let destPath = dest || paths.bundle.dest.prod;
-//   let name = config.bundle.dep.name;
-//   return gulp.src(paths.bundle.src)
-//     .pipe(addStream.obj(bundleDep()))
-//     .pipe($.uglify())
-//     .pipe($.concat(name))
-//     .pipe(gulp.dest(destPath))
-//     .pipe($.size({ title: path.join(destPath, name) }));
-// }
 
 /** 
  * Copy i18n files in a new folder.
