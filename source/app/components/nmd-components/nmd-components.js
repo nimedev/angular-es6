@@ -9,6 +9,7 @@ import * as angular from 'angular';
 
 /** Submodules */
 import nmdDialog from './nmd-dialog/nmd-dialog';
+import nmdProgressLinear from './nmd-progress-linear/nmd-progress-linear';
 import nmdToast from './nmd-toast/nmd-toast';
 
 /** Component or Directive */
@@ -24,6 +25,7 @@ const moduleName = 'nmdComponents';
 angular
   .module(moduleName, [
     nmdDialog,
+    nmdProgressLinear,
     nmdToast
   ]);
 
