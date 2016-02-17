@@ -293,10 +293,35 @@ $textcolor-strong: $black;
 $backdrop:         rgba(33,33,33,0.48);
 $backdrop-light:   rgba(33,33,33,0.24);
 
-// Material themming
-$primary: $gray-primary;
-$accent: $deep-orange-accent;
-$warn: $red-warn;
+/** 
+ * Material themming
+ * Default material shadows:
+ * - Primary and warning colors: (500, 300, 800 and A100)
+ * - Accent colors: (A200, A100, A400 and A700)
+ * Use: choose a palette for primary, accent and warn category then
+ * use a map to set de shadows (default, hue1, hue2 and hue3). 
+ */
+$primary-palette: $md-grey;
+$primary: (
+  "df": map-get($primary-palette, "500"),
+  "h1": map-get($primary-palette, "300"),
+  "h2": map-get($primary-palette, "800"),
+  "h3": map-get($primary-palette, "100")
+);
+$accent-palette: $md-deep-orange;
+$accent: (
+  "df": map-get($accent-palette, "A200"),
+  "h1": map-get($accent-palette, "A100"),
+  "h2": map-get($accent-palette, "A400"),
+  "h3": map-get($accent-palette, "A700")
+);
+$warn-palette: $md-red;
+$warn: (
+  "df": map-get($warn-palette, "500"),
+  "h1": map-get($warn-palette, "300"),
+  "h2": map-get($warn-palette, "800"),
+  "h3": map-get($warn-palette, "A100")
+);
 
 // Header
 $header-color:     map-get($primary, h2);
