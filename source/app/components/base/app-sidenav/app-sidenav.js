@@ -3,7 +3,7 @@
  * @module appSidenav
  */
 /** Angular modules */
-import angular from 'angular';
+import * as angular from 'angular';
 
 /** Comunity modules */
 

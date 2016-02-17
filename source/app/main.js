@@ -3,7 +3,7 @@
  * @module 'angular-es6' 
  */
 /** Angular modules */
-import angular from 'angular';
+import * as angular from 'angular';
 import ngAnimate from 'angular-animate';
 import ngAria from 'angular-aria';
 import ngCookies from 'angular-cookies';
