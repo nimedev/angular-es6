@@ -108,7 +108,6 @@ Before run `hot-reload:dev` or `default` tasks be sure you fix this *[issue](htt
 This repository include a fork of **[Wakkos-CSS-Framework](https://github.com/Wakkos/Wakkos-CSS-Framework)**.
 
 I recommend this framework for those who like to create their own styles.
-I recommend this framework for those who like to create their own styles.
 
 
 ### Angular HTML5 mode or pretty URLs
