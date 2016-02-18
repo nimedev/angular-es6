@@ -82,6 +82,13 @@ gulp.task('images:dev', () => optimizeImageTask(paths.images.dest.dev));
 gulp.task('lint', () => lintTask());
 
 
+// Save misc files in dist folder
+gulp.task('misc', () => miscTask());
+
+// Save misc files in dev folder
+gulp.task('misc:dev', () => miscTask(paths.misc.dest.dev));
+
+
 // Save style file in dist folder
 gulp.task('style', () => styleTask());
 
@@ -147,7 +154,7 @@ gulp.task('bundle:dev', (cb) => {
 
 // Group build task in one
 gulp.task('build', ['lint'], (cb) => {
-  runSequence(['bundle', 'html', 'i18n', 'images', 'style'], cb);
+  runSequence(['bundle', 'html', 'i18n', 'images', 'misc', 'style'], cb);
 });
 
 
@@ -186,7 +193,7 @@ gulp.task('hot-reload:src', tasks, () => {
 });
 
 /** Serve files from dev folder watching all front-end tasks */
-tasks = ['bundle:dev', 'html:dev', 'i18n:dev', 'images:dev', 'style:dev'];
+tasks = ['bundle:dev', 'html:dev', 'i18n:dev', 'images:dev', 'misc:dev', 'style:dev'];
 gulp.task('hot-reload:dev', tasks, () => {
   // config browser-sync module
   browserSync.init({
@@ -271,6 +278,22 @@ function lintTask() {
     .pipe($.if(flags.lintJscs, $.jscsStylish.combineWithHintResults()))
     .pipe($.if(flags.lintJshint, $.jshint()))
     .pipe($.if(flags.lintJshint, $.jshint.reporter('jshint-stylish')));
+}
+
+/** 
+ * Copy miscellaneous files files in a new folder (robots.txt, .htaccess, etc).
+ * @param {string} dest - Destination path (use production path by default). 
+ */
+function miscTask(dest) {
+  let destPath = dest || paths.misc.dest.prod;
+  
+  // Delete all files in dest folder
+  del.sync(path.join(destPath, '*'));
+  
+  // Copy miscellaneous files
+  return gulp.src(paths.misc.src)
+    .pipe(gulp.dest(destPath))
+    .pipe($.size({ title: `Misc: ${destPath}` }));
 }
 
 /** 
@@ -410,16 +433,20 @@ function watchTasks(runAll) {
       $.batch((events, done) => gulp.start('bundle:app-dev', done)));
       
     // Watch for changes in html files
-    $.watch(paths.html.watch,
+    $.watch(paths.html.src,
       $.batch((events, done) => gulp.start('html:dev', done)));
     
-    // Watch for changes in html files
-    $.watch(paths.i18n.watch,
+    // Watch for changes in i18n files
+    $.watch(paths.i18n.src,
       $.batch((events, done) => gulp.start('i18n:dev', done)));
     
-    // Watch for changes in html files
-    $.watch(paths.images.watch,
+    // Watch for changes in images files
+    $.watch(paths.images.src,
       $.batch((events, done) => gulp.start('images:dev', done)));
+    
+    // Watch for changes in miscellaneous files
+    $.watch(paths.misc.src,
+      $.batch((events, done) => gulp.start('misc:dev', done)));
   }
   
   // Watch for changes in styles files

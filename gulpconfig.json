@@ -75,24 +75,21 @@
       "dest": {
         "dev": "dev",
         "prod": "dist"
-      },
-      "watch": "source/*html"
+      }
     },
     "i18n": {
       "src": "source/assets/i18n/*.json",
       "dest": {
         "dev": "dev/assets/i18n",
         "prod": "dist/assets/i18n"
-      },
-      "watch": "source/assets/i18n/*.json"
+      }
     },
     "images": {
       "src": "source/assets/img/**/*",
       "dest": {
         "dev": "dev/assets/img",
         "prod": "dist/assets/img"
-      },
-      "watch": "source/assets/img/**/*"
+      }
     },
     "lint": {
       "src": [
@@ -101,6 +98,16 @@
         "!source/assets/js/app.js",
         "!source/assets/js/dep.js"
       ]
+    },
+    "misc": {
+      "src": [
+        "source/robots.txt",
+        "source/.htaccess"
+      ],
+      "dest": {
+        "dev": "dev",
+        "prod": "dist"
+      }
     },
     "style": {
       "src": "source/scss/style.scss",
