@@ -65,9 +65,12 @@ angular
     i18n,
     services
   ])
-  .config(['$urlRouterProvider', ($urlRouterProvider) => {
+  .config(['$locationProvider', '$urlRouterProvider', ($locationProvider, $urlRouterProvider) => {
     // Redirect path to * urls
     $urlRouterProvider.otherwise('/');
+    
+    // use the HTML5 History API
+    $locationProvider.html5Mode(true);
   }])
   .constant('constants', constants);
 
