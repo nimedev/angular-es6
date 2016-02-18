@@ -111,6 +111,14 @@ I recommend this framework for those who like to create their own styles.
 I recommend this framework for those who like to create their own styles.
 
 
+### Angular HTML5 mode or pretty URLs
+
+This mode is set by default. If use it consider this:
+
+- All call related to links like `href="/link/to/anyware"`, `$location.path('/link/to');`, etc. result as a hit to server. Use it only for SEO porpuses.
+- To avoid unnecesary hits to server (SPA) you can use `ui-sref="/link/to"` in html files or `$state` service in angular files.
+
+
 ### VSCode snippets
 
 Put this snippets in javascript file:
