@@ -293,12 +293,52 @@ Put this snippets in javascript file:
       "// Injection array for minification compatibility",
       "directive.$inject = ['${3:paramName}'];",
       "",
-      "/** @exports directive name and class */",
+      "/** @exports directive name and function */",
       "export default {",
       "\tname: directiveName,",
       "\tdirective: directive",
       "};"
     ],
     "description": "Angular NS6 directive"
+  }
+```
+
+*Factory*:
+```js
+  "ng-es6 Factory": {
+    "prefix": "ngfact-es6",
+    "body": [
+      "/**",
+      " * Factory for ${1:description}.",
+      " * @name ${2:FactoryName}",
+      " * @param {Object} ${3:paramName} - ...",
+      " */",
+      "// Factory name",
+      "let factoryName = '${2:FactoryNamen}';",
+      "",
+      "// Directive Function",
+      "let factory = function (${3:paramName}) {",
+      "\tlet service = {",
+      "\t\texposedFn: exposedFn",
+      "\t};",
+      "\treturn service;",
+      "",
+      "\t/////////////////",
+      "\t/** Exposed function */",
+      "\tfunction exposedFn() {",
+      "\t\t",
+      "\t}",
+      "};",
+      "",
+      "// Injection array for minification compatibility",
+      "factory.$inject = ['${3:paramName}'];",
+      "",
+      "/** @exports factory name and function */",
+      "export default {",
+      "\tname: factoryName,",
+      "\tfactory: factory",
+      "};"
+    ],
+    "description": "Angular NS6 factory"
   }
 ```
