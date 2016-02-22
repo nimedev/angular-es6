@@ -32,22 +32,23 @@ const appName = appConfig.appName;
 
 // Variables
 let hostname = window.location.hostname;
-let config = appConfig.production;
-let devConfig = appConfig.development;
+let config = appConfig.common;
+let envConfig;
 let htmlDocument;
 let startApp;
 
-// Merge development configurations if the hostname is not on the 
-// production list
-if (appConfig.productionHosts.indexOf(hostname) < 0) {
-  for (let prop in devConfig) {
+// Select enviroment configurations by the host name and merge with 
+// common configuration.
+if (appConfig[hostname]) {
+  envConfig = appConfig[hostname];
+  for (let prop in envConfig) {
     // skip loop if the property is from prototype
-    if (!devConfig.hasOwnProperty(prop)) {
+    if (!envConfig.hasOwnProperty(prop)) {
       continue;
     }
     
     // Copy properties
-    config[prop] = appConfig.development[prop];
+    config[prop] = envConfig[prop];
   }
 }
 

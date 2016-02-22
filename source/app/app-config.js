@@ -1,8 +1,8 @@
 /** 
  * app configuration.
- * Put in 'production' object all parameters of the app.
- * Put in 'development' object the parameters to be overwritten or add
- * in production object, like restUrl, dev, etc.  
+ * Put in 'common' object all common parameters of the app.
+ * Name a object with the host name of the enviroment and put 
+ * all parameters for this environment.  
  */
 
 /** @exports config object */
@@ -10,19 +10,19 @@ export default {
   // application name for angular
   appName: 'ng-es6',
   
-  // Host names to select production configuration
-  productionHosts: [
-    'angular-es6.dev'
-  ],
+  // Common configuration parameters
+  common: {
+    
+  },
   
   // Production configuration
-  production: {
+  'angular-es6.dev': {
     // server base url
     restUrl: 'http://www.site.com/api/v1'
   },
   
   // Development configuration
-  development: {
+  'localhost': {
     // server base url
     restUrl: 'localhost:3000',
 
