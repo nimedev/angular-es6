@@ -1,45 +1,34 @@
 /**
  * Directive to close dropdown menu when click in a sibbling element.
- * @name closeDd
- * @class CloseDd
+ * @name closeDD
  */
 // Directive name
 let directiveName = 'closeDd';
 
-// Directive class
-class CloseDd {
-  /*@ngInject*/
-  constructor() {
-    // Save dependencies
+// Directive Function
+let directive = function () {
+  let directive = {
+    link: link,
+    restrict: 'A',
+    scope: {}
+  };
+  return directive;
 
-    /** Class Fields */
-    this.restrict = 'A';
-    
-    /** Link function */
-    this.link = (scope, el, attr, ctrl) => {
-      let toggleButton = el.parent().find('input');
+  /////////////////
+  /** Link function */
+  function link(scope, element, attrs, ctrl) {
+    let toggleButton = element.parent().find('input');
       
-      // Change checked property to checkbox when click in element
-      el.on('click', () => {
-        toggleButton[0].checked = false;
-      });
-    };
+    // Change checked property to checkbox when click in element
+    element.on('click', () => toggleButton[0].checked = false);
   }
-
-  /** Class Methods */
-  
-  /** Directive factory */
-  static factory() {
-    CloseDd.instance = new CloseDd();
-    return CloseDd.instance;
-  }
-}
+};
 
 // Injection array for minification compatibility
-CloseDd.factory.$inject = [];
+directive.$inject = [];
 
 /** @exports directive name and class */
 export default {
   name: directiveName,
-  directive: CloseDd.factory
+  directive: directive
 };
