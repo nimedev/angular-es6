@@ -11,6 +11,9 @@ import ngCookies from 'angular-cookies';
 /** Comunity modules */
 import uiRouter from 'angular-ui-router';
 
+/** Configuration */
+import appConfig from 'app/app-config';
+
 /** Components */
 import base from 'app/components/base/base';
 import message from 'app/components/message/message';
@@ -25,21 +28,28 @@ import i18n from 'app/shared/i18n/i18n';
 import services from 'app/shared/services/services';
 
 // Constants
-const appName = 'ng-es6';
+const appName = appConfig.appName;
 
 // Variables
-let constants;
+let hostname = window.location.hostname;
+let config = appConfig.production;
+let devConfig = appConfig.development;
 let htmlDocument;
 let startApp;
 
-// Constants object
-constants = {
-  // server base url
-  REST_URL: '',
-
-  // Debug mode
-  DEBUG: true
-};
+// Merge development configurations if the hostname is not on the 
+// production list
+if (appConfig.productionHosts.indexOf(hostname) < 0) {
+  for (let prop in devConfig) {
+    // skip loop if the property is from prototype
+    if (!devConfig.hasOwnProperty(prop)) {
+      continue;
+    }
+    
+    // Copy properties
+    config[prop] = appConfig.development[prop];
+  }
+}
 
 // Define angular app.
 angular
@@ -72,7 +82,12 @@ angular
     // use the HTML5 History API
     $locationProvider.html5Mode(true);
   }])
-  .constant('constants', constants);
+  .constant('config', config);
+
+// Log app configuration if is in development mode
+if (config.dev) {
+  console.log(config);
+}
 
 // Load app when document is ready
 htmlDocument = angular.element(document);
