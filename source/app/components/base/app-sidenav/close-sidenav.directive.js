@@ -1,45 +1,34 @@
 /**
  * Directive to close sidenav when click in element.
  * @name closeSidenav
- * @class CloseSidenav
- * @param {Object} sideNav - get close service.
+ * @param {Object} sideNav - ...
  */
 // Directive name
 let directiveName = 'closeSidenav';
 
-// Directive class
-class CloseSidenav {
-  /*@ngInject*/
-  constructor(sideNav) {
-    // Save dependencies
-    this.sideNav = sideNav;
+// Directive Function
+let directive = function (sideNav) {
+  let directive = {
+    link: link,
+    restrict: 'A',
+    scope: {}
+  };
+  return directive;
 
-    /** Class Fields */
-    this.restrict = 'A';
-    this.scope = {};
-    
-    /** Link function */
-    this.link = (scope, el, attr, ctrl) => {
-      el.on('click', () => {
-        this.sideNav.safeClose();
-      });
-    };
+  /////////////////
+  /** Link function */
+  function link(scope, element, attrs, ctrl) {
+    element.on('click', () => {
+      sideNav.safeClose();
+    });
   }
-
-  /** Class Methods */
-
-  /** Directive factory */
-  static factory(sideNav) {
-    CloseSidenav.instance = new CloseSidenav(sideNav);
-    return CloseSidenav.instance;
-  }
-}
+};
 
 // Injection array for minification compatibility
-CloseSidenav.factory.$inject = ['sideNav'];
+directive.$inject = ['sideNav'];
 
 /** @exports directive name and class */
 export default {
   name: directiveName,
-  directive: CloseSidenav.factory
+  directive: directive
 };

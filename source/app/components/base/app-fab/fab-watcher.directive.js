@@ -1,25 +1,24 @@
 /**
- * Directive to watch toast events and positioning FAB button.
+ * Directive to watch toast events and positioning FAB button..
  * @name fabWatcher
- * @class FabWatcher
  * @param {Object} $rootScope - to catch toast events.
  * @param {Object} styles - to get CSS properties.
  */
 // Directive name
 let directiveName = 'fabWatcher';
 
-// Directive class
-class FabWatcher {
-  /*@ngInject*/
-  constructor($rootScope, styles) {
-    // Save dependencies
+// Directive Function
+let directive = function ($rootScope, styles) {
+  let directive = {
+    link: link,
+    restrict: 'A'
+  };
+  return directive;
 
-    /** Class Fields */
-    this.restrict = 'A';
-
-    /** Link function */
-    this.link = (scope, el, attr, ctrl) => {
-      let component = el[0];
+  /////////////////
+  /** Link function */
+  function link(scope, element, attrs, ctrl) {
+    let component = element[0];
       
       // Action when toast is shown
       $rootScope.$on('toastShown', ($event, element) => {
@@ -34,23 +33,14 @@ class FabWatcher {
       $rootScope.$on('toastHide', ($event, element) => {
         component.style['bottom'] = '';
       });
-    };
   }
-
-  /** Class Methods */
-
-  /** Directive factory */
-  static factory($rootScope, styles) {
-    FabWatcher.instance = new FabWatcher($rootScope, styles);
-    return FabWatcher.instance;
-  }
-}
+};
 
 // Injection array for minification compatibility
-FabWatcher.factory.$inject = ['$rootScope', 'styles'];
+directive.$inject = ['$rootScope', 'styles'];
 
 /** @exports directive name and class */
 export default {
   name: directiveName,
-  directive: FabWatcher.factory
+  directive: directive
 };
