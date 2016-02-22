@@ -18,9 +18,7 @@ import appConfig from 'app/app-config';
 import base from 'app/components/base/base';
 import message from 'app/components/message/message';
 import nmdComponents from 'app/components/nmd-components/nmd-components';
-import viewConfig from 'app/components/view-config/view-config';
-import viewHelp from 'app/components/view-help/view-help';
-import viewHome from 'app/components/view-home/view-home';
+import views from 'app/components/views/views';
 
 /** Shared */
 import directives from 'app/shared/directives/directives';
@@ -67,9 +65,7 @@ angular
     base,
     message,
     nmdComponents,
-    viewConfig,
-    viewHelp,
-    viewHome,
+    views,
 
   // Shared components
     directives,
