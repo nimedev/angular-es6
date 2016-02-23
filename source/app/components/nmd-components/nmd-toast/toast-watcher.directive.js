@@ -6,10 +6,10 @@
  *                            delay for destroy element from DOM desctruction
  */
 // Directive name
-let directiveName = 'toastWatcher';
+const directiveName = 'toastWatcher';
 
 // Directive Function
-let directive = function ($rootScope, $timeout) {
+const directive = ($rootScope, $timeout) => {
   let directive = {
     link: link,
     restrict: 'A'

@@ -4,10 +4,10 @@
  * @param {Object} sideNav - ...
  */
 // Directive name
-let directiveName = 'closeSidenav';
+const directiveName = 'closeSidenav';
 
 // Directive Function
-let directive = function (sideNav) {
+const directive = (sideNav) => {
   let directive = {
     link: link,
     restrict: 'A',

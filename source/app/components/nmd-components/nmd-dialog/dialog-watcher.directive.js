@@ -6,10 +6,10 @@
  * @param {Object} nmdDialog - get close service.
  */
 // Directive name
-let directiveName = 'dialogWatcher';
+const directiveName = 'dialogWatcher';
 
 // Directive Function
-let directive = function ($compile, $timeout, nmdDialog) {
+const directive = ($compile, $timeout, nmdDialog) => {
   let directive = {
     link: link,
     restrict: 'A'

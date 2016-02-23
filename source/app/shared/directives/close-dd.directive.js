@@ -3,10 +3,10 @@
  * @name closeDD
  */
 // Directive name
-let directiveName = 'closeDd';
+const directiveName = 'closeDd';
 
 // Directive Function
-let directive = function () {
+const directive = () => {
   let directive = {
     link: link,
     restrict: 'A',

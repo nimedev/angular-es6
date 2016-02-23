@@ -5,10 +5,10 @@
  * @param {Object} styles - to get CSS properties.
  */
 // Directive name
-let directiveName = 'fabWatcher';
+const directiveName = 'fabWatcher';
 
 // Directive Function
-let directive = function ($rootScope, styles) {
+const directive = ($rootScope, styles) => {
   let directive = {
     link: link,
     restrict: 'A'
