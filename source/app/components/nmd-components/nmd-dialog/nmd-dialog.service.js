@@ -5,7 +5,7 @@
  * @param {Object} $compile, $rootScope - ...
  */
 // Service name
-let serviceName = 'nmdDialog';
+const serviceName = 'nmdDialog';
 
 // Service class
 class NmdDialog {

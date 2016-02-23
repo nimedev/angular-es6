@@ -4,7 +4,7 @@
 // Controller
 
 // Component object
-let component = {
+const component = {
   bindings: {
     color: '@progressColor'
   },

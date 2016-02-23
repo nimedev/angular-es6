@@ -6,7 +6,7 @@
  * @param {Object} $rootScope - to create new scope for compiled component.
  */
 // Service name
-let serviceName = 'nmdToast';
+const serviceName = 'nmdToast';
 
 // Service class
 class NmdToast {

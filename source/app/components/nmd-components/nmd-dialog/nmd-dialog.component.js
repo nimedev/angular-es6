@@ -4,7 +4,7 @@
 // Controller
 
 // Component object
-let component = {
+const component = {
   name: 'nmdDialog',
   template: '<div class="dialog__back"></div>'
 };

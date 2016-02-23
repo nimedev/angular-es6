@@ -6,7 +6,7 @@ import template from './nmd-toast.html!text';
 import controller from './nmd-toast.controller';
 
 // Component object
-let component = {
+const component = {
   controller,
   name: 'nmdToast',
   template
