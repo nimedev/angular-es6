@@ -62,7 +62,8 @@
       },
       "watch": [
         "source/app/**/*.js",
-        "source/app/**/*.html"
+        "source/app/**/*.html",
+        "source/assets/i18n/*.json"
       ]
     },
     "cleanAll": [

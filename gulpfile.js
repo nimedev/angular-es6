@@ -99,11 +99,17 @@ gulp.task('style:dev', () => styleTask(paths.style.dest.dev));
 /**
  * BUNDLE TASKS
  */
+// Perform bundle-shell task with i18n task
+gulp.task('bundle:app', cb => runSequence(['app-shell', 'i18n'], cb));
+
 // Bundle application files in dist folder.
-gulp.task('bundle:app', $.shell.task(shellBundle(config.bundle.app)));
+gulp.task('app-shell', $.shell.task(shellBundle(config.bundle.app)));
+
+// Perform bundle-shell task with i18n task for development environment.
+gulp.task('bundle:app-dev', cb => runSequence(['app-shell:dev', 'i18n:dev'], cb));
 
 // Bundle application files in dev folder.
-gulp.task('bundle:app-dev', () => {
+gulp.task('app-shell:dev', () => {
   return gulp.src(paths.bundle.main)
     .pipe($.shell(shellBundle(config.bundle.app, paths.bundle.dest.dev)))
     .pipe(browserSync.stream());
@@ -112,18 +118,14 @@ gulp.task('bundle:app-dev', () => {
 
 // Bundle dependencies in dist folder.
 // First bundle in tmp folder and then concat and copy in dist folder.
-gulp.task('bundle:dep', (cb) => {
-  runSequence('bundle:tmp', 'dep:concat', cb);
-});
+gulp.task('bundle:dep', cb => runSequence('bundle:tmp', 'dep:concat', cb));
 
 // Concat bundle dependecies in dist folder.
 gulp.task('dep:concat', () => bundleDepTask());
 
 // Bundle dependencies in dev folder.
 // First bundle in tmp folder and then concat and copy in dev folder.
-gulp.task('bundle:dep-dev', (cb) => {
-  runSequence('bundle:tmp', 'dep-dev:concat', cb);
-});
+gulp.task('bundle:dep-dev', cb => runSequence('bundle:tmp', 'dep-dev:concat', cb));
 
 // Concat bundle dependecies in dev folder.
 gulp.task('dep-dev:concat', () => bundleDepTask(paths.bundle.dest.dev));
@@ -142,20 +144,14 @@ gulp.task('bundle:vendors', $.shell.task(shellBundle(config.bundle.vendors)));
 
 // Group bundle tasks
 // Separate bundles in app.js and dep.js files.
-gulp.task('bundle', (cb) => {
-  runSequence(['bundle:app', 'bundle:dep'], cb);
-});
+gulp.task('bundle', cb => runSequence(['bundle:app', 'bundle:dep'], cb));
 
 // Separate bundles in app.js and dep.js files for development.
-gulp.task('bundle:dev', (cb) => {
-  runSequence(['bundle:app-dev', 'bundle:dep-dev'], cb);
-});
+gulp.task('bundle:dev', cb => runSequence(['bundle:app-dev', 'bundle:dep-dev'], cb));
 
 
 // Group build task in one
-gulp.task('build', ['lint'], (cb) => {
-  runSequence(['bundle', 'html', 'i18n', 'images', 'misc', 'style'], cb);
-});
+gulp.task('build', ['lint'], cb => runSequence(['bundle', 'html', 'images', 'misc', 'style'], cb));
 
 
 /**
@@ -163,9 +159,7 @@ gulp.task('build', ['lint'], (cb) => {
  */
 /** Watch styles and templates */
 tasks = ['style:dev'];
-gulp.task('watch', tasks, () => {
-  watchTasks();
-});
+gulp.task('watch', tasks, () => watchTasks());
 
 
 /**
@@ -193,7 +187,7 @@ gulp.task('hot-reload:src', tasks, () => {
 });
 
 /** Serve files from dev folder watching all front-end tasks */
-tasks = ['bundle:dev', 'html:dev', 'i18n:dev', 'images:dev', 'misc:dev', 'style:dev'];
+tasks = ['bundle:dev', 'html:dev', 'images:dev', 'misc:dev', 'style:dev'];
 gulp.task('hot-reload:dev', tasks, () => {
   // config browser-sync module
   browserSync.init({
@@ -293,7 +287,8 @@ function miscTask(dest) {
   // Copy miscellaneous files
   return gulp.src(paths.misc.src)
     .pipe(gulp.dest(destPath))
-    .pipe($.size({ title: `Misc: ${destPath}` }));
+    .pipe($.size({ title: `Misc: ${destPath}` }))
+    .pipe(browserSync.stream());
 }
 
 /** 
@@ -435,10 +430,6 @@ function watchTasks(runAll) {
     // Watch for changes in html files
     $.watch(paths.html.src,
       $.batch((events, done) => gulp.start('html:dev', done)));
-    
-    // Watch for changes in i18n files
-    $.watch(paths.i18n.src,
-      $.batch((events, done) => gulp.start('i18n:dev', done)));
     
     // Watch for changes in images files
     $.watch(paths.images.src,
