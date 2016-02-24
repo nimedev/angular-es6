@@ -1,0 +1,243 @@
+/*------------------------------------*\
+    $WAITING COMPONENT
+\*------------------------------------*/
+
+app-waiting {
+  .load {
+    // Positioning
+    position: relative;
+    
+    // Box-model
+    overflow: hidden;
+    width: 100%;
+    height: 75vh;
+    
+    // Responsive
+    @include respond-to(small) {
+      height: calc(100vh - $header-sm);
+    }
+    
+    // Common values for components
+    &:before,
+    &:after,
+    & .dot,
+    & .outline {
+      // Positioning
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      
+      // Visual
+      border-radius: 50%;
+      
+      // Misc
+      transform: translate(-50%, -50%);
+    }
+    
+    // Colored circle that out
+    &:before {
+      // Box-model
+      content: "";
+      width: 0;
+      height: 0;
+      
+      // Visual
+      background-color: cp($primary, df);
+      
+      // Misc
+      animation: out1 4s linear infinite;
+    }
+    
+    // White circle that out
+    &:after {
+      // Box-model
+      content: "";
+      width: 0;
+      height: 0;
+      
+      // Visual
+      background-color: $white;
+      
+      // Misc
+      animation: out2 4s linear infinite;
+    }
+  }
+  
+    // White dot that in
+    .dot {
+      // Positioning
+      z-index: z(default) + 1;
+      
+      // Box-model
+      width: 6rem;
+      height: 6rem;
+      
+      // Visual
+      background-color: $white;
+      
+      // Misc
+      animation: in 4s linear infinite;
+    }
+  
+    // outline
+    .outline {
+      // Positioning
+      z-index: z(default) + 1;
+      
+      // Box-model
+      width: 7rem;
+      height: 7rem;
+      
+      // span
+      & span {
+        // Positioining
+        position: absolute;
+        right: 50%;
+        bottom: 50%;
+        
+        // Box-model
+        overflow: hidden;
+        width: 4rem;
+        height: 4rem;
+        
+        // Misc
+        transform-origin: 100% 100%;
+        transform: rotate(45deg);
+        animation: outline 4s linear infinite;
+        
+        // before
+        &:before {
+          // Box-model
+          content: "";
+          display: block;
+          width: 200%;
+          height: 200%;
+          
+          // Visual
+          border: solid .3125rem $white;
+          border-radius: 50%;
+          
+          // Misc
+          transform: skewX(-80deg);
+          animation: outlineBefore 4s linear infinite;
+        }
+      }
+    }
+}
+
+// Animation
+@keyframes outline {
+  0% {
+    transform: rotate(0deg) skewX(80deg);
+  }
+  25% {
+    transform: rotate(500deg) skewX(15deg);
+  }
+  50% {
+    transform: rotate(1000deg) skewX(40deg);
+  }
+  75% {
+    transform: rotate(1500deg) skewX(60deg);
+  }
+  100% {
+    transform: rotate(2160deg) skewX(80deg);
+  }
+}
+
+@keyframes outlineBefore {
+  0% {
+    transform: skewX(-80deg);
+    border: solid .3125rem $white;
+  }
+  25% {
+    transform: skewX(-15deg);
+    border: solid .3125rem $white;
+  }
+  49% {
+    border: solid .3125rem $white;
+  }
+  50% {
+    transform: skewX(-40deg);
+    border: solid .3125rem cp($primary, df);
+  }
+  75% {
+    transform: skewX(-60deg);
+    border: solid .3125rem cp($primary, df);
+  }
+  100% {
+    transform: skewX(-80deg);
+    border: solid .3125rem cp($primary, df);
+  }
+}
+
+@keyframes in {
+  0% {
+    width: 9rem;
+    height: 9rem;
+    background: $white;
+  }
+  40% {
+    width: 0;
+    height: 0;
+    background: $white;
+  }
+  41% {
+    width: 0;
+    height: 0;
+    background: cp($primary, h1);
+  }
+  50% {
+    width: 9rem;
+    height: 9rem;
+    background: cp($primary, h1);
+  }
+  90% {
+    width: 0;
+    height: 0;
+    background: cp($primary, h1);
+  }
+  91% {
+    width: 0;
+    height: 0;
+    background: $white;
+  }
+  100% {
+    width: 9rem;
+    height: 9rem;
+    background: $white;
+  }
+}
+
+@keyframes out1 {
+  0% {
+    width: 0;
+    height: 0;
+  }
+  30% {
+    width: 150vw;
+    height: 150vw;
+  }
+  100% {
+    width: 150vw;
+    height: 150vw;
+  }
+}
+
+@keyframes out2 {
+  0% {
+    width: 0;
+    height: 0;
+  }
+  30% {
+    width: 0;
+    height: 0;
+  }
+  60% {
+    width: 150vw;
+    height: 150vw;
+  }
+  100% {
+    width: 150vw;
+    height: 150vw;
+  }
+}

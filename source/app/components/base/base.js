@@ -11,6 +11,7 @@ import * as angular from 'angular';
 import appFab from './app-fab/app-fab';
 import appHeader from './app-header/app-header';
 import appSidenav from './app-sidenav/app-sidenav';
+import appWaiting from './app-waiting/app-waiting';
 import comingSoon from './coming-soon/coming-soon';
 
 /** Component */
@@ -28,6 +29,7 @@ angular
     appFab,
     appHeader,
     appSidenav,
+    appWaiting,
     comingSoon
   ]);
 

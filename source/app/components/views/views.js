@@ -8,6 +8,7 @@ import * as angular from 'angular';
 /** Comunity modules */
 
 /** Submodules */
+import vwAbout from './vw-about/vw-about';
 import vwConfig from './vw-config/vw-config';
 import vwHelp from './vw-help/vw-help';
 import vwHome from './vw-home/vw-home';
@@ -24,6 +25,7 @@ const moduleName = 'views';
 // Define module
 angular
   .module(moduleName, [
+    vwAbout,
     vwConfig,
     vwHelp,
     vwHome
