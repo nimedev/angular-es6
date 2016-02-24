@@ -1,21 +1,19 @@
 /**
- * Module for view-config component.
- * @module viewConfig
+ * Module for vw-home component.
+ * @module vwHome
  */
 /** Angular modules */
 import * as angular from 'angular';
 
 /** Comunity modules */
 
-/** Submodules */
-
-/** Component */
-import component from './view-config.component';
+/** Components */
+import component from './vw-home.component';
 
 /** Services */
 
 // Constants
-const moduleName = 'viewConfig';
+const moduleName = 'vwHome';
 
 // Variables
 
@@ -23,16 +21,16 @@ const moduleName = 'viewConfig';
 angular
   .module(moduleName, [])
   .config(['$stateProvider', ($stateProvider) => {
-    // Config view
+    // Home view
     $stateProvider
       .state(moduleName, {
-        url: '/config',
+        url: '/',
         views: {
           'sidenav': {
-            template: '<sidenav-config></sidenav-config>'
+            template: '<sidenav-home></sidenav-home>'
           },
           'app-content': {
-            template: '<view-config></view-config>'
+            template: '<vw-home></vw-home>'
           }
         }
       });

@@ -7,5 +7,9 @@
 }
 
   .content-wrapper {
+    // Box-model
+    padding: 1em;
+    
+    // Visual
     background-color: $white;
   }

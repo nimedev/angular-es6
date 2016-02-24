@@ -1,10 +1,10 @@
-/** view-home component. */
+/** vw-home component. */
 // Template
-import template from './view-home.html!text';
+import template from './vw-home.html!text';
 
 // Component object
 let component = {
-  name: 'viewHome',
+  name: 'vwHome',
   template
 };
 

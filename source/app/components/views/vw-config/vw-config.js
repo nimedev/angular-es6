@@ -1,21 +1,21 @@
 /**
- * Module for view-help component.
- * @module viewHelp
+ * Module for vw-config component.
+ * @module vwConfig
  */
 /** Angular modules */
 import * as angular from 'angular';
 
 /** Comunity modules */
 
-/** Sub modules */
+/** Submodules */
 
 /** Component */
-import component from './view-help.component';
+import component from './vw-config.component';
 
 /** Services */
 
 // Constants
-const moduleName = 'viewHelp';
+const moduleName = 'vwConfig';
 
 // Variables
 
@@ -23,16 +23,16 @@ const moduleName = 'viewHelp';
 angular
   .module(moduleName, [])
   .config(['$stateProvider', ($stateProvider) => {
-    // Help view
+    // Config view
     $stateProvider
       .state(moduleName, {
-        url: '/help',
+        url: '/config',
         views: {
           'sidenav': {
-            template: '<sidenav-home></sidenav-home>'
+            template: '<sidenav-config></sidenav-config>'
           },
           'app-content': {
-            template: '<view-help></view-help>'
+            template: '<vw-config></vw-config>'
           }
         }
       });

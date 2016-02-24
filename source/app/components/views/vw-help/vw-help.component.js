@@ -1,10 +1,10 @@
-/** view-help component. */
+/** vw-help component. */
 // Template
-import template from './view-help.html!text';
+import template from './vw-help.html!text';
 
 // Component object
 let component = {
-  name: 'viewHelp',
+  name: 'vwHelp',
   template
 };
 

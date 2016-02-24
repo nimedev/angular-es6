@@ -8,9 +8,9 @@ import * as angular from 'angular';
 /** Comunity modules */
 
 /** Submodules */
-import viewConfig from './view-config/view-config';
-import viewHelp from './view-help/view-help';
-import viewHome from './view-home/view-home';
+import vwConfig from './vw-config/vw-config';
+import vwHelp from './vw-help/vw-help';
+import vwHome from './vw-home/vw-home';
 
 /** Component & Directives */
 
@@ -24,9 +24,9 @@ const moduleName = 'views';
 // Define module
 angular
   .module(moduleName, [
-    viewConfig,
-    viewHelp,
-    viewHome
+    vwConfig,
+    vwHelp,
+    vwHome
   ]);
 
 /** @exports module name */
