@@ -16,7 +16,7 @@ const directive = () => {
 
   /////////////////
   /** Link function */
-  function link(scope, element, attrs, ctrl) {
+  function link(scope, element, attrs) {
     let toggleButton = element.parent().find('input');
       
     // Change checked property to checkbox when click in element

@@ -18,7 +18,7 @@ const directive = ($rootScope, $timeout) => {
 
   /////////////////
   /** Link function */
-  function link(scope, element, attrs, ctrl) {
+  function link(scope, element, attrs) {
     // The directive is inserted in component child to get access
     // of controller scope.
     let component = element.parent();

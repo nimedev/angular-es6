@@ -18,7 +18,7 @@ const directive = ($compile, $timeout, nmdDialog) => {
 
   /////////////////
   /** Link function */
-  function link(scope, element, attrs, ctrl) {
+  function link(scope, element, attrs) {
     let backdrop = element[0].querySelector('.dialog__back');
     let component = attrs.ndComponent;
       

@@ -17,7 +17,7 @@ const directive = (sideNav) => {
 
   /////////////////
   /** Link function */
-  function link(scope, element, attrs, ctrl) {
+  function link(scope, element, attrs) {
     element.on('click', () => {
       sideNav.safeClose();
     });

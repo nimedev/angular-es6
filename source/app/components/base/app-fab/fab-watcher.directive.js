@@ -17,7 +17,7 @@ const directive = ($rootScope, styles) => {
 
   /////////////////
   /** Link function */
-  function link(scope, element, attrs, ctrl) {
+  function link(scope, element, attrs) {
     let component = element[0];
       
       // Action when toast is shown

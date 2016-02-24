@@ -285,7 +285,7 @@ Put this snippets in javascript file:
       "",
       "\t/////////////////",
       "\t/** Link function */",
-      "\tfunction link(scope, element, attrs, ctrl) {",
+      "\tfunction link(scope, element, attrs) {",
       "\t\t",
       "\t}",
       "};",
