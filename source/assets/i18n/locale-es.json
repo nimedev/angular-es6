@@ -1,21 +1,25 @@
 {
-  "HEADER": {
-    "LANG": {
-      "en": "English",
-      "es": "Español"
+  "BASE": {
+    "HEADER": {
+      "LANG": {
+        "en": "English",
+        "es": "Español"
+      }
+    },
+    "NAV": {
+      "HOME": "Página principal",
+      "HELP": "Ayuda",
+      "ABOUT": "Acerca de",
+      "SETTINGS": "Configuración"
     }
   },
-  "NAV": {
-    "HOME": "Página principal",
-    "HELP": "Ayuda",
-    "ABOUT": "Acerca de",
-    "SETTINGS": "Configuración"
-  },
-  "HOME": "Bienvenido!",
-  "HELP": "Ayuda",
   "MESSAGE": {
     "TITLE": "Hola!!",
     "CLOSE": "Cerrar"
+  },
+  "VIEWS": {
+    "HELP": "Ayuda",
+    "HOME": "Bienvenido!"
   },
   "NOTIFICATIONS": {
     "LANGUAGE": "El idioma ha cambiado!!!"

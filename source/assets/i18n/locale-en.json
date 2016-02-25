@@ -1,21 +1,25 @@
 {
-  "HEADER": {
-    "LANG": {
-      "en": "English",
-      "es": "Español"
+  "BASE": {
+    "HEADER": {
+      "LANG": {
+        "en": "English",
+        "es": "Español"
+      }
+    },
+    "NAV": {
+      "HOME": "Home",
+      "HELP": "Help",
+      "ABOUT": "About",
+      "SETTINGS": "Settings"
     }
   },
-  "NAV": {
-    "HOME": "Home",
-    "HELP": "Help",
-    "ABOUT": "About",
-    "SETTINGS": "Settings"
-  },
-  "HOME": "Welcome!",
-  "HELP": "Help",
   "MESSAGE": {
     "TITLE": "Hello!!",
     "CLOSE": "Close"
+  },
+  "VIEWS": {
+    "HELP": "Help",
+    "HOME": "Welcome!"
   },
   "NOTIFICATIONS": {
     "LANGUAGE": "Language changed!!!"
