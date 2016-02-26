@@ -1,5 +1,5 @@
 /**
- * Directive to close dropdown menu when click in a sibbling element.
+ * Directive to close dropdown menu when click in html object.
  * @name closeDD
  */
 // Directive name
@@ -9,18 +9,28 @@ const directiveName = 'closeDd';
 const directive = () => {
   let directive = {
     link: link,
-    restrict: 'A',
-    scope: {}
+    restrict: 'A'
   };
   return directive;
 
   /////////////////
   /** Link function */
   function link(scope, element, attrs) {
-    let toggleButton = element.parent().find('input');
-      
+    const id = attrs[directiveName];
+    const html = angular.element(document).find('html');
+    const toggleButton = element.parent().find('input');
+
     // Change checked property to checkbox when click in element
-    element.on('click', () => toggleButton[0].checked = false);
+    html.on('click', event => {
+      const targetElement = event.target;
+      const targetFor = targetElement.attributes.for;
+
+      // Only change checked property if the click element is diferent to
+      // the checkbox input or asociate label to this
+      if (targetElement.id !== id && (!targetFor || targetFor.value !== id)) {
+        toggleButton[0].checked = false;
+      }
+    });
   }
 };
 

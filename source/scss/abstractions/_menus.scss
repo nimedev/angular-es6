@@ -86,22 +86,6 @@
     user-select: none; 
   }
   
-  // Backdrop for menu
-  &__back {
-    // Positioning
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    
-    // Box-model
-    display: none;
-    
-    // Visual
-    background-color: $backdrop-light;
-  }
-  
   // Dropdown menu start hidden
   &__list {
     // Positioning
@@ -145,11 +129,6 @@
   }
   
   input[type=checkbox]:checked ~ .dropdown__list {
-    display: block;
-  }
-  
-  input[type=checkbox]:checked ~ .dropdown__back {
-    // Box-model
     display: block;
   }
 }

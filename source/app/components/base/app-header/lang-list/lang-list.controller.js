@@ -12,6 +12,7 @@ export default class LangListCtrl {
 
     /** Class Fields */
     this.languages = ['en', 'es'];
+    
   }
 
   /** Class Methods */
