@@ -358,12 +358,13 @@ function optimizeImageTask(dest) {
 function shellBundle(options, dest) {
   let arithmetic = options.arithmetic || '';
   let destPath = dest || paths.bundle.dest.prod;
+  // let opt = '--minify --skip-source-maps';
   let opt = '--minify --skip-source-maps';
   let source = options.src;
   
-  // if is in dev mode (dest != undefined) remove extra options
+  // if is in dev mode (dest != undefined) only minify and keep sourcemaps
   if (dest) {
-    opt = '';
+    opt = '--minify';
   }
   
   // Make string to ignore vendors in bundle app.
