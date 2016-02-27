@@ -5,37 +5,40 @@
  */
 'use strict';
 
+// Load configurations
+const config = require('./gulp.config');
+
 // Use this module to inspect execution times
-// require('time-require');
+if (config.flags.timeRequire) {
+  require('time-require');
+}
 
 /** core modules */
-var path = require('path');
+let path = require('path');
 
 /** npm modules */
-var $ = require('gulp-load-plugins')();
-var addStream = require('add-stream');
-var browserSync = require('browser-sync').create();
-var del = require('del');
-var gulp = require('gulp');
-var historyApiFallback = require('connect-history-api-fallback');
-var runSequence = require('run-sequence');
+let $ = require('gulp-load-plugins')();
+let addStream = require('add-stream');
+let browserSync = require('browser-sync').create();
+let del = require('del');
+let gulp = require('gulp');
+let historyApiFallback = require('connect-history-api-fallback');
+let runSequence = require('run-sequence');
 
 /** others modules. */
-var config = require('./gulpconfig');
-var jspmConfig = require('./package').jspm;
+const jspmConfig = require('./package').jspm;
 
 // variables
-var flags = config.flags;
-var paths = config.paths;
-var filesName = config.filesName;
-var tasks;
-var vendors;
+const flags = config.flags;
+const paths = config.paths;
+const filesName = config.filesName;
+let vendors;
 
 // Get a array with a list of jspm vendors (dependencies)
 vendors = Object.keys(jspmConfig.dependencies);
 
 /** Config de autoprefixer. CSS compatibility */
-var AUTOPREFIXER_BROWSERS = [
+const AUTOPREFIXER_BROWSERS = [
   'ie >= 9',
   'ie_mob >= 10',
   'ff >= 30',
@@ -52,6 +55,7 @@ var AUTOPREFIXER_BROWSERS = [
  */
 /** clean output directory */
 gulp.task('clean', () => del.sync(paths.cleanAll));
+gulp.task('clean:dev', () => del.sync(paths.cleanDev));
 
 
 /**
@@ -100,19 +104,18 @@ gulp.task('style:dev', () => styleTask(paths.style.dest.dev));
  * BUNDLE TASKS
  */
 // Perform bundle-shell task with i18n task
-gulp.task('bundle:app', cb => runSequence(['app-shell', 'i18n'], cb));
+gulp.task('bundle:app', cb => runSequence('app-shell', 'i18n', cb));
 
 // Bundle application files in dist folder.
 gulp.task('app-shell', $.shell.task(shellBundle(config.bundle.app)));
 
 // Perform bundle-shell task with i18n task for development environment.
-gulp.task('bundle:app-dev', cb => runSequence(['app-shell:dev', 'i18n:dev'], cb));
+gulp.task('bundle:app-dev', cb => runSequence('app-shell:dev', 'i18n:dev', cb));
 
 // Bundle application files in dev folder.
 gulp.task('app-shell:dev', () => {
   return gulp.src(paths.bundle.main)
-    .pipe($.shell(shellBundle(config.bundle.app, paths.bundle.dest.dev)))
-  // .pipe(browserSync.stream());
+    .pipe($.shell(shellBundle(config.bundle.app, paths.bundle.dest.dev)));
 });
 
 
@@ -154,20 +157,65 @@ gulp.task('bundle:dev', cb => runSequence(['bundle:app-dev', 'bundle:dep-dev'], 
 gulp.task('build', ['lint'], cb => runSequence(['bundle', 'html', 'images', 'misc', 'style'], cb));
 
 
+/** Development task */
+gulp.task('development', cb => {
+  del.sync(paths.cleanDev);
+  runSequence(['bundle:dev', 'html:dev', 'images:dev', 'misc:dev', 'style:dev'], cb);
+});
+
 /**
  * WATCH TASKS
  */
-/** Watch all without browser reload */
-tasks = ['bundle:dev', 'html:dev', 'images:dev', 'misc:dev', 'style:dev'];
-gulp.task('watch', tasks, () => watchTasks(true));
+/**
+ * Watch all without browser reload.
+ * Folder 'dev' is the destination for all tasks.   
+ */
+gulp.task('watch', ['development'], () => watchTasks(true));
+
+/**
+ * Watch all with browser reload.
+ * Folder 'dev' is the destination for all tasks.
+ * Serve files from 'dev' folder. 
+ */
+gulp.task('hot-reload:dev', ['browserSync:dev'], () => watchTasks(true));
+
+/**
+ * Watch style files with browser reload.
+ * Folder 'dev' is the destination for style task.
+ * Serve files from 'dev' folder for style task and 'src' folder for 
+ * others files.
+ */
+gulp.task('hot-reload:src', ['browserSync:src'], () => watchTasks());
 
 
 /**
  * RELOAD TASKS
  */
+/** 
+ * Serve files from dev folder.
+ * Run first all deployment tasks. 
+ */
+gulp.task('browserSync:dev', ['development'], () => {
+  // config browser-sync module
+  browserSync.init({
+    open: false,
+    port: config.server.port,
+    server: {
+      baseDir: config.server.baseDir.dev,
+      middleware: [historyApiFallback()]
+    }
+  });
+
+  // Watch for changes in dev folder to reload
+  gulp.watch(paths.reload.dev).on('change', browserSync.reload);
+});
+
 /** Serve files from source folder watching styles with browser reload */
-tasks = ['style:dev'];
-gulp.task('hot-reload:src', tasks, () => {
+gulp.task('style:src', cb => {
+  del.sync(paths.cleanDev);
+  runSequence(['style:dev'], cb);
+});
+gulp.task('browserSync:src', ['style:src'], () => {
   // config browser-sync module
   browserSync.init({
     open: false,
@@ -179,31 +227,8 @@ gulp.task('hot-reload:src', tasks, () => {
     }
   });
 
-  // Watch only style:dev task
-  watchTasks();
-  
   // Watch for changes in source to reload
   gulp.watch(paths.reload.src).on('change', browserSync.reload);
-});
-
-/** Serve files from dev folder watching all front-end tasks */
-tasks = ['bundle:dev', 'html:dev', 'images:dev', 'misc:dev', 'style:dev'];
-gulp.task('hot-reload:dev', tasks, () => {
-  // config browser-sync module
-  browserSync.init({
-    open: false,
-    port: config.server.port,
-    server: {
-      baseDir: config.server.baseDir.dev,
-      middleware: [historyApiFallback()]
-    }
-  });
-
-  // Watch all tasks
-  watchTasks(true);
-  
-  // Watch for changes in dev folder to reload
-  gulp.watch(paths.reload).on('change', browserSync.reload);
 });
 
 
@@ -211,7 +236,7 @@ gulp.task('hot-reload:dev', tasks, () => {
  * DEFAULT TASK
  * Generate clean dist for production.
  */
-gulp.task('default', (cb) => {
+gulp.task('default', cb => {
   del.sync(paths.cleanAll);
   runSequence(['build'], cb);
 });
@@ -248,8 +273,7 @@ function bundleDepTask(dest) {
     .pipe($.uglify())
     .pipe($.concat(name))
     .pipe(gulp.dest(destPath))
-    .pipe($.size({ title: path.join(destPath, name) }))
-  // .pipe(browserSync.stream());
+    .pipe($.size({ title: path.join(destPath, name) }));
 }
 
 /** 
@@ -258,9 +282,6 @@ function bundleDepTask(dest) {
  */
 function i18nTask(dest) {
   let destPath = dest || paths.i18n.dest.prod;
-  
-  // Delete all files in dest folder
-  del.sync(path.join(destPath, '*'));
   
   // Optimize i18n files
   return gulp.src(paths.i18n.src)
@@ -284,14 +305,10 @@ function lintTask() {
 function miscTask(dest) {
   let destPath = dest || paths.misc.dest.prod;
   
-  // Delete all files in dest folder
-  del.sync(path.join(destPath, '*'));
-  
   // Copy miscellaneous files
   return gulp.src(paths.misc.src)
     .pipe(gulp.dest(destPath))
-    .pipe($.size({ title: `Misc: ${destPath}` }))
-  // .pipe(browserSync.stream());
+    .pipe($.size({ title: `Misc: ${destPath}` }));
 }
 
 /** 
@@ -301,9 +318,6 @@ function miscTask(dest) {
  */
 function optimizeHtmlTask(dest) {
   let destPath = dest || paths.html.dest.prod;
-  
-  // Delete all html files in dest folder
-  del.sync(path.join(destPath, '*.html'));
   
   // Optimize html files
   return gulp.src(paths.html.src)
@@ -316,8 +330,7 @@ function optimizeHtmlTask(dest) {
       removeComments: true
     }))
     .pipe(gulp.dest(destPath))
-    .pipe($.size({ title: `html: ${destPath}` }))
-  // .pipe(browserSync.stream());
+    .pipe($.size({ title: `html: ${destPath}` }));
 }
 
 /** 
@@ -327,9 +340,6 @@ function optimizeHtmlTask(dest) {
 function optimizeImageTask(dest) {
   let destPath = dest || paths.images.dest.prod;
   
-  // Delete all files in dest folder
-  del.sync(path.join(destPath, '*'));
-  
   // Optimize images files
   return gulp.src(paths.images.src)
   // .pipe($.imagemin({
@@ -337,8 +347,7 @@ function optimizeImageTask(dest) {
   //   interlaced: true
   // }))
     .pipe(gulp.dest(destPath))
-    .pipe($.size({ title: `images: ${destPath}` }))
-  // .pipe(browserSync.stream());
+    .pipe($.size({ title: `images: ${destPath}` }));
 }
 
 /**
@@ -400,9 +409,6 @@ function styleTask(dest) {
   let destPath = dest || paths.style.dest.prod;
   let sourcemap = (dest !== undefined);
   
-  // Delete all files in css folder
-  del.sync(path.join(destPath, '*'));
-  
   // Do style task
   // Only apply mergeMediaQueries in production because don't have
   // compatibility with sourcemap puglin.
@@ -416,8 +422,7 @@ function styleTask(dest) {
     .pipe($.if(flags.minifyCss, $.cssnano()))
     .pipe($.if(sourcemap, $.sourcemaps.write('.')))
     .pipe(gulp.dest(destPath))
-    .pipe($.size({ title: path.join(destPath, name) }))
-  // .pipe(browserSync.stream());
+    .pipe($.size({ title: path.join(destPath, name) }));
 }
 
 /** 
@@ -427,28 +432,18 @@ function styleTask(dest) {
 function watchTasks(watchAll) {
   if (watchAll) {
     // watch for changes in js or html files in app folder
-    $.watch(paths.bundle.watch, ['bundle:app-dev']);
-    // $.watch(paths.bundle.watch,
-    //   $.batch((events, done) => gulp.start('bundle:app-dev', done)));
+    gulp.watch(paths.bundle.watch, ['bundle:app-dev']);
       
     // Watch for changes in html files
-    $.watch(paths.html.src, ['html:dev']);
-    // $.watch(paths.html.src,
-    //   $.batch((events, done) => gulp.start('html:dev', done)));
+    gulp.watch(paths.html.src, ['html:dev']);
     
     // Watch for changes in images files
-    $.watch(paths.images.src, ['images:dev']);
-    // $.watch(paths.images.src,
-    //   $.batch((events, done) => gulp.start('images:dev', done)));
+    gulp.watch(paths.images.src, ['images:dev']);
     
     // Watch for changes in miscellaneous files
-    $.watch(paths.misc.src, ['misc:dev']);
-    // $.watch(paths.misc.src,
-    //   $.batch((events, done) => gulp.start('misc:dev', done)));
+    gulp.watch(paths.misc.src, ['misc:dev']);
   }
   
   // Watch for changes in styles files
-  $.watch(paths.style.watch, ['style:dev']);
-  // $.watch(paths.style.watch,
-  //   $.batch((events, done) => gulp.start('style:dev', done)));
+  gulp.watch(paths.style.watch, ['style:dev']);
 }
