@@ -49,7 +49,7 @@
   },
   "jspm": {
     "directories": {
-      "baseURL": "source"
+      "baseURL": "src"
     },
     "dependencies": {
       "angular": "npm:angular@^1.5.0",

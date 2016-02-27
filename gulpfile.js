@@ -112,7 +112,7 @@ gulp.task('bundle:app-dev', cb => runSequence(['app-shell:dev', 'i18n:dev'], cb)
 gulp.task('app-shell:dev', () => {
   return gulp.src(paths.bundle.main)
     .pipe($.shell(shellBundle(config.bundle.app, paths.bundle.dest.dev)))
-    .pipe(browserSync.stream());
+  // .pipe(browserSync.stream());
 });
 
 
@@ -157,9 +157,9 @@ gulp.task('build', ['lint'], cb => runSequence(['bundle', 'html', 'images', 'mis
 /**
  * WATCH TASKS
  */
-/** Watch styles and templates */
-tasks = ['style:dev'];
-gulp.task('watch', tasks, () => watchTasks());
+/** Watch all without browser reload */
+tasks = ['bundle:dev', 'html:dev', 'images:dev', 'misc:dev', 'style:dev'];
+gulp.task('watch', tasks, () => watchTasks(true));
 
 
 /**
@@ -182,8 +182,8 @@ gulp.task('hot-reload:src', tasks, () => {
   // Watch only style:dev task
   watchTasks();
   
-  // Watch for changes to reload
-  gulp.watch(paths.reload).on('change', browserSync.reload);
+  // Watch for changes in source to reload
+  gulp.watch(paths.reload.src).on('change', browserSync.reload);
 });
 
 /** Serve files from dev folder watching all front-end tasks */
@@ -201,6 +201,9 @@ gulp.task('hot-reload:dev', tasks, () => {
 
   // Watch all tasks
   watchTasks(true);
+  
+  // Watch for changes in dev folder to reload
+  gulp.watch(paths.reload).on('change', browserSync.reload);
 });
 
 
@@ -246,7 +249,7 @@ function bundleDepTask(dest) {
     .pipe($.concat(name))
     .pipe(gulp.dest(destPath))
     .pipe($.size({ title: path.join(destPath, name) }))
-    .pipe(browserSync.stream());
+  // .pipe(browserSync.stream());
 }
 
 /** 
@@ -288,7 +291,7 @@ function miscTask(dest) {
   return gulp.src(paths.misc.src)
     .pipe(gulp.dest(destPath))
     .pipe($.size({ title: `Misc: ${destPath}` }))
-    .pipe(browserSync.stream());
+  // .pipe(browserSync.stream());
 }
 
 /** 
@@ -314,7 +317,7 @@ function optimizeHtmlTask(dest) {
     }))
     .pipe(gulp.dest(destPath))
     .pipe($.size({ title: `html: ${destPath}` }))
-    .pipe(browserSync.stream());
+  // .pipe(browserSync.stream());
 }
 
 /** 
@@ -335,7 +338,7 @@ function optimizeImageTask(dest) {
   // }))
     .pipe(gulp.dest(destPath))
     .pipe($.size({ title: `images: ${destPath}` }))
-    .pipe(browserSync.stream());
+  // .pipe(browserSync.stream());
 }
 
 /**
@@ -414,33 +417,38 @@ function styleTask(dest) {
     .pipe($.if(sourcemap, $.sourcemaps.write('.')))
     .pipe(gulp.dest(destPath))
     .pipe($.size({ title: path.join(destPath, name) }))
-    .pipe(browserSync.stream());
+  // .pipe(browserSync.stream());
 }
 
 /** 
  * Wrap all watch function
- * @param {boolean} runAll - indicate if run all tasks or only style task 
+ * @param {boolean} watchAll - indicate if run all tasks or only style task 
  */
-function watchTasks(runAll) {
-  if (runAll) {
+function watchTasks(watchAll) {
+  if (watchAll) {
     // watch for changes in js or html files in app folder
-    $.watch(paths.bundle.watch,
-      $.batch((events, done) => gulp.start('bundle:app-dev', done)));
+    $.watch(paths.bundle.watch, ['bundle:app-dev']);
+    // $.watch(paths.bundle.watch,
+    //   $.batch((events, done) => gulp.start('bundle:app-dev', done)));
       
     // Watch for changes in html files
-    $.watch(paths.html.src,
-      $.batch((events, done) => gulp.start('html:dev', done)));
+    $.watch(paths.html.src, ['html:dev']);
+    // $.watch(paths.html.src,
+    //   $.batch((events, done) => gulp.start('html:dev', done)));
     
     // Watch for changes in images files
-    $.watch(paths.images.src,
-      $.batch((events, done) => gulp.start('images:dev', done)));
+    $.watch(paths.images.src, ['images:dev']);
+    // $.watch(paths.images.src,
+    //   $.batch((events, done) => gulp.start('images:dev', done)));
     
     // Watch for changes in miscellaneous files
-    $.watch(paths.misc.src,
-      $.batch((events, done) => gulp.start('misc:dev', done)));
+    $.watch(paths.misc.src, ['misc:dev']);
+    // $.watch(paths.misc.src,
+    //   $.batch((events, done) => gulp.start('misc:dev', done)));
   }
   
   // Watch for changes in styles files
-  $.watch(paths.style.watch,
-    $.batch((events, done) => gulp.start('style:dev', done)));
+  $.watch(paths.style.watch, ['style:dev']);
+  // $.watch(paths.style.watch,
+  //   $.batch((events, done) => gulp.start('style:dev', done)));
 }
