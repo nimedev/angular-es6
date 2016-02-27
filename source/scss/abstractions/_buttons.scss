@@ -6,24 +6,30 @@
  * .btn is the main class to define a button.
  */
 .btn {
+  // Box-model
 	display: inline-block;
-	line-height : $baselineheight * 1.5;
-	color: $buttoncolor;
-	text-align: center;
-	vertical-align: middle;
-	font-size: fs(normal);
-	white-space: nowrap;
-	background-color: cp($accent, df);
-	border: none;
-	cursor: pointer;
-	margin: 0;
+  margin: 0;
 	padding-top:   0;
   padding-bottom: 0;
   padding-right: 1em;
   padding-left: 1em;
-	border-radius: 0;
+  
+  // Tipography
+	line-height : $baselineheight * 1.5;
+	color: $buttoncolor;
+	text-align: center;
+	font-size: fs(normal);
+	white-space: nowrap;
   text-transform: uppercase;
   text-decoration: none;
+  
+  // Visual
+	background-color: cp($accent, df);
+	border: none;
+	cursor: pointer;
+	border-radius: 0;
+  
+  // Misc
   transition: all .5s ease;
 
 	&:hover {
