@@ -105,7 +105,47 @@
     background-color: white;
     @extend .whiteframe-2;
   }
+  
+  // List from right of toggle button
+  // add 'dd-right' class in ul element
+  &__list.dd-right {
+    // Positioning
+    right: 0.75rem;
+  }
+  
+  // Menu with nice pointer
+  // add 'dd-pointer' class in ul element
+  &__list.dd-pointer {
+    // Positioning
+    top: calc(100% + .75rem);
+    
+    // Add nice pointer :D
+    &::before {
+      // Positioning
+      position: absolute;
+      top: -.75rem;
+      
+      // Box-model
+      content: '';
+      display: block;
+      height: 0;
+      width: 1rem;
+        
+      // Visual
+      border-color: transparent transparent $header-color-hue transparent;
+      border-style: solid;
+      border-width: 0 .75rem .75rem .75rem;
+    }
+  }
+  
+  // Move pointer to right
+  &__list.dd-pointer.dd-right {
+    &::before {
+      right: 0;
+    }
+  }
  
+    // Style of dropdown item
     &__item {
       // Box-model
       padding: .5rem 1rem;
