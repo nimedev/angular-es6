@@ -17,11 +17,12 @@
   &__item {
     // Box-model
     display: flex;
-    justify-content: flex-start;
+    justify-content: flex-start; 
     align-content: center;
     margin: 0;
-    padding-left: ($sidenavwidth-sm - 1.5rem) / 2;
+    padding: 0 ($sidenavwidth-sm - 1.5rem) / 2;
     width: 100%;
+    max-width: 100%;
     min-height: $menu-height;
     height: $menu-height;
     
@@ -33,19 +34,26 @@
     // Visual
     cursor: pointer;
     
-    .material-icons {
+    // Elements inside of menu item
+    .menu__item--icon,
+    .menu__item--label {
+      line-height: $menu-height;
+    }
+    
+    .menu__item--icon {
       // Box-model
       flex: 0 0 auto;
       margin-right: ($sidenavwidth-sm - 1.5rem) / 2;
       
       // Tipography
-      line-height: $menu-height;
       color: $darkgrey;
     }
     
-    // Menu text
-    span {
+    .menu__item--label {
       flex: 1 1 auto;
+      
+      // Ellipsis Hack
+      @extend %text-overflow;
     }
   }
 }
