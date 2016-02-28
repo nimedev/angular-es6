@@ -1,8 +1,8 @@
 <input type="checkbox" id="lang-list__toggle">
 <label class="dropdown__label material-icons" for="lang-list__toggle">language</label>
 <ul class="dropdown__list dd-right dd-pointer" close-dd="lang-list__toggle">
-  <li class="dropdown__item" ng-repeat="lang in $ctrl.languages">
-    <div ng-click="$ctrl.changeLanguage(lang)">
+  <li ng-repeat="lang in $ctrl.languages">
+    <div class="dropdown__item" ng-click="$ctrl.changeLanguage(lang)">
       {{'BASE.HEADER.LANG.' + lang | translate}}
     </div>
   </li>

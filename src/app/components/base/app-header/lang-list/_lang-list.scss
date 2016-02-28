@@ -10,7 +10,14 @@ lang-list {
     }
     
     &__item {
+      // Box-model
+      max-width: 15rem;
+      
+      // Visual
       color: $white;
+      
+      // Ellipsis hack
+      @extend %text-overflow;
     }
   }
 }
