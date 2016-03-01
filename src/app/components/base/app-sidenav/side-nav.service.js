@@ -53,10 +53,10 @@ class SideNav {
   }
     
   /** HELPER FUNCTIONS */
-  /** toggle class in body and .app-body elements */
+  /** toggle class in body element and app-main component */
   toggleElements() {
     let body = angular.element(document).find('body');
-    let element = angular.element(document.querySelector('.app-body'));
+    let element = angular.element(document).find('app-main');
       
     // sidenav is closed?
     if (this.cssClass === '') {

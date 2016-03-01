@@ -1,0 +1,60 @@
+/*------------------------------------*\
+    $APP-MAIN COMPONENT
+\*------------------------------------*/
+
+app-main {
+  // Positioning
+  position: relative;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  
+  // Box-model
+  display: flex;
+  padding-top: $header-xs;
+  min-height: 100%;
+  
+  // Misc
+  transition: margin $close-delay;
+  
+  // Responsive
+  @include respond-to(small) {
+    // Box model
+    margin-left: $sidenavwidth-sm;
+    padding-top: $header-sm;
+    
+    // app-main.nav-open
+    &.nav-open {
+      margin-left: $sidenavwidth-md;
+    }
+  }
+  
+  &.header__nav-open {
+    // Box-model
+    padding-top: $header-xs + $headernav-height;
+    
+    // Responsive
+    @include respond-to(small) {
+      padding-top: $header-sm + $headernav-height;
+    }
+  }
+  
+  .app-content {
+    // Box-model
+    display: flex;
+    padding: $gutterwidth;
+    
+    // Flexbox as item
+    flex-grow: 1;
+  }
+
+    .content-wrapper {
+      // Box-model
+      padding: 1em;
+    
+      // Visual
+      background-color: $white;
+    }
+}
