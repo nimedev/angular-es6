@@ -1,13 +1,12 @@
 /** app-main component. */
 // Template
-import template from './app-main.html!text';
 
 // Controller
 
 // Component object
 const component = {
   name: 'appMain',
-  template
+  template: '<main ui-view="app-content"></main>'
 };
 
 /** @exports component object */

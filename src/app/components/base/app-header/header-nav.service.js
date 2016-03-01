@@ -40,10 +40,10 @@ class HeaderNav {
   }
     
   /** HELPER FUNCTIONS */
-  /** toggle class in app-main and app-sidenav component */
+  /** toggle class in app-sidenav and app-main components */
   toggleElements() {
-    let body = angular.element(document).find('app-main');
-    let sidenav = angular.element(document).find('app-sidenav');
+    const body = angular.element(document).find('app-main');
+    const sidenav = angular.element(document).find('app-sidenav');
       
     // header-nav is closed?
     if (this.cssClass === '') {

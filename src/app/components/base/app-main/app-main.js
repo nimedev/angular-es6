@@ -1,5 +1,6 @@
 /**
  * Module for app-main component.
+ * Is a simple wrapper for main element that have ui-view directive.
  * @module appMain
  */
 /** Angular modules */
