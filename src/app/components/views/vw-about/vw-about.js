@@ -10,7 +10,6 @@ import * as angular from 'angular';
 /** Submodules */
 
 /** Component & Directives */
-import component from './vw-about.component';
 
 /** Services */
 
@@ -32,12 +31,11 @@ angular
             template: '<sidenav-config></sidenav-config>'
           },
           'app-content': {
-            template: '<vw-about></vw-about>'
+            template: '<app-waiting></app-waiting>'
           }
         }
       });
-  }])
-  .component(component.name, component);
+  }]);
 
 /** @exports module name */
 export default moduleName;

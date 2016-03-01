@@ -3,6 +3,9 @@
 \*------------------------------------*/
 
 app-waiting {
+  // Flexbox item
+  flex-grow: 1;
+  
   .load {
     // Positioning
     position: relative;
