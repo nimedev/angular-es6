@@ -121,6 +121,15 @@ module.exports = {
       'dev/**/.*'
     ],
     
+    // Fonts paths
+    fonts: {
+      src: 'src/assets/fonts/**/*',
+      dest: {
+        dev: 'dev/assets/fonts',
+        prod: 'dist/assets/fonts'
+      }
+    },
+    
     // index.html task
     html: {
       src: 'src/*.html',
@@ -130,7 +139,7 @@ module.exports = {
       }
     },
     
-    // i18n task. Use
+    // i18n paths.
     i18n: {
       src: 'src/assets/i18n/**/*',
       dest: {

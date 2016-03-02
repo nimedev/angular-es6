@@ -61,6 +61,20 @@ gulp.task('clean:dev', () => del.sync(paths.cleanDev));
 /**
  * FRONT-END TASKS
  */
+// Save assets files that don't need processing in dist folder
+gulp.task('assets', ['fonts', 'i18n']);
+
+// Save assets files that don't need processing in dev folder
+gulp.task('assets:dev', ['fonts:dev', 'i18n:dev']);
+
+
+// Save fonts files in dist folder
+gulp.task('fonts', () => fontsTask());
+
+// Save fonts files in dev folder
+gulp.task('fonts:dev', () => fontsTask(paths.fonts.dest.dev));
+
+
 // Save index.html file in dist folder
 gulp.task('html', () => optimizeHtmlTask());
 
@@ -103,14 +117,14 @@ gulp.task('style:dev', () => styleTask(paths.style.dest.dev));
 /**
  * BUNDLE TASKS
  */
-// Perform bundle-shell task with i18n task
-gulp.task('bundle:app', cb => runSequence('app-shell', 'i18n', cb));
+// Perform bundle-shell task with assets task
+gulp.task('bundle:app', cb => runSequence('app-shell', 'assets', cb));
 
 // Bundle application files in dist folder.
 gulp.task('app-shell', $.shell.task(shellBundle(config.bundle.app)));
 
-// Perform bundle-shell task with i18n task for development environment.
-gulp.task('bundle:app-dev', cb => runSequence('app-shell:dev', 'i18n:dev', cb));
+// Perform bundle-shell task with assets task for development environment.
+gulp.task('bundle:app-dev', cb => runSequence('app-shell:dev', 'assets:dev', cb));
 
 // Bundle application files in dev folder.
 gulp.task('app-shell:dev', () => {
@@ -274,6 +288,19 @@ function bundleDepTask(dest) {
     .pipe($.concat(name))
     .pipe(gulp.dest(destPath))
     .pipe($.size({ title: path.join(destPath, name) }));
+}
+
+/** 
+ * Copy fonts files in a new folder.
+ * @param {string} dest - Destination path (use production path by default). 
+ */
+function fontsTask(dest) {
+  let destPath = dest || paths.fonts.dest.prod;
+  
+  // Optimize fonts files
+  return gulp.src(paths.fonts.src)
+    .pipe(gulp.dest(destPath))
+    .pipe($.size({ title: `fonts: ${destPath}` }));
 }
 
 /** 

@@ -19,7 +19,9 @@ $include-colors:         true!default;
 $include-debug:          false!default;
 $include-dialog:         true!default;
 $include-divider:        true!default;
+$include-divider:        true!default;
 $include-imgclass:       false!default;
+$include-materialicons:  true!default;
 $include-menus:          true!default;
 $include-tables:         false!default;
 // $include-progress:       true!default;
@@ -114,7 +116,7 @@ $z-layers: (
 /**
  * Con agregar esta variable a las imágenes declaradas en CSS apañamos:
  */
-$image-dir: "/Content/img";
+$image-dir: "/assets/img";
 
 /**
  * Use: background-image:url("#{$image-dir}/btn.jpg");
@@ -123,7 +125,7 @@ $image-dir: "/Content/img";
 /**
  * Igual para las fuentes
  */
-$font-dir: "/Content/fonts";
+$font-dir: "/assets/fonts";
 /**
  * Use:
  *  src:url('#{$font-dir}/icomoon.eot');
