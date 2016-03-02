@@ -56,15 +56,11 @@ class SideNav {
   /** toggle class in body element and app-main component */
   toggleElements() {
     const body = angular.element(document).find('body');
-    const element = angular.element(document).find('app-main');
 
     // sidenav is closed?
     if (this.cssClass === '') {
-      element.removeClass(this.cssName);
       body.removeClass(this.cssName);
     } else {
-      element.addClass(this.cssName);
-      
       // only add class if is in mobile
       if (this.$window.innerWidth < this.smBreak) {
         body.addClass(this.cssName);

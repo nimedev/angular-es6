@@ -74,6 +74,7 @@
     
     // Responsive
     @include respond-to(small) {
+      // Box-model
       width: $sidenavwidth-sm;
     }
     

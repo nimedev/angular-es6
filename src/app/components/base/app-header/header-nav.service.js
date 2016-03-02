@@ -21,38 +21,16 @@ class HeaderNav {
   /** Close header-nav */
   close() {
     this.cssClass = '';
-    this.toggleElements();
   }
     
   /** Open header-nav */
   open() {
     this.cssClass = this.cssName;
-    this.toggleElements();
   }
     
   /** Change header-nav visibility */
   toggle() {
-    if (this.cssClass === '') {
-      this.open();
-    } else {
-      this.close();
-    }
-  }
-    
-  /** HELPER FUNCTIONS */
-  /** toggle class in app-sidenav and app-main components */
-  toggleElements() {
-    const body = angular.element(document).find('app-main');
-    const sidenav = angular.element(document).find('app-sidenav');
-      
-    // header-nav is closed?
-    if (this.cssClass === '') {
-      body.removeClass(this.cssName);
-      sidenav.removeClass(this.cssName);
-    } else {
-      body.addClass(this.cssName);
-      sidenav.addClass(this.cssName);
-    }
+    (this.cssClass === '') ? this.open() : this.close();
   }
 }
 

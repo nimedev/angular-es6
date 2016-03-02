@@ -1,8 +1,8 @@
 /*------------------------------------*\
-    $HEADER
+    $APP-HEADER COMPONENT
 \*------------------------------------*/
 
-.header {
+app-header {
   // Positioning
   position: fixed;
   top: 0;
@@ -13,7 +13,7 @@
   // Visual
   background-color: $header-color;
   
-  &__wrapper {
+  .header__wrapper {
     // Box-model
     display: flex;
     align-items: center;
@@ -25,7 +25,7 @@
     }
   }
   
-    &__logo {
+    .header__logo {
       // Box-model
       margin-left: $headermargin-xs;
       padding: $logopadding;
@@ -46,8 +46,8 @@
       }
     }
     
-    &__item,
-    &__item.btn--icon {
+    .header__item,
+    .header__item.btn--icon {
       // Tipography
       line-height: $header-xs;
       
@@ -65,18 +65,18 @@
     
     
     // Add space between elements
-    &__space {
+    .header__space {
       flex: 1;
     }
   
   // Navigation for header
-  &__nav {
+  .header__nav {
     // Box-model
     min-width: 100%;
     height: 0;
   }
   
-  &__nav.header__nav-open {
+  .header__nav.header__nav-open {
     height: $headernav-height;
   }
 }

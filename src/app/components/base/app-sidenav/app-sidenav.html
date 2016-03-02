@@ -1,4 +1,6 @@
-<div class="sidenav__back" ng-class="$ctrl.sideNav.cssClass" ng-click="$ctrl.close()"></div>
-<div class="sidenav__content" ng-class="$ctrl.sideNav.cssClass">
-  <div ui-view="sidenav"></div>
+<div class="sidenav" ng-class="$ctrl.headerNav.cssClass">
+  <div class="sidenav__back" ng-class="$ctrl.sideNav.cssClass" ng-click="$ctrl.close()"></div>
+  <div class="sidenav__content" ng-class="$ctrl.sideNav.cssClass">
+    <div ui-view="sidenav"></div>
+  </div>
 </div>

@@ -4,23 +4,6 @@
 /* Styles for all related with the main views. */
 
 app-main {
-  // Styles when component have this class
-  &.header__nav-open main {
-    // Box-model
-    padding-top: $header-xs + $headernav-height;
-    
-    // Responsive
-    @include respond-to(small) {
-      padding-top: $header-sm + $headernav-height;
-    }
-  }
-  
-  // Responsive
-  @include respond-to(small) {
-    &.nav-open main {
-      margin-left: $sidenavwidth-md;
-    }
-  }
   
   // ui-view container
   main {
@@ -45,6 +28,22 @@ app-main {
       // Box model
       margin-left: $sidenavwidth-sm;
       padding-top: $header-sm;
+      
+      // When side nav is open
+      &.nav-open {
+        margin-left: $sidenavwidth-md;
+      }
+    }
+    
+    // Styles when component have this class
+    &.header__nav-open{
+      // Box-model
+      padding-top: $header-xs + $headernav-height;
+      
+      // Responsive
+      @include respond-to(small) {
+        padding-top: $header-sm + $headernav-height;
+      }
     }
     
     // Style for view componet is a flex conta
