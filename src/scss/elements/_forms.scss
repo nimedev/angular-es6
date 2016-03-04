@@ -163,18 +163,6 @@ input[type="submit"] {
           appearance: none;
 }
 
-select,
-input[type="file"] {
-	height: 28px;
-	*margin-top: 4px;
-	line-height: 28px;
-}
-
-select {
-	background-color: $inputbackground;
-	font-size: fs(small);
-}
-
 select[multiple],
 select[size] {
 	height: auto;
