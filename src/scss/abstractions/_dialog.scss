@@ -12,17 +12,34 @@
     margin: 0 0 1.25rem;
     padding: 1.5rem 1.5rem 0;
     
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6,
-    dialog__title {
+    // Ellipsis
+    @extend %text-overflow;
+    
+    .dialog__title {
       // Box-model
       display: inline-block;
       margin: 0;
       max-width: 100%;
+      
+      // Tipography
+      font-size: fs(medium);
+      font-weight: 600;
+    }
+    
+    .dialog__title--sm {
+      // default dialog__title styles
+      @extend .dialog__title;
+      
+      // Tipography
+      font-size: fs(normal);
+    }
+    
+    .dialog__title--big {
+      // default dialog__title styles
+      @extend .dialog__title;
+      
+      // Tipography
+      font-size: fs(big);
     }
   }
   
