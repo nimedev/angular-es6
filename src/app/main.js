@@ -12,18 +12,18 @@ import ngCookies from 'angular-cookies';
 import uiRouter from 'angular-ui-router';
 
 /** Configuration */
-import appConfig from 'app/app-config';
+import appConfig from './app-config';
 
 /** Components */
-import base from 'app/components/base/base';
-import message from 'app/components/message/message';
-import nmdComponents from 'app/components/nmd-components/nmd-components';
-import views from 'app/components/views/views';
+import base from './components/base/base';
+import message from './components/message/message';
+import nmdComponents from './components/nmd-components/nmd-components';
+import views from './components/views/views';
 
 /** Shared */
-import directives from 'app/shared/directives/directives';
-import i18n from 'app/shared/i18n/i18n';
-import services from 'app/shared/services/services';
+import directives from './shared/directives/directives';
+import i18n from './shared/i18n/i18n';
+import services from './shared/services/services';
 
 // Constants
 const appName = appConfig.appName;
