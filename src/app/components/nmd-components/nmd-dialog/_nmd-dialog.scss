@@ -55,7 +55,7 @@ nmd-dialog {
       overflow: hidden;
       margin-left: auto;
       margin-right: auto;
-      max-width: 85%;
+      max-width: 90%;
       
       // Visual
       background-color: white;
@@ -80,8 +80,14 @@ nmd-dialog {
     }
     
     &__body {
+      //Box-model (with compatibility for vh)
       max-height: 14.125rem;
-      max-height: 70vh;
+      max-height: 60vh;
+      
+      // Responsive
+      @media screen and (min-height: 37.5rem) {
+        max-height: 70vh;
+      }
     }
   }
 }
