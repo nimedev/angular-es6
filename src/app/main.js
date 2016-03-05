@@ -3,52 +3,38 @@
  * @module 'angular-es6' 
  */
 /** Angular modules */
-import * as angular from 'angular';
-import ngAnimate from 'angular-animate';
-import ngAria from 'angular-aria';
-import ngCookies from 'angular-cookies';
+import * as angular from 'angular'
+import ngAnimate from 'angular-animate'
+import ngAria from 'angular-aria'
+import ngCookies from 'angular-cookies'
 
 /** Comunity modules */
-import uiRouter from 'angular-ui-router';
-
-/** Configuration */
-import appConfig from './app-config';
+import uiRouter from 'angular-ui-router'
 
 /** Components */
-import base from './components/base/base';
-import message from './components/message/message';
-import nmdComponents from './components/nmd-components/nmd-components';
-import views from './components/views/views';
+import base from './components/base/base'
+import message from './components/message/message'
+import nmdComponents from './components/nmd-components/nmd-components'
+import views from './components/views/views'
 
 /** Shared */
-import directives from './shared/directives/directives';
-import i18n from './shared/i18n/i18n';
-import services from './shared/services/services';
+import directives from './shared/directives/directives'
+import i18n from './shared/i18n/i18n'
+import services from './shared/services/services'
 
 // Constants
-const appName = appConfig.appName;
+const appName = 'ng-es6';
+const config = {
+  // server base url
+  restUrl: '',
+
+  // development mode
+  dev: true
+};
 
 // Variables
-let hostname = window.location.hostname;
-let config = appConfig.common;
-let envConfig;
 let htmlDocument;
 let startApp;
-
-// Select enviroment configurations by the host name and merge with 
-// common configuration.
-if (appConfig[hostname]) {
-  envConfig = appConfig[hostname];
-  for (let prop in envConfig) {
-    // skip loop if the property is from prototype
-    if (!envConfig.hasOwnProperty(prop)) {
-      continue;
-    }
-    
-    // Copy properties
-    config[prop] = envConfig[prop];
-  }
-}
 
 // Define angular app.
 angular

@@ -216,7 +216,7 @@ Put this snippets in javascript file:
       "// Injection array for minification compatibility",
       "${2:ClassName}.$inject = ['${3:paramName}'];"
     ],
-    "description": "Angular NS6 controller"
+    "description": "Angular ES6 controller"
   }
 ```
 
@@ -257,7 +257,7 @@ Put this snippets in javascript file:
       "\tservice: ${2:ClassName}",
       "};"
     ],
-    "description": "Angular NS6 service"
+    "description": "Angular ES6 service"
   }
 ```
 
@@ -299,7 +299,7 @@ Put this snippets in javascript file:
       "\tdirective: directive",
       "};"
     ],
-    "description": "Angular NS6 directive"
+    "description": "Angular ES6 directive"
   }
 ```
 
@@ -339,6 +339,6 @@ Put this snippets in javascript file:
       "\tfactory: factory",
       "};"
     ],
-    "description": "Angular NS6 factory"
+    "description": "Angular ES6 factory"
   }
 ```
