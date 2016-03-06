@@ -123,6 +123,8 @@
   background-clip: padding-box;
   
   &__icon {
+    // Box-model
+    width: 1.5rem;
     vertical-align: middle;
   }
 }
