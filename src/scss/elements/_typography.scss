@@ -34,8 +34,8 @@ h6 small {
                                                         (h2, 2, big, normal)
                                                         (h3, 2, medium, normal)
                                                         (h4, 2, normal, normal)
-                                                        (h5, 2, x-small, normal)
-                                                        (h6, 2, xx-small, normal) {
+                                                        (h5, 2, small, normal)
+                                                        (h6, 2, x-small, normal) {
   #{$header}, .#{$header} {
   	margin-bottom: $baselineheight / $margin-bot;
   	font-size: fs($font-size);
