@@ -1,6 +1,6 @@
 /** menu-item component. */
 // Template
-import template from './menu-item.html!text';
+import template from './menu-item.html!text'
 
 // Controller
 
@@ -13,7 +13,7 @@ let component = {
   },
   name: 'menuItem',
   template
-};
+}
 
 /** @exports component object */
-export default component;
+export default component

@@ -3,20 +3,20 @@
  * @module appFab
  */
 /** Angular modules */
-import * as angular from 'angular';
+import angular from 'angular'
 
 /** Comunity modules */
 
 /** Submodules */
 
 /** Component & Directives */
-import component from './app-fab.component';
-import fabWatcher from './fab-watcher.directive';
+import component from './app-fab.component'
+import fabWatcher from './fab-watcher.directive'
 
 /** Services */
 
 // Constants
-const moduleName = 'appFab';
+const moduleName = 'appFab'
 
 // Variables
 
@@ -24,7 +24,7 @@ const moduleName = 'appFab';
 angular
   .module(moduleName, [])
   .component(component.name, component)
-  .directive(fabWatcher.name, fabWatcher.directive);
+  .directive(fabWatcher.name, fabWatcher.directive)
 
 /** @exports module name */
-export default moduleName;
+export default moduleName

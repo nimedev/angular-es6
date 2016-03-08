@@ -4,19 +4,22 @@
  * @class NmdDialog
  * @param {Object} $compile, $rootScope - ...
  */
+/** Angular modules */
+import angular from 'angular'
+
 // Service name
-const serviceName = 'nmdDialog';
+const serviceName = 'nmdDialog'
 
 // Service class
 class NmdDialog {
   /*@ngInject*/
   constructor($compile, $rootScope) {
     // Save dependencies
-    this.$compile = $compile;
-    this.$rootScope = $rootScope;
+    this.$compile = $compile
+    this.$rootScope = $rootScope
 
     /** Class Fields */
-    this.cssName = 'dialog--open';
+    this.cssName = 'dialog--open'
   }
 
   /** Class Methods */
@@ -25,10 +28,10 @@ class NmdDialog {
    * @param {String} component - Used to select the dialog to remove.
    */
   close(component) {
-    let dialog = angular.element(document.querySelector(`nmd-dialog[nd-component=${component}]`));
+    let dialog = angular.element(document.querySelector(`nmd-dialog[nd-component=${component}]`))
     
     // remove component from scope
-    dialog.scope().$destroy();
+    dialog.scope().$destroy()
   }
   
   /** 
@@ -37,20 +40,20 @@ class NmdDialog {
    *                             (component-name) 
    */
   open(component) {
-    let node = angular.element(document).find('body');
-    let newDialog = `<nmd-dialog nd-component="${component}" dialog-watcher></nmd-dialog>`;
-    let oldDialog = document.querySelector(`nmd-dialog[nd-component=${component}]`);
-    let scope;
+    let node = angular.element(document).find('body')
+    let newDialog = `<nmd-dialog nd-component="${component}" dialog-watcher></nmd-dialog>`
+    let oldDialog = document.querySelector(`nmd-dialog[nd-component=${component}]`)
+    let scope
     
     // Create new dialog if is no there a dialog with de same nd-component attribute
     if (!oldDialog) {
       // Create new isolate scope
-      scope = this.$rootScope.$new(true);
+      scope = this.$rootScope.$new(true)
     
       // Compile dialog template and add to body
-      node.append(this.$compile(newDialog)(scope));
+      node.append(this.$compile(newDialog)(scope))
 
-      this.toggleElements(true);
+      this.toggleElements(true)
     }
   }
   
@@ -60,24 +63,24 @@ class NmdDialog {
    * @param {Boolean} open - Indicate if open o close dialog. 
    */
   toggleElements(open) {
-    let body = angular.element(document).find('body');
-    let oldDialog = angular.element(document).find('nmd-dialog');
+    let body = angular.element(document).find('body')
+    let oldDialog = angular.element(document).find('nmd-dialog')
     
     // open dialog?
     if (open) {
-      body.addClass(this.cssName);
+      body.addClass(this.cssName)
     } else if (oldDialog.length < 1) {
       // remove class if is only 1 open dialogs?
-      body.removeClass(this.cssName);
+      body.removeClass(this.cssName)
     }
   }
 }
 
 // Injection array for minification compatibility
-NmdDialog.$inject = ['$compile', '$rootScope'];
+NmdDialog.$inject = ['$compile', '$rootScope']
 
 /** @exports service name and class */
 export default {
   name: serviceName,
   service: NmdDialog
-};
+}

@@ -4,7 +4,7 @@
  * @param {Object} sideNav - ...
  */
 // Directive name
-const directiveName = 'closeSidenav';
+const directiveName = 'closeSidenav'
 
 // Directive Function
 const directive = (sideNav) => {
@@ -12,23 +12,23 @@ const directive = (sideNav) => {
     link: link,
     restrict: 'A',
     scope: {}
-  };
-  return directive;
+  }
+  return directive
 
   /////////////////
   /** Link function */
   function link(scope, element, attrs) {
     element.on('click', () => {
-      sideNav.safeClose();
-    });
+      sideNav.safeClose()
+    })
   }
-};
+}
 
 // Injection array for minification compatibility
-directive.$inject = ['sideNav'];
+directive.$inject = ['sideNav']
 
 /** @exports directive name and class */
 export default {
   name: directiveName,
   directive: directive
-};
+}

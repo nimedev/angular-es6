@@ -9,8 +9,8 @@ export default class AppHeaderCtrl {
   /*@ngInject*/
   constructor(headerNav, sideNav) {
     // Save dependencies
-    this.headerNav = headerNav;
-    this.sideNav = sideNav;
+    this.headerNav = headerNav
+    this.sideNav = sideNav
 
     /** Class Fields */
   }
@@ -18,14 +18,14 @@ export default class AppHeaderCtrl {
   /** Class Methods */
   /** Toggle header nav visibility */
   toggleHeaderNav() {
-    this.headerNav.toggle();
+    this.headerNav.toggle()
   }
-    
+
   /** Toggle sidenav visibility */
   toggleSidenav() {
-    this.sideNav.toggle();
+    this.sideNav.toggle()
   }
 }
 
 // Injection array for minification compatibility
-AppHeaderCtrl.$inject = ['headerNav', 'sideNav'];
+AppHeaderCtrl.$inject = ['headerNav', 'sideNav']

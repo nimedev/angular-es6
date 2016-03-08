@@ -1,6 +1,6 @@
 /** app-waiting component. */
 // Template
-import template from './app-waiting.html!text';
+import template from './app-waiting.html!text'
 
 // Controller
 
@@ -8,7 +8,7 @@ import template from './app-waiting.html!text';
 const component = {
   name: 'appWaiting',
   template
-};
+}
 
 /** @exports component object */
-export default component;
+export default component

@@ -4,7 +4,7 @@
  * @class HeaderNav
  */
 // Service name
-let serviceName = 'headerNav';
+let serviceName = 'headerNav'
 
 // Service class
 class HeaderNav {
@@ -13,32 +13,32 @@ class HeaderNav {
     // Save dependencies
 
     /** Class Fields */
-    this.cssName = 'header__nav-open';
-    this.cssClass = '';
+    this.cssName = 'header__nav-open'
+    this.cssClass = ''
   }
 
   /** Class Methods */
   /** Close header-nav */
   close() {
-    this.cssClass = '';
+    this.cssClass = ''
   }
     
   /** Open header-nav */
   open() {
-    this.cssClass = this.cssName;
+    this.cssClass = this.cssName
   }
     
   /** Change header-nav visibility */
   toggle() {
-    (this.cssClass === '') ? this.open() : this.close();
+    (this.cssClass === '') ? this.open() : this.close()
   }
 }
 
 // Injection array for minification compatibility
-HeaderNav.$inject = [];
+HeaderNav.$inject = []
 
 /** @exports service name and class */
 export default {
   name: serviceName,
   service: HeaderNav
-};
+}

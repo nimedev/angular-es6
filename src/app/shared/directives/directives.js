@@ -3,26 +3,26 @@
  * @module directives
  */
 /** Angular modules */
-import * as angular from 'angular';
+import angular from 'angular'
 
 /** Comunity modules */
 
 /** Submodules */
 
 /** Component & Directives */
-import directive from './close-dd.directive';
+import directive from './close-dd.directive'
 
 /** Services */
 
 // Constants
-const moduleName = 'directives';
+const moduleName = 'directives'
 
 // Variables
 
 // Define module
 angular
   .module(moduleName, [])
-  .directive(directive.name, directive.directive);
+  .directive(directive.name, directive.directive)
 
 /** @exports module name */
-export default moduleName;
+export default moduleName

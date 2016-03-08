@@ -3,26 +3,26 @@
  * @module message
  */
 /** Angular modules */
-import * as angular from 'angular';
+import angular from 'angular'
 
 /** Comunity modules */
 
 /** Submodules */
 
 /** Component or Directive */
-import component from './message.component';
+import component from './message.component'
 
 /** Services */
 
 // Constants
-const moduleName = 'message';
+const moduleName = 'message'
 
 // Variables
 
 // Define module
 angular
   .module(moduleName, [])
-  .component(component.name, component);
+  .component(component.name, component)
 
 /** @exports module name */
-export default moduleName;
+export default moduleName

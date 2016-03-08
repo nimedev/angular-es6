@@ -8,7 +8,7 @@ export default class AppFabCtrl {
   /*@ngInject*/
   constructor(nmdDialog) {
     // Save dependencies
-    this.nmdDialog = nmdDialog;
+    this.nmdDialog = nmdDialog
 
     /** Class Fields */
   }
@@ -16,9 +16,9 @@ export default class AppFabCtrl {
   /** Class Methods */
   /** Use service to open a dialog with message component */
   open() {
-    this.nmdDialog.open('message');
+    this.nmdDialog.open('message')
   }
 }
 
 // Injection array for minification compatibility
-AppFabCtrl.$inject = ['nmdDialog'];
+AppFabCtrl.$inject = ['nmdDialog']

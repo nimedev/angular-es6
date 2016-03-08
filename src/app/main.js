@@ -3,7 +3,7 @@
  * @module 'angular-es6' 
  */
 /** Angular modules */
-import * as angular from 'angular'
+import angular from 'angular'
 import ngAnimate from 'angular-animate'
 import ngAria from 'angular-aria'
 import ngCookies from 'angular-cookies'
@@ -23,58 +23,58 @@ import i18n from './shared/i18n/i18n'
 import services from './shared/services/services'
 
 // Constants
-const appName = 'ng-es6';
+const appName = 'ng-es6'
 const config = {
   // server base url
   restUrl: '',
 
   // development mode
   dev: true
-};
+}
 
 // Variables
-let htmlDocument;
-let startApp;
+let htmlDocument
+let startApp
 
 // Define angular app.
 angular
   .module(appName, [
-  // Angular modules
+    // Angular modules
     ngAnimate,
     ngAria,
     ngCookies,
 
-  // Comunity modules
+    // Comunity modules
     uiRouter,
 
-  // Components
+    // Components
     base,
     message,
     nmdComponents,
     views,
 
-  // Shared components
+    // Shared components
     directives,
     i18n,
     services
   ])
   .config(['$locationProvider', '$urlRouterProvider', ($locationProvider, $urlRouterProvider) => {
     // Redirect path to * urls
-    $urlRouterProvider.otherwise('/');
-    
+    $urlRouterProvider.otherwise('/')
+
     // use the HTML5 History API
-    $locationProvider.html5Mode(true);
+    $locationProvider.html5Mode(true)
   }])
-  .constant('config', config);
+  .constant('config', config)
 
 // Log app configuration if is in development mode
 if (config.dev) {
-  console.log(config);
+  console.log(config)
 }
 
 // Load app when document is ready
-htmlDocument = angular.element(document);
+htmlDocument = angular.element(document)
 
-startApp = () => angular.bootstrap(htmlDocument, [appName]);
+startApp = () => angular.bootstrap(htmlDocument, [appName])
 
-htmlDocument.ready(startApp);
+htmlDocument.ready(startApp)

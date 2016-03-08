@@ -3,21 +3,21 @@
  * @module nmdToast
  */
 /** Angular modules */
-import * as angular from 'angular';
+import angular from 'angular'
 
 /** Comunity modules */
 
 /** Submodules */
 
 /** Component & Directives */
-import component from './nmd-toast.component';
-import toastWatcher from './toast-watcher.directive';
+import component from './nmd-toast.component'
+import toastWatcher from './toast-watcher.directive'
 
 /** Services */
-import service from './nmd-toast.service';
+import service from './nmd-toast.service'
 
 // Constants
-const moduleName = 'nmdToast';
+const moduleName = 'nmdToast'
 
 // Variables
 
@@ -26,7 +26,7 @@ angular
   .module(moduleName, [])
   .component(component.name, component)
   .service(service.name, service.service)
-  .directive(toastWatcher.name, toastWatcher.directive);
+  .directive(toastWatcher.name, toastWatcher.directive)
 
 /** @exports module name */
-export default moduleName;
+export default moduleName

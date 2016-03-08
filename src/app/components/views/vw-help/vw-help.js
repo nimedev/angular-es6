@@ -3,19 +3,19 @@
  * @module vwHelp
  */
 /** Angular modules */
-import * as angular from 'angular';
+import angular from 'angular'
 
 /** Comunity modules */
 
 /** Sub modules */
 
 /** Component */
-import component from './vw-help.component';
+import component from './vw-help.component'
 
 /** Services */
 
 // Constants
-const moduleName = 'vwHelp';
+const moduleName = 'vwHelp'
 
 // Variables
 
@@ -35,9 +35,9 @@ angular
             template: '<vw-help></vw-help>'
           }
         }
-      });
+      })
   }])
-  .component(component.name, component);
+  .component(component.name, component)
 
 /** @exports module name */
-export default moduleName;
+export default moduleName

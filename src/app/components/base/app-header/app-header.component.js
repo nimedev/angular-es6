@@ -1,16 +1,16 @@
 /** app-header component. */
 // Template
-import template from './app-header.html!text';
+import template from './app-header.html!text'
 
 // Controller
-import controller from './app-header.controller';
+import controller from './app-header.controller'
 
 // Component object
 let component = {
   controller,
   name: 'appHeader',
   template
-};
+}
 
 /** @exports component object */
-export default component;
+export default component

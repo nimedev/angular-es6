@@ -5,75 +5,78 @@
  * @param {Object} $state - to change ui-router state.
  * @param {Object} $window - to get initial size.
  */
+/** Angular modules */
+import angular from 'angular'
+
 // Service name
-let serviceName = 'sideNav';
+let serviceName = 'sideNav'
 
 // Service class
 class SideNav {
   /*@ngInject*/
   constructor($state, $window) {
     // Save dependencies
-    this.$state = $state;
-    this.$window = $window;
+    this.$state = $state
+    this.$window = $window
 
     /** Class Fields */
-    this.cssName = 'nav-open';
-    this.cssClass = '';
-    this.smBreak = 600;
-    this.mdBreak = 960;
+    this.cssName = 'nav-open'
+    this.cssClass = ''
+    this.smBreak = 600
+    this.mdBreak = 960
   }
 
   /** Class Methods */
   /** Close sidenav */
   close() {
-    this.cssClass = '';
-    this.toggleElements();
+    this.cssClass = ''
+    this.toggleElements()
   }
     
   /** Open sidenav */
   open() {
-    this.cssClass = this.cssName;
-    this.toggleElements();
+    this.cssClass = this.cssName
+    this.toggleElements()
   }
   
   /** Close sidenav only in mobile */
   safeClose() {
     if (this.$window.innerWidth < this.smBreak) {
-      this.close();
+      this.close()
     }
   }
     
   /** Change sidenav visibility */
   toggle() {
     if (this.cssClass === '') {
-      this.open();
+      this.open()
     } else {
-      this.close();
+      this.close()
     }
   }
     
   /** HELPER FUNCTIONS */
   /** toggle class in body element and app-main component */
   toggleElements() {
-    const body = angular.element(document).find('body');
+    const body = angular.element(document).find('body')
 
     // sidenav is closed?
     if (this.cssClass === '') {
-      body.removeClass(this.cssName);
+      body.removeClass(this.cssName)
     } else {
       // only add class if is in mobile
       if (this.$window.innerWidth < this.smBreak) {
-        body.addClass(this.cssName);
+        body.addClass(this.cssName)
       }
     }
   }
 }
 
 // Injection array for minification compatibility
-SideNav.$inject = ['$state', '$window'];
+SideNav.$inject = ['$state', '$window']
 
 /** @exports service name and class */
 export default {
   name: serviceName,
   service: SideNav
-};
+}

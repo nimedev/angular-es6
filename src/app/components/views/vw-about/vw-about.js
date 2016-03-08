@@ -3,7 +3,7 @@
  * @module vwAbout
  */
 /** Angular modules */
-import * as angular from 'angular';
+import angular from 'angular'
 
 /** Comunity modules */
 
@@ -14,7 +14,7 @@ import * as angular from 'angular';
 /** Services */
 
 // Constants
-const moduleName = 'vwAbout';
+const moduleName = 'vwAbout'
 
 // Variables
 
@@ -34,8 +34,8 @@ angular
             template: '<app-waiting></app-waiting>'
           }
         }
-      });
-  }]);
+      })
+  }])
 
 /** @exports module name */
-export default moduleName;
+export default moduleName

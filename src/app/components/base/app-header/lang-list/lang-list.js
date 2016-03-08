@@ -3,26 +3,26 @@
  * @module langList
  */
 /** Angular modules */
-import * as angular from 'angular';
+import angular from 'angular'
 
 /** Comunity modules */
 
 /** Submodules */
 
 /** Component */
-import component from './lang-list.component';
+import component from './lang-list.component'
 
 /** Services */
 
 // Constants
-const moduleName = 'langList';
+const moduleName = 'langList'
 
 // Variables
 
 // Define module
 angular
   .module(moduleName, [])
-  .component(component.name, component);
+  .component(component.name, component)
 
 /** @exports module name */
-export default moduleName;
+export default moduleName

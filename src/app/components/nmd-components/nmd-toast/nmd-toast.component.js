@@ -1,16 +1,16 @@
 /** nmd-toast component. */
 // Template
-import template from './nmd-toast.html!text';
+import template from './nmd-toast.html!text'
 
 // Controller
-import controller from './nmd-toast.controller';
+import controller from './nmd-toast.controller'
 
 // Component object
 const component = {
   controller,
   name: 'nmdToast',
   template
-};
+}
 
 /** @exports component object */
-export default component;
+export default component

@@ -9,14 +9,14 @@ export default class MessageCtrl {
   /*@ngInject*/
   constructor(nmdDialog, nmdToast) {
     // Save dependencies
-    this.nmdDialog = nmdDialog;
-    this.nmdToast = nmdToast;
+    this.nmdDialog = nmdDialog
+    this.nmdToast = nmdToast
 
     /** Class Fields */
-    this.msg = 'Show message!';
+    this.msg = 'Show message!'
   }
 
-  /** Class Methods */
+  /** Class Methods *w/
   /** Call close service to close 'message' component */
   close() {
     let toastOptions = {
@@ -25,11 +25,11 @@ export default class MessageCtrl {
         text: 'LOG',
         action: () => console.log(this.msg)
       }
-    };
-    this.nmdDialog.close('message');
-    this.nmdToast.show('Message closed!', toastOptions);
+    }
+    this.nmdDialog.close('message')
+    this.nmdToast.show('Message closed!', toastOptions)
   }
 }
 
 // Injection array for minification compatibility
-MessageCtrl.$inject = ['nmdDialog', 'nmdToast'];
+MessageCtrl.$inject = ['nmdDialog', 'nmdToast']

@@ -3,22 +3,22 @@
  * @module views
  */
 /** Angular modules */
-import * as angular from 'angular';
+import angular from 'angular'
 
 /** Comunity modules */
 
 /** Submodules */
-import vwAbout from './vw-about/vw-about';
-import vwConfig from './vw-config/vw-config';
-import vwHelp from './vw-help/vw-help';
-import vwHome from './vw-home/vw-home';
+import vwAbout from './vw-about/vw-about'
+import vwConfig from './vw-config/vw-config'
+import vwHelp from './vw-help/vw-help'
+import vwHome from './vw-home/vw-home'
 
 /** Component & Directives */
 
 /** Services */
 
 // Constants
-const moduleName = 'views';
+const moduleName = 'views'
 
 // Variables
 
@@ -29,7 +29,7 @@ angular
     vwConfig,
     vwHelp,
     vwHome
-  ]);
+  ])
 
 /** @exports module name */
-export default moduleName;
+export default moduleName

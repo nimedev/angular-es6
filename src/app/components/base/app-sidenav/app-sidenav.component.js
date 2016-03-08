@@ -1,16 +1,16 @@
 /** app-sidenav component. */
 // Template
-import template from './app-sidenav.html!text';
+import template from './app-sidenav.html!text'
 
 // Controller
-import controller from './app-sidenav.controller';
+import controller from './app-sidenav.controller'
 
 // Component object
 let component = {
   controller,
   name: 'appSidenav',
   template
-};
+}
 
 /** @exports component object */
-export default component;
+export default component

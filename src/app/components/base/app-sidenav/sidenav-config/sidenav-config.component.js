@@ -1,6 +1,6 @@
 /** sidenav-config component. */
 // Template
-import template from './sidenav-config.html!text';
+import template from './sidenav-config.html!text'
 
 // Controller
 
@@ -8,7 +8,7 @@ import template from './sidenav-config.html!text';
 let component = {
   name: 'sidenavConfig',
   template
-};
+}
 
 /** @exports component object */
-export default component;
+export default component

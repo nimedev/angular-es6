@@ -9,8 +9,8 @@ export default class AppMain {
   /*@ngInject*/
   constructor(headerNav, sideNav) {
     // Save dependencies
-    this.headerNav = headerNav;
-    this.sideNav = sideNav;
+    this.headerNav = headerNav
+    this.sideNav = sideNav
 
     /** Class Fields */
 
@@ -20,4 +20,4 @@ export default class AppMain {
 }
 
 // Injection array for minification compatibility
-AppMain.$inject = ['headerNav', 'sideNav'];
+AppMain.$inject = ['headerNav', 'sideNav']

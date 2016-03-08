@@ -3,21 +3,21 @@
  * @module nmdComponents
  */
 /** Angular modules */
-import * as angular from 'angular';
+import angular from 'angular'
 
 /** Comunity modules */
 
 /** Submodules */
-import nmdDialog from './nmd-dialog/nmd-dialog';
-import nmdProgressLinear from './nmd-progress-linear/nmd-progress-linear';
-import nmdToast from './nmd-toast/nmd-toast';
+import nmdDialog from './nmd-dialog/nmd-dialog'
+import nmdProgressLinear from './nmd-progress-linear/nmd-progress-linear'
+import nmdToast from './nmd-toast/nmd-toast'
 
 /** Component or Directive */
 
 /** Services */
 
 // Constants
-const moduleName = 'nmdComponents';
+const moduleName = 'nmdComponents'
 
 // Variables
 
@@ -27,7 +27,7 @@ angular
     nmdDialog,
     nmdProgressLinear,
     nmdToast
-  ]);
+  ])
 
 /** @exports module name */
-export default moduleName;
+export default moduleName

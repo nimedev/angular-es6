@@ -3,17 +3,17 @@
  * @module vwHome
  */
 /** Angular modules */
-import * as angular from 'angular';
+import angular from 'angular'
 
 /** Comunity modules */
 
 /** Components */
-import component from './vw-home.component';
+import component from './vw-home.component'
 
 /** Services */
 
 // Constants
-const moduleName = 'vwHome';
+const moduleName = 'vwHome'
 
 // Variables
 
@@ -33,9 +33,9 @@ angular
             template: '<vw-home></vw-home>'
           }
         }
-      });
+      })
   }])
-  .component(component.name, component);
+  .component(component.name, component)
 
 /** @exports module name */
-export default moduleName;
+export default moduleName

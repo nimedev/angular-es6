@@ -1,6 +1,6 @@
 /** coming-soon component. */
 // Template
-import template from './coming-soon.html!text';
+import template from './coming-soon.html!text'
 
 // Controller
 
@@ -11,7 +11,7 @@ let component = {
   },
   name: 'comingSoon',
   template
-};
+}
 
 /** @exports component object */
-export default component;
+export default component
