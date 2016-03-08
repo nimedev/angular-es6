@@ -28,7 +28,13 @@ const moduleName = 'i18n'
 
 // Define module.
 angular
-  .module(moduleName, ['pascalprecht.translate'])
+  .module(moduleName, [
+    translate,
+    handlerLog,
+    loaderStaticFiles,
+    storageCookie,
+    storageLocal
+  ])
   .config(['$translateProvider', ($translateProvider) => {
     // angular-translate configuration
     $translateProvider.translations('en', defaultLanguage)

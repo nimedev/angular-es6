@@ -4,7 +4,9 @@
   "description": "Angular 1.5.x seed usign ES6",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "deploy": "npm run lint && npm run build",
+    "build": "gulp",
+    "lint": "eslint --ext=js ./src/app"
   },
   "repository": {
     "type": "git",
