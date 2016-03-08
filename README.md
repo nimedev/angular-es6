@@ -65,7 +65,7 @@ This create a typings folder which you can reference in your JavaScript files to
 
 ```sh
 #cd to your project folder
-gulp hot-reload:src
+npm run dev-server:src
 ```
 
 This create a server using [browser-sync](https://www.npmjs.com/package/browser-sync) and serves source and dev folder.
@@ -78,29 +78,29 @@ The browser reloads when any file change according to their respective task.
 
 ```sh
 #cd to your project folder
-gulp hot-reload:dev
+npm run dev-server
 ```
 
 This create a server using [browser-sync](https://www.npmjs.com/package/browser-sync) and serves dev folder.
 
 This compile and move all files in dev folder and the browser reloads when any file change according to their respective task.
 
-It is almost the same as production files but use sourcemaps in style.css and app.js is not minified.
+It is almost the same as production files but use sourcemaps for style.css and app.js.
 
-> Believe it or not this workflow is faster than `hot-reload:src` when you try test in browsers that are not the local machine.
+> Believe it or not this workflow is faster than `dev-server:src` when you try test in browsers that are not the local machine.
 
 **Production**
 
 ```sh
 #cd to your project folder
-gulp
+npm run deploy
 ```
 
 Put all in dist folder ready for production.
 
 :warning: **Important**
 
-Before run `hot-reload:dev` or `default` tasks be sure you fix this *[issue](https://github.com/nimedev/angular-es6/tree/master/resources/fix-jspm_bundle)*.
+Before run `dev-server` or `deploy` npm scripts be sure you fix this *[issue](https://github.com/nimedev/angular-es6/tree/master/resources/fix-jspm_bundle)*.
 
 
 ### Styling
@@ -132,19 +132,19 @@ Put this snippets in javascript file:
       " * @module ${1:name}",
       " */",
       "/** Angular modules */",
-      "import angular from 'angular';",
+      "import angular from 'angular'",
       "",
       "/** Comunity modules */",
       "",
       "/** Submodules */",
       "",
       "/** Component & Directives */",
-      "import component from './${2:file-name}.component';",
+      "import component from './${2:file-name}.component'",
       "",
       "/** Services */",
       "",
       "// Constants",
-      "const moduleName = '${1:name}';",
+      "const moduleName = '${1:name}'",
       "",
       "// Variables",
       "",
@@ -154,10 +154,10 @@ Put this snippets in javascript file:
       "\t.config(['', () => {",
       "",
       "\t}])",
-      "\t.component(component.name, component);",
+      "\t.component(component.name, component)",
       "",
       "/** @exports module name */",
-      "export default moduleName;"
+      "export default moduleName"
     ],
     "description": "Angular ES6 module"
   }
@@ -170,10 +170,10 @@ Put this snippets in javascript file:
     "body": [
       "/** ${1:file-name} component. */",
       "// Template",
-      "import template from './${1:file-name}.html!text';",
+      "import template from './${1:file-name}.html!text'",
       "",
       "// Controller",
-      "import controller from './${1:file-name}.controller';",
+      "import controller from './${1:file-name}.controller'",
       "",
       "// Component object",
       "const component = {",
@@ -181,10 +181,10 @@ Put this snippets in javascript file:
       "\tcontroller,",
       "\tname: '${2:name}',",
       "\ttemplate",
-      "};",
+      "}",
       "",
       "/** @exports component object */",
-      "export default component;"
+      "export default component"
     ],
     "description": "Angular ES6 component"
   }
@@ -205,16 +205,17 @@ Put this snippets in javascript file:
       "\t/*@ngInject*/",
       "\tconstructor(${3:paramName}) {",
       "\t\t// Save dependencies",
-      "\t\tthis.${3:paramName} = ${3:paramName};",
+      "\t\tthis.${3:paramName} = ${3:paramName}",
       "",
       "\t\t/** Class Fields */",
+      "",
       "\t}",
       "",
       "\t/** Class Methods */",
       "}",
       "",
       "// Injection array for minification compatibility",
-      "${2:ClassName}.$inject = ['${3:paramName}'];"
+      "${2:ClassName}.$inject = ['${3:paramName}']"
     ],
     "description": "Angular ES6 controller"
   }
@@ -226,20 +227,20 @@ Put this snippets in javascript file:
     "prefix": "ngserv-es6",
     "body": [
       "/**",
-      " * Service to ${1:description}.",
+      " * Service used to ${1:description}.",
       " * @name ${4:serviceName}",
       " * @class ${2:ClassName}",
       " * @param {Object} ${3:paramName} - ...",
       " */",
       "// Service name",
-      "const serviceName = '${4:serviceName}';",
+      "const serviceName = '${4:serviceName}'",
       "",
       "// Service class",
       "class ${2:ClassName} {",
       "\t/*@ngInject*/",
       "\tconstructor(${3:paramName}) {",
       "\t\t// Save dependencies",
-      "\t\tthis.${3:paramName} = ${3:paramName};",
+      "\t\tthis.${3:paramName} = ${3:paramName}",
       "",
       "\t\t/** Class Fields */",
       "",
@@ -249,13 +250,13 @@ Put this snippets in javascript file:
       "}",
       "",
       "// Injection array for minification compatibility",
-      "${2:ClassName}.$inject = ['${3:paramName}'];",
+      "${2:ClassName}.$inject = ['${3:paramName}']",
       "",
       "/** @exports service name and class */",
       "export default {",
       "\tname: serviceName,",
       "\tservice: ${2:ClassName}",
-      "};"
+      "}"
     ],
     "description": "Angular ES6 service"
   }
@@ -267,12 +268,12 @@ Put this snippets in javascript file:
     "prefix": "ngdire-es6",
     "body": [
       "/**",
-      " * Directive to ${1:description}.",
+      " * Directive used to ${1:description}.",
       " * @name ${2:directiveName}",
       " * @param {Object} ${3:paramName} - ...",
       " */",
       "// Directive name",
-      "const directiveName = '${2:directiveNamen}';",
+      "const directiveName = '${2:directiveNamen}'",
       "",
       "// Directive Function",
       "const directive = (${3:paramName}) => {",
@@ -280,24 +281,24 @@ Put this snippets in javascript file:
       "\t\tlink: link,",
       "\t\trestrict: 'A',",
       "\t\tscope: {}",
-      "\t};",
-      "\treturn directive;",
+      "\t}",
+      "\treturn directive",
       "",
       "\t/////////////////",
       "\t/** Link function */",
       "\tfunction link(scope, element, attrs) {",
       "\t\t",
       "\t}",
-      "};",
+      "}",
       "",
       "// Injection array for minification compatibility",
-      "directive.$inject = ['${3:paramName}'];",
+      "directive.$inject = ['${3:paramName}']",
       "",
       "/** @exports directive name and function */",
       "export default {",
       "\tname: directiveName,",
       "\tdirective: directive",
-      "};"
+      "}"
     ],
     "description": "Angular ES6 directive"
   }
@@ -309,35 +310,35 @@ Put this snippets in javascript file:
     "prefix": "ngfact-es6",
     "body": [
       "/**",
-      " * Factory for ${1:description}.",
+      " * Factory used to ${1:description}.",
       " * @name ${2:FactoryName}",
       " * @param {Object} ${3:paramName} - ...",
       " */",
       "// Factory name",
-      "const factoryName = '${2:FactoryNamen}';",
+      "const factoryName = '${2:FactoryNamen}'",
       "",
       "// Directive Function",
       "const factory = (${3:paramName}) => {",
       "\tlet service = {",
       "\t\texposedFn: exposedFn",
-      "\t};",
-      "\treturn service;",
+      "\t}",
+      "\treturn service",
       "",
       "\t/////////////////",
       "\t/** Exposed function */",
       "\tfunction exposedFn() {",
       "\t\t",
       "\t}",
-      "};",
+      "}",
       "",
       "// Injection array for minification compatibility",
-      "factory.$inject = ['${3:paramName}'];",
+      "factory.$inject = ['${3:paramName}']",
       "",
       "/** @exports factory name and function */",
       "export default {",
       "\tname: factoryName,",
       "\tfactory: factory",
-      "};"
+      "}"
     ],
     "description": "Angular ES6 factory"
   }
