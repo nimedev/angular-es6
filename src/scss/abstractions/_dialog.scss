@@ -24,6 +24,9 @@
       // Tipography
       font-size: fs(medium);
       font-weight: 600;
+      
+      // Ellipsis
+      @extend %text-overflow;
     }
     
     .dialog__title--sm {
