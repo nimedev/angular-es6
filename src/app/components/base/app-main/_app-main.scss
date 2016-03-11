@@ -3,85 +3,61 @@
 \*------------------------------------*/
 /* Styles for all related with the main views. */
 
-// app-main container
-.app-body {
-  // Positioning
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  
+// Take all width for column direction of '.app-body'
+app-main {
   // Box-model
-  padding-top: $header-xs;
+  display: flex;
+  flex-direction: column;
+  
+  // Flexbox item
+  // take all height off '.app-body'
+  flex-grow: 1;
+  
+  // Misc
+  transition: margin-left $close-delay;
   
   // Responsive
   @include respond-to(small) {
-    padding-top: $header-sm;
-  }
-}
-
-// Styles when component header navigation is open
-app-header.header__nav-open + .app-body {
-  // Box-model
-  padding-top: $header-xs + $headernav-height;
-  
-  // Responsive
-  @include respond-to(small) {
-    padding-top: $header-sm + $headernav-height;
-  }
-}
-
-  app-main {
-    // Positioning
-    position: relative;   
+    // Box model
+    margin-left: $sidenavwidth-sm;
     
+    // When side nav is open
+    app-sidenav.nav-open + & {
+      margin-left: $sidenavwidth-md;
+    }
+  }
+  
+  // ui-view container
+  // Take all width for column direction of 'app-main'
+  .view-container {
     // Box-model
-    display: block;
-    height: 100%;
-    max-width: 100%;
-    min-height: 100%;
+    display: flex;
+    flex-direction: column;
     
-    // Misc
-    transition: margin-left $close-delay;
+    // Flexbox item
+    // take all height off 'app-main'
+    flex-grow: 1;
     
-    // Responsive
-    @include respond-to(small) {
-      // Box model
-      margin-left: $sidenavwidth-sm;
-      
-      // When side nav is open
-      app-sidenav.nav-open + & {
-        margin-left: $sidenavwidth-md;
-      }
-    }
-    
-    // ui-view container
-    main {
+    // Style for view componet
+    // Take all width for column direction of '.view-container'
+    &>* {
       // Box-model
-      display: flex;
-      max-width: 100%;
+      margin: 0 auto;
+      padding: 1rem;
+      max-width: $pagemaxwidth;
       width: 100%;
-      min-height: 100%;
       
-      // Style for view componet is a flex conta
-      &>* {
-        // Box-model
-        margin: 0 auto;
-        padding: 1rem;
-        max-width: $pagemaxwidth;
-        width: 100%;
-        
-        // Flexbox as item
-        flex-grow: 1;
-      }
-
-        .content-wrapper {
-          // Box-model
-          padding: 1em;
-        
-          // Visual
-          background-color: $white;
-        }
+      // Flexbox item
+      // take all height off '.view-container'
+      flex-grow: 1;
     }
+
+      .content-wrapper {
+        // Box-model
+        padding: 1em;
+      
+        // Visual
+        background-color: $white;
+      }
   }
+}

@@ -64,3 +64,30 @@ a:focus {
 /**
  * From here, write positioning styles and details for web site. Enjoy!
  */
+ 
+// app-body container
+.app-body {
+  // Box-model
+  display: flex;
+  flex-direction: column;
+  padding-top: $header-xs;
+  width: 100%;
+  max-width: 100%;
+  min-height: 100%;
+  
+  // Responsive
+  @include respond-to(small) {
+    padding-top: $header-sm;
+  }
+}
+
+// Styles when component header navigation is open
+app-header.header__nav-open + .app-body {
+  // Box-model
+  padding-top: $header-xs + $headernav-height;
+  
+  // Responsive
+  @include respond-to(small) {
+    padding-top: $header-sm + $headernav-height;
+  }
+}

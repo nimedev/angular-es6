@@ -6,7 +6,7 @@
 // Component object
 const component = {
   name: 'appMain',
-  template: '<main ui-view="app-content"></main>'
+  template: '<main class="view-container" ui-view="app-content"></main>'
 }
 
 /** @exports component object */
