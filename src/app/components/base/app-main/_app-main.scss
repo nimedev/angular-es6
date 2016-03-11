@@ -57,12 +57,16 @@
       // Box-model
       display: flex;
       max-width: 100%;
+      width: 100%;
       min-height: 100%;
       
       // Style for view componet is a flex conta
       &>* {
         // Box-model
-        padding: $gutterwidth;
+        margin: 0 auto;
+        padding: 1rem;
+        max-width: $pagemaxwidth;
+        width: 100%;
         
         // Flexbox as item
         flex-grow: 1;
