@@ -68,6 +68,7 @@ a:focus {
 // app-body container
 .app-body {
   // Box-model
+  overflow-x: hidden;
   display: flex;
   flex-direction: column;
   padding-top: $header-xs;
