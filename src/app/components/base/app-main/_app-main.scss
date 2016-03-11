@@ -3,12 +3,18 @@
 \*------------------------------------*/
 /* Styles for all related with the main views. */
 
-app-main {
+// app-main container
+.app-body {
+  // Positioning
+  position: relative;
   
-  // ui-view container
-  main {
+  // Box-model
+  min-height: 100%;
+}
+
+  app-main {
     // Positioning
-    position: relative;
+    position: absolute;
     top: 0;
     right: 0;
     bottom: 0;
@@ -16,7 +22,7 @@ app-main {
     z-index: 1;
     
     // Box-model
-    display: flex;
+    display: block;
     padding-top: $header-xs;
     min-height: 100%;
     
@@ -30,13 +36,13 @@ app-main {
       padding-top: $header-sm;
       
       // When side nav is open
-      &.nav-open {
+      app-sidenav.nav-open + & {
         margin-left: $sidenavwidth-md;
       }
     }
     
     // Styles when component have this class
-    &.header__nav-open{
+    app-header.header__nav-open + .app-body & {
       // Box-model
       padding-top: $header-xs + $headernav-height;
       
@@ -46,22 +52,28 @@ app-main {
       }
     }
     
-    // Style for view componet is a flex conta
-    &>* {
+    // ui-view container
+    main {
       // Box-model
       display: flex;
-      padding: $gutterwidth;
+      max-width: 100%;
+      min-height: 100%;
       
-      // Flexbox as item
-      flex-grow: 1;
-    }
-
-      .content-wrapper {
+      // Style for view componet is a flex conta
+      &>* {
         // Box-model
-        padding: 1em;
-      
-        // Visual
-        background-color: $white;
+        padding: $gutterwidth;
+        
+        // Flexbox as item
+        flex-grow: 1;
       }
+
+        .content-wrapper {
+          // Box-model
+          padding: 1em;
+        
+          // Visual
+          background-color: $white;
+        }
+    }
   }
-}

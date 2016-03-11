@@ -2,7 +2,7 @@
     $SIDENAV
 \*------------------------------------*/
 
-.sidenav {
+app-sidenav {
   // Positioning
   position: fixed;
   top: 0;
@@ -23,41 +23,18 @@
     padding-top: $header-sm;
     
     // Style when header navigation is open
-    &.header__nav-open {
+    app-header.header__nav-open + .app-body & {
       padding-top: $header-sm + $headernav-height;
     }
   }
   
   // Sidenav backdrop
-  &__back {
-    // Box-model
+  .sidenav__back {
     display: none;
-    
-    // Style when sidenav is open
-    &.nav-open {
-      // Positioning
-      position: absolute;
-      top: 0;
-      left: 0;
-      
-      // Box-model
-      display: block;
-      width: 100vw;
-      height: 120%;
-      
-      // Visual
-      background-color: $backdrop;
-      
-      // Responsive
-      @include respond-to(small) {
-        // Box-model
-        display: none;
-      }
-    }
   }
   
-  // sidenav conten
-  &__content {
+  // sidenav content
+  .sidenav__content {
     // Positioning
     z-index: 2;
     
@@ -77,9 +54,32 @@
       // Box-model
       width: $sidenavwidth-sm;
     }
+  }
+  
+  // Styles when sidenav is open
+  &.nav-open {
+    .sidenav__back {
+      // Positioning
+      position: absolute;
+      top: 0;
+      left: 0;
+      
+      // Box-model
+      display: block;
+      width: 100vw;
+      height: 120%;
+      
+      // Visual
+      background-color: $backdrop;
+      
+      // Responsive
+      @include respond-to(small) {
+        // Box-model
+        display: none;
+      }
+    }
     
-    // Style when sidenav is open
-    &.nav-open {
+    .sidenav__content {
       width: $sidenavwidth-md;
     }
   }

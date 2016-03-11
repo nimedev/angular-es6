@@ -76,7 +76,7 @@ app-header {
     height: 0;
   }
   
-  .header__nav.header__nav-open {
+  &.header__nav-open .header__nav {
     height: $headernav-height;
   }
 }

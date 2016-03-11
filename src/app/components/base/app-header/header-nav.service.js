@@ -3,6 +3,9 @@
  * @name headerNav
  * @class HeaderNav
  */
+/** Angular Modules */
+import angular from 'angular'
+
 // Service name
 let serviceName = 'headerNav'
 
@@ -14,23 +17,38 @@ class HeaderNav {
 
     /** Class Fields */
     this.cssName = 'header__nav-open'
-    this.cssClass = ''
+    this.navOpen = false
   }
 
   /** Class Methods */
   /** Close header-nav */
   close() {
-    this.cssClass = ''
+    this.navOpen = false
+    this.toggleElements()
   }
-    
+
   /** Open header-nav */
   open() {
-    this.cssClass = this.cssName
+    this.navOpen = true
+    this.toggleElements()
   }
-    
+
   /** Change header-nav visibility */
   toggle() {
-    (this.cssClass === '') ? this.open() : this.close()
+    (this.navOpen) ? this.close() : this.open()
+  }
+
+  /** HELPER FUNCTIONS */
+  /** toggle class in body element and app-main component */
+  toggleElements() {
+    const header = angular.element(document).find('app-header')
+
+    // sidenav is open?
+    if (this.navOpen) {
+      header.addClass(this.cssName)
+    } else {
+      header.removeClass(this.cssName)
+    }
   }
 }
 

@@ -21,7 +21,7 @@ class SideNav {
 
     /** Class Fields */
     this.cssName = 'nav-open'
-    this.cssClass = ''
+    this.isOpen = false
     this.smBreak = 600
     this.mdBreak = 960
   }
@@ -29,45 +29,44 @@ class SideNav {
   /** Class Methods */
   /** Close sidenav */
   close() {
-    this.cssClass = ''
+    this.isOpen = false
     this.toggleElements()
   }
-    
+
   /** Open sidenav */
   open() {
-    this.cssClass = this.cssName
+    this.isOpen = true
     this.toggleElements()
   }
-  
+
   /** Close sidenav only in mobile */
   safeClose() {
     if (this.$window.innerWidth < this.smBreak) {
       this.close()
     }
   }
-    
+
   /** Change sidenav visibility */
   toggle() {
-    if (this.cssClass === '') {
-      this.open()
-    } else {
-      this.close()
-    }
+    (this.isOpen) ? this.close() : this.open()
   }
-    
+
   /** HELPER FUNCTIONS */
   /** toggle class in body element and app-main component */
   toggleElements() {
     const body = angular.element(document).find('body')
+    const sidenav = angular.element(document).find('app-sidenav')
 
-    // sidenav is closed?
-    if (this.cssClass === '') {
-      body.removeClass(this.cssName)
-    } else {
+    // sidenav is open?
+    if (this.isOpen) {
+      sidenav.addClass(this.cssName)
       // only add class if is in mobile
       if (this.$window.innerWidth < this.smBreak) {
         body.addClass(this.cssName)
       }
+    } else {
+      body.removeClass(this.cssName)
+      sidenav.removeClass(this.cssName)
     }
   }
 }

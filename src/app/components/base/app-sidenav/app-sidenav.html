@@ -1,6 +1,8 @@
-<div class="sidenav" ng-class="$ctrl.headerNav.cssClass">
-  <div class="sidenav__back" ng-class="$ctrl.sideNav.cssClass" ng-click="$ctrl.close()"></div>
-  <div class="sidenav__content" ng-class="$ctrl.sideNav.cssClass">
-    <div ui-view="sidenav"></div>
-  </div>
+<!-- sidenav backdrop for mobile screens -->
+<div class="sidenav__back" ng-click="$ctrl.close()">
+</div>
+
+<!-- sidenav content -->
+<div class="sidenav__content">
+  <div ui-view="sidenav"></div>
 </div>
