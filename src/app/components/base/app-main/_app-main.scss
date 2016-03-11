@@ -6,49 +6,53 @@
 // app-main container
 .app-body {
   // Positioning
-  position: relative;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   
   // Box-model
-  min-height: 100%;
+  padding-top: $header-xs;
+  
+  // Responsive
+  @include respond-to(small) {
+    padding-top: $header-sm;
+  }
+}
+
+// Styles when component header navigation is open
+app-header.header__nav-open + .app-body {
+  // Box-model
+  padding-top: $header-xs + $headernav-height;
+  
+  // Responsive
+  @include respond-to(small) {
+    padding-top: $header-sm + $headernav-height;
+  }
 }
 
   app-main {
     // Positioning
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 1;
+    position: relative;   
     
     // Box-model
     display: block;
-    padding-top: $header-xs;
+    height: 100%;
+    max-width: 100%;
     min-height: 100%;
     
     // Misc
-    transition: margin $close-delay;
+    transition: margin-left $close-delay;
     
     // Responsive
     @include respond-to(small) {
       // Box model
       margin-left: $sidenavwidth-sm;
-      padding-top: $header-sm;
       
       // When side nav is open
       app-sidenav.nav-open + & {
         margin-left: $sidenavwidth-md;
-      }
-    }
-    
-    // Styles when component have this class
-    app-header.header__nav-open + .app-body & {
-      // Box-model
-      padding-top: $header-xs + $headernav-height;
-      
-      // Responsive
-      @include respond-to(small) {
-        padding-top: $header-sm + $headernav-height;
       }
     }
     
