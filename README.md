@@ -7,7 +7,7 @@
 
 #### For experienced users
 ```sh
-  npm install jspm gulp -g && jspm install && npm install
+  npm install jspm gulp -g && npm install && jspm install
 ```
 
 #### Prerequisites
@@ -41,7 +41,7 @@ This lets you run `jspm` and `gulp` from the command line.
 
 ```sh
 # cd to your project folder (default: angular-es6)
-jspm install && npm install
+npm install && jspm install
 ```
 
 This installs angular, ui-router and dependencies required for gulp tasks.

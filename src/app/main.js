@@ -8,14 +8,11 @@ import ngAnimate from 'angular-animate'
 import ngAria from 'angular-aria'
 import ngCookies from 'angular-cookies'
 
-/** Comunity modules */
-import uiRouter from 'angular-ui-router'
-
 /** Components */
 import base from './components/base/base'
 import message from './components/message/message'
 import nmdComponents from './components/nmd-components/nmd-components'
-import views from './components/views/views'
+import route from './components/route/route'
 
 /** Shared */
 import directives from './shared/directives/directives'
@@ -44,27 +41,17 @@ angular
     ngAria,
     ngCookies,
 
-    // Comunity modules
-    uiRouter,
-
     // Components
     base,
     message,
     nmdComponents,
-    views,
+    route,
 
     // Shared components
     directives,
     i18n,
     services
   ])
-  .config(['$locationProvider', '$urlRouterProvider', ($locationProvider, $urlRouterProvider) => {
-    // Redirect path to * urls
-    $urlRouterProvider.otherwise('/')
-
-    // use the HTML5 History API
-    $locationProvider.html5Mode(true)
-  }])
   .constant('config', config)
 
 // Log app configuration if is in development mode

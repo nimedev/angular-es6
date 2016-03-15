@@ -1,12 +1,12 @@
-/** app-main component. */
+/** route component. */
 // Template
 
 // Controller
 
 // Component object
 const component = {
-  name: 'appMain',
-  template: '<main class="view-container" ui-view="app-content"></main>'
+  name: 'route',
+  template: '<main class="view-container" ui-view="root-component"></main>'
 }
 
 /** @exports component object */

@@ -1,10 +1,10 @@
 /*------------------------------------*\
-    $APP-MAIN 
+    $ROUTE COMPONENT 
 \*------------------------------------*/
 /* Styles for all related with the main views. */
 
 // Take all width for column direction of '.app-body'
-app-main {
+route {
   // Box-model
   display: flex;
   flex-direction: column;
@@ -28,14 +28,14 @@ app-main {
   }
   
   // ui-view container
-  // Take all width for column direction of 'app-main'
+  // Take all width for column direction of 'route'
   .view-container {
     // Box-model
     display: flex;
     flex-direction: column;
     
     // Flexbox item
-    // take all height off 'app-main'
+    // take all height off 'route'
     flex-grow: 1;
     
     // Style for view componet

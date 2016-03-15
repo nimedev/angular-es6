@@ -1,11 +1,11 @@
-/** vw-config component. */
+/** rc-config component. */
 // Template
 
 // Controller
 
 // Component object
 let component = {
-  name: 'vwConfig',
+  name: 'rcConfig',
   template: '<coming-soon class="content-wrapper whiteframe-1" title="Configuration"></coming-soon>'
 }
 

@@ -47,7 +47,6 @@
 @import "../app/components/base/app-fab/app-fab";
 @import "../app/components/base/app-header/app-header";
 @import "../app/components/base/app-header/lang-list/lang-list";
-@import "../app/components/base/app-main/app-main";
 @import "../app/components/base/app-sidenav/app-sidenav";
 @import "../app/components/base/app-waiting/app-waiting";
 @import "../app/components/base/coming-soon/coming-soon";
@@ -57,7 +56,8 @@
 @import "../app/components/nmd-components/nmd-progress-linear/nmd-progress-linear";
 @import "../app/components/nmd-components/nmd-toast/nmd-toast";
 
-// Views components
+// Route components
+@import "../app/components/route/route";
  
 /**
  * Abstractions and objects

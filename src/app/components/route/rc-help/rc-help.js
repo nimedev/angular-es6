@@ -1,20 +1,21 @@
 /**
- * Module for vw-about view component.
- * @module vwAbout
+ * Module for rc-help component.
+ * @module rcHelp
  */
 /** Angular modules */
 import angular from 'angular'
 
 /** Comunity modules */
 
-/** Submodules */
+/** Sub modules */
 
-/** Component & Directives */
+/** Component */
+import component from './rc-help.component'
 
 /** Services */
 
 // Constants
-const moduleName = 'vwAbout'
+const moduleName = 'rcHelp'
 
 // Variables
 
@@ -22,20 +23,21 @@ const moduleName = 'vwAbout'
 angular
   .module(moduleName, [])
   .config(['$stateProvider', ($stateProvider) => {
-    // Config view
+    // Help view
     $stateProvider
       .state(moduleName, {
-        url: '/about',
+        url: '/help',
         views: {
           'sidenav': {
-            template: '<sidenav-config></sidenav-config>'
+            template: '<sidenav-home></sidenav-home>'
           },
-          'app-content': {
-            template: '<app-waiting></app-waiting>'
+          'root-component': {
+            template: '<rc-help></rc-help>'
           }
         }
       })
   }])
+  .component(component.name, component)
 
 /** @exports module name */
 export default moduleName

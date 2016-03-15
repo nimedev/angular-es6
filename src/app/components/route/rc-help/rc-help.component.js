@@ -1,10 +1,10 @@
-/** vw-home component. */
+/** rc-help component. */
 // Template
-import template from './vw-home.html!text'
+import template from './rc-help.html!text'
 
 // Component object
 let component = {
-  name: 'vwHome',
+  name: 'rcHelp',
   template
 }
 
