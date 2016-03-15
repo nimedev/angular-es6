@@ -17,7 +17,7 @@
   }
   
     /** Styles for titles of the dialog header */
-    .dialog__title {
+    &__title {
       // Box-model
       display: inline-block;
       margin: 0;
@@ -31,7 +31,7 @@
       @extend %text-overflow;
     }
     
-    .dialog__title--sm {
+    &__title--sm {
       // default dialog__title styles
       @extend .dialog__title;
       
@@ -39,7 +39,7 @@
       font-size: fs(normal);
     }
     
-    .dialog__title--big {
+    &__title--big {
       // default dialog__title styles
       @extend .dialog__title;
       
