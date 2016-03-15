@@ -8,6 +8,8 @@ import ngAnimate from 'angular-animate'
 import ngAria from 'angular-aria'
 import ngCookies from 'angular-cookies'
 
+/** Comunity modules */
+
 /** Components */
 import base from './components/base/base'
 import message from './components/message/message'
