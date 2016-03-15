@@ -14,7 +14,9 @@
     
     // Ellipsis
     @extend %text-overflow;
-    
+  }
+  
+    /** Styles for titles of the dialog header */
     .dialog__title {
       // Box-model
       display: inline-block;
@@ -44,7 +46,6 @@
       // Tipography
       font-size: fs(big);
     }
-  }
   
   // Styles for component body
   &__body {
