@@ -9,8 +9,8 @@ import angular from 'angular'
 
 /** Submodules */
 import menuItem from './menu-item/menu-item'
-import sidenavConfig from './sidenav-config/sidenav-config'
-import sidenavHome from './sidenav-home/sidenav-home'
+import snConfig from './sn-config/sn-config'
+import snDefault from './sn-default/sn-default'
 
 /** Component & Directives */
 import component from './app-sidenav.component'
@@ -28,8 +28,8 @@ const moduleName = 'appSidenav'
 angular
   .module(moduleName, [
     menuItem,
-    sidenavHome,
-    sidenavConfig
+    snConfig,
+    snDefault
   ])
   .component(component.name, component)
   .service(sideNav.name, sideNav.service)

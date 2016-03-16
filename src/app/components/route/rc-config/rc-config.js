@@ -29,7 +29,7 @@ angular
         url: '/config',
         views: {
           'sidenav': {
-            template: '<sidenav-config></sidenav-config>'
+            template: '<sn-config></sn-config>'
           },
           'root-component': {
             template: '<rc-config></rc-config>'

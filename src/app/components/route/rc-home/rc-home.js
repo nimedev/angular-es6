@@ -27,7 +27,7 @@ angular
         url: '/',
         views: {
           'sidenav': {
-            template: '<sidenav-home></sidenav-home>'
+            template: '<sn-default></sn-default>'
           },
           'root-component': {
             template: '<rc-home></rc-home>'

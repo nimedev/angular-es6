@@ -1,6 +1,7 @@
 /**
- * Module for sidenav-home component.
- * @module sidenavHome
+ * Module for sn-default component.
+ * This component contain default sidenav view.
+ * @module snDefault
  */
 /** Angular modules */
 import angular from 'angular'
@@ -10,12 +11,12 @@ import angular from 'angular'
 /** Submodules */
 
 /** Component */
-import component from './sidenav-home.component'
+import component from './sn-default.component'
 
 /** Services */
 
 // Constants
-const moduleName = 'sidenavHome'
+const moduleName = 'snDefault'
 
 // Variables
 

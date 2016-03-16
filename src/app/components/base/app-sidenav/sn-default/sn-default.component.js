@@ -1,12 +1,12 @@
-/** sidenav-home component. */
+/** sn-default component. */
 // Template
-import template from './sidenav-home.html!text'
+import template from './sn-default.html!text'
 
 // Controller
 
 // Component object
 let component = {
-  name: 'sidenavHome',
+  name: 'snDefault',
   template
 }
 

@@ -28,7 +28,7 @@ angular
         url: '/about',
         views: {
           'sidenav': {
-            template: '<sidenav-config></sidenav-config>'
+            template: '<sn-config></sn-config>'
           },
           'root-component': {
             template: '<app-waiting></app-waiting>'

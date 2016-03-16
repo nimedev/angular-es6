@@ -29,7 +29,7 @@ angular
         url: '/help',
         views: {
           'sidenav': {
-            template: '<sidenav-home></sidenav-home>'
+            template: '<sn-default></sn-default>'
           },
           'root-component': {
             template: '<rc-help></rc-help>'

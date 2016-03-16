@@ -1,6 +1,7 @@
 /**
- * Module for sidenav-config component.
- * @module sidenavConfig
+ * Module for sn-config component.
+ * This component contain sidenav view for config page
+ * @module snConfig
  */
 /** Angular modules */
 import angular from 'angular'
@@ -10,12 +11,12 @@ import angular from 'angular'
 /** Submodules */
 
 /** Component */
-import component from './sidenav-config.component'
+import component from './sn-config.component'
 
 /** Services */
 
 // Constants
-const moduleName = 'sidenavConfig'
+const moduleName = 'snConfig'
 
 // Variables
 
