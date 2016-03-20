@@ -13,10 +13,10 @@ System.config({
   },
 
   map: {
-    "angular": "npm:angular@1.5.0",
-    "angular-animate": "npm:angular-animate@1.5.0",
-    "angular-aria": "npm:angular-aria@1.5.0",
-    "angular-cookies": "npm:angular-cookies@1.5.0",
+    "angular": "npm:angular@1.5.2",
+    "angular-animate": "npm:angular-animate@1.5.2",
+    "angular-aria": "npm:angular-aria@1.5.2",
+    "angular-cookies": "npm:angular-cookies@1.5.2",
     "angular-translate": "npm:angular-translate@2.9.0",
     "angular-translate-handler-log": "npm:angular-translate-handler-log@2.9.0",
     "angular-translate-loader-static-files": "npm:angular-translate-loader-static-files@2.9.0",
@@ -74,7 +74,7 @@ System.config({
       "path": "github:jspm/nodelibs-path@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
-    "npm:angular-animate@1.5.0": {
+    "npm:angular-animate@1.5.2": {
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:angular-translate-handler-log@2.9.0": {
@@ -83,27 +83,16 @@ System.config({
     "npm:angular-translate-loader-static-files@2.9.0": {
       "angular-translate": "npm:angular-translate@2.9.0"
     },
-    "npm:angular-translate-storage-cookie@2.8.1": {
-      "angular-cookies": "npm:angular-cookies@1.5.0",
-      "angular-translate": "npm:angular-translate@2.8.1"
-    },
     "npm:angular-translate-storage-cookie@2.9.0": {
-      "angular-cookies": "npm:angular-cookies@1.5.0",
       "angular-translate": "npm:angular-translate@2.9.0"
     },
     "npm:angular-translate-storage-local@2.9.0": {
-      "angular-translate": "npm:angular-translate@2.9.0",
-      "angular-translate-storage-cookie": "npm:angular-translate-storage-cookie@2.8.1"
-    },
-    "npm:angular-translate@2.8.1": {
-      "process": "github:jspm/nodelibs-process@0.1.2"
+      "angular-translate": "npm:angular-translate@2.9.0"
     },
     "npm:angular-translate@2.9.0": {
-      "angular": "npm:angular@1.5.0",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:angular-ui-router@0.2.18": {
-      "angular": "npm:angular@1.5.0",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:assert@1.3.0": {
