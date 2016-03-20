@@ -52,11 +52,11 @@
       "angular-animate": "npm:angular-animate@^1.5.0",
       "angular-aria": "npm:angular-aria@^1.5.0",
       "angular-cookies": "npm:angular-cookies@^1.5.0",
-      "angular-translate": "npm:angular-translate@^2.9.0",
-      "angular-translate-handler-log": "npm:angular-translate-handler-log@^2.9.0",
-      "angular-translate-loader-static-files": "npm:angular-translate-loader-static-files@^2.9.0",
-      "angular-translate-storage-cookie": "npm:angular-translate-storage-cookie@^2.9.0",
-      "angular-translate-storage-local": "npm:angular-translate-storage-local@^2.9.0",
+      "angular-translate": "npm:angular-translate@2.9.1",
+      "angular-translate-handler-log": "npm:angular-translate-handler-log@2.9.1",
+      "angular-translate-loader-static-files": "npm:angular-translate-loader-static-files@2.9.1",
+      "angular-translate-storage-cookie": "npm:angular-translate-storage-cookie@2.9.1",
+      "angular-translate-storage-local": "npm:angular-translate-storage-local@2.9.1",
       "angular-ui-router": "npm:angular-ui-router@^0.2.15"
     },
     "devDependencies": {

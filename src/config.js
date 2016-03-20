@@ -17,15 +17,15 @@ System.config({
     "angular-animate": "npm:angular-animate@1.5.2",
     "angular-aria": "npm:angular-aria@1.5.2",
     "angular-cookies": "npm:angular-cookies@1.5.2",
-    "angular-translate": "npm:angular-translate@2.9.0",
-    "angular-translate-handler-log": "npm:angular-translate-handler-log@2.9.0",
-    "angular-translate-loader-static-files": "npm:angular-translate-loader-static-files@2.9.0",
-    "angular-translate-storage-cookie": "npm:angular-translate-storage-cookie@2.9.0",
-    "angular-translate-storage-local": "npm:angular-translate-storage-local@2.9.0",
+    "angular-translate": "npm:angular-translate@2.9.1",
+    "angular-translate-handler-log": "npm:angular-translate-handler-log@2.9.1",
+    "angular-translate-loader-static-files": "npm:angular-translate-loader-static-files@2.9.1",
+    "angular-translate-storage-cookie": "npm:angular-translate-storage-cookie@2.9.1",
+    "angular-translate-storage-local": "npm:angular-translate-storage-local@2.9.1",
     "angular-ui-router": "npm:angular-ui-router@0.2.18",
     "babel": "npm:babel-core@5.8.35",
     "babel-runtime": "npm:babel-runtime@5.8.35",
-    "clean-css": "npm:clean-css@3.4.9",
+    "clean-css": "npm:clean-css@3.4.10",
     "core-js": "npm:core-js@1.2.6",
     "css": "github:systemjs/plugin-css@0.1.20",
     "json": "github:systemjs/plugin-json@0.1.0",
@@ -77,21 +77,20 @@ System.config({
     "npm:angular-animate@1.5.2": {
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
-    "npm:angular-translate-handler-log@2.9.0": {
-      "angular-translate": "npm:angular-translate@2.9.0"
+    "npm:angular-translate-handler-log@2.9.1": {
+      "angular-translate": "npm:angular-translate@2.9.1"
     },
-    "npm:angular-translate-loader-static-files@2.9.0": {
-      "angular-translate": "npm:angular-translate@2.9.0"
+    "npm:angular-translate-loader-static-files@2.9.1": {
+      "angular-translate": "npm:angular-translate@2.9.1"
     },
-    "npm:angular-translate-storage-cookie@2.9.0": {
-      "angular-cookies": "npm:angular-cookies@1.5.2",
-      "angular-translate": "npm:angular-translate@2.9.0"
+    "npm:angular-translate-storage-cookie@2.9.1": {
+      "angular-translate": "npm:angular-translate@2.9.1"
     },
-    "npm:angular-translate-storage-local@2.9.0": {
-      "angular-translate": "npm:angular-translate@2.9.0"
+    "npm:angular-translate-storage-local@2.9.1": {
+      "angular-translate": "npm:angular-translate@2.9.1",
+      "angular-translate-storage-cookie": "npm:angular-translate-storage-cookie@2.9.1"
     },
-    "npm:angular-translate@2.9.0": {
-      "angular": "npm:angular@1.5.2",
+    "npm:angular-translate@2.9.1": {
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:angular-ui-router@0.2.18": {
@@ -112,7 +111,7 @@ System.config({
       "isarray": "npm:isarray@1.0.0",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
-    "npm:clean-css@3.4.9": {
+    "npm:clean-css@3.4.10": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "commander": "npm:commander@2.8.1",
       "fs": "github:jspm/nodelibs-fs@0.1.2",
