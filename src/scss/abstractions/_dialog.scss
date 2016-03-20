@@ -11,9 +11,6 @@
     // Box-model
     margin: 0 0 1.25rem;
     padding: 1.5rem 1.5rem 0;
-    
-    // Ellipsis
-    @extend %text-overflow;
   }
   
     /** Styles for titles of the dialog header */
@@ -26,9 +23,6 @@
       // Tipography
       font-size: fs(medium);
       font-weight: 600;
-      
-      // Ellipsis
-      @extend %text-overflow;
     }
     
     &__title--sm {
