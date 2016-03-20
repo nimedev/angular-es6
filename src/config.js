@@ -84,15 +84,18 @@ System.config({
       "angular-translate": "npm:angular-translate@2.9.0"
     },
     "npm:angular-translate-storage-cookie@2.9.0": {
+      "angular-cookies": "npm:angular-cookies@1.5.2",
       "angular-translate": "npm:angular-translate@2.9.0"
     },
     "npm:angular-translate-storage-local@2.9.0": {
       "angular-translate": "npm:angular-translate@2.9.0"
     },
     "npm:angular-translate@2.9.0": {
+      "angular": "npm:angular@1.5.2",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:angular-ui-router@0.2.18": {
+      "angular": "npm:angular@1.5.2",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:assert@1.3.0": {
