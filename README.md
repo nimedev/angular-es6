@@ -98,10 +98,6 @@ npm run deploy
 
 Put all in dist folder ready for production.
 
-:warning: **Important**
-
-Before run `dev-server` or `deploy` npm scripts be sure you fix this *[issue](https://github.com/nimedev/angular-es6/tree/master/resources/fix-jspm_bundle)*.
-
 
 ### Styling
 
