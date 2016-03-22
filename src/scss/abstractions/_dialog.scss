@@ -63,6 +63,7 @@
     .btn {
       // Box-model
       margin-left: .5rem;
+      vertical-align: middle;
       
       // Tipography
       color: cp($primary, df);
