@@ -269,14 +269,19 @@
  */
 .btn--icon {
   // Box-model
+  margin: 0;
   padding: 0;
   width: 3rem;
+  line-height: 1;
   
   // Tipography
+  font-size: 1.5rem;
   text-align: center;
   
   // Visual
+  background-color: transparent;
   cursor: pointer;
+	border: none;
 }
 
 /**
@@ -443,4 +448,25 @@
     font-size: fs(small)!important;
   }
 }
+
+/** Group with text label and buttons */
+.btn--label-group {
+  // Box-model
+  display: flex;
+  align-items: center;
+  
+  // Default style for label
+  .b-lg__label {
+    margin: 0;
+  }
+  
+  // Default style for button
+  .btn,
+  .btn--icon {
+    // Tipography
+    font-size: fs(medium);
+    color: $grey;
+  }
+}
+
 } // endif
