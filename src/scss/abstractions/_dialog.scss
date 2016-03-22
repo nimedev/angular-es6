@@ -61,8 +61,16 @@
     text-align: right;
     
     .btn {
+      // Box-model
       margin-left: .5rem;
-    }   
+      
+      // Tipography
+      color: cp($primary, df);
+      font-weight: 500;
+      
+      // Visual
+      background-color: transparent;
+    }  
   }
 }
 } // endif
