@@ -20,6 +20,9 @@ import component from './route.component'
 
 /** Services */
 
+/** Other modules */
+import routeConfig from './route.config'
+
 // Constants
 const moduleName = 'route'
 
@@ -34,13 +37,7 @@ angular
     rcHelp,
     rcHome
   ])
-  .config(['$locationProvider', '$urlRouterProvider', ($locationProvider, $urlRouterProvider) => {
-    // Redirect path to * urls
-    $urlRouterProvider.otherwise('/')
-
-    // use the HTML5 History API
-    $locationProvider.html5Mode(true)
-  }])
+  .config(routeConfig)
   .component(component.name, component)
 
 /** @exports module name */
