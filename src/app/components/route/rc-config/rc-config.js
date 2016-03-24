@@ -31,7 +31,7 @@ angular
           'sidenav': {
             template: '<sn-config></sn-config>'
           },
-          'root-component': {
+          'root-route': {
             template: '<rc-config></rc-config>'
           }
         }

@@ -23,7 +23,7 @@ app-sidenav {
     padding-top: $header-sm;
     
     // Style when header navigation is open
-    app-header.header__nav-open + .app-body & {
+    app-header.header__nav-open + .root-component & {
       padding-top: $header-sm + $headernav-height;
     }
   }

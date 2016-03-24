@@ -1,63 +1,91 @@
 /*------------------------------------*\
     $ROUTE COMPONENT 
 \*------------------------------------*/
-/* Styles for all related with the main views. */
+/* Styles for all related with the root route component. */
 
-// Take all width for column direction of '.app-body'
-route {
+// route compoennt element
+route.root-component {
   // Box-model
+  overflow-x: hidden;
   display: flex;
   flex-direction: column;
-  
-  // Flexbox item
-  // take all height off '.app-body'
-  flex-grow: 1;
-  
-  // Misc
-  transition: margin-left $close-delay;
+  padding-top: $header-xs;
+  width: 100%;
+  max-width: 100%;
+  min-height: 100%;
   
   // Responsive
   @include respond-to(small) {
-    // Box model
-    margin-left: $sidenavwidth-sm;
-    
-    // When side nav is open
-    app-sidenav.nav-open + & {
-      margin-left: $sidenavwidth-md;
-    }
+    padding-top: $header-sm;
   }
+}
+
+// Styles when component header navigation is open
+app-header.header__nav-open + .root-component {
+  // Box-model
+  padding-top: $header-xs + $headernav-height;
   
-  // ui-view container
-  // Take all width for column direction of 'route'
-  .view-container {
+  // Responsive
+  @include respond-to(small) {
+    padding-top: $header-sm + $headernav-height;
+  }
+}
+
+  // Take all width for column direction of route component
+  main {
     // Box-model
     display: flex;
     flex-direction: column;
     
     // Flexbox item
-    // take all height off 'route'
+    // take all height off route component
     flex-grow: 1;
     
-    // Style for view componet
-    // Take all width for column direction of '.view-container'
-    &>* {
+    // Misc
+    transition: margin-left $close-delay;
+    
+    // Responsive
+    @include respond-to(small) {
+      // Box model
+      margin-left: $sidenavwidth-sm;
+      
+      // When side nav is open
+      app-sidenav.nav-open + & {
+        margin-left: $sidenavwidth-md;
+      }
+    }
+    
+    // ui-view container
+    // Take all width for column direction of 'route'
+    .view-container {
       // Box-model
-      margin: 0 auto;
-      padding: 1rem;
-      max-width: $pagemaxwidth;
-      width: 100%;
+      display: flex;
+      flex-direction: column;
       
       // Flexbox item
-      // take all height off '.view-container'
+      // take all height off 'route'
       flex-grow: 1;
-    }
-
-      .content-wrapper {
-        // Box-model
-        padding: 1em;
       
-        // Visual
-        background-color: $white;
+      // Style for view componet
+      // Take all width for column direction of '.view-container'
+      &>* {
+        // Box-model
+        margin: 0 auto;
+        padding: 1rem;
+        max-width: $pagemaxwidth;
+        width: 100%;
+        
+        // Flexbox item
+        // take all height off '.view-container'
+        flex-grow: 1;
       }
+
+        .content-wrapper {
+          // Box-model
+          padding: 1em;
+        
+          // Visual
+          background-color: $white;
+        }
+    }
   }
-}

@@ -29,7 +29,7 @@ angular
           'sidenav': {
             template: '<sn-default></sn-default>'
           },
-          'root-component': {
+          'root-route': {
             template: '<rc-home></rc-home>'
           }
         }
