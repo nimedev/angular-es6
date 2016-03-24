@@ -1,91 +1,78 @@
 /*------------------------------------*\
     $ROUTE COMPONENT 
 \*------------------------------------*/
-/* Styles for all related with the root route component. */
+/**
+ * Styles for all related with the root route component.
+ * The element 'route' don't have styles. Is used for sibling selection to
+ * 'app-header' component and hide component until angular is loaded. 
+ */
 
-// route compoennt element
-route.root-component {
+// Main content wrapper.
+.main-container {
   // Box-model
   overflow-x: hidden;
   display: flex;
-  flex-direction: column;
   padding-top: $header-xs;
   width: 100%;
   max-width: 100%;
   min-height: 100%;
   
-  // Responsive
-  @include respond-to(small) {
-    padding-top: $header-sm;
-  }
-}
-
-// Styles when component header navigation is open
-app-header.header__nav-open + .root-component {
-  // Box-model
-  padding-top: $header-xs + $headernav-height;
+  // Misc
+  transition: padding-left $close-delay;
   
   // Responsive
   @include respond-to(small) {
-    padding-top: $header-sm + $headernav-height;
+    // Box model
+    padding-top: $header-sm;
+    padding-left: $sidenavwidth-sm;
+    
+    // When side nav is open
+    app-sidenav.nav-open + & {
+      padding-left: $sidenavwidth-md;
+    }
   }
-}
-
-  // Take all width for column direction of route component
-  main {
+  
+  // ui-view container
+  // take all height off '.main-container' for row direction
+  .view-container {
     // Box-model
     display: flex;
-    flex-direction: column;
     
     // Flexbox item
-    // take all height off route component
+    // take all width off '.main-container' element
     flex-grow: 1;
     
-    // Misc
-    transition: margin-left $close-delay;
+    // Style for view componet
+    // take all height off '.view-container' for row direction
+    &>* {
+      // Box-model
+      margin: 0 auto;
+      padding: 1rem;
+      max-width: $pagemaxwidth;
+      width: 100%;
+      
+      // Flexbox item
+      // Take all width of '.view-container'
+      flex-grow: 1;
+    }
+
+      .content-wrapper {
+        // Box-model
+        padding: 1em;
+      
+        // Visual
+        background-color: $white;
+      }
+  }
+  
+  // Styles when component header navigation is open
+  .header-component.header__nav-open + .route-component & {
+    // Box-model
+    padding-top: $header-xs + $headernav-height;
     
     // Responsive
     @include respond-to(small) {
-      // Box model
-      margin-left: $sidenavwidth-sm;
-      
-      // When side nav is open
-      app-sidenav.nav-open + & {
-        margin-left: $sidenavwidth-md;
-      }
-    }
-    
-    // ui-view container
-    // Take all width for column direction of 'route'
-    .view-container {
-      // Box-model
-      display: flex;
-      flex-direction: column;
-      
-      // Flexbox item
-      // take all height off 'route'
-      flex-grow: 1;
-      
-      // Style for view componet
-      // Take all width for column direction of '.view-container'
-      &>* {
-        // Box-model
-        margin: 0 auto;
-        padding: 1rem;
-        max-width: $pagemaxwidth;
-        width: 100%;
-        
-        // Flexbox item
-        // take all height off '.view-container'
-        flex-grow: 1;
-      }
-
-        .content-wrapper {
-          // Box-model
-          padding: 1em;
-        
-          // Visual
-          background-color: $white;
-        }
+      padding-top: $header-sm + $headernav-height;
     }
   }
+}
