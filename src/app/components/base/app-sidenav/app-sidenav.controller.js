@@ -7,23 +7,23 @@
  */
 /** @exports Controller class */
 export default class AppSidenavCtrl {
-  /*@ngInject*/
   constructor($window, headerNav, sideNav) {
-    // Save dependencies
+    /** Dependencies */
     this.$window = $window
     this.headerNav = headerNav
     this.sideNav = sideNav
 
     /** Class Fields */
-    
-    /** Initializations */
+  }
+
+  /** Initialization */
+  $onInit() {
     // Open sidenav for large screens
-    if ($window.innerWidth >= sideNav.mdBreak) {
-      sideNav.open()
+    if (this.$window.innerWidth >= this.sideNav.mdBreak) {
+      this.sideNav.open()
     }
   }
 
-  /** Class Methods */
   /**
    * Call close sidenav service.
    * Use when can't use close-sidenav directive.

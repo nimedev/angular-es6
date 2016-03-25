@@ -12,9 +12,8 @@ const serviceName = 'nmdDialog'
 
 // Service class
 class NmdDialog {
-  /*@ngInject*/
   constructor($compile, $rootScope) {
-    // Save dependencies
+    /** Dependencies */
     this.$compile = $compile
     this.$rootScope = $rootScope
 
@@ -22,7 +21,6 @@ class NmdDialog {
     this.cssName = 'dialog--open'
   }
 
-  /** Class Methods */
   /** 
    * Remove a dialog component acording to nd-component attribute.
    * @param {String} component - Used to select the dialog to remove.

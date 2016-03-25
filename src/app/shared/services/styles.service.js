@@ -4,6 +4,7 @@
  * @class Styles
  * @param {Object} $windows - for DOM manipulation
  */
+
 /** Import angular */
 import angular from 'angular'
 
@@ -13,14 +14,13 @@ let serviceName = 'styles'
 // Service class
 class Styles {
   constructor($window) {
-    // Save dependencies
+    /** Dependencies */
     this.$window = $window
 
     /** Class Fields */
     this.html = angular.element(document).find('html')[0]
   }
 
-  /** Class Methods */
   /** 
    * Return de CSS value of a property.
    * @param {string} element - Element to get property.

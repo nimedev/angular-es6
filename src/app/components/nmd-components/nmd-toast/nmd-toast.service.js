@@ -13,9 +13,8 @@ const serviceName = 'nmdToast'
 
 // Service class
 class NmdToast {
-  /*@ngInject*/
   constructor($compile, $rootScope) {
-    // Save dependencies
+    /** Dependencies */
     this.$compile = $compile
     this.$rootScope = $rootScope
 
@@ -24,7 +23,6 @@ class NmdToast {
     this.setDefault()
   }
 
-  /** Class Methods */
   /** 
    * Remove toast scope.
    * $destroy() generate a $destroy event that is handle by

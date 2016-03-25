@@ -6,9 +6,8 @@
  */
 /** @exports Controller class */
 export default class MessageCtrl {
-  /*@ngInject*/
   constructor(nmdDialog, nmdToast) {
-    // Save dependencies
+    /** Dependencies */
     this.nmdDialog = nmdDialog
     this.nmdToast = nmdToast
 
@@ -16,7 +15,6 @@ export default class MessageCtrl {
     this.msg = 'Show message!'
   }
 
-  /** Class Methods *w/
   /** Call close service to close 'message' component */
   close() {
     let toastOptions = {

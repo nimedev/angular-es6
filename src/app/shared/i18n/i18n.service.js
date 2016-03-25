@@ -14,9 +14,8 @@ let serviceName = 'i18n'
 
 // Service class
 class I18n {
-  /*@ngInject*/
   constructor($translate, nmdToast) {
-    // Save dependencies
+    /** Dependencies */
     this.$translate = $translate
     this.nmdToast = nmdToast
 
@@ -24,7 +23,6 @@ class I18n {
     this.texts = []
   }
 
-  /** Class Methods */
   /** 
    * Change app langage
    * @param {String} lang - code of language to change 

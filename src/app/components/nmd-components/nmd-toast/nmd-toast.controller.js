@@ -6,11 +6,8 @@
  */
 /** @exports Controller class */
 export default class NmdToastCtrl {
-  /*@ngInject*/
   constructor($timeout, nmdToast) {
-    let button = nmdToast.button
-    
-    // Save dependencies
+    /** Dependencies */
     this.$timeout = $timeout
     this.nmdToast = nmdToast
 
@@ -18,19 +15,26 @@ export default class NmdToastCtrl {
     this.btnAction = nmdToast.close
     this.btnText = ''
     this.message = nmdToast.message
-    this.timmer = $timeout(nmdToast.close, nmdToast.duration)
-    
+    this.timmer
+  }
+
+  /** Initialization */
+  $onInit() {
+    let button = this.nmdToast.button
+
     // Prepare action button
     if (button.text) {
       this.btnText = button.text
     }
-    
+
     if (button.action) {
       this.btnAction = button.action
     }
+
+    // Start close timmer
+    this.timmer = this.$timeout(this.nmdToast.close, this.nmdToast.duration)
   }
 
-  /** Class Methods */
   /** Call close toast service */
   close() {
     this.nmdToast.close()

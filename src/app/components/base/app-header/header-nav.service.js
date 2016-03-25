@@ -3,6 +3,7 @@
  * @name headerNav
  * @class HeaderNav
  */
+
 /** Angular Modules */
 import angular from 'angular'
 
@@ -11,16 +12,14 @@ let serviceName = 'headerNav'
 
 // Service class
 class HeaderNav {
-  /*@ngInject*/
   constructor() {
-    // Save dependencies
+    /** Dependencies */
 
     /** Class Fields */
     this.cssName = 'header__nav-open'
     this.navOpen = false
   }
 
-  /** Class Methods */
   /** Close header-nav */
   close() {
     this.navOpen = false

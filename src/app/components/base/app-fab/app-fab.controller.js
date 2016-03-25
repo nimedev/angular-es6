@@ -5,15 +5,13 @@
  */
 /** @exports Controller class */
 export default class AppFabCtrl {
-  /*@ngInject*/
   constructor(nmdDialog) {
-    // Save dependencies
+    /** Dependencies */
     this.nmdDialog = nmdDialog
 
     /** Class Fields */
   }
 
-  /** Class Methods */
   /** Use service to open a dialog with message component */
   open() {
     this.nmdDialog.open('message')

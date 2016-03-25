@@ -13,9 +13,8 @@ let serviceName = 'sideNav'
 
 // Service class
 class SideNav {
-  /*@ngInject*/
   constructor($state, $window) {
-    // Save dependencies
+    /** Dependencies */
     this.$state = $state
     this.$window = $window
 
@@ -26,7 +25,6 @@ class SideNav {
     this.mdBreak = 960
   }
 
-  /** Class Methods */
   /** Close sidenav */
   close() {
     this.isOpen = false
