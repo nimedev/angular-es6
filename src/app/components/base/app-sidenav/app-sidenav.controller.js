@@ -5,6 +5,7 @@
  * @param {Object} headerNav - to get header navigation status.
  * @param {Object} sideNav - to control open/close of sidenav.
  */
+
 /** @exports Controller class */
 export default class AppSidenavCtrl {
   constructor($window, headerNav, sideNav) {

@@ -4,6 +4,7 @@
  * @param {Object} $timeout - to create toast delay.
  * @param {Object} nmdToast - to get toast services.
  */
+
 /** @exports Controller class */
 export default class NmdToastCtrl {
   constructor($timeout, nmdToast) {

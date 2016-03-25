@@ -3,6 +3,7 @@
  * @class LangListCtrl
  * @param {Object} i18n - to change language.
  */
+
 /** @exports Controller class */
 export default class LangListCtrl {
   constructor(i18n) {

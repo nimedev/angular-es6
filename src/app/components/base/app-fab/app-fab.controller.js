@@ -3,6 +3,7 @@
  * @class AppFabCtrl
  * @param {Object} nmdDialog - to open a dialog box.
  */
+
 /** @exports Controller class */
 export default class AppFabCtrl {
   constructor(nmdDialog) {

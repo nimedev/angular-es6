@@ -4,6 +4,7 @@
  * @param {Object} nmdDialog - to get close service for dialog
  * @param {Object} nmdToast - to get open service for toast
  */
+
 /** @exports Controller class */
 export default class MessageCtrl {
   constructor(nmdDialog, nmdToast) {
