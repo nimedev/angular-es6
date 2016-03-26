@@ -12,7 +12,6 @@ import ngCookies from 'angular-cookies'
 
 /** Components */
 import base from './components/base/base'
-import message from './components/message/message'
 import nmdComponents from './components/nmd-components/nmd-components'
 import route from './components/route/route'
 
@@ -45,7 +44,6 @@ angular
 
     // Components
     base,
-    message,
     nmdComponents,
     route,
 

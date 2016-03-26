@@ -48,31 +48,18 @@ nmd-dialog {
       // Positioning
       position: absolute;
       top: 50%;
-      right: 0;
-      left: 0;
+      left: 50%;
       z-index: z(goku);
       
       // Box-model
       overflow: hidden;
-      margin-left: auto;
-      margin-right: auto;
-      max-width: 90%;
       
       // Visual
       background-color: white;
       border-radius: .25rem;
       
       // Misc
-      transform: translateY(-50%);
-      
-      // Responsive
-      @include respond-to(small) {
-        width: 30rem;
-      } 
-      
-      @include respond-to(medium) {
-        width: 40rem;
-      }
+      transform: translate(-50%, -50%);
       
       // For form inside dialog
       form {

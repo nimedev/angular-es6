@@ -13,6 +13,7 @@ import appHeader from './app-header/app-header'
 import appSidenav from './app-sidenav/app-sidenav'
 import appWaiting from './app-waiting/app-waiting'
 import comingSoon from './coming-soon/coming-soon'
+import message from './message/message'
 
 /** Component */
 
@@ -30,7 +31,8 @@ angular
     appHeader,
     appSidenav,
     appWaiting,
-    comingSoon
+    comingSoon,
+    message
   ])
 
 /** @exports module name */
