@@ -8,7 +8,7 @@ import template from './nmd-dialog.html!text'
 const component = {
   bindings: {
     /** {boolean} indicate if show close button */
-    closeBtn: '@'
+    closeBtn: '<'
   },
   name: 'nmdDialog',
   template
