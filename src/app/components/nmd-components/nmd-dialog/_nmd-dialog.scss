@@ -1,7 +1,6 @@
 /*------------------------------------*\
     $DIALOG COMPONENT
 \*------------------------------------*/
-
 // Style for component
 nmd-dialog {
   // Positioning
@@ -43,6 +42,52 @@ nmd-dialog {
       background-color: $backdrop;
     }
     
+      // Close button
+      &__close--btn {
+        // Positioining
+        position: absolute;
+        top: .5rem;
+        right: .5rem;
+        
+        // Box-model
+        display: block;
+        box-sizing: content-box;
+        width: 2rem;
+        height: 2rem;
+        
+        // Visual
+        cursor: pointer;
+        background-color: transparent;
+        
+        // Style for X arms
+        &::before, &::after {
+          // Positioning
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          
+          // Box-model
+          content: '';
+          display: inline-block;
+          box-sizing: content-box;
+          width: 1.5rem;
+          height: .25rem;
+          
+          // Visual
+          background: $white;
+        }
+        
+        // Translate and rotate '\' arm
+        &::before {
+          transform: translate(-50%, -50%) rotate(45deg);
+        }
+        
+        // Translate and rotate '/' arm
+        &::after {
+          transform: translate(-50%, -50%) rotate(-45deg);
+        }
+      }
+    
     // Style for compenent inserted in dialog
     &__component {
       // Positioning
@@ -68,14 +113,15 @@ nmd-dialog {
       }
     }
     
-    &__body {
-      //Box-model (with compatibility for vh)
-      max-height: 14.125rem;
-      max-height: 60vh;
-      
-      // Responsive
-      @media screen and (min-height: 37.5rem) {
-        max-height: 70vh;
+      // Styles for the body of a dialog
+      &__body {
+        //Box-model (with compatibility for vh)
+        max-height: 14.125rem;
+        max-height: 60vh;
+        
+        // Responsive
+        @media screen and (min-height: 37.5rem) {
+          max-height: 70vh;
+        }
       }
-    }
   }

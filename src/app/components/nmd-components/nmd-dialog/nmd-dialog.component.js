@@ -1,12 +1,17 @@
 /** nmd-dialog component. */
 // Template
+import template from './nmd-dialog.html!text'
 
 // Controller
 
 // Component object
 const component = {
+  bindings: {
+    /** {boolean} indicate if show close button */
+    closeBtn: '@'
+  },
   name: 'nmdDialog',
-  template: '<div class="dialog__back"></div>'
+  template
 }
 
 /** @exports component object */

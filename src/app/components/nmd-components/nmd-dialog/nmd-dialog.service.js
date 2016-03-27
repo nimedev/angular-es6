@@ -35,11 +35,15 @@ class NmdDialog {
   /** 
    * Append a dialog at end of body and insert a component inside it.
    * @param {String} component - Name of component to insert in HTML format
-   *                             (component-name) 
+   *  (component-name)
+   * @param {Object} options - Object with option for dialog
+      options = {
+        closeBtn = false
+      }
    */
-  open(component) {
+  open(component, options = { closeBtn: false }) {
     let node = angular.element(document).find('body')
-    let newDialog = `<nmd-dialog nd-component="${component}" dialog-watcher></nmd-dialog>`
+    let newDialog = `<nmd-dialog nd-component="${component}" close-btn="${options.closeBtn}" dialog-watcher></nmd-dialog>`
     let oldDialog = document.querySelector(`nmd-dialog[nd-component=${component}]`)
     let scope
     
