@@ -57,7 +57,7 @@ angular
       $logProvider.debugEnabled(false)
     }
   }])
-  .run(['$log', $log => $log.debug(config)])
+  .run(['$log', $log => $log.debug('Config object [main]', config)])
   .constant('config', config)
 
 // Load app when document is ready
