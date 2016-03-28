@@ -1,7 +1,9 @@
 /**
  * Directive to add functions to nmd-dialog component.
+ * The dialog is closed if press cancel key or history back.
  * @name dialogWatcher
  * @param {Object} $compile - to compile dialog content component.
+ * @param {Object} $rootScope - to catch state change event.
  * @param {Object} $timeout - to generate delay for destroy element from DOM
  * @param {Object} $window - to listen cancel key.
  * @param {Object} nmdDialog - get close service.
@@ -10,7 +12,7 @@
 const directiveName = 'dialogWatcher'
 
 // Directive Function
-const directive = ($compile, $timeout, $window, nmdDialog) => {
+const directive = ($compile, $rootScope, $timeout, $window, nmdDialog) => {
   let directive = {
     link: link,
     restrict: 'A'
@@ -35,8 +37,14 @@ const directive = ($compile, $timeout, $window, nmdDialog) => {
     // Add 'keydown' event to listen cancel key
     $window.addEventListener('keydown', checkKeyPressed)
 
-    // Add 'hashchange' event to close the dialog if url change
-    $window.addEventListener('hashchange', hashChanged)
+    // Detect a posible change of route
+    let changeListener = $rootScope.$on('$locationChangeStart', event => {
+      // Cancel de change of the route
+      event.preventDefault()
+
+      // Close the dialog
+      nmdDialog.close(component)
+    })
 
     // Wait for the scope destruction 
     scope.$on('$destroy', () => {
@@ -45,7 +53,9 @@ const directive = ($compile, $timeout, $window, nmdDialog) => {
 
       // Remove events
       $window.removeEventListener('keydown', checkKeyPressed)
-      $window.removeEventListener('hashchange', hashChanged)
+
+      // Unsuscribe $locationChangeStart listener
+      changeListener();
 
       // Insert a delay to elminate for CSS animation porpouses.
       $timeout(() => {
@@ -69,19 +79,11 @@ const directive = ($compile, $timeout, $window, nmdDialog) => {
         nmdDialog.close(component)
       }
     }
-
-    /**
-     * Handle 'hashchange' event
-     * @memberOf link
-     */
-    function hashChanged() {
-      nmdDialog.close(component)
-    }
   }
 }
 
 // Injection array for minification compatibility
-directive.$inject = ['$compile', '$timeout', '$window', 'nmdDialog']
+directive.$inject = ['$compile', '$rootScope', '$timeout', '$window', 'nmdDialog']
 
 /** @exports directive name and class */
 export default {

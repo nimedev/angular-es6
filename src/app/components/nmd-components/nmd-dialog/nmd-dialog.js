@@ -1,5 +1,6 @@
 /**
  * Module for nmd-dialog component.
+ * See dialog-watcher directive to see dialog behaviors.
  * @module nmdDialog
  */
 /** Angular modules */
