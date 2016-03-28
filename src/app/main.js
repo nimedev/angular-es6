@@ -52,12 +52,18 @@ angular
     i18n,
     services
   ])
+  .config(['$logProvider', $logProvider => {
+    if (!config.dev) {
+      $logProvider.debugEnabled(false)
+    }
+  }])
+  .run(['$log', $log => $log.debug(config)])
   .constant('config', config)
 
 // Log app configuration if is in development mode
-if (config.dev) {
-  console.log(config)
-}
+// if (config.dev) {
+//   console.log(config)
+// }
 
 // Load app when document is ready
 htmlDocument = angular.element(document)
