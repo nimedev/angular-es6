@@ -6,16 +6,12 @@
 
 /** PACKAGES */
 /** core modules */
-let path = require('path') 
 
 /** npm modules */
 
 /** other modules */
 
 // variables
-const source = 'src'
-const dev = 'dev'
-const dist = 'dist'
 
 /** Routes strategies for put method */
 module.exports = {
