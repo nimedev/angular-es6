@@ -102,9 +102,9 @@ module.exports = {
         prod: `${prodDir}/assets/js`
       },
       watch: [
-        `${srcDir}app/**/*`,
-        `${srcDir}assets/i18n/**/*`,
-        `!${srcDir}app/**/*.scss`
+        `${srcDir}/app/**/*`,
+        `${srcDir}/assets/i18n/**/*`,
+        `!${srcDir}/app/**/*.scss`
       ]
     },
 
