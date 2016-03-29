@@ -1,9 +1,9 @@
-logs
-*.log
-
 .tmp
 dev
 dist
 jspm_packages
+logs
 node_modules
 typings
+
+*.log
