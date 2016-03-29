@@ -5,15 +5,18 @@
 'use strict'
 
 /** PACKAGES */
-/** core modules */
+/** Core modules */
 
 /** npm modules */
 
-/** other modules */
+/** Other modules */
 
-// variables
+// Variables
+const devDir = 'dev'
+const srcDir = 'src'
+const prodDir = 'dist'
 
-/** Routes strategies for put method */
+/** Settings for gulp tasks */
 module.exports = {
   // turn on/off functions 
   flags: {
@@ -24,24 +27,24 @@ module.exports = {
     minifyCss: true,
     mergeMediaQueries: true
   },
-  
+
   // Configuration for browser-sync
   server: {
     port: 3000,
     baseDir: {
-      src: 'src',
-      dev: 'dev'
+      src: srcDir,
+      dev: devDir
     },
     routes: {
-      '/': 'dev'
+      '/': devDir
     }
   },
-  
+
   // Misc  
   filesName: {
     styleOut: 'style.css'
   },
-  
+
   // JSPM bundle settings
   bundle: {
     // Configuration to bundle app.js file (application files)
@@ -50,27 +53,27 @@ module.exports = {
       src: 'app/main.js',
       ignoreVendors: true
     },
-    
+
     // Configuration to bundle dep.js file (all dependencies)
     dep: {
       name: 'dep.js',
       onlyVendors: true
     },
-    
+
     // Configuration to bundle only angular dependencies
     ng: {
       name: 'ng.js',
       src: 'angular',
       arithmetic: '+ angular-animate + angular-aria + angular-cookies'
     },
-    
+
     // Configuration to bundle angular material dependencies
     ngMaterial: {
       name: 'ng-material.js',
       src: 'angular-material',
       arithmetic: '- angular - angular-animate - angular-aria'
     },
-    
+
     // Configuration to bundle others dependencies
     vendors: {
       name: 'vendors.js',
@@ -78,115 +81,115 @@ module.exports = {
       arithmetic: '+ angular-translate-handler-log + angular-translate-loader-static-files + angular-translate-storage-cookie + angular-translate-storage-local + angular-ui-router - angular'
     }
   },
-  
+
   // Used to replace scritp declaration in index.html file
   htmlReplace: [
     'assets/js/dep.js',
     'assets/js/app.js'
   ],
-  
+
   // Paths for tasks
   paths: {
     // Bundle task
     bundle: {
-      main: 'src/app/main.js',
+      main: `${srcDir}/app/main.js`,
       src: [
-        'src/jspm_packages/system.js',
-        'src/config.js'
+        `${srcDir}/jspm_packages/system.js`,
+        `${srcDir}/config.js`
       ],
       dest: {
-        'dev': 'dev/assets/js',
-        'prod': 'dist/assets/js'
+        dev: `${devDir}/assets/js`,
+        prod: `${prodDir}/assets/js`
       },
       watch: [
-        'src/app/**/*',
-        'src/assets/i18n/**/*',
-        '!src/app/**/*.scss'
+        `${srcDir}app/**/*`,
+        `${srcDir}assets/i18n/**/*`,
+        `!${srcDir}app/**/*.scss`
       ]
     },
-    
+
     // Clean tasks
     cleanAll: [
-      '.tmp/*',
-      'dist/*',
-      'dist/**/.*',
-      '!dist/.git*'
+      `.tmp/*`,
+      `${prodDir}/*`,
+      `${prodDir}/**/.*`,
+      `!${prodDir}/.git*`
     ],
     cleanDev: [
-      'dev/*',
-      'dev/**/.*'
+      `${devDir}/*`,
+      `${devDir}/**/.*`
     ],
-    
+
     // Fonts paths
     fonts: {
-      src: 'src/assets/fonts/**/*',
+      src: `${srcDir}/assets/fonts/**/*`,
       dest: {
-        dev: 'dev/assets/fonts',
-        prod: 'dist/assets/fonts'
+        dev: `${devDir}/assets/fonts`,
+        prod: `${prodDir}/assets/fonts`
       }
     },
-    
+
     // index.html task
     html: {
-      src: 'src/*.html',
+      src: `${srcDir}/*.html`,
       dest: {
-        dev: 'dev',
-        prod: 'dist'
+        dev: devDir,
+        prod: prodDir
       }
     },
-    
+
     // i18n paths.
     i18n: {
-      src: 'src/assets/i18n/**/*',
+      src: `${srcDir}/assets/i18n/**/*`,
       dest: {
-        dev: 'dev/assets/i18n',
-        prod: 'dist/assets/i18n'
+        dev: `${devDir}/assets/i18n`,
+        prod: `${prodDir}/assets/i18n`
       }
     },
-    
+
     // Images task
     images: {
-      src: 'src/assets/img/**/*',
+      src: `${srcDir}/assets/img/**/*`,
       dest: {
-        dev: 'dev/assets/img',
-        prod: 'dist/assets/img'
+        dev: `${devDir}/assets/img`,
+        prod: `${prodDir}/assets/img`
       }
     },
-    
+
     // Task for .htaccess, robots and others files
     misc: {
       src: [
-        'src/robots.txt',
-        'src/.htaccess'
+        `${srcDir}/robots.txt`,
+        `${srcDir}/.htaccess`
       ],
       dest: {
-        'dev': 'dev',
-        'prod': 'dist'
+        dev: devDir,
+        prod: prodDir
       }
     },
-    
+
     // Sass task
     style: {
-      src: 'src/scss/style.scss',
+      src: `${srcDir}/scss/style.scss`,
       dest: {
-        dev: 'dev/assets/css',
-        prod: 'dist/assets/css'
+        dev: `${devDir}/assets/css`,
+        prod: `${prodDir}/assets/css`
       },
       watch: [
-        'src/app/**/*',
-        'src/scss/**/*',
-        '!src/app/**/*.{js,json,html}'
+        `${srcDir}/app/**/*`,
+        `${srcDir}/scss/**/*`,
+        `!${srcDir}/app/**/*.{js,json,html}`
       ]
     },
-    
+
     // Used for browser-sync tasks
     reload: {
       src: [
-        'src/**/*',
-        'dev/**/*',
-        '!src/**/*.scss'
+        `${srcDir}/**/*`,
+        `${devDir}/**/*`,
+        `!${srcDir}/**/*.scss`
       ],
-      dev: 'dev/**/*'
+      dev: `${devDir}/**/*`
     }
   }
 }
