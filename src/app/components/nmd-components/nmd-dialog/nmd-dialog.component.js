@@ -3,13 +3,18 @@
 import template from './nmd-dialog.html!text'
 
 // Controller
+import controller from './nmd-dialog.controller'
 
 // Component object
 const component = {
   bindings: {
     /** {boolean} indicate if show close button */
-    closeBtn: '<'
+    closeBtn: '<',
+    
+    /** name of the component */
+    innerComponent: '@ndComponent'
   },
+  controller,
   name: 'nmdDialog',
   template
 }
