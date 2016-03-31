@@ -46,9 +46,6 @@ export default class NmdToastCtrl {
     // Cancel toast timmer
     this.$timeout.cancel(this.timmer)
 
-    // Remove toast element
-    this.nmdToast.remove()
-
     // Generate 'toastHide' event
     this.$rootScope.$emit('toastHide')
   }

@@ -52,9 +52,6 @@ export default class NmdDialogCtrl {
 
     // Unsuscribe $locationChangeStart listener
     this.changeListener()
-
-    // Remove element from DOM
-    this.nmdDialog.remove(this.innerComponent)
   }
 
   /** Close dialog */

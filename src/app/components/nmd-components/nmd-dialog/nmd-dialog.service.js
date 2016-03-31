@@ -31,8 +31,20 @@ class NmdDialog {
   close(component) {
     const dialog = angular.element(document.querySelector(`nmd-dialog[nd-component=${component}]`))
 
+    // Add class for CSS close animation.
+    dialog.addClass('dialog--close')
+
     // remove component from scope
     dialog.scope().$destroy()
+
+    // Insert a delay to eliminate for CSS animation porpouses.
+    this.$timeout(() => {
+      // Remove element from DOM
+      dialog.remove()
+
+      // Check if remove CSS classes related to dialog.
+      this.toggleElements()
+    }, 1000)
   }
 
   /** 
@@ -47,7 +59,7 @@ class NmdDialog {
   open(component, options = { closeBtn: false }) {
     let node = angular.element(document).find('body')
     let newDialog = `<nmd-dialog nd-component="${component}" close-btn="${options.closeBtn}"></nmd-dialog>`
-    let oldDialog = document.querySelector(`body>nmd-dialog[nd-component=${component}]`)
+    let oldDialog = document.querySelector(`body > nmd-dialog[nd-component=${component}]`)
     let scope
 
     // Create new dialog if is no there a dialog with de same nd-component attribute
@@ -60,26 +72,6 @@ class NmdDialog {
 
       this.toggleElements(true)
     }
-  }
-
-  /**
-   * Remove element from DOM and check if remove dialog classes.
-   * @param {String} component - Used to select the dialog to remove.
-   */
-  remove(component) {
-    const dialog = angular.element(document.querySelector(`nmd-dialog[nd-component=${component}]`))
-
-    // Add class for CSS close animation.
-    dialog.addClass('dialog--close')
-
-    // Insert a delay to eliminate for CSS animation porpouses.
-    this.$timeout(() => {
-      // Remove element from DOM
-      dialog.remove()
-
-      // Check if remove CSS classes related to dialog.
-      this.toggleElements()
-    }, 1000)
   }
 
   /** HELPER FUNCTION */

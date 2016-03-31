@@ -32,8 +32,15 @@ class NmdToast {
 
     // Remove object if find toast component
     if (openToast.length > 0) {
+      // Add class for CSS animation
+      openToast.addClass('toast--close')
+
       // remove component from scope
       openToast.scope().$destroy()
+
+      // Insert a delay to eliminate for CSS animation porpouses
+      // and remove component from DOM.
+      this.$timeout(() => openToast.remove(), 1000)
     }
   }
 
@@ -88,21 +95,6 @@ class NmdToast {
 
     // Compile dialog template and add to body
     node.append(this.$compile(newToast)(scope))
-  }
-
-  /**
-   * Remove element from DOM.
-   * @param {String} component - Used to select the dialog to remove.
-   */
-  remove() {
-    const openToast = this.openToasts()
-
-    // Add class for CSS animation
-    openToast.addClass('toast--close')
-
-    // Insert a delay to eliminate for CSS animation porpouses
-    // and remove component from DOM.
-    this.$timeout(() => openToast.remove(), 1000)
   }
 
   /** HELPER FUNCTIONS */
