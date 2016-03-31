@@ -1,14 +1,16 @@
 /**
  * Controller for nmd-toast component.
  * @class NmdToastCtrl
+ * @param {Object} $rootScope - to generate shown and hide events.
  * @param {Object} $timeout - to create toast delay.
  * @param {Object} nmdToast - to get toast services.
  */
 
 /** @exports Controller class */
 export default class NmdToastCtrl {
-  constructor($timeout, nmdToast) {
+  constructor($rootScope, $timeout, nmdToast) {
     /** Dependencies */
+    this.$rootScope = $rootScope
     this.$timeout = $timeout
     this.nmdToast = nmdToast
 
@@ -32,8 +34,23 @@ export default class NmdToastCtrl {
       this.btnAction = button.action
     }
 
+    // Generate 'toastShown' event
+    this.$timeout(() => this.$rootScope.$emit('toastShown'), 50)
+
     // Start close timmer
-    this.timmer = this.$timeout(this.nmdToast.close, this.nmdToast.duration)
+    this.timmer = this.$timeout(() => this.nmdToast.close(), this.nmdToast.duration)
+  }
+
+  /** When component is destroyed */
+  $onDestroy() {
+    // Cancel toast timmer
+    this.$timeout.cancel(this.timmer)
+
+    // Remove toast element
+    this.nmdToast.remove()
+
+    // Generate 'toastHide' event
+    this.$rootScope.$emit('toastHide')
   }
 
   /** Call close toast service */
@@ -43,4 +60,4 @@ export default class NmdToastCtrl {
 }
 
 // Injection array for minification compatibility
-NmdToastCtrl.$inject = ['$timeout', 'nmdToast']
+NmdToastCtrl.$inject = ['$rootScope', '$timeout', 'nmdToast']

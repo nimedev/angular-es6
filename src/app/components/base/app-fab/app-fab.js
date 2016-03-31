@@ -11,7 +11,6 @@ import angular from 'angular'
 
 /** Component & Directives */
 import component from './app-fab.component'
-import fabWatcher from './fab-watcher.directive'
 
 /** Services */
 
@@ -24,7 +23,6 @@ const moduleName = 'appFab'
 angular
   .module(moduleName, [])
   .component(component.name, component)
-  .directive(fabWatcher.name, fabWatcher.directive)
 
 /** @exports module name */
 export default moduleName

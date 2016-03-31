@@ -4,6 +4,7 @@
  * @class NmdToast
  * @param {Object} $compile - to compile new dialog directive.
  * @param {Object} $rootScope - to create new scope for compiled component.
+ * @param {Object} $timeout - to generate delay to remove the element
  */
 /** Angular modules */
 import angular from 'angular'
@@ -13,24 +14,21 @@ const serviceName = 'nmdToast'
 
 // Service class
 class NmdToast {
-  constructor($compile, $rootScope) {
+  constructor($compile, $rootScope, $timeout) {
     /** Dependencies */
     this.$compile = $compile
     this.$rootScope = $rootScope
+    this.$timeout = $timeout
 
     /** Class Fields */
     // Default options for the toast
     this.setDefault()
   }
 
-  /** 
-   * Remove toast scope.
-   * $destroy() generate a $destroy event that is handle by
-   * toast-watcher directive to remove element from the DOM. 
-   */
+  /** Remove all open toast component. */
   close() {
     // last toast inserted
-    let openToast = angular.element(document.querySelector('nmd-toast:not(.toast--close'))
+    const openToast = this.openToasts()
 
     // Remove object if find toast component
     if (openToast.length > 0) {
@@ -38,7 +36,12 @@ class NmdToast {
       openToast.scope().$destroy()
     }
   }
-  
+
+  /** @return all open toasts elements */
+  openToasts() {
+    return angular.element(document.querySelectorAll('body>nmd-toast:not(.toast--close'))
+  }
+
   /** 
    * Append a toast at end of body.
    * @param {String} msg - Text message of toast
@@ -55,38 +58,53 @@ class NmdToast {
     let newToast = '<nmd-toast></nmd-toast>'
     let node = angular.element(document).find('body')
     let scope
-    
+
     // Remove old toast
     this.close()
-    
+
     // Set default values
     this.setDefault()
-    
+
     // Verify custom message
     if (msg) {
       this.message = msg
     }
-    
+
     // Verify options
     if (options) {
       // Add duration
       if (options.duration) {
         this.duration = options.duration
       }
-      
+
       // Add button settings
       if (options.button) {
         this.button = options.button
       }
     }
-    
+
     // Create new isolate scope
     scope = this.$rootScope.$new(true)
-    
+
     // Compile dialog template and add to body
     node.append(this.$compile(newToast)(scope))
   }
-  
+
+  /**
+   * Remove element from DOM.
+   * @param {String} component - Used to select the dialog to remove.
+   */
+  remove() {
+    const openToast = this.openToasts()
+
+    // Add class for CSS animation
+    openToast.addClass('toast--close')
+
+    // Insert a delay to eliminate for CSS animation porpouses
+    // and remove component from DOM.
+    this.$timeout(() => openToast.remove(), 1000)
+  }
+
   /** HELPER FUNCTIONS */
   /** Set default values for toast */
   setDefault() {
@@ -97,7 +115,7 @@ class NmdToast {
 }
 
 // Injection array for minification compatibility
-NmdToast.$inject = ['$compile', '$rootScope']
+NmdToast.$inject = ['$compile', '$rootScope', '$timeout']
 
 /** @exports service name and class */
 export default {

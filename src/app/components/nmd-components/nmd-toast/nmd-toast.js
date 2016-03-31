@@ -11,7 +11,6 @@ import angular from 'angular'
 
 /** Component & Directives */
 import component from './nmd-toast.component'
-import toastWatcher from './toast-watcher.directive'
 
 /** Services */
 import service from './nmd-toast.service'
@@ -26,7 +25,6 @@ angular
   .module(moduleName, [])
   .component(component.name, component)
   .service(service.name, service.service)
-  .directive(toastWatcher.name, toastWatcher.directive)
 
 /** @exports module name */
 export default moduleName
