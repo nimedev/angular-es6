@@ -4,7 +4,6 @@
  * @class NmdDialog
  * @param {Object} $compile - add dialog component to angular digest cycle
  * @param {Object} $rootScope - to create new scope for new component
- * @param {Object} $timeout - to generate delay for destroy element from DOM
  */
 /** Angular modules */
 import angular from 'angular'
@@ -14,11 +13,10 @@ const serviceName = 'nmdDialog'
 
 // Service class
 class NmdDialog {
-  constructor($compile, $rootScope, $timeout) {
+  constructor($compile, $rootScope) {
     /** Dependencies */
     this.$compile = $compile
     this.$rootScope = $rootScope
-    this.$timeout = $timeout
 
     /** Class Fields */
     this.cssName = 'dialog--open'
@@ -31,20 +29,14 @@ class NmdDialog {
   close(component) {
     const dialog = angular.element(document.querySelector(`nmd-dialog[nd-component=${component}]`))
 
-    // Add class for CSS close animation.
-    dialog.addClass('dialog--close')
-
     // remove component from scope
     dialog.scope().$destroy()
 
-    // Insert a delay to eliminate for CSS animation porpouses.
-    this.$timeout(() => {
-      // Remove element from DOM
-      dialog.remove()
+    // Remove element from DOM
+    dialog.remove()
 
-      // Check if remove CSS classes related to dialog.
-      this.toggleElements()
-    }, 1000)
+    // Check if remove CSS classes related to dialog.
+    this.toggleElements()
   }
 
   /** 
@@ -94,7 +86,7 @@ class NmdDialog {
 }
 
 // Injection array for minification compatibility
-NmdDialog.$inject = ['$compile', '$rootScope', '$timeout']
+NmdDialog.$inject = ['$compile', '$rootScope']
 
 /** @exports service name and class */
 export default {
