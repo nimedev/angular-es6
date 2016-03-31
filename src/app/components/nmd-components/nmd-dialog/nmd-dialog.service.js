@@ -46,8 +46,8 @@ class NmdDialog {
    */
   open(component, options = { closeBtn: false }) {
     let node = angular.element(document).find('body')
-    let newDialog = `<nmd-dialog nd-component="${component}" close-btn="${options.closeBtn}" dialog-watcher></nmd-dialog>`
-    let oldDialog = document.querySelector(`nmd-dialog[nd-component=${component}]`)
+    let newDialog = `<nmd-dialog nd-component="${component}" close-btn="${options.closeBtn}"></nmd-dialog>`
+    let oldDialog = document.querySelector(`body>nmd-dialog[nd-component=${component}]`)
     let scope
 
     // Create new dialog if is no there a dialog with de same nd-component attribute

@@ -1,6 +1,7 @@
 /**
  * Module for nmd-dialog component.
- * See dialog-watcher directive to see dialog behaviors.
+ * Use directive instead component to add component template to directive 
+ * template because in component this don't work.
  * @module nmdDialog
  */
 /** Angular modules */
@@ -11,8 +12,7 @@ import angular from 'angular'
 /** Submodules */
 
 /** Component & Directives */
-import component from './nmd-dialog.component'
-import directive from './dialog-watcher.directive'
+import directive from './nmd-dialog.directive'
 
 /** Services */
 import service from './nmd-dialog.service'
@@ -25,7 +25,6 @@ const moduleName = 'nmdDialog'
 // Define module
 angular
   .module(moduleName, [])
-  .component(component.name, component)
   .service(service.name, service.service)
   .directive(directive.name, directive.directive)
 
