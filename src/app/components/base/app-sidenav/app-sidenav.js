@@ -34,7 +34,7 @@ angular
   ])
   .component(component.name, component.options)
   .service(sideNav.name, sideNav.constructor)
-  .directive(directive.name, directive.directive)
+  .directive(directive.name, directive.factory)
 
 /** @exports module name */
 export default moduleName

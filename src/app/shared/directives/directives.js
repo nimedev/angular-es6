@@ -22,7 +22,7 @@ const moduleName = 'directives'
 // Define module
 angular
   .module(moduleName, [])
-  .directive(directive.name, directive.directive)
+  .directive(directive.name, directive.factory)
 
 /** @exports module name */
 export default moduleName

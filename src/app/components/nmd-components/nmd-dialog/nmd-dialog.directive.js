@@ -41,5 +41,5 @@ directive.$inject = []
 /** @exports directive name and function */
 export default {
   name: directiveName,
-  directive: directive
+  factory: directive
 }
