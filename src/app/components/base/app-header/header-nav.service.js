@@ -57,5 +57,5 @@ HeaderNav.$inject = []
 /** @exports service name and class */
 export default {
   name: serviceName,
-  service: HeaderNav
+  constructor: HeaderNav
 }

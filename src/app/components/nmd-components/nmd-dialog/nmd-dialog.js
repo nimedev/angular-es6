@@ -25,7 +25,7 @@ const moduleName = 'nmdDialog'
 // Define module
 angular
   .module(moduleName, [])
-  .service(service.name, service.service)
+  .service(service.name, service.constructor)
   .directive(directive.name, directive.directive)
 
 /** @exports module name */

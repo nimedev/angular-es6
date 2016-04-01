@@ -52,7 +52,7 @@ angular
     i18n.load()
     $rootScope.$on('$translateChangeSuccess', () => i18n.loadAndNotify())
   }])
-  .service(i18n.name, i18n.service)
+  .service(i18n.name, i18n.constructor)
 
 /** @exports module name */
 export default moduleName

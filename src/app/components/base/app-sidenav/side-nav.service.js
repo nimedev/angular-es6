@@ -75,5 +75,5 @@ SideNav.$inject = ['$state', '$window']
 /** @exports service name and class */
 export default {
   name: serviceName,
-  service: SideNav
+  constructor: SideNav
 }

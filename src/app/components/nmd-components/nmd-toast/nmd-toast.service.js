@@ -112,5 +112,5 @@ NmdToast.$inject = ['$compile', '$rootScope', '$timeout']
 /** @exports service name and class */
 export default {
   name: serviceName,
-  service: NmdToast
+  constructor: NmdToast
 }

@@ -56,5 +56,5 @@ I18n.$inject = ['$translate', 'nmdToast']
 /** @exports service name and class */
 export default {
   name: serviceName,
-  service: I18n
+  constructor: I18n
 }

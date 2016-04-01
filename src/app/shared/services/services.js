@@ -22,7 +22,7 @@ const moduleName = 'services'
 // Define module
 angular
   .module(moduleName, [])
-  .service(styles.name, styles.service)
+  .service(styles.name, styles.constructor)
 
 /** @exports module name */
 export default moduleName

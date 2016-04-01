@@ -45,5 +45,5 @@ Styles.$inject = ['$window']
 /** @exports service name and class */
 export default {
   name: serviceName,
-  service: Styles
+  constructor: Styles
 }

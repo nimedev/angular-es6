@@ -33,7 +33,7 @@ angular
     snDefault
   ])
   .component(component.name, component.options)
-  .service(sideNav.name, sideNav.service)
+  .service(sideNav.name, sideNav.constructor)
   .directive(directive.name, directive.directive)
 
 /** @exports module name */

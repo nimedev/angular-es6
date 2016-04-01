@@ -91,5 +91,5 @@ NmdDialog.$inject = ['$compile', '$rootScope']
 /** @exports service name and class */
 export default {
   name: serviceName,
-  service: NmdDialog
+  constructor: NmdDialog
 }
