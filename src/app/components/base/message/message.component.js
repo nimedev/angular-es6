@@ -1,4 +1,11 @@
-/** message component. */
+/** 
+ * message component. 
+ * @name message
+ */
+
+// Component name
+const componentName = 'message'
+
 // Template
 import template from './message.html!text'
 
@@ -6,11 +13,13 @@ import template from './message.html!text'
 import controller from './message.controller'
 
 // Component object
-let component = {
+const component = {
   controller,
-  name: 'message',
   template
 }
 
-/** @exports component object */
-export default component
+/** @exports component options */
+export default {
+  name: componentName,
+  options: component
+}

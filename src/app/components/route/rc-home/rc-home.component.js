@@ -1,12 +1,21 @@
-/** rc-home component. */
+/** 
+ * rc-home component. 
+ * @name rcHome
+ */
+
+// Component name
+const componentName = 'rcHome'
+
 // Template
 import template from './rc-home.html!text'
 
 // Component object
-let component = {
-  name: 'rcHome',
+const component = {
   template
 }
 
-/** @exports component object */
-export default component
+/** @exports component options */
+export default {
+  name: componentName,
+  options: component
+}

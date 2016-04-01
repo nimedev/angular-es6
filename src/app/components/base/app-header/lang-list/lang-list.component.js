@@ -1,4 +1,11 @@
-/** lang-list component. */
+/**
+ * lang-list component.
+ * @name langList
+ */
+
+// Component name
+const componentName = 'langList'
+
 // Template
 import template from './lang-list.html!text'
 
@@ -6,11 +13,13 @@ import template from './lang-list.html!text'
 import controller from './lang-list.controller'
 
 // Component object
-let component = {
+const component = {
   controller,
-  name: 'langList',
   template
 }
 
-/** @exports component object */
-export default component
+/** @exports component options */
+export default {
+  name: componentName,
+  options: component
+}

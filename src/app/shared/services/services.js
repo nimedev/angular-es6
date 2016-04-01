@@ -1,5 +1,5 @@
 /**
- * Module for services component.
+ * Module for shared services.
  * @module services
  */
 /** Angular modules */

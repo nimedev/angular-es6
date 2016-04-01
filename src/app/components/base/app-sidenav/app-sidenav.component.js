@@ -1,4 +1,11 @@
-/** app-sidenav component. */
+/**
+ * app-sidenav component.
+ * @name appSidenav 
+ */
+
+// Component name
+const componentName = 'appSidenav'
+
 // Template
 import template from './app-sidenav.html!text'
 
@@ -6,11 +13,13 @@ import template from './app-sidenav.html!text'
 import controller from './app-sidenav.controller'
 
 // Component object
-let component = {
+const component = {
   controller,
-  name: 'appSidenav',
   template
 }
 
-/** @exports component object */
-export default component
+/** @exports component options */
+export default {
+  name: componentName,
+  options: component
+}

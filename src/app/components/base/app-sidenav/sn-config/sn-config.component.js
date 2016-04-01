@@ -1,14 +1,23 @@
-/** sn-config component. */
+/** 
+ * sn-config component. 
+ * @name snConfig
+ */
+
+// Component name
+const componentName = 'snConfig'
+
 // Template
 import template from './sn-config.html!text'
 
 // Controller
 
 // Component object
-let component = {
-  name: 'snConfig',
+const component = {
   template
 }
 
-/** @exports component object */
-export default component
+/** @exports component options */
+export default {
+  name: componentName,
+  options: component
+}

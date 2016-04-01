@@ -35,7 +35,7 @@ angular
         }
       })
   }])
-  .component(component.name, component)
+  .component(component.name, component.options)
 
 /** @exports module name */
 export default moduleName

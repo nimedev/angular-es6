@@ -2,6 +2,7 @@
  * Module for app-sidenav component.
  * @module appSidenav
  */
+
 /** Angular modules */
 import angular from 'angular'
 
@@ -31,7 +32,7 @@ angular
     snConfig,
     snDefault
   ])
-  .component(component.name, component)
+  .component(component.name, component.options)
   .service(sideNav.name, sideNav.service)
   .directive(directive.name, directive.directive)
 

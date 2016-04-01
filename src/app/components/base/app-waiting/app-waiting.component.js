@@ -1,4 +1,11 @@
-/** app-waiting component. */
+/** 
+ * app-waiting component. 
+ * @name appWaiting
+ */
+
+// Component name
+const componentName = 'appWaiting'
+
 // Template
 import template from './app-waiting.html!text'
 
@@ -6,9 +13,11 @@ import template from './app-waiting.html!text'
 
 // Component object
 const component = {
-  name: 'appWaiting',
   template
 }
 
-/** @exports component object */
-export default component
+/** @exports component options */
+export default {
+  name: componentName,
+  options: component
+}

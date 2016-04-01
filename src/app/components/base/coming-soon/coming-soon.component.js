@@ -1,17 +1,26 @@
-/** coming-soon component. */
+/** 
+ * coming-soon component. 
+ * @name comingSoon 
+ */
+
+// Component name
+const componentName = 'comingSoon'
+
 // Template
 import template from './coming-soon.html!text'
 
 // Controller
 
 // Component object
-let component = {
+const component = {
   bindings: {
     title: '@'
   },
-  name: 'comingSoon',
   template
 }
 
-/** @exports component object */
-export default component
+/** @exports component options */
+export default {
+  name: componentName,
+  options: component
+}

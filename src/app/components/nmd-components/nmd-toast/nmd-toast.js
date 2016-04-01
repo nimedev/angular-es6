@@ -23,7 +23,7 @@ const moduleName = 'nmdToast'
 // Define module
 angular
   .module(moduleName, [])
-  .component(component.name, component)
+  .component(component.name, component.options)
   .service(service.name, service.service)
 
 /** @exports module name */

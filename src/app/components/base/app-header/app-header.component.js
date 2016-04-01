@@ -1,4 +1,11 @@
-/** app-header component. */
+/**
+ * app-header component.
+ * @name appHeader
+ */
+
+// Component name
+const componentName = 'appHeader'
+
 // Template
 import template from './app-header.html!text'
 
@@ -6,11 +13,13 @@ import template from './app-header.html!text'
 import controller from './app-header.controller'
 
 // Component object
-let component = {
+const component = {
   controller,
-  name: 'appHeader',
   template
 }
 
-/** @exports component object */
-export default component
+/** @exports component options */
+export default {
+  name: componentName,
+  options: component
+}

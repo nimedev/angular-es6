@@ -1,16 +1,25 @@
-/** app-fab component. */
+/** 
+ * app-fab component.
+ * @name appFab
+ */
+
+// Component name
+const componentName = 'appFab'
+
 // Template
 import template from './app-fab.html!text'
 
 // Controller
-import controller from './app-fab.controller.js' 
+import controller from './app-fab.controller.js'
 
 // Component object
-let component = {
+const component = {
   controller,
-  name: 'appFab',
   template
 }
 
-/** @exports component object */
-export default component
+/** @exports component options */
+export default {
+  name: componentName,
+  options: component
+}

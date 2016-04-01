@@ -1,19 +1,28 @@
-/** menu-item component. */
+/**
+ * menu-item component.
+ * @name menuItem
+ */
+
+// Component name
+const componentName = 'menuItem'
+
 // Template
 import template from './menu-item.html!text'
 
 // Controller
 
 // Component object
-let component = {
+const component = {
   bindings: {
     icon: '@miIcon',
     state: '@miState',
     text: '@miText'
   },
-  name: 'menuItem',
   template
 }
 
-/** @exports component object */
-export default component
+/** @exports component options */
+export default {
+  name: componentName,
+  options: component
+}

@@ -1,14 +1,23 @@
-/** sn-default component. */
+/** 
+ * sn-default component. 
+ * @name snDefault
+ */
+
+// Component name
+const componentName = 'snDefault'
+
 // Template
 import template from './sn-default.html!text'
 
 // Controller
 
 // Component object
-let component = {
-  name: 'snDefault',
+const component = {
   template
 }
 
-/** @exports component object */
-export default component
+/** @exports component options */
+export default {
+  name: componentName,
+  options: component
+}

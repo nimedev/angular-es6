@@ -1,4 +1,11 @@
-/** route component. */
+/** 
+ * route component. 
+ * @name route
+ */
+
+// Component name
+const componentName = 'route'
+
 // Template
 import template from './route.html!text'
 
@@ -6,9 +13,11 @@ import template from './route.html!text'
 
 // Component object
 const component = {
-  name: 'route',
   template
 }
 
-/** @exports component object */
-export default component
+/** @exports component options */
+export default {
+  name: componentName,
+  options: component
+}

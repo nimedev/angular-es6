@@ -2,6 +2,7 @@
  * Module for lang-list component.
  * @module langList
  */
+
 /** Angular modules */
 import angular from 'angular'
 
@@ -22,7 +23,7 @@ const moduleName = 'langList'
 // Define module
 angular
   .module(moduleName, [])
-  .component(component.name, component)
+  .component(component.name, component.options)
 
 /** @exports module name */
 export default moduleName

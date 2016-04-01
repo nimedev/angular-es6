@@ -1,4 +1,11 @@
-/** nmd-progress-linear component. */
+/** 
+ * nmd-progress-linear component. 
+ * @name nmdProgressLinear
+ */
+
+// Component name
+const componentName = 'nmdProgressLinear'
+
 // Template
 
 // Controller
@@ -8,9 +15,11 @@ const component = {
   bindings: {
     color: '@progressColor'
   },
-  name: 'nmdProgressLinear',
   template: '<div class="progress__content" ng-class="$ctrl.color"></div>'
 }
 
-/** @exports component object */
-export default component
+/** @exports component options */
+export default {
+  name: componentName,
+  options: component
+}
