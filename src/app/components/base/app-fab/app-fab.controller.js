@@ -19,10 +19,10 @@ export default class AppFabCtrl {
     /** Class Fields */
   }
 
-  /** Initializations */
+  /** Initialization */
   $onInit() {
-    // Action when toast is shown
-    this.$rootScope.$on('toastShown', () => {
+    // Listener when toast is shown
+    this.showListener = this.$rootScope.$on('toastShown', () => {
       // Component element
       const component = document.querySelector('app-fab > button')
 
@@ -37,14 +37,21 @@ export default class AppFabCtrl {
       component.style.bottom = bottom + 'rem'
     })
 
-    // Action when toast is start hide
-    this.$rootScope.$on('toastHide', () => {
+    // Listener when toast is start hide
+    this.hideLister = this.$rootScope.$on('toastHide', () => {
       // Component element
       const component = document.querySelector('app-fab > button')
 
       // Move Element to original position.
       component.style['bottom'] = ''
     })
+  }
+
+  /** When component is destroyed */
+  $onDestroy() {
+    // Remove component listeners
+    this.showListener()
+    this.hideLister()
   }
 
   /** Use service to open a dialog with message component */
