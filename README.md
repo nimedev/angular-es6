@@ -189,7 +189,7 @@ Put this snippets in javascript file:
       "/** @exports component object */",
       "export default {",
       "\tname: componentName,",
-      "\toption: component",
+      "\toptions: component",
       "}"
     ],
     "description": "Angular ES6 component"
