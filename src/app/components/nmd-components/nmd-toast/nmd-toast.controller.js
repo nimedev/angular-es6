@@ -30,15 +30,16 @@ export default class NmdToastCtrl {
       this.btnText = button.text
     }
 
-    if (button.action) {
-      this.btnAction = button.action
-    }
+    // Button action (default close)
+    this.btnAction = (button.action) ? button.action : this.close
 
     // Generate 'toastShown' event
     this.$timeout(() => this.$rootScope.$emit('toastShown'), 50)
 
-    // Start close timmer
-    this.timmer = this.$timeout(() => this.nmdToast.close(), this.nmdToast.duration)
+    // Start close timmer if duration is passed
+    if (this.nmdToast.duration) {
+      this.timmer = this.$timeout(() => this.nmdToast.close(), this.nmdToast.duration)
+    }
   }
 
   /** When component is destroyed */

@@ -80,7 +80,7 @@ class NmdToast {
     // Verify options
     if (options) {
       // Add duration
-      if (options.duration) {
+      if (options.duration !== undefined && options.duration >= 0) {
         this.duration = options.duration
       }
 
