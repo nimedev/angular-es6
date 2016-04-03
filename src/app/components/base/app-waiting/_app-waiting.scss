@@ -17,7 +17,7 @@ app-waiting {
     
     // Responsive
     @include respond-to(small) {
-      height: calc(100vh - $header-sm);
+      height: calc(100vh - #{$header-sm});
     }
     
     // Common values for components
