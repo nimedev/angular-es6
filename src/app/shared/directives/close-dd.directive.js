@@ -14,7 +14,6 @@ const directive = () => {
     link: link,
     restrict: 'A'
   }
-  
   return directive
 
   /////////////////
@@ -27,11 +26,16 @@ const directive = () => {
     // Change checked property to checkbox when click in element
     html.on('click', event => {
       const targetElement = event.target
+
+      // Try to get for attribute to see if element is related whit checkbox.
       const targetFor = targetElement.attributes.for
 
+      // Try to get cdd-disabled attribute to cancel close operation.
+      const isDisabled = targetElement.attributes['cdd-disabled']
+
       // Only change checked property if the click element is diferent to
-      // the checkbox input or asociate label to this
-      if (targetElement.id !== id && (!targetFor || targetFor.value !== id)) {
+      // the checkbox input or asociate label to this or is closed disabled
+      if (!isDisabled && targetElement.id !== id && (!targetFor || targetFor.value !== id)) {
         toggleButton[0].checked = false
       }
     })
