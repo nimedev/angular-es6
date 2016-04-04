@@ -1,6 +1,6 @@
 /**
  * Main module
- * @module 'angular-es6' 
+ * @module main 
  */
 /** Angular modules */
 import angular from 'angular'
