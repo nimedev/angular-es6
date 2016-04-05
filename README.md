@@ -37,7 +37,7 @@ npm install jspm gulp -g
 
 This lets you run `jspm` and `gulp` from the command line.
 
-4)  Install the local `jspm` and `npm` dependencies.
+4)  Install the local `npm` and `jspm` dependencies.
 
 ```sh
 # cd to your project folder (default: angular-es6)
@@ -171,7 +171,7 @@ Put this snippets in javascript file:
       " */",
       "",
       "// Component name",
-      "const componentName = ${2:name}",
+      "const componentName = '${2:name}'",
       "",
       "// Template",
       "import template from './${1:file-name}.html!text'",
